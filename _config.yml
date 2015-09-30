@@ -1,15 +1,44 @@
-# Site settings
-title: Caisong's blog
-email: ujscs@live.cn 
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-weibo_username: ujscs
-github_username: caisong 
+permalink: /:year-:month-:day/:title/
 
-# Build settings
 highlighter: pygments
 markdown: redcarpet
+redcarpet:
+  extensions: [
+   "no_intra_emphasis"
+   ,"fenced_code_blocks"
+   ,"autolink"
+   ,"tables"
+   ,"strikethrough"
+   ,"superscript"
+   ,"with_toc_data"
+   ,"footnotes"
+   ,"highlight"
+   ,"underline"
+   ,"quote"
+   ,"lax_spacing"
+   ,"prettify"
+#   ,"html_toc"
+  ]
+
+
+
+paginate: 10
+paginate_path: ":num"
+baseurl: ""
+
+
+
+title: "RainyAlley"
+email: "dubuyuye@yeah.net"
+description: "Developer"
+github_username:  "dubuyuye"
+swiftype_searchId: "ncwR9a8S9CTx2q9SgsJm"
+disqus_shortname: "rainyalley"
+
+
+
+url: "http://blog.rainyalley.com"
+imgrepo: "http://blog.rainyalley.com/static/img"
+#url: "http://127.0.0.1:4000"
+#imgrepo: "http://127.0.0.1:4000/static/img"
+
