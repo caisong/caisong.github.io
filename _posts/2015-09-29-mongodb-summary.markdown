@@ -4,7 +4,6 @@ title:  "mongod summary!"
 date:   2015-09-29 15:09:00
 categories: mongodb
 ---
-##mongod summary
 * ###复制集配置  
   1. 启动mongd实例  
   {% highlight JavaScript %}

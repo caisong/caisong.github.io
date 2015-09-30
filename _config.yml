@@ -11,6 +11,5 @@ weibo_username: ujscs
 github_username: caisong 
 
 # Build settings
-markdown: kramdown
-kramdown:
-        input: GFM
+highlighter: pygments
+markdown: redcarpet
