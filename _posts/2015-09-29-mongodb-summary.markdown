@@ -2,9 +2,15 @@
 layout: post
 title:  "mongod summary!"
 date:   2015-09-29 15:09:00
+tags: mongodb shard replicaset
 categories: mongodb
 ---
-* ###复制集配置  
+
+<div class="toc"></div>
+
+![](http://image.beekka.com/blog/201308/bg2013081708.png)
+
+# 复制集配置  
   1. 启动mongd实例  
   {% highlight JavaScript %}
   mongod --replicaSet <setname> --port <port> --dbpath <dbpath>  --logpath <logpath> --directoryperdb
@@ -39,7 +45,7 @@ categories: mongodb
     //移除节点   
     rs.remove(<ip:port>)
   {% endhighlight %}
-* ###单实例转复制集
+#单实例转复制集
   1. stop mongod
   2. 启动命令中添加{% highlight JavaScript %}--replicaSet <setname>{% endhighlight %} 参数
   3. 重启启动mongod
@@ -48,7 +54,7 @@ categories: mongodb
     rs.add(<hostname>)
   {% endhighlight %}
   
-* ###shard配置
+#shard配置
   1. 启动mongd实例  
    {% highlight JavaScript %}
         //config 节点
@@ -112,7 +118,7 @@ categories: mongodb
     {% endhighlight %}
     如果已有Shard中存在同名的数据库，则添加会失败；其他分片、切片操作与单机相同
     
-* ###常用JavaScript配置示例
+#常用JavaScript配置示例
 * 复制集初始化
 {% highlight JavaScript %}
   rs.initiate(
