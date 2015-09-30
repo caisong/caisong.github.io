@@ -22,23 +22,23 @@ redcarpet:
 
 
 
-paginate: 10
+paginate: 5
 paginate_path: ":num"
 baseurl: ""
 
 
 
-title: "RainyAlley"
-email: "dubuyuye@yeah.net"
+title: "Caisong's Blog"
+email: "song_cai@yeah.net"
 description: "Developer"
-github_username:  "dubuyuye"
-swiftype_searchId: "ncwR9a8S9CTx2q9SgsJm"
-disqus_shortname: "rainyalley"
+github_username:  "caisong"
+# swiftype_searchId: "ncwR9a8S9CTx2q9SgsJm"
+# disqus_shortname: "rainyalley"
 
 
 
-url: "http://blog.rainyalley.com"
-imgrepo: "http://blog.rainyalley.com/static/img"
+#url: "http://blog.rainyalley.com"
+#imgrepo: "http://blog.rainyalley.com/static/img"
 #url: "http://127.0.0.1:4000"
 #imgrepo: "http://127.0.0.1:4000/static/img"
 
