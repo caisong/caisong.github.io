@@ -8,8 +8,6 @@ categories: mongodb
 
 <div class="toc"></div>
 
-![](http://image.beekka.com/blog/201308/bg2013081708.png)
-
 # 复制集配置  
   1. 启动mongd实例  
   {% highlight JavaScript %}
