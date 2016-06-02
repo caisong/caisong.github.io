@@ -2,6 +2,5 @@ _site/
 .sass-cache/
 node_modules/
 .npmignore
-.deploy_git/
 source
 *~
