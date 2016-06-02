@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="sqlite, performace test," />
+  <meta name="keywords" content="email,python," />
 
 
 
@@ -86,40 +86,19 @@
 
 
 
-<meta name="description" content="sqlite配置调整
-手动提交事务
-Prepared Statements
-批量插入
-多线程
-
-
-本文源于工作中的测试，并参考improve insert-per-second performace of SQLite
-sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma synchronous=OFFpragma journal_mode=m">
+<meta name="description" content="需求每天发送工作日报，需要send一堆人，cc一堆人（公司规定，呵呵），还要添加附件。考虑到python能够方便的发送邮箱，就打算写个脚本。
+代码123456789101112131415161718192021222324252627282930313233343536373839404142434445# -*- coding: utf-8 -*-#!/usr/bin/env python3&apos;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sqlite 插入性能优化">
-<meta property="og:url" content="http://yoursite.com/2016/05/20/sqlite-插入性能优化/index.html">
+<meta property="og:title" content="python 发送邮件">
+<meta property="og:url" content="http://yoursite.com/2016/06/02/post/index.html">
 <meta property="og:site_name" content="Caisong's Blog">
-<meta property="og:description" content="sqlite配置调整
-手动提交事务
-Prepared Statements
-批量插入
-多线程
-
-
-本文源于工作中的测试，并参考improve insert-per-second performace of SQLite
-sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma synchronous=OFFpragma journal_mode=m">
-<meta property="og:updated_time" content="2016-05-20T14:37:57.841Z">
+<meta property="og:description" content="需求每天发送工作日报，需要send一堆人，cc一堆人（公司规定，呵呵），还要添加附件。考虑到python能够方便的发送邮箱，就打算写个脚本。
+代码123456789101112131415161718192021222324252627282930313233343536373839404142434445# -*- coding: utf-8 -*-#!/usr/bin/env python3&apos;">
+<meta property="og:updated_time" content="2016-06-02T13:33:31.687Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sqlite 插入性能优化">
-<meta name="twitter:description" content="sqlite配置调整
-手动提交事务
-Prepared Statements
-批量插入
-多线程
-
-
-本文源于工作中的测试，并参考improve insert-per-second performace of SQLite
-sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma synchronous=OFFpragma journal_mode=m">
+<meta name="twitter:title" content="python 发送邮件">
+<meta name="twitter:description" content="需求每天发送工作日报，需要send一堆人，cc一堆人（公司规定，呵呵），还要添加附件。考虑到python能够方便的发送邮箱，就打算写个脚本。
+代码123456789101112131415161718192021222324252627282930313233343536373839404142434445# -*- coding: utf-8 -*-#!/usr/bin/env python3&apos;">
 
 
 
@@ -137,7 +116,7 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
   };
 </script>
 
-  <title> sqlite 插入性能优化 | Caisong's Blog </title>
+  <title> python 发送邮件 | Caisong's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,6 +227,16 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -309,7 +298,7 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
             
             
               
-                sqlite 插入性能优化
+                python 发送邮件
               
             
           </h1>
@@ -321,8 +310,8 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-20T21:55:11+08:00" content="2016-05-20">
-              2016-05-20
+            <time itemprop="dateCreated" datetime="2016-06-02T20:46:58+08:00" content="2016-06-02">
+              2016-06-02
             </time>
           </span>
 
@@ -335,8 +324,8 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/database/" itemprop="url" rel="index">
-                    <span itemprop="name">database</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -351,8 +340,8 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/20/sqlite-插入性能优化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/20/sqlite-插入性能优化/" itemprop="commentsCount"></span>
+                <a href="/2016/06/02/post/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/post/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -375,22 +364,13 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
       
 
       
-        <!-- MarkdownTOC -->
-<ul>
-<li>sqlite配置调整</li>
-<li>手动提交事务</li>
-<li>Prepared Statements</li>
-<li>批量插入</li>
-<li>多线程</li>
+        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>每天发送工作日报，需要send一堆人，cc一堆人（公司规定，呵呵），还要添加附件。考虑到python能够方便的发送邮箱，就打算写个脚本。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">发送带附件邮件</span><br><span class="line">'''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个带附件的实例</span></span><br><span class="line">msg = MIMEMultipart()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接收列表</span></span><br><span class="line">receiverList = [<span class="string">'abc@yeah.net'</span>, <span class="string">'abc@qq.com'</span>]</span><br><span class="line"><span class="comment"># 抄送列表</span></span><br><span class="line">ccList = [<span class="string">'abc@yeah.net'</span>, <span class="string">'abc@qq.com'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 邮件头</span></span><br><span class="line">msg[<span class="string">'from'</span>] = <span class="string">'song_cai@yeah.net'</span></span><br><span class="line">msg[<span class="string">'to'</span>] = <span class="string">', '</span>.join(receiverList)</span><br><span class="line">msg[<span class="string">'subject'</span>] = date.today().strftime(<span class="string">"%Y-%m-%d"</span>) + <span class="string">'''XX工作日报'''</span></span><br><span class="line">msg[<span class="string">'cc'</span>] = <span class="string">', '</span>.join(ccList)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 正文</span></span><br><span class="line">msg.attach(MIMEText(open(<span class="string">'d:\\mailContext.txt'</span>,</span><br><span class="line">                         <span class="string">'rb'</span>).read(), <span class="string">'plain'</span>, <span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 附件</span></span><br><span class="line">att = MIMEText(open(<span class="string">'d:\\mailContext.txt'</span>, <span class="string">'rb'</span>).read(), <span class="string">'base64'</span>, <span class="string">'utf-8'</span>)</span><br><span class="line">att[<span class="string">"Content-Type"</span>] = <span class="string">'application/octet-stream'</span></span><br><span class="line">att[<span class="string">"Content-Disposition"</span>] = <span class="string">'attachment; filename="mailContext.txt"'</span></span><br><span class="line">msg.attach(att)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送邮件</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    server = smtplib.SMTP_SSL(<span class="string">'''smtp.qq.com'''</span>, <span class="number">465</span>)</span><br><span class="line">    server.login(<span class="string">'song_cai@yeah.net'</span>, <span class="string">'''xxxxx'''</span>)</span><br><span class="line">    server.sendmail(msg[<span class="string">'from'</span>], receiverList + ccList, msg.as_string())</span><br><span class="line">    server.quit()</span><br><span class="line">    print(<span class="string">'''success'''</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    input(e)</span><br></pre></td></tr></table></figure>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>现在大部分邮箱使用SSL方式，所以对应地必须使用<code>SMTP_SSL</code>,直接指定地址和端口，使用<code>connect</code>的方式指定存在问题</li>
+<li>正文要写在附件之前，否则会出现两个附件（即正文部分也成为附件了）</li>
 </ul>
-<!-- /MarkdownTOC -->
-<p>本文源于工作中的测试，并参考<a href="http://stackoverflow.com/questions/1711631/improve-insert-per-second-performance-of-sqlite" title="impove performace of sqlite" target="_blank" rel="external">improve insert-per-second performace of SQLite</a></p>
-<h2 id="sqlite配置调整"><a href="#sqlite配置调整" class="headerlink" title="sqlite配置调整"></a>sqlite配置调整</h2><p>使用journal_mode=memory或off，存在一定风险<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pragma synchronous=OFF</span><br><span class="line">pragma journal_mode=memory</span><br><span class="line">pragma page_size=16000</span><br></pre></td></tr></table></figure></p>
-<h2 id="手动提交事务"><a href="#手动提交事务" class="headerlink" title="手动提交事务"></a>手动提交事务</h2><p>sqlite自动提交事务<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sqlite3_exec(dbInst, <span class="string">"begin transaction"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line"><span class="comment">//insert/update/replace 语句</span></span><br><span class="line">sqlite3_exec(dbInst, <span class="string">"commit transaction"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure></p>
-<h2 id="Prepared-Statements"><a href="#Prepared-Statements" class="headerlink" title="Prepared Statements"></a>Prepared Statements</h2><p><code>sqlite3_exec</code>内部调用的<code>prepared statement</code>，直接使用<code>prepared statement</code>效率高。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sqlite3_stmt* stmt;</span><br><span class="line"><span class="keyword">char</span> sqlFormat[] = <span class="string">"replace into tabName values(?, ?, ?)"</span></span><br><span class="line">sqlite3_prepare_v2(dbInst, sqlFormat, <span class="number">-1</span>, &amp;stmt, <span class="literal">NULL</span>);</span><br><span class="line"><span class="keyword">for</span>()</span><br><span class="line">&#123;</span><br><span class="line">    sqlite3_bind_int(stmt, <span class="number">1</span>, intVal);</span><br><span class="line">    sqlite3_bind_text(stmt, <span class="number">2</span>, strBuffer, bufferLen, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="comment">//sqlite3_bind_text(stmt, 2, strBuffer, bufferLen, SQLITE_STATIC)</span></span><br><span class="line">    <span class="comment">//sqlite_static表明你bind的内存地址到sql执行一直有效</span></span><br><span class="line">    sqlite3_bind_blob(stmt, <span class="number">3</span>, binaryValue, valueLen, SQLITE_STAITC);</span><br><span class="line">    sqlite3_step(stmt);</span><br><span class="line">    <span class="comment">//如果不包含blob可以直接使用sqlite3_reset</span></span><br><span class="line">    <span class="comment">//sqlite3_reset(stmt);</span></span><br><span class="line">    sqlite3_clear_bindings(stmt);</span><br><span class="line">&#125;</span><br><span class="line">sqlite3_finalize(stmt);</span><br></pre></td></tr></table></figure></p>
-<h2 id="批量插入"><a href="#批量插入" class="headerlink" title="批量插入"></a>批量插入</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tabName (column1, column2, column3) <span class="keyword">values</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>), (<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>),(<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>)</span><br></pre></td></tr></table></figure>
-<p>sqlite 3.7.11以下版本<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tabName </span><br><span class="line">        <span class="keyword">select</span> <span class="string">'value1'</span> <span class="keyword">as</span> column1, <span class="string">'value2'</span> <span class="keyword">as</span> column2, <span class="string">'value3'</span> <span class="keyword">as</span> column3</span><br><span class="line"><span class="keyword">union</span> all <span class="keyword">select</span> <span class="string">'value1'</span> <span class="keyword">as</span> column1, <span class="string">'value2'</span> <span class="keyword">as</span> column2, <span class="string">'value3'</span> <span class="keyword">as</span> column3</span><br><span class="line"><span class="keyword">union</span> all <span class="keyword">select</span> <span class="string">'value1'</span> <span class="keyword">as</span> column1, <span class="string">'value2'</span> <span class="keyword">as</span> column2, <span class="string">'value3'</span> <span class="keyword">as</span> column3</span><br></pre></td></tr></table></figure></p>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>如果使用多线程，可以考虑<code>shared pager cache</code>节省磁盘IO<br><a href="http://sqlite.org/sharedcache.html" title="shared-cahe mode" target="_blank" rel="external">sqlite shared-cache mode</a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlite3* dbPtr=<span class="literal">NULL</span>;</span><br><span class="line">sqlite3_open_v2(dbname, &amp;dbPtr, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE|SQLITE_OPEN_SHAREDCACHE)</span><br></pre></td></tr></table></figure></p>
+<p><strong> 懒惰使人进步 </strong></p>
 
       
     </div>
@@ -412,7 +392,9 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
       
         <div class="post-tags">
           
-            <a href="/tags/sqlite-performace-test/" rel="tag">#sqlite, performace test</a>
+            <a href="/tags/email/" rel="tag">#email</a>
+          
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
       
@@ -421,8 +403,8 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/20/git-filename-too-long/" rel="next" title="git filename too long">
-                <i class="fa fa-chevron-left"></i> git filename too long
+              <a href="/2016/05/29/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -442,10 +424,10 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/05/20/sqlite-插入性能优化/"
-     data-title="sqlite 插入性能优化"
+        <div class="ds-share flat" data-thread-key="2016/06/02/post/"
+     data-title="python 发送邮件"
      data-content=""
-     data-url="http://yoursite.com/2016/05/20/sqlite-插入性能优化/">
+     data-url="http://yoursite.com/2016/06/02/post/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -472,8 +454,8 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/20/sqlite-插入性能优化/"
-           data-title="sqlite 插入性能优化" data-url="http://yoursite.com/2016/05/20/sqlite-插入性能优化/">
+      <div class="ds-thread" data-thread-key="2016/06/02/post/"
+           data-title="python 发送邮件" data-url="http://yoursite.com/2016/06/02/post/">
       </div>
     
   </div>
@@ -518,7 +500,7 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -526,7 +508,7 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -554,44 +536,6 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
 
         <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/caisong" target="_blank" title="Github">
-                  
-                    <i class="fa fa-fw fa-globe"></i>
-                  
-                  Github
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/ujscs" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="mailto://song_cai@yeah.net" target="_blank" title="Email">
-                  
-                    <i class="fa fa-fw fa-envelope-o"></i>
-                  
-                  Email
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="tencent://message/?uin=ujscs@qq.com&Site=&Menu=yes" target="_blank" title="QQ">
-                  
-                    <i class="fa fa-fw fa-qq"></i>
-                  
-                  QQ
-                </a>
-              </span>
-            
-          
         </div>
 
         
@@ -609,7 +553,7 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlite配置调整"><span class="nav-number">1.</span> <span class="nav-text">sqlite配置调整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手动提交事务"><span class="nav-number">2.</span> <span class="nav-text">手动提交事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prepared-Statements"><span class="nav-number">3.</span> <span class="nav-text">Prepared Statements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#批量插入"><span class="nav-number">4.</span> <span class="nav-text">批量插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程"><span class="nav-number">5.</span> <span class="nav-text">多线程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-number">3.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
             
           </div>
         </section>
@@ -627,7 +571,7 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2015 - 
+  &copy; 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -750,6 +694,7 @@ sqlite配置调整使用journal_mode=memory或off，存在一定风险123pragma 
   
     
   
+
 
 
 

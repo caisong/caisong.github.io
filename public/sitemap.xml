@@ -2,58 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2016/05/20/sqlite-%E6%8F%92%E5%85%A5%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
+    <loc>http://yoursite.com/2016/06/02/post/</loc>
     
-    <lastmod>2016-05-20T14:37:57.841Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/05/20/git-filename-too-long/</loc>
-    
-    <lastmod>2016-05-20T13:20:19.438Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/about/index.html</loc>
-    
-    <lastmod>2016-05-20T13:09:50.180Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
-    
-    <lastmod>2016-05-20T13:09:50.180Z</lastmod>
+    <lastmod>2016-06-02T13:33:31.687Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/tags/index.html</loc>
     
-    <lastmod>2016-05-20T13:09:50.180Z</lastmod>
+    <lastmod>2016-05-29T01:22:10.012Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/05/20/hello-world/</loc>
+    <loc>http://yoursite.com/categories/index.html</loc>
     
-    <lastmod>2016-05-20T13:09:50.164Z</lastmod>
+    <lastmod>2016-05-29T01:22:10.011Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/05/29/hello-world/</loc>
+    
+    <lastmod>2016-05-29T01:22:10.010Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/05/20/%E8%AE%B0%E5%BD%95/</loc>
     
-    <lastmod>2016-05-20T13:09:50.164Z</lastmod>
+    <lastmod>2016-05-29T01:22:10.010Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2016-05-29T01:22:10.010Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/404.html</loc>
     
-    <lastmod>2016-05-20T13:09:50.164Z</lastmod>
+    <lastmod>2016-05-29T01:22:10.009Z</lastmod>
     
   </url>
   
