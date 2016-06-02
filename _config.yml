@@ -9,7 +9,7 @@ description:
 author: CaiSong
 email: song_cai@yeah.net
 language: zh-Hans
-timezone:
+timezone: Asia/Shanghai
 avatar: /images/avatar.jpg
 duoshuo_shortname: caisong
 duoshuo_share: true

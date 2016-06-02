@@ -4,11 +4,12 @@ date: 2016-06-02 20:46:58
 tags: 
   - email
   - python
-category: python
+categories: python
 ---
 
 ## 需求
 每天发送工作日报，需要send一堆人，cc一堆人（公司规定，呵呵），还要添加附件。考虑到python能够方便的发送邮箱，就打算写个脚本。
+<!-- more -->
 
 ## 代码
 ```python
