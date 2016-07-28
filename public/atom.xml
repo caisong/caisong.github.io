@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Caisong&#39;s Blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-07-28T14:07:29.473Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>CaiSong</name>
+    <email>song_cai@yeah.net</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Shell命令行快捷键</title>
+    <link href="http://yoursite.com/2016/07/28/shell/"/>
+    <id>http://yoursite.com/2016/07/28/shell/</id>
+    <published>2016-07-28T14:06:41.000Z</published>
+    <updated>2016-07-28T14:07:29.473Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;C-a : 光标回到命令行首（a:ahead)&lt;/li&gt;
+&lt;li&gt;C-e : 光标回到命令行尾（e:end)&lt;/li&gt;
+&lt;li&gt;C-b : 光标后退一个字符（b:backward)&lt;/li&gt;
+&lt;li&gt;C-f : 光标回到命令行首（f:forward)&lt;/li&gt;
+&lt;li&gt;C-p : 上一个使用的历史命令 (p: previous)&lt;/li&gt;
+&lt;li&gt;C-n : 下一个使用的历史命令 (n: next)&lt;/li&gt;
+&lt;li&gt;C-r : 快速检索历史命令 (r: retrieve)&lt;/li&gt;
+&lt;li&gt;C-h : 删除光标前一个字符&lt;/li&gt;
+&lt;li&gt;C-d : 删除光标后一个字符&lt;/li&gt;
+&lt;li&gt;C-w : 删除光标前一个word&lt;/li&gt;
+&lt;li&gt;C-k : 删除光标后的所有字符&lt;/li&gt;
+&lt;li&gt;C-u : 删除命令行字符&lt;/li&gt;
+&lt;li&gt;C-y : 粘贴 C-u, C-K, C-W删除的文本&lt;/li&gt;
+&lt;li&gt;C-t : 与前一字符交换&lt;/li&gt;
+&lt;li&gt;C-i : Tab&lt;/li&gt;
+&lt;li&gt;C-m : Enter&lt;/li&gt;
+&lt;li&gt;C-o : Enter&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;C-a : 光标回到命令行首（a:ahead)&lt;/li&gt;
+&lt;li&gt;C-e : 光标回到命令行尾（e:end)&lt;/li&gt;
+&lt;li&gt;C-b : 光标后退一个字符（b:backward)&lt;/li&gt;
+&lt;li&gt;C-f : 光标回到命令行首（f:forward)&lt;/li&gt;
+
+    
+    </summary>
+    
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+    
+    
+      <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
+    
+      <category term="shortcut" scheme="http://yoursite.com/tags/shortcut/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MSSQL遇到问条记录</title>
+    <link href="http://yoursite.com/2016/07/24/MSSQL/"/>
+    <id>http://yoursite.com/2016/07/24/MSSQL/</id>
+    <published>2016-07-24T14:10:46.000Z</published>
+    <updated>2016-07-28T14:05:17.142Z</updated>
+    
+    <content type="html">&lt;p&gt;记录使用MSSQL使用过程中遇到的问题。新手，大多数搜索解决，全部实际操作过，如果不能解决您的问题，请见谅。&lt;br&gt;ps. 自己电脑没装MSSQL，因此没有截图。&lt;/p&gt;
+&lt;h2 id=&quot;登陆连接失败&quot;&gt;&lt;a href=&quot;#登陆连接失败&quot; class=&quot;headerlink&quot; title=&quot;登陆连接失败&quot;&gt;&lt;/a&gt;登陆连接失败&lt;/h2&gt;&lt;p&gt;错误描述：未找到或无法访问服务器.请验证实例名称是否正确并且SQL SERVER已配置允许远程链接.(provide:命名管道提供程序,error:40 -无法打开到SQL Server的连接)(Microsoft SQL Server,错误:2)&lt;br&gt;解决办法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;开始菜单，SQL Server 20XX目录下找到 &lt;code&gt;SQL Server Configuration Manager&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SQL Server 【Version】 服务，启动&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;可能存在多个服务，请启动对应你连接名的那个服务&lt;/li&gt;
+&lt;li&gt;如果启动失败，请选择属性——登陆——本地系统账户，再次重新启动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;启动sa登陆&quot;&gt;&lt;a href=&quot;#启动sa登陆&quot; class=&quot;headerlink&quot; title=&quot;启动sa登陆&quot;&gt;&lt;/a&gt;启动sa登陆&lt;/h2&gt;&lt;p&gt;问题描述：一般本地使用的windows账户，特别第一次安装时没注意，就没用设置sa密码，也就无法sa登陆&lt;br&gt;解决办法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;windows登陆&lt;/li&gt;
+&lt;li&gt;在连接上右击，属性——安全性——SQL Server 和windows身份验证模式。保存，返回&lt;/li&gt;
+&lt;li&gt;展开连接，安全性——登录名——sa，设置密码。切换到状态，登陆选择&lt;code&gt;启用&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;服务器改为IP地址登陆&quot;&gt;&lt;a href=&quot;#服务器改为IP地址登陆&quot; class=&quot;headerlink&quot; title=&quot;服务器改为IP地址登陆&quot;&gt;&lt;/a&gt;服务器改为IP地址登陆&lt;/h2&gt;&lt;p&gt;问题描述：一般安装完成之后，采用的是windows主机名+服务名的连接方式，而非IP地址，其他电脑无法访问&lt;br&gt;解决办法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;启动sa登陆&lt;/li&gt;
+&lt;li&gt;开始菜单，SQL Server 20XX目录下找到 &lt;code&gt;SQL Server Configuration Manager&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SQL Server 【Version】网络配置，启用&lt;code&gt;Namedpipes&lt;/code&gt;和&lt;code&gt;TCP/IP&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;TCP/IP&lt;/code&gt;属性，IP地址，配置##IP1##地址（IP2本地），##IPALL##TCP端口&lt;/li&gt;
+&lt;li&gt;重启SQL Server 服务，连接&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;高版本数据库恢复到低版本数据库&quot;&gt;&lt;a href=&quot;#高版本数据库恢复到低版本数据库&quot; class=&quot;headerlink&quot; title=&quot;高版本数据库恢复到低版本数据库&quot;&gt;&lt;/a&gt;高版本数据库恢复到低版本数据库&lt;/h2&gt;&lt;p&gt;问题描述： 高版本server生成的备份文件无法在低版本上恢复&lt;br&gt;解决办法：&lt;/p&gt;
+&lt;h3 id=&quot;无法能够连接到高版本服务器&quot;&gt;&lt;a href=&quot;#无法能够连接到高版本服务器&quot; class=&quot;headerlink&quot; title=&quot;无法能够连接到高版本服务器&quot;&gt;&lt;/a&gt;无法能够连接到高版本服务器&lt;/h3&gt;&lt;p&gt;我没有找到其他办法，只能升级低版本服务器&lt;/p&gt;
+&lt;h3 id=&quot;能够连接到高版本服务器&quot;&gt;&lt;a href=&quot;#能够连接到高版本服务器&quot; class=&quot;headerlink&quot; title=&quot;能够连接到高版本服务器&quot;&gt;&lt;/a&gt;能够连接到高版本服务器&lt;/h3&gt;&lt;p&gt;整体思路：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在高版本服务器上，导出低版本服务器兼容的数据库创建sql语句&lt;/li&gt;
+&lt;li&gt;低版本服务器执行，生成表&lt;/li&gt;
+&lt;li&gt;利用SQL server数据导入工具，从高版本服务器导入数据。&lt;br&gt;当然，如果数据量比较小，可以在导出SQL语句的时候，直接连数据一起导出，再执行。&lt;br&gt;具体操作：&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;导出SQL&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;待备份数据库右击——任务——生成脚本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;设置脚本选项&lt;/code&gt;——&lt;code&gt;为服务器版本编写脚本&lt;/code&gt;，选择目标数据库版本&lt;/li&gt;
+&lt;li&gt;如果要同时导出数据，&lt;code&gt;要编写脚本的数据的类型&lt;/code&gt;选择&lt;code&gt;架构和数据&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;执行SQL&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;要先创建目标数据库，直接将SQL拖过去执行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;导出导出数据&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据库右击——导入数据，按提示下一步，&lt;code&gt;编辑映射&lt;/code&gt;时选择&lt;code&gt;启用标识插入&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;补充：高版本导入低版本数据，可以直接导入。但是，&lt;strong&gt;表格的一些字段约束会丢失&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;自增长列插入指定值&quot;&gt;&lt;a href=&quot;#自增长列插入指定值&quot; class=&quot;headerlink&quot; title=&quot;自增长列插入指定值&quot;&gt;&lt;/a&gt;自增长列插入指定值&lt;/h2&gt;&lt;p&gt;问题描述：想要显示插入自动编号&lt;code&gt;IDENTITY&lt;/code&gt;值，导致错误&lt;code&gt;结果会导致错误：当 IDENTITY_INSERT 设置为 OFF 时，不能向表 XXXX中的标识列插入显式值。&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;TABLE&lt;/span&gt; products (&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;IDENTITY&lt;/span&gt; PRIMARY &lt;span class=&quot;keyword&quot;&gt;KEY&lt;/span&gt;, product &lt;span class=&quot;built_in&quot;&gt;varchar&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;INTO&lt;/span&gt; products (&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;, product) &lt;span class=&quot;keyword&quot;&gt;VALUES&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;hello kitty&#39;&lt;/span&gt;) #返回错误&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;解决办法：&lt;br&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SET&lt;/span&gt; IDENTITY_INSERT products &lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;INTO&lt;/span&gt; products (&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;, product) &lt;span class=&quot;keyword&quot;&gt;VALUES&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;hello kitty&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;select-into-from-与-insert-into-select-用法与区别&quot;&gt;&lt;a href=&quot;#select-into-from-与-insert-into-select-用法与区别&quot; class=&quot;headerlink&quot; title=&quot;select into from 与 insert into select 用法与区别&quot;&gt;&lt;/a&gt;select into from 与 insert into select 用法与区别&lt;/h2&gt;&lt;p&gt;select into from 和 insert into select都是用来复制表，两者的主要区别为： select into from 要求目标表不存在，因为在插入时会自动创建。insert into select from 要求目标表存在。&lt;/p&gt;
+&lt;h3 id=&quot;SQL语法&quot;&gt;&lt;a href=&quot;#SQL语法&quot; class=&quot;headerlink&quot; title=&quot;SQL语法&quot;&gt;&lt;/a&gt;SQL语法&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Insert into Table2(field1,field2,…) select value1,value2,… from Table1&lt;/li&gt;
+&lt;li&gt;SELECT vale1, value2 into Table2 from Table1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;实例&quot;&gt;&lt;a href=&quot;#实例&quot; class=&quot;headerlink&quot; title=&quot;实例&quot;&gt;&lt;/a&gt;实例&lt;/h3&gt;&lt;p&gt;具体实例请查阅该文章&lt;a href=&quot;http://www.studyofnet.com/news/182.html&quot; title=&quot;select into from 与 insert into select 用法与区别&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;select into from 与 insert into select 用法与区别&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;MSSQL 真心没有MySQL好用啊！！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录使用MSSQL使用过程中遇到的问题。新手，大多数搜索解决，全部实际操作过，如果不能解决您的问题，请见谅。&lt;br&gt;ps. 自己电脑没装MSSQL，因此没有截图。&lt;/p&gt;
+&lt;h2 id=&quot;登陆连接失败&quot;&gt;&lt;a href=&quot;#登陆连接失败&quot; class=&quot;headerlink&quot; title=&quot;登陆连接失败&quot;&gt;&lt;/a&gt;登陆连接失败&lt;/h2&gt;&lt;p&gt;错误描述：未找到或无法访问服务器.请验证实例名称是否正确并且SQL SERVER已配置允许远程链接.(provide:命名管道提供程序,error:40 -无法打开到SQL Server的连接)(Microsoft SQL Server,错误:2)&lt;br&gt;解决办法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;开始菜单，SQL Server 20XX目录下找到 &lt;code&gt;SQL Server Configuration Manager&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SQL Server 【Version】 服务，启动&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;可能存在多个服务，请启动对应你连接名的那个服务&lt;/li&gt;
+&lt;li&gt;如果启动失败，请选择属性——登陆——本地系统账户，再次重新启动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;启动sa登陆&quot;&gt;&lt;a href=&quot;#启动sa登陆&quot; class=&quot;headerlink&quot; title=&quot;启动sa登陆&quot;&gt;&lt;/a&gt;启动sa登陆&lt;/h2&gt;&lt;p&gt;问题描述：一般本地使用的windows账户，特别第一次安装时没注意，就没用设置sa密码，也就无法sa登陆&lt;br&gt;解决办法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;windows登陆&lt;/li&gt;
+&lt;li&gt;在连接上右击，属性——安全性——SQL Server 和windows身份验证模式。保存，返回&lt;/li&gt;
+&lt;li&gt;展开连接，安全性——登录名——sa，设置密码。切换到状态，登陆选择&lt;code&gt;启用&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="DB" scheme="http://yoursite.com/categories/DB/"/>
+    
+    
+      <category term="MSSQL, SQL Server" scheme="http://yoursite.com/tags/MSSQL-SQL-Server/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vmware 记录</title>
+    <link href="http://yoursite.com/2016/07/24/vmware/"/>
+    <id>http://yoursite.com/2016/07/24/vmware/</id>
+    <published>2016-07-24T13:50:08.000Z</published>
+    <updated>2016-07-24T14:08:04.706Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;a href=&quot;#此虚拟机正在使用中，取得该虚拟机的所有权失败&quot; class=&quot;headerlink&quot; title=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;/a&gt;此虚拟机正在使用中，取得该虚拟机的所有权失败&lt;/h2&gt;&lt;p&gt;问题描述：该问题一般是由于强制关闭vmware进程导致&lt;br&gt;解决方案：你所配置的虚拟机目录下存在*.lck文件，删除就可以了。&lt;/p&gt;
+&lt;h2 id=&quot;CentOS-启动没有IPV4-地址&quot;&gt;&lt;a href=&quot;#CentOS-启动没有IPV4-地址&quot; class=&quot;headerlink&quot; title=&quot;CentOS 启动没有IPV4 地址&quot;&gt;&lt;/a&gt;CentOS 启动没有IPV4 地址&lt;/h2&gt;&lt;p&gt;问题描述：centos7虚拟机，没有ipv4地址，无法ssh连接&lt;br&gt;解决办法：默认设置没有开机激活网卡，修改网络配置文件&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改ONBOOT=yes &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl restart network&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;虚拟机提示Failed-to-start-LSB-Bring-up-down-networking&quot;&gt;&lt;a href=&quot;#虚拟机提示Failed-to-start-LSB-Bring-up-down-networking&quot; class=&quot;headerlink&quot; title=&quot;虚拟机提示Failed to start LSB: Bring up/down networking&quot;&gt;&lt;/a&gt;虚拟机提示Failed to start LSB: Bring up/down networking&lt;/h2&gt;&lt;p&gt;问题描述：网络无法连接，重启network提示该错误&lt;code&gt;Failed to start LSB: Bring up/down networking&lt;/code&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;搜索到的解决办法一般是由于拷贝他人的虚拟机文件导致，需要更改网络配置文件中的HWADDR字段，改为你自己mac地址。(针对CentOS7)&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ip addr show #查看mac地址&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改HWADDR字段&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;我遇到的问题是由于关闭了&lt;code&gt;VMware NAT Service&lt;/code&gt; 服务导致，启动就可以了&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;谨此记录，日后再补充遇到的其他问题&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;a href=&quot;#此虚拟机正在使用中，取得该虚拟机的所有权失败&quot; class=&quot;headerlink&quot; title=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;/a&gt;此虚拟机正在使用中，取得该虚拟机的所有权
+    
+    </summary>
+    
+      <category term="record" scheme="http://yoursite.com/categories/record/"/>
+    
+    
+      <category term="vmware" scheme="http://yoursite.com/tags/vmware/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自平衡二搜索树——红黑树</title>
+    <link href="http://yoursite.com/2016/07/04/%E7%BA%A2%E9%BB%91%E6%A0%91/"/>
+    <id>http://yoursite.com/2016/07/04/红黑树/</id>
+    <published>2016-07-04T14:25:06.000Z</published>
+    <updated>2016-07-04T14:36:41.877Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;主要属性&quot;&gt;&lt;a href=&quot;#主要属性&quot; class=&quot;headerlink&quot; title=&quot;主要属性&quot;&gt;&lt;/a&gt;主要属性&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;所有节点要么红色，要么黑色&lt;/li&gt;
+&lt;li&gt;叶子节点都是黑色&lt;/li&gt;
+&lt;li&gt;叶子节点不包含数据&lt;/li&gt;
+&lt;li&gt;所有非叶子节点都有两个子节点&lt;/li&gt;
+&lt;li&gt;如果一个节点是红色，那么它的子节点都是黑色&lt;blockquote&gt;
+&lt;p&gt;一个红色节点不能是其他红色节点的子节点或者父节点&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;在一个节点到其叶子节点的路径中，如果总是包含相同数据的黑色节点，则该路径相比其他路径是最短的。&lt;blockquote&gt;
+&lt;p&gt;从树的任何节点到其叶子节点的路径都具有相同数目的黑色节点，树里的最长路径则是红黑交替节点路径，所以最短路径必然是具有相同数量的黑色节点——只包含黑色节点的路径。因此，从根节点到叶子节点的最长路径都不会超过最短路径的两倍&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;主要属性&quot;&gt;&lt;a href=&quot;#主要属性&quot; class=&quot;headerlink&quot; title=&quot;主要属性&quot;&gt;&lt;/a&gt;主要属性&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;所有节点要么红色，要么黑色&lt;/li&gt;
+&lt;li&gt;叶子节点都是黑色&lt;/li&gt;
+&lt;li&gt;叶子节点不包含数据&lt;/li&gt;
+
+    
+    </summary>
+    
+      <category term="data structure" scheme="http://yoursite.com/categories/data-structure/"/>
+    
+    
+      <category term="红黑树" scheme="http://yoursite.com/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ssh问题-Connection closed by foreign host</title>
+    <link href="http://yoursite.com/2016/06/30/ssh%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2016/06/30/ssh问题/</id>
+    <published>2016-06-30T14:56:04.000Z</published>
+    <updated>2016-06-30T15:19:44.420Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;使用XShell 登陆linux总是回复：&lt;code&gt;Connection closed by foreign host.&lt;/code&gt; 或者&lt;br&gt;&lt;code&gt;Disconnected from remote host&lt;/code&gt;，&lt;br&gt;造成该现象的原因一般是由于ssh连接长期没有操作导致的（这也是误导我的主要原因）&lt;/p&gt;
+&lt;h2 id=&quot;原因及解决方案&quot;&gt;&lt;a href=&quot;#原因及解决方案&quot; class=&quot;headerlink&quot; title=&quot;原因及解决方案&quot;&gt;&lt;/a&gt;原因及解决方案&lt;/h2&gt;&lt;h3 id=&quot;账号被限制只允许一个人登陆（暂时没遇到）&quot;&gt;&lt;a href=&quot;#账号被限制只允许一个人登陆（暂时没遇到）&quot; class=&quot;headerlink&quot; title=&quot;账号被限制只允许一个人登陆（暂时没遇到）&quot;&gt;&lt;/a&gt;账号被限制只允许一个人登陆（暂时没遇到）&lt;/h3&gt;&lt;h3 id=&quot;无法保持长期连接&quot;&gt;&lt;a href=&quot;#无法保持长期连接&quot; class=&quot;headerlink&quot; title=&quot;无法保持长期连接&quot;&gt;&lt;/a&gt;无法保持长期连接&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vim /etc/ssh/sshd_config&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;结尾添加两行&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ClientAliveInterval 60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ClientAliveCountMax 3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 重启服务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl restart sshd&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;防火墙原因&quot;&gt;&lt;a href=&quot;#防火墙原因&quot; class=&quot;headerlink&quot; title=&quot;防火墙原因&quot;&gt;&lt;/a&gt;防火墙原因&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 关闭防火墙&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl stop sshd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 或者打开22端口&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;hosts-deny文件被篡改&quot;&gt;&lt;a href=&quot;#hosts-deny文件被篡改&quot; class=&quot;headerlink&quot; title=&quot;hosts.deny文件被篡改&quot;&gt;&lt;/a&gt;hosts.deny文件被篡改&lt;/h3&gt;&lt;p&gt;查看&lt;code&gt;/etc/hosts.deny&lt;/code&gt;文件，看是否被禁用&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# 禁止所有ip访问linux 的ssh功能&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sshd:all:deny&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;/etc/hosts.allow&lt;/code&gt;（允许）和&lt;code&gt;/etc/hosts.deny&lt;/code&gt;（禁止）这两个文件是tcpd服务器的配置文件，tcpd服务器可以控制外部IP对本机服务的访问。&lt;br&gt;系统会先检查&lt;code&gt;/etc/hosts.deny&lt;/code&gt;规则，再检查&lt;code&gt;/etc/hosts.allow&lt;/code&gt;规则，如果有冲突 按&lt;code&gt;/etc/hosts.allow&lt;/code&gt;规则处理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;客户端连接数过多&quot;&gt;&lt;a href=&quot;#客户端连接数过多&quot; class=&quot;headerlink&quot; title=&quot;客户端连接数过多&quot;&gt;&lt;/a&gt;客户端连接数过多&lt;/h3&gt;&lt;p&gt;将&lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt;中 MaxStartUps 10 改为MaxStartups 10/100，重启sshd&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;使用XShell 登陆linux总是回复：&lt;code&gt;Connection closed by foreign host.&lt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+    
+    
+      <category term="ssh" scheme="http://yoursite.com/tags/ssh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>bat切换当前目录</title>
+    <link href="http://yoursite.com/2016/06/20/bat/"/>
+    <id>http://yoursite.com/2016/06/20/bat/</id>
+    <published>2016-06-20T13:35:20.000Z</published>
+    <updated>2016-06-20T13:39:31.219Z</updated>
+    
+    <content type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@echo off&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; cd %~dp0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call git pull&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; xcopy D:\google\hosts\hosts C:\Windows\System32\drivers\etc\ /Y /R&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;每次更新host，使用管理员运行显示git失败，原因是使用管理员运行时，目录切换到system32下了。&lt;br&gt;&lt;code&gt;cd %~dp0&lt;/code&gt;表示切换回当前目录&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
+    
+    </summary>
+    
+      <category term="record" scheme="http://yoursite.com/categories/record/"/>
+    
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python发送邮件（续）—— configparser</title>
+    <link href="http://yoursite.com/2016/06/03/configparser/"/>
+    <id>http://yoursite.com/2016/06/03/configparser/</id>
+    <published>2016-06-03T12:45:12.000Z</published>
+    <updated>2016-06-03T13:05:11.599Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;昨天代码一些基本配置全部在代码中，灵活性较差，考虑到通过配置文件的方式来实现。结构比较简单，不想用xml或json，类似配置数据库连接的&lt;code&gt;property&lt;/code&gt;文件就可以了，&lt;code&gt;configparser&lt;/code&gt;比较满足要求。&lt;br&gt;python &lt;code&gt;configparser&lt;/code&gt;能够读取&lt;code&gt;*.conf&lt;/code&gt;与&lt;code&gt;*.ini&lt;/code&gt;的配置文件&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;以下内容parser摘录自：&lt;a href=&quot;https://wiki.python.org/moin/ConfigParserExamples&quot; title=&quot;configparserExamples&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;configparserExamples 示例&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;configparser-使用&quot;&gt;&lt;a href=&quot;#configparser-使用&quot; class=&quot;headerlink&quot; title=&quot;configparser 使用&quot;&gt;&lt;/a&gt;configparser 使用&lt;/h2&gt;&lt;h3 id=&quot;读配置文件&quot;&gt;&lt;a href=&quot;#读配置文件&quot; class=&quot;headerlink&quot; title=&quot;读配置文件&quot;&gt;&lt;/a&gt;读配置文件&lt;/h3&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[SectionOne]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Status: Single&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Name: Derek&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Value: Yes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Age: 30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Single: True&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[SectionTwo]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;FavoriteColor = Green, Red, Blue&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[SectionThree]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;FamilyName: Johnson&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[Others]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Route: 66&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import ConfigParser&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config = ConfigParser.ConfigParser()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config.read(&#39;config file path&#39;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# read node&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config.get(&#39;SectionOne&#39;,&#39;Status)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# read node as list&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config.get(&#39;SectionTwo&#39;,&#39;FavoriteColor&#39;).replace(&#39; &#39;,&#39;&#39;).split(&#39;,&#39;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;写配置文件&quot;&gt;&lt;a href=&quot;#写配置文件&quot; class=&quot;headerlink&quot; title=&quot;写配置文件&quot;&gt;&lt;/a&gt;写配置文件&lt;/h3&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# lets create that config file for next time...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cfgfile = open(&lt;span class=&quot;string&quot;&gt;&quot;c:\\next.ini&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;w&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# add the settings to the structure of the file, and lets write it out...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Config.add_section(&lt;span class=&quot;string&quot;&gt;&#39;Person&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Config.set(&lt;span class=&quot;string&quot;&gt;&#39;Person&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;HasEyes&#39;&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Config.set(&lt;span class=&quot;string&quot;&gt;&#39;Person&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;Age&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Config.write(cfgfile)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cfgfile.close()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;读取含有宏的配置文件&quot;&gt;&lt;a href=&quot;#读取含有宏的配置文件&quot; class=&quot;headerlink&quot; title=&quot;读取含有宏的配置文件&quot;&gt;&lt;/a&gt;读取含有宏的配置文件&lt;/h3&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[SectionOne]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Param1: Hello&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Param2: World&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[SectionTwo]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Param1: $&amp;#123;SectionOne:Param1&amp;#125; $&amp;#123;SectionOne:Param2&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[SectionThree]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Alpha: One&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Bravo: Two&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Charlie: $&amp;#123;Alpha&amp;#125; Mississippi&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; configparser&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings = configparser.ConfigParser()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings._interpolation = configparser.ExtendedInterpolation()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings.read(&lt;span class=&quot;string&quot;&gt;&#39;settings.ini&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;settings.ini&#39;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings.sections()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;SectionOne&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;SectionTwo&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;SectionThree&#39;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings.get(&lt;span class=&quot;string&quot;&gt;&#39;SectionTwo&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Param1&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;Hello World&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings.get(&lt;span class=&quot;string&quot;&gt;&#39;SectionThree&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Charlie&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;One Mississippi&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;发送邮件代码&quot;&gt;&lt;a href=&quot;#发送邮件代码&quot; class=&quot;headerlink&quot; title=&quot;发送邮件代码&quot;&gt;&lt;/a&gt;发送邮件代码&lt;/h2&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[mail]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;address: abc@qq.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;password: XXXXXXXXXX&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;smtp: smtp.qq.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;port: 465&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;subject: XXX 工作日志&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;reAddr: abc@qq.com, bcd@qq.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ccAddr: abc@qq.com, bcd@qq.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;contextPath: a.txt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;attachPath: b.txt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;发送带附件邮件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; email.mime.text &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; MIMEText&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; email.mime.multipart &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; MIMEMultipart&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; smtplib&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; datetime &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; date&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; configparser&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 读取配置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config = configparser.ConfigParser()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config.read(&lt;span class=&quot;string&quot;&gt;&#39;mail.ini&#39;&lt;/span&gt;, encoding=&lt;span class=&quot;string&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;address = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;address&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 可以考虑加密&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;password = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;password&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;smtp = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;smtp&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;port = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;port&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;subject = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;subject&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 收件人&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;receiver = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;reAddr&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 抄送人&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;carbonCopy = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;ccAddr&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 正文&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;context = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;contextPath&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 附件(暂时考虑的一个)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;attachment = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;attachPath&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 创建一个带附件的实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg = MIMEMultipart()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 加邮件头&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;from&#39;&lt;/span&gt;] = address&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;to&#39;&lt;/span&gt;] = receiver&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;subject&#39;&lt;/span&gt;] = date.today().strftime(&lt;span class=&quot;string&quot;&gt;&quot;%Y-%m-%d&quot;&lt;/span&gt;) + subject&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;cc&#39;&lt;/span&gt;] = carbonCopy&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg.attach(MIMEText(open(context, &lt;span class=&quot;string&quot;&gt;&#39;rb&#39;&lt;/span&gt;).read(), &lt;span class=&quot;string&quot;&gt;&#39;plain&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 构造附件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;with&lt;/span&gt; open(attachment, &lt;span class=&quot;string&quot;&gt;&#39;rb&#39;&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; myfile:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    att = MIMEText(myfile.read(), &lt;span class=&quot;string&quot;&gt;&#39;base64&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    att[&lt;span class=&quot;string&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;application/octet-stream&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;# 附件名&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    filename = attachment.split(&lt;span class=&quot;string&quot;&gt;&#39;\\&#39;&lt;/span&gt;)[&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    att[&lt;span class=&quot;string&quot;&gt;&quot;Content-Disposition&quot;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;attachment; filename=&#39;&lt;/span&gt; + filename&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    msg.attach(att)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 发送邮件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server = smtplib.SMTP_SSL(smtp, int(port))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.login(address, password)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;# 所有收件人（包括抄送）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    receiverList = (receiver + &lt;span class=&quot;string&quot;&gt;&#39;,&#39;&lt;/span&gt; + carbonCopy).replace(&lt;span class=&quot;string&quot;&gt;&#39; &#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;).split(&lt;span class=&quot;string&quot;&gt;&#39;,&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.sendmail(msg[&lt;span class=&quot;string&quot;&gt;&#39;from&#39;&lt;/span&gt;], receiverList, msg.as_string())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.quit()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(&lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;success&#39;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;except&lt;/span&gt; Exception &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; e:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(e)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;注意事项&quot;&gt;&lt;a href=&quot;#注意事项&quot; class=&quot;headerlink&quot; title=&quot;注意事项&quot;&gt;&lt;/a&gt;注意事项&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;若密码中包含特殊字符，需要转义&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;昨天代码一些基本配置全部在代码中，灵活性较差，考虑到通过配置文件的方式来实现。结构比较简单，不想用xml或json，类似配置数据库连接的&lt;code&gt;property&lt;/code&gt;文件就可以了，&lt;code&gt;configparser&lt;/code&gt;比较满足要求。&lt;br&gt;python &lt;code&gt;configparser&lt;/code&gt;能够读取&lt;code&gt;*.conf&lt;/code&gt;与&lt;code&gt;*.ini&lt;/code&gt;的配置文件&lt;br&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="mail" scheme="http://yoursite.com/tags/mail/"/>
+    
+      <category term="config" scheme="http://yoursite.com/tags/config/"/>
+    
+      <category term="ini" scheme="http://yoursite.com/tags/ini/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python 发送邮件</title>
+    <link href="http://yoursite.com/2016/06/02/post/"/>
+    <id>http://yoursite.com/2016/06/02/post/</id>
+    <published>2016-06-02T12:46:58.000Z</published>
+    <updated>2016-06-02T13:53:22.934Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h2&gt;&lt;p&gt;每天发送工作日报，需要send一堆人，cc一堆人（公司规定，呵呵），还要添加附件。考虑到python能够方便的发送邮箱，就打算写个脚本。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h2&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#!/usr/bin/env python3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;发送带附件邮件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; email.mime.text &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; MIMEText&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; email.mime.multipart &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; MIMEMultipart&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; smtplib&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; datetime &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; date&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 创建一个带附件的实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg = MIMEMultipart()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 接收列表&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;receiverList = [&lt;span class=&quot;string&quot;&gt;&#39;abc@yeah.net&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;abc@qq.com&#39;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 抄送列表&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ccList = [&lt;span class=&quot;string&quot;&gt;&#39;abc@yeah.net&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;abc@qq.com&#39;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 邮件头&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;from&#39;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;song_cai@yeah.net&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;to&#39;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;, &#39;&lt;/span&gt;.join(receiverList)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;subject&#39;&lt;/span&gt;] = date.today().strftime(&lt;span class=&quot;string&quot;&gt;&quot;%Y-%m-%d&quot;&lt;/span&gt;) + &lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;XX工作日报&#39;&#39;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;cc&#39;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;, &#39;&lt;/span&gt;.join(ccList)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 正文&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg.attach(MIMEText(open(&lt;span class=&quot;string&quot;&gt;&#39;d:\\mailContext.txt&#39;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                         &lt;span class=&quot;string&quot;&gt;&#39;rb&#39;&lt;/span&gt;).read(), &lt;span class=&quot;string&quot;&gt;&#39;plain&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 附件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;att = MIMEText(open(&lt;span class=&quot;string&quot;&gt;&#39;d:\\mailContext.txt&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;rb&#39;&lt;/span&gt;).read(), &lt;span class=&quot;string&quot;&gt;&#39;base64&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;att[&lt;span class=&quot;string&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;application/octet-stream&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;att[&lt;span class=&quot;string&quot;&gt;&quot;Content-Disposition&quot;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;attachment; filename=&quot;mailContext.txt&quot;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg.attach(att)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 发送邮件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server = smtplib.SMTP_SSL(&lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;smtp.qq.com&#39;&#39;&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;465&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.login(&lt;span class=&quot;string&quot;&gt;&#39;song_cai@yeah.net&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;xxxxx&#39;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.sendmail(msg[&lt;span class=&quot;string&quot;&gt;&#39;from&#39;&lt;/span&gt;], receiverList + ccList, msg.as_string())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.quit()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(&lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;success&#39;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;except&lt;/span&gt; Exception &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; e:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    input(e)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;注意事项&quot;&gt;&lt;a href=&quot;#注意事项&quot; class=&quot;headerlink&quot; title=&quot;注意事项&quot;&gt;&lt;/a&gt;注意事项&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;现在大部分邮箱使用SSL方式，所以对应地必须使用&lt;code&gt;SMTP_SSL&lt;/code&gt;,直接指定地址和端口，使用&lt;code&gt;connect&lt;/code&gt;的方式指定存在问题&lt;/li&gt;
+&lt;li&gt;正文要写在附件之前，否则会出现两个附件（即正文部分也成为附件了）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt; 懒惰使人进步 &lt;/strong&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h2&gt;&lt;p&gt;每天发送工作日报，需要send一堆人，cc一堆人（公司规定，呵呵），还要添加附件。考虑到python能够方便的发送邮箱，就打算写个脚本。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="email" scheme="http://yoursite.com/tags/email/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2016/05/29/hello-world/"/>
+    <id>http://yoursite.com/2016/05/29/hello-world/</id>
+    <published>2016-05-29T01:22:10.009Z</published>
+    <updated>2016-05-29T01:22:10.010Z</updated>
+    
+    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>记录</title>
+    <link href="http://yoursite.com/2016/05/20/%E8%AE%B0%E5%BD%95/"/>
+    <id>http://yoursite.com/2016/05/20/记录/</id>
+    <published>2016-05-19T16:08:04.000Z</published>
+    <updated>2016-05-29T01:22:10.010Z</updated>
+    
+    <content type="html">&lt;p&gt;搭建的一晚上的成果, 随便发个帖子试试。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装nodejs hexo&lt;/li&gt;
+&lt;li&gt;安装next 主题&lt;/li&gt;
+&lt;li&gt;添加第三方插件&lt;/li&gt;
+&lt;li&gt;设置个人信息&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;搭建的一晚上的成果, 随便发个帖子试试。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装nodejs hexo&lt;/li&gt;
+&lt;li&gt;安装next 主题&lt;/li&gt;
+&lt;li&gt;添加第三方插件&lt;/li&gt;
+&lt;li&gt;设置个人信息&lt;/li&gt;
+&lt;/ol&gt;
+
+    
+    </summary>
+    
+      <category term="杂记" scheme="http://yoursite.com/categories/%E6%9D%82%E8%AE%B0/"/>
+    
+    
+      <category term="record" scheme="http://yoursite.com/tags/record/"/>
+    
+  </entry>
+  
+</feed>
