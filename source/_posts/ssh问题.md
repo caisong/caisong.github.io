@@ -53,3 +53,9 @@ sshd:all:deny
 
 将`/etc/ssh/sshd_config`中 MaxStartUps 10 改为MaxStartups 10/100，重启sshd
 
+### 针对VMware nat模式
+描述：连接方式使用NAT；虚拟能在ping通主机，主机无法ping通虚拟机。
+原因：虚拟机自动获取的IP与vmnet8设置的IP不在同一网段。
+解决：设置vmnet8自动获取ip即可。
+
+

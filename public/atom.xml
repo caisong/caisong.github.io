@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Caisong&#39;s Blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-10-12T13:54:42.550Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>CaiSong</name>
+    <email>song_cai@yeah.net</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CentOS 安装Lua 5.3</title>
+    <link href="http://yoursite.com/2016/10/12/centos-lua/"/>
+    <id>http://yoursite.com/2016/10/12/centos-lua/</id>
+    <published>2016-10-12T13:47:19.000Z</published>
+    <updated>2016-10-12T13:54:42.550Z</updated>
+    
+    <content type="html">&lt;p&gt;按照官网教程，执行以下命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl -R -O http://www.lua.org/ftp/lua-5.3.3.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar zxf lua-5.3.3.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; lua-5.3.3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;make linux &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;但其实lua并未安装，许多博文都是建立软链接，但其实&lt;code&gt;makefile&lt;/code&gt;文件中已经写好了，只需install就可以了&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;make linux install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;升级lua版本之后，会导致&lt;code&gt;luarock&lt;/code&gt;无法使用，需要重新编译安装。&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget http://luarocks.org/releases/luarocks-2.4.1.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar zxpf luarocks-2.4.1.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; luarocks-2.4.1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./configure; sudo make bootstrap&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;按照官网教程，执行以下命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/s
+    
+    </summary>
+    
+      <category term="lua" scheme="http://yoursite.com/categories/lua/"/>
+    
+    
+      <category term="record" scheme="http://yoursite.com/tags/record/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>atom config 设置</title>
+    <link href="http://yoursite.com/2016/10/12/atom-config/"/>
+    <id>http://yoursite.com/2016/10/12/atom-config/</id>
+    <published>2016-10-12T13:46:56.000Z</published>
+    <updated>2016-10-12T13:54:43.949Z</updated>
+    
+    <content type="html">&lt;p&gt;在文件&lt;em&gt;~/.atom/.apmrc&lt;/em&gt;中添加以下内容，若该文件不存在，则创建&lt;br&gt;&lt;figure class=&quot;highlight ini&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;strict-ssl&lt;/span&gt;=&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;https-proxy&lt;/span&gt;=http://&lt;span class=&quot;number&quot;&gt;192.168&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;10.1&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;8080&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;http-proxy&lt;/span&gt;=http://&lt;span class=&quot;number&quot;&gt;192.168&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;10.1&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;8080&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;http与proxy之间使用的是连字符，而不是下划线&lt;/em&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在文件&lt;em&gt;~/.atom/.apmrc&lt;/em&gt;中添加以下内容，若该文件不存在，则创建&lt;br&gt;&lt;figure class=&quot;highlight ini&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/s
+    
+    </summary>
+    
+      <category term="eidtor" scheme="http://yoursite.com/categories/eidtor/"/>
+    
+    
+      <category term="atom" scheme="http://yoursite.com/tags/atom/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL ODBC</title>
+    <link href="http://yoursite.com/2016/10/12/PostgreSQL-ODBC/"/>
+    <id>http://yoursite.com/2016/10/12/PostgreSQL-ODBC/</id>
+    <published>2016-10-12T13:32:48.000Z</published>
+    <updated>2016-10-12T13:41:56.672Z</updated>
+    
+    <content type="html">&lt;!-- MarkdownTOC --&gt;
+&lt;ul&gt;
+&lt;li&gt;安装unixODBC&lt;/li&gt;
+&lt;li&gt;安装PostgreSQL ODBC驱动&lt;/li&gt;
+&lt;li&gt;检查驱动配置&lt;/li&gt;
+&lt;li&gt;添加数据源&lt;/li&gt;
+&lt;li&gt;修改PostgrsSQL认证方式&lt;/li&gt;
+&lt;li&gt;验证&lt;/li&gt;
+&lt;li&gt;ODBC 连接数据库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /MarkdownTOC --&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;安装unixODBC&quot;&gt;&lt;a href=&quot;#安装unixODBC&quot; class=&quot;headerlink&quot; title=&quot;安装unixODBC&quot;&gt;&lt;/a&gt;安装unixODBC&lt;/h2&gt;&lt;p&gt;直接下载官网的源码编译安装就可以了，比较简单&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl -O http://www.unixodbc.org/unixODBC-2.3.4.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar xvf unixODBC-2.3.4.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; unixODBC-2.3.4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./configure --sysconfdir=/etc&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;make&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;make install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;或者直接&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install unixODBC&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;安装PostgreSQL-ODBC驱动&quot;&gt;&lt;a href=&quot;#安装PostgreSQL-ODBC驱动&quot; class=&quot;headerlink&quot; title=&quot;安装PostgreSQL ODBC驱动&quot;&gt;&lt;/a&gt;安装PostgreSQL ODBC驱动&lt;/h2&gt;&lt;p&gt;按照之前添加源的方式安装PostgreSQL，现在可以直接安装ODBC驱动.&lt;br&gt;&lt;br&gt;添加源方法&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install http://yum.postgresql.org/9.5/redhat/rhel-7-x86_64/pgdg-redhat95-9.5-2.noarch.rpm&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;!--more--&gt;
+&lt;p&gt;安装驱动&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install postgresql95-odbc postgresql95-odbc-debuginfo -y&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;检查驱动配置&quot;&gt;&lt;a href=&quot;#检查驱动配置&quot; class=&quot;headerlink&quot; title=&quot;检查驱动配置&quot;&gt;&lt;/a&gt;检查驱动配置&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;odbcinst -q &lt;span class=&quot;_&quot;&gt;-d&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;若没有发现&lt;code&gt;PostgreSQL&lt;/code&gt;相关的驱动项,通过&lt;code&gt;odbcinst -j&lt;/code&gt;查看odbc配置信息，再查看对应&lt;em&gt;Drivers&lt;/em&gt;项对应文件内容. 文件内容如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[ODBC Driver for PostgresSQL]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Description = ODBC Driver for PostgreSQL&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Driver = /usr/pgsql-9.5/lib/psqlodbc.so&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Setup = /usr/lib64/libodbcpsqlS.so&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;FileUsage = 1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;若&lt;code&gt;odbcinst.ini&lt;/code&gt;文件为空，可手动更改&lt;/p&gt;
+&lt;h2 id=&quot;添加数据源&quot;&gt;&lt;a href=&quot;#添加数据源&quot; class=&quot;headerlink&quot; title=&quot;添加数据源&quot;&gt;&lt;/a&gt;添加数据源&lt;/h2&gt;&lt;p&gt;根据&lt;code&gt;odbcinst -j&lt;/code&gt;查询的配置，修改&lt;code&gt;SYSTEM DATA SOURCES&lt;/code&gt;对应的数据配置文件&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[mydb]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Description         = PostgreSQL connection to SallyDB&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Driver              = ODBC Driver for PostgresSQL&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Database            = caisong&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Servername          = 127.0.0.1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;UserName            = caisong&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Password            = 123456&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Port                = 5432&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Protocol            = 9.5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ReadOnly            = No&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;RowVersioning       = No&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ShowSystemTables    = No&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ConnSettings        =&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;Driver 项的值务必与驱动配置文件下的值一致&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;修改PostgrsSQL认证方式&quot;&gt;&lt;a href=&quot;#修改PostgrsSQL认证方式&quot; class=&quot;headerlink&quot; title=&quot;修改PostgrsSQL认证方式&quot;&gt;&lt;/a&gt;修改PostgrsSQL认证方式&lt;/h2&gt;&lt;p&gt;PostgreSQL默认本地认证方式为&lt;code&gt;peer&lt;/code&gt;，远程连接认证方式为&lt;code&gt;ident&lt;/code&gt; 具体差别，请参照&lt;a href=&quot;https://www.postgresql.org/docs/9.6/static/auth-methods.html&quot; title=&quot;auth-methods&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;auth-methods&lt;/a&gt; 修改host-based authentication认证文件，其路径配置在DB中，可通过SQL查询&lt;/p&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;name&lt;/span&gt;, setting &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; pg_settings &lt;span class=&quot;keyword&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;category&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&#39;File Locations&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;默认配置如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;name        |                 setting&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-------------------+-----------------------------------------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config_file       | /var/lib/pgsql/9.5/data/postgresql.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;data_directory    | /var/lib/pgsql/9.5/data&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;external_pid_file |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hba_file          | /var/lib/pgsql/9.5/data/pg_hba.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ident_file        | /var/lib/pgsql/9.5/data/pg_ident.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(5 rows)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;修改&lt;code&gt;# IPv4 local connections&lt;/code&gt; 下一行中的&lt;del&gt;ident&lt;/del&gt; 为 &lt;em&gt;md5&lt;/em&gt;就可以了&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# IPv4 local connections:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;host    all             all             127.0.0.1/32            md5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;修改完成之后需要重新加载配置文件 可以使用&lt;code&gt;pg_ctl reload&lt;/code&gt;命令，默认该命令不在&lt;code&gt;PATH&lt;/code&gt;下，其路径为&lt;code&gt;/usr/pgsql-9.5/bin/&lt;/code&gt;,或者直接重启服务&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;systemctl restart postgresql-9.5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;验证&quot;&gt;&lt;a href=&quot;#验证&quot; class=&quot;headerlink&quot; title=&quot;验证&quot;&gt;&lt;/a&gt;验证&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;isql mydb&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果出现错误，添加&lt;code&gt;-v&lt;/code&gt;重新执行命令，此时能显示具体错误了。&lt;/p&gt;
+&lt;h2 id=&quot;ODBC-连接数据库&quot;&gt;&lt;a href=&quot;#ODBC-连接数据库&quot; class=&quot;headerlink&quot; title=&quot;ODBC 连接数据库&quot;&gt;&lt;/a&gt;ODBC 连接数据库&lt;/h2&gt;&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;71&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;72&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;73&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;74&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;75&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;76&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;78&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;79&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;81&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;82&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;83&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;84&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;85&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;86&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;87&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;88&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;89&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;90&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;91&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;92&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;93&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;94&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;95&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;96&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;97&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;98&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;99&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;101&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;102&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;103&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;104&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;105&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;106&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;107&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;108&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;109&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;110&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;111&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;112&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;113&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;114&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;115&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;116&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;117&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;118&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;119&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;120&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;121&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;122&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;123&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;124&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;125&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;126&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;127&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;128&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;129&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;130&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * testing unixODBC&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * the code from unixODBC website&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;odbc/sql.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;odbc/sqlext.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;odbc/sqltypes.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SQLHENV V_OD_Env;                   &lt;span class=&quot;comment&quot;&gt;// Handle ODBC environment&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; V_OD_erg;                      &lt;span class=&quot;comment&quot;&gt;// result of functions&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SQLHDBC V_OD_hdbc;                  &lt;span class=&quot;comment&quot;&gt;// Handle connection&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; V_OD_stat[&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;];                 &lt;span class=&quot;comment&quot;&gt;// Status SQL&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SQLINTEGER V_OD_err,V_OD_rowanz,V_OD_id;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SQLSMALLINT V_OD_mlen,V_OD_colanz;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; V_OD_msg[&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;],V_OD_buffer[&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; argc,&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; *argv[])&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        SQLHSTMT V_OD_hstmt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 1. allocate Environment handle and register version&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        V_OD_erg=SQLAllocHandle(SQL_HANDLE_ENV,SQL_NULL_HANDLE,&amp;amp;V_OD_Env);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ((V_OD_erg != SQL_SUCCESS) &amp;amp;&amp;amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Error AllocHandle\n&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        V_OD_erg=SQLSetEnvAttr(V_OD_Env, SQL_ATTR_ODBC_VERSION, (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;*)SQL_OV_ODBC3, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ((V_OD_erg != SQL_SUCCESS) &amp;amp;&amp;amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Error SetEnv\n&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 2. allocate connection handle, set timeout&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        V_OD_erg = SQLAllocHandle(SQL_HANDLE_DBC, V_OD_Env, &amp;amp;V_OD_hdbc);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ((V_OD_erg != SQL_SUCCESS) &amp;amp;&amp;amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Error AllocHDB %d\n&quot;&lt;/span&gt;,V_OD_erg);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        SQLSetConnectAttr(V_OD_hdbc, SQL_LOGIN_TIMEOUT, (SQLPOINTER *)&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 3. Connect to the datasource &quot;mydb&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        V_OD_erg = SQLDriverConnect(V_OD_hdbc,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                    &lt;span class=&quot;literal&quot;&gt;NULL&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                    &lt;span class=&quot;string&quot;&gt;&quot;DRIVER=&amp;#123;ODBC Driver for PostgresSQL&amp;#125;;Server=127.0.0.1;Port=5432;Database=caisong;Uid=caisong;Pwd=123456;&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                    SQL_NTS,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                    V_OD_buffer,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                    &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                    &amp;amp;V_OD_mlen,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                    SQL_DRIVER_NOPROMPT);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//a. direct connect into datasource&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;/*V_OD_erg = SQLConnect(V_OD_hdbc, (SQLCHAR*) &quot;mydb&quot;, SQL_NTS,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                         (SQLCHAR*) &quot;caisong&quot;, SQL_NTS,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                        (SQLCHAR*) &quot;123456&quot;, SQL_NTS);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//b. manual connect into target db&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ((V_OD_erg != SQL_SUCCESS) &amp;amp;&amp;amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Error SQLConnect %d\n&quot;&lt;/span&gt;,V_OD_erg);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLGetDiagRec(SQL_HANDLE_DBC, V_OD_hdbc,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                              V_OD_stat, &amp;amp;V_OD_err,V_OD_msg,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;,&amp;amp;V_OD_mlen);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;%s (%d)\n&quot;&lt;/span&gt;,V_OD_msg,V_OD_err);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Connected !\n&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        V_OD_erg=SQLAllocHandle(SQL_HANDLE_STMT, V_OD_hdbc, &amp;amp;V_OD_hstmt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ((V_OD_erg != SQL_SUCCESS) &amp;amp;&amp;amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Fehler im AllocStatement %d\n&quot;&lt;/span&gt;,V_OD_erg);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLGetDiagRec(SQL_HANDLE_DBC, V_OD_hdbc,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, V_OD_stat,&amp;amp;V_OD_err,V_OD_msg,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;,&amp;amp;V_OD_mlen);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;%s (%d)\n&quot;&lt;/span&gt;,V_OD_msg,V_OD_err);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLDisconnect(V_OD_hdbc);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        SQLBindCol(V_OD_hstmt,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,SQL_C_CHAR, &amp;amp;V_OD_buffer,&lt;span class=&quot;number&quot;&gt;150&lt;/span&gt;,&amp;amp;V_OD_err);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        SQLBindCol(V_OD_hstmt,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,SQL_C_ULONG,&amp;amp;V_OD_id,&lt;span class=&quot;number&quot;&gt;150&lt;/span&gt;,&amp;amp;V_OD_err);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        V_OD_erg=SQLExecDirect(V_OD_hstmt,&lt;span class=&quot;string&quot;&gt;&quot;SELECT name, setting FROM pg_settings where category=&#39;File Locations&#39;&quot;&lt;/span&gt;,SQL_NTS);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ((V_OD_erg != SQL_SUCCESS) &amp;amp;&amp;amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Error in Select %d\n&quot;&lt;/span&gt;,V_OD_erg);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLGetDiagRec(SQL_HANDLE_DBC, V_OD_hdbc,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, V_OD_stat,&amp;amp;V_OD_err,V_OD_msg,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;,&amp;amp;V_OD_mlen);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;%s (%d)\n&quot;&lt;/span&gt;,V_OD_msg,V_OD_err);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLDisconnect(V_OD_hdbc);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        V_OD_erg=SQLNumResultCols(V_OD_hstmt,&amp;amp;V_OD_colanz);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ((V_OD_erg != SQL_SUCCESS) &amp;amp;&amp;amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLDisconnect(V_OD_hdbc);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Number of Columns %d\n&quot;&lt;/span&gt;,V_OD_colanz);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        V_OD_erg=SQLRowCount(V_OD_hstmt,&amp;amp;V_OD_rowanz);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ((V_OD_erg != SQL_SUCCESS) &amp;amp;&amp;amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Number ofRowCount %d\n&quot;&lt;/span&gt;,V_OD_erg);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLDisconnect(V_OD_hdbc);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Number of Rows %d\n&quot;&lt;/span&gt;,V_OD_rowanz);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        V_OD_erg=SQLFetch(V_OD_hstmt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(V_OD_erg != SQL_NO_DATA)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Result: %d %s\n&quot;&lt;/span&gt;,V_OD_id,V_OD_buffer);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                V_OD_erg=SQLFetch(V_OD_hstmt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        SQLDisconnect(V_OD_hdbc);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;全文完&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;!-- MarkdownTOC --&gt;
+&lt;ul&gt;
+&lt;li&gt;安装unixODBC&lt;/li&gt;
+&lt;li&gt;安装PostgreSQL ODBC驱动&lt;/li&gt;
+&lt;li&gt;检查驱动配置&lt;/li&gt;
+&lt;li&gt;添加数据源&lt;/li&gt;
+&lt;li&gt;修改PostgrsSQL认证方式&lt;/li&gt;
+&lt;li&gt;验证&lt;/li&gt;
+&lt;li&gt;ODBC 连接数据库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /MarkdownTOC --&gt;
+    
+    </summary>
+    
+      <category term="DataBase" scheme="http://yoursite.com/categories/DataBase/"/>
+    
+    
+      <category term="postgresql" scheme="http://yoursite.com/tags/postgresql/"/>
+    
+      <category term="odbc" scheme="http://yoursite.com/tags/odbc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 安装</title>
+    <link href="http://yoursite.com/2016/10/12/Install/"/>
+    <id>http://yoursite.com/2016/10/12/Install/</id>
+    <published>2016-10-12T13:13:50.000Z</published>
+    <updated>2016-10-12T13:43:14.298Z</updated>
+    
+    <content type="html">&lt;!-- MarkdownTOC --&gt;
+&lt;ul&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;li&gt;添加用户和数据库&lt;/li&gt;
+&lt;li&gt;登陆数据库&lt;/li&gt;
+&lt;li&gt;常用控制台命令&lt;/li&gt;
+&lt;li&gt;基本SQL操作&lt;/li&gt;
+&lt;li&gt;备份与恢复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /MarkdownTOC --&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;本文内容基于CentOS7及PostgreSQL 9.5.4&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;以下内容主要参考&lt;a href=&quot;https://www.postgresql.org/download/linux/redhat/&quot; title=&quot;postgresql安装&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Linux downloads (Red Hat family)&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Included in distribution&lt;br&gt;目前CentOS7支持的是9.2版本，SCL源支持9.5与9.4&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install postgresql-server posggresql-contrib -y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 安装完成之后初始化&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;postgresql-setup initdb&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl &lt;span class=&quot;built_in&quot;&gt;enable&lt;/span&gt; postgresql.service systemctl start postgresql.service&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PostgreSQL Yum Repository&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install http://yum.postgresql.org/9.5/redhat/rhel-7-x86_64/pgdg-redhat95-9.5-2.noarch.rpm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install postgresql95-server postgresql95-contrib -y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl &lt;span class=&quot;built_in&quot;&gt;enable&lt;/span&gt; postgresql-9.5.service&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl start postgresql-9.5.service&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;其他可以通过下载rpm或编译源码的方式安装  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;添加用户和数据库&quot;&gt;&lt;a href=&quot;#添加用户和数据库&quot; class=&quot;headerlink&quot; title=&quot;添加用户和数据库&quot;&gt;&lt;/a&gt;添加用户和数据库&lt;/h2&gt;&lt;p&gt;以下内容主要参考&lt;a href=&quot;http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html&quot; title=&quot;PostgreSQL新手入门&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PostgreSQL新手入门&lt;/a&gt;&lt;br&gt;安装PostgreSQL时，默认创建了用户名为postgres的系统用户和对应的DB管理员用户，可以直接登陆数据库。下面介绍如何添加用户自定义用户&lt;/p&gt;
+&lt;h3 id=&quot;方式一&quot;&gt;&lt;a href=&quot;#方式一&quot; class=&quot;headerlink&quot; title=&quot;方式一&quot;&gt;&lt;/a&gt;方式一&lt;/h3&gt;&lt;p&gt;该方式比较繁琐。  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;切换到postgres用户  &lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo su - postgres&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;登陆DB&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;psql&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;3.&lt;br&gt;登陆数据库之后，系统提示符变为”postgres=#”。第一次登陆，需要设置下postgres管理员用户密码&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\password postgres&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建新DB用户&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;create user &amp;#123;username&amp;#125; with password &lt;span class=&quot;string&quot;&gt;&#39;password&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;{username}需要指定为Linux系统用户名，可通过&lt;code&gt;createuser&lt;/code&gt;方式创建（未指定为系统用户，在登陆时会失败，可能是用户role的原因）&lt;/li&gt;
+&lt;li&gt;末尾 &lt;em&gt;;&lt;/em&gt; 不能缺少  &lt;/li&gt;
+&lt;li&gt;创建完成之后，可通过&lt;code&gt;\du&lt;/code&gt;命令列出所有用户，校验是否创建成功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;创建数据库test,并指定其所有者为dbuser&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;create database &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; owner dbuser;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;创建完成之后，可通过&lt;code&gt;\l&lt;/code&gt;命令查看所有数据库&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;将test数据库的所有权限赋予dbuser&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;grant all privileges on database &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; to dbuser&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;方式二&quot;&gt;&lt;a href=&quot;#方式二&quot; class=&quot;headerlink&quot; title=&quot;方式二&quot;&gt;&lt;/a&gt;方式二&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建数据库用户dbuser，并指定其角色为超级用户&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo -u posggres createuser --superuser dbuser&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;登陆数据库控制台，设置用户密码后退出&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo -u postgres psql&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;\password dbuser &amp;#123;password&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;\q&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建数据库，并指定其Owner为dbuser&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo -u postgres createdb -O dbuser &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;登陆数据库&quot;&gt;&lt;a href=&quot;#登陆数据库&quot; class=&quot;headerlink&quot; title=&quot;登陆数据库&quot;&gt;&lt;/a&gt;登陆数据库&lt;/h2&gt;&lt;p&gt;与大多数数据库类似，指定用户名、密码及数据库地址，登陆数据库&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;psql -U &amp;#123;user_name&amp;#125; &lt;span class=&quot;_&quot;&gt;-d&lt;/span&gt; &amp;#123;db_name&amp;#125; -h &amp;#123;server_addr&amp;#125; -p &amp;#123;port_num&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;若PostgreSQL用户中存在当前系统用户时，可以省略-U参数&lt;/p&gt;
+&lt;h2 id=&quot;常用控制台命令&quot;&gt;&lt;a href=&quot;#常用控制台命令&quot; class=&quot;headerlink&quot; title=&quot;常用控制台命令&quot;&gt;&lt;/a&gt;常用控制台命令&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\h                  查看帮助&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;\password           设置密码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;\l                  列出所有数据库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;\c [database_name]  切换数据库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;\d                  列出当前数据库的所有表格&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;\d [table_name]     查看表结构&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;\du                 列出所有用户&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;\e                  打开文本编辑器&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;\conninfo           列出当前数据库和连接的信息&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;\q                  退出&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;基本SQL操作&quot;&gt;&lt;a href=&quot;#基本SQL操作&quot; class=&quot;headerlink&quot; title=&quot;基本SQL操作&quot;&gt;&lt;/a&gt;基本SQL操作&lt;/h2&gt;&lt;p&gt;与一般SQL语言一致&lt;/p&gt;
+&lt;h2 id=&quot;备份与恢复&quot;&gt;&lt;a href=&quot;#备份与恢复&quot; class=&quot;headerlink&quot; title=&quot;备份与恢复&quot;&gt;&lt;/a&gt;备份与恢复&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;pg_dump 备份数据库到文本文件或其他指定格式文件，其参数与psql基本一致&lt;/li&gt;
+&lt;li&gt;pg_dumpall 备份数据库到可执行sql文件&lt;/li&gt;
+&lt;li&gt;pg_restore 恢复&lt;code&gt;pg_dump&lt;/code&gt;生成的文件到数据库&lt;/li&gt;
+&lt;li&gt;psql &amp;lt; sql文件 执行sql文件&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;!-- MarkdownTOC --&gt;
+&lt;ul&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;li&gt;添加用户和数据库&lt;/li&gt;
+&lt;li&gt;登陆数据库&lt;/li&gt;
+&lt;li&gt;常用控制台命令&lt;/li&gt;
+&lt;li&gt;基本SQL操作&lt;/li&gt;
+&lt;li&gt;备份与恢复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /MarkdownTOC --&gt;
+    
+    </summary>
+    
+      <category term="DataBase" scheme="http://yoursite.com/categories/DataBase/"/>
+    
+    
+      <category term="POstgreSQL" scheme="http://yoursite.com/tags/POstgreSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell命令行快捷键</title>
+    <link href="http://yoursite.com/2016/07/28/shell/"/>
+    <id>http://yoursite.com/2016/07/28/shell/</id>
+    <published>2016-07-28T14:06:41.000Z</published>
+    <updated>2016-07-28T14:07:29.473Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;C-a : 光标回到命令行首（a:ahead)&lt;/li&gt;
+&lt;li&gt;C-e : 光标回到命令行尾（e:end)&lt;/li&gt;
+&lt;li&gt;C-b : 光标后退一个字符（b:backward)&lt;/li&gt;
+&lt;li&gt;C-f : 光标回到命令行首（f:forward)&lt;/li&gt;
+&lt;li&gt;C-p : 上一个使用的历史命令 (p: previous)&lt;/li&gt;
+&lt;li&gt;C-n : 下一个使用的历史命令 (n: next)&lt;/li&gt;
+&lt;li&gt;C-r : 快速检索历史命令 (r: retrieve)&lt;/li&gt;
+&lt;li&gt;C-h : 删除光标前一个字符&lt;/li&gt;
+&lt;li&gt;C-d : 删除光标后一个字符&lt;/li&gt;
+&lt;li&gt;C-w : 删除光标前一个word&lt;/li&gt;
+&lt;li&gt;C-k : 删除光标后的所有字符&lt;/li&gt;
+&lt;li&gt;C-u : 删除命令行字符&lt;/li&gt;
+&lt;li&gt;C-y : 粘贴 C-u, C-K, C-W删除的文本&lt;/li&gt;
+&lt;li&gt;C-t : 与前一字符交换&lt;/li&gt;
+&lt;li&gt;C-i : Tab&lt;/li&gt;
+&lt;li&gt;C-m : Enter&lt;/li&gt;
+&lt;li&gt;C-o : Enter&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;C-a : 光标回到命令行首（a:ahead)&lt;/li&gt;
+&lt;li&gt;C-e : 光标回到命令行尾（e:end)&lt;/li&gt;
+&lt;li&gt;C-b : 光标后退一个字符（b:backward)&lt;/li&gt;
+&lt;li&gt;C-f : 光标回到命令行首（f:forward)&lt;/li&gt;
+
+    
+    </summary>
+    
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+    
+    
+      <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
+    
+      <category term="shortcut" scheme="http://yoursite.com/tags/shortcut/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MSSQL遇到问条记录</title>
+    <link href="http://yoursite.com/2016/07/24/MSSQL/"/>
+    <id>http://yoursite.com/2016/07/24/MSSQL/</id>
+    <published>2016-07-24T14:10:46.000Z</published>
+    <updated>2016-10-12T13:41:41.280Z</updated>
+    
+    <content type="html">&lt;!-- MarkdownTOC --&gt;
+&lt;ul&gt;
+&lt;li&gt;登陆连接失败&lt;/li&gt;
+&lt;li&gt;启动sa登陆&lt;/li&gt;
+&lt;li&gt;服务器改为IP地址登陆&lt;/li&gt;
+&lt;li&gt;高版本数据库恢复到低版本数据库&lt;/li&gt;
+&lt;li&gt;自增长列插入指定值&lt;/li&gt;
+&lt;li&gt;select into from 与 insert into select 用法与区别&lt;/li&gt;
+&lt;li&gt;总结&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /MarkdownTOC --&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;记录使用MSSQL使用过程中遇到的问题。新手，大多数搜索解决，全部实际操作过，如果不能解决您的问题，请见谅。&lt;br&gt;ps. 自己电脑没装MSSQL，因此没有截图。&lt;/p&gt;
+&lt;h2 id=&quot;登陆连接失败&quot;&gt;&lt;a href=&quot;#登陆连接失败&quot; class=&quot;headerlink&quot; title=&quot;登陆连接失败&quot;&gt;&lt;/a&gt;登陆连接失败&lt;/h2&gt;&lt;p&gt;错误描述：未找到或无法访问服务器.请验证实例名称是否正确并且SQL SERVER已配置允许远程链接.(provide:命名管道提供程序,error:40 -无法打开到SQL Server的连接)(Microsoft SQL Server,错误:2)&lt;br&gt;解决办法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;开始菜单，SQL Server 20XX目录下找到 &lt;code&gt;SQL Server Configuration Manager&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SQL Server 【Version】 服务，启动&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;可能存在多个服务，请启动对应你连接名的那个服务&lt;/li&gt;
+&lt;li&gt;如果启动失败，请选择属性——登陆——本地系统账户，再次重新启动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;启动sa登陆&quot;&gt;&lt;a href=&quot;#启动sa登陆&quot; class=&quot;headerlink&quot; title=&quot;启动sa登陆&quot;&gt;&lt;/a&gt;启动sa登陆&lt;/h2&gt;&lt;p&gt;问题描述：一般本地使用的windows账户，特别第一次安装时没注意，就没用设置sa密码，也就无法sa登陆&lt;br&gt;解决办法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;windows登陆&lt;/li&gt;
+&lt;li&gt;在连接上右击，属性——安全性——SQL Server 和windows身份验证模式。保存，返回&lt;/li&gt;
+&lt;li&gt;展开连接，安全性——登录名——sa，设置密码。切换到状态，登陆选择&lt;code&gt;启用&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;服务器改为IP地址登陆&quot;&gt;&lt;a href=&quot;#服务器改为IP地址登陆&quot; class=&quot;headerlink&quot; title=&quot;服务器改为IP地址登陆&quot;&gt;&lt;/a&gt;服务器改为IP地址登陆&lt;/h2&gt;&lt;p&gt;问题描述：一般安装完成之后，采用的是windows主机名+服务名的连接方式，而非IP地址，其他电脑无法访问&lt;br&gt;解决办法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;启动sa登陆&lt;/li&gt;
+&lt;li&gt;开始菜单，SQL Server 20XX目录下找到 &lt;code&gt;SQL Server Configuration Manager&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SQL Server 【Version】网络配置，启用&lt;code&gt;Namedpipes&lt;/code&gt;和&lt;code&gt;TCP/IP&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;TCP/IP&lt;/code&gt;属性，IP地址，配置##IP1##地址（IP2本地），##IPALL##TCP端口&lt;/li&gt;
+&lt;li&gt;重启SQL Server 服务，连接&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;高版本数据库恢复到低版本数据库&quot;&gt;&lt;a href=&quot;#高版本数据库恢复到低版本数据库&quot; class=&quot;headerlink&quot; title=&quot;高版本数据库恢复到低版本数据库&quot;&gt;&lt;/a&gt;高版本数据库恢复到低版本数据库&lt;/h2&gt;&lt;p&gt;问题描述： 高版本server生成的备份文件无法在低版本上恢复&lt;br&gt;解决办法：&lt;/p&gt;
+&lt;h3 id=&quot;无法能够连接到高版本服务器&quot;&gt;&lt;a href=&quot;#无法能够连接到高版本服务器&quot; class=&quot;headerlink&quot; title=&quot;无法能够连接到高版本服务器&quot;&gt;&lt;/a&gt;无法能够连接到高版本服务器&lt;/h3&gt;&lt;p&gt;我没有找到其他办法，只能升级低版本服务器&lt;/p&gt;
+&lt;h3 id=&quot;能够连接到高版本服务器&quot;&gt;&lt;a href=&quot;#能够连接到高版本服务器&quot; class=&quot;headerlink&quot; title=&quot;能够连接到高版本服务器&quot;&gt;&lt;/a&gt;能够连接到高版本服务器&lt;/h3&gt;&lt;p&gt;整体思路：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在高版本服务器上，导出低版本服务器兼容的数据库创建sql语句&lt;/li&gt;
+&lt;li&gt;低版本服务器执行，生成表&lt;/li&gt;
+&lt;li&gt;利用SQL server数据导入工具，从高版本服务器导入数据。&lt;br&gt;当然，如果数据量比较小，可以在导出SQL语句的时候，直接连数据一起导出，再执行。&lt;br&gt;具体操作：&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;导出SQL&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;待备份数据库右击——任务——生成脚本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;设置脚本选项&lt;/code&gt;——&lt;code&gt;为服务器版本编写脚本&lt;/code&gt;，选择目标数据库版本&lt;/li&gt;
+&lt;li&gt;如果要同时导出数据，&lt;code&gt;要编写脚本的数据的类型&lt;/code&gt;选择&lt;code&gt;架构和数据&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;执行SQL&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;要先创建目标数据库，直接将SQL拖过去执行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;导出导出数据&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据库右击——导入数据，按提示下一步，&lt;code&gt;编辑映射&lt;/code&gt;时选择&lt;code&gt;启用标识插入&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;补充：高版本导入低版本数据，可以直接导入。但是，&lt;strong&gt;表格的一些字段约束会丢失&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;自增长列插入指定值&quot;&gt;&lt;a href=&quot;#自增长列插入指定值&quot; class=&quot;headerlink&quot; title=&quot;自增长列插入指定值&quot;&gt;&lt;/a&gt;自增长列插入指定值&lt;/h2&gt;&lt;p&gt;问题描述：想要显示插入自动编号&lt;code&gt;IDENTITY&lt;/code&gt;值，导致错误&lt;code&gt;结果会导致错误：当 IDENTITY_INSERT 设置为 OFF 时，不能向表 XXXX中的标识列插入显式值。&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;TABLE&lt;/span&gt; products (&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;IDENTITY&lt;/span&gt; PRIMARY &lt;span class=&quot;keyword&quot;&gt;KEY&lt;/span&gt;, product &lt;span class=&quot;built_in&quot;&gt;varchar&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;INTO&lt;/span&gt; products (&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;, product) &lt;span class=&quot;keyword&quot;&gt;VALUES&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;hello kitty&#39;&lt;/span&gt;) #返回错误&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;解决办法：&lt;br&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SET&lt;/span&gt; IDENTITY_INSERT products &lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;INTO&lt;/span&gt; products (&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;, product) &lt;span class=&quot;keyword&quot;&gt;VALUES&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;hello kitty&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;select-into-from-与-insert-into-select-用法与区别&quot;&gt;&lt;a href=&quot;#select-into-from-与-insert-into-select-用法与区别&quot; class=&quot;headerlink&quot; title=&quot;select into from 与 insert into select 用法与区别&quot;&gt;&lt;/a&gt;select into from 与 insert into select 用法与区别&lt;/h2&gt;&lt;p&gt;select into from 和 insert into select都是用来复制表，两者的主要区别为： select into from 要求目标表不存在，因为在插入时会自动创建。insert into select from 要求目标表存在。&lt;/p&gt;
+&lt;h3 id=&quot;SQL语法&quot;&gt;&lt;a href=&quot;#SQL语法&quot; class=&quot;headerlink&quot; title=&quot;SQL语法&quot;&gt;&lt;/a&gt;SQL语法&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Insert into Table2(field1,field2,…) select value1,value2,… from Table1&lt;/li&gt;
+&lt;li&gt;SELECT vale1, value2 into Table2 from Table1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;实例&quot;&gt;&lt;a href=&quot;#实例&quot; class=&quot;headerlink&quot; title=&quot;实例&quot;&gt;&lt;/a&gt;实例&lt;/h3&gt;&lt;p&gt;具体实例请查阅该文章&lt;a href=&quot;http://www.studyofnet.com/news/182.html&quot; title=&quot;select into from 与 insert into select 用法与区别&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;select into from 与 insert into select 用法与区别&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;MSSQL 真心没有MySQL好用啊！！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;!-- MarkdownTOC --&gt;
+&lt;ul&gt;
+&lt;li&gt;登陆连接失败&lt;/li&gt;
+&lt;li&gt;启动sa登陆&lt;/li&gt;
+&lt;li&gt;服务器改为IP地址登陆&lt;/li&gt;
+&lt;li&gt;高版本数据库恢复到低版本数据库&lt;/li&gt;
+&lt;li&gt;自增长列插入指定值&lt;/li&gt;
+&lt;li&gt;select into from 与 insert into select 用法与区别&lt;/li&gt;
+&lt;li&gt;总结&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /MarkdownTOC --&gt;
+    
+    </summary>
+    
+      <category term="DB" scheme="http://yoursite.com/categories/DB/"/>
+    
+    
+      <category term="MSSQL, SQL Server" scheme="http://yoursite.com/tags/MSSQL-SQL-Server/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vmware 记录</title>
+    <link href="http://yoursite.com/2016/07/24/vmware/"/>
+    <id>http://yoursite.com/2016/07/24/vmware/</id>
+    <published>2016-07-24T13:50:08.000Z</published>
+    <updated>2016-08-22T12:21:41.515Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;a href=&quot;#此虚拟机正在使用中，取得该虚拟机的所有权失败&quot; class=&quot;headerlink&quot; title=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;/a&gt;此虚拟机正在使用中，取得该虚拟机的所有权失败&lt;/h2&gt;&lt;p&gt;问题描述：该问题一般是由于强制关闭vmware进程导致&lt;br&gt;解决方案：你所配置的虚拟机目录下存在*.lck文件，删除就可以了。&lt;/p&gt;
+&lt;h2 id=&quot;CentOS-启动没有IPV4-地址&quot;&gt;&lt;a href=&quot;#CentOS-启动没有IPV4-地址&quot; class=&quot;headerlink&quot; title=&quot;CentOS 启动没有IPV4 地址&quot;&gt;&lt;/a&gt;CentOS 启动没有IPV4 地址&lt;/h2&gt;&lt;p&gt;问题描述：centos7虚拟机，没有ipv4地址，无法ssh连接&lt;br&gt;解决办法：默认设置没有开机激活网卡，修改网络配置文件&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改ONBOOT=yes &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl restart network&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;虚拟机提示Failed-to-start-LSB-Bring-up-down-networking&quot;&gt;&lt;a href=&quot;#虚拟机提示Failed-to-start-LSB-Bring-up-down-networking&quot; class=&quot;headerlink&quot; title=&quot;虚拟机提示Failed to start LSB: Bring up/down networking&quot;&gt;&lt;/a&gt;虚拟机提示Failed to start LSB: Bring up/down networking&lt;/h2&gt;&lt;p&gt;问题描述：网络无法连接，重启network提示该错误&lt;code&gt;Failed to start LSB: Bring up/down networking&lt;/code&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;搜索到的解决办法一般是由于拷贝他人的虚拟机文件导致，需要更改网络配置文件中的HWADDR字段，改为你自己mac地址。(针对CentOS7)&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ip addr show #查看mac地址&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改HWADDR字段&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;我遇到的问题是由于关闭了&lt;code&gt;VMware NAT Service&lt;/code&gt; 服务导致，启动就可以了&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;谨此记录，日后再补充遇到的其他问题&lt;/p&gt;
+&lt;h2 id=&quot;ssh问题&quot;&gt;&lt;a href=&quot;#ssh问题&quot; class=&quot;headerlink&quot; title=&quot;ssh问题&quot;&gt;&lt;/a&gt;ssh问题&lt;/h2&gt;&lt;p&gt;详见鄙人关于ssh问题的blog&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;a href=&quot;#此虚拟机正在使用中，取得该虚拟机的所有权失败&quot; class=&quot;headerlink&quot; title=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;/a&gt;此虚拟机正在使用中，取得该虚拟机的所有权
+    
+    </summary>
+    
+      <category term="record" scheme="http://yoursite.com/categories/record/"/>
+    
+    
+      <category term="vmware" scheme="http://yoursite.com/tags/vmware/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自平衡二搜索树——红黑树</title>
+    <link href="http://yoursite.com/2016/07/04/%E7%BA%A2%E9%BB%91%E6%A0%91/"/>
+    <id>http://yoursite.com/2016/07/04/红黑树/</id>
+    <published>2016-07-04T14:25:06.000Z</published>
+    <updated>2016-07-04T14:36:41.877Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;主要属性&quot;&gt;&lt;a href=&quot;#主要属性&quot; class=&quot;headerlink&quot; title=&quot;主要属性&quot;&gt;&lt;/a&gt;主要属性&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;所有节点要么红色，要么黑色&lt;/li&gt;
+&lt;li&gt;叶子节点都是黑色&lt;/li&gt;
+&lt;li&gt;叶子节点不包含数据&lt;/li&gt;
+&lt;li&gt;所有非叶子节点都有两个子节点&lt;/li&gt;
+&lt;li&gt;如果一个节点是红色，那么它的子节点都是黑色&lt;blockquote&gt;
+&lt;p&gt;一个红色节点不能是其他红色节点的子节点或者父节点&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;在一个节点到其叶子节点的路径中，如果总是包含相同数据的黑色节点，则该路径相比其他路径是最短的。&lt;blockquote&gt;
+&lt;p&gt;从树的任何节点到其叶子节点的路径都具有相同数目的黑色节点，树里的最长路径则是红黑交替节点路径，所以最短路径必然是具有相同数量的黑色节点——只包含黑色节点的路径。因此，从根节点到叶子节点的最长路径都不会超过最短路径的两倍&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;主要属性&quot;&gt;&lt;a href=&quot;#主要属性&quot; class=&quot;headerlink&quot; title=&quot;主要属性&quot;&gt;&lt;/a&gt;主要属性&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;所有节点要么红色，要么黑色&lt;/li&gt;
+&lt;li&gt;叶子节点都是黑色&lt;/li&gt;
+&lt;li&gt;叶子节点不包含数据&lt;/li&gt;
+
+    
+    </summary>
+    
+      <category term="data structure" scheme="http://yoursite.com/categories/data-structure/"/>
+    
+    
+      <category term="红黑树" scheme="http://yoursite.com/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ssh问题-Connection closed by foreign host</title>
+    <link href="http://yoursite.com/2016/06/30/ssh%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2016/06/30/ssh问题/</id>
+    <published>2016-06-30T14:56:04.000Z</published>
+    <updated>2016-08-22T12:20:49.191Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;使用XShell 登陆linux总是回复：&lt;code&gt;Connection closed by foreign host.&lt;/code&gt; 或者&lt;br&gt;&lt;code&gt;Disconnected from remote host&lt;/code&gt;，&lt;br&gt;造成该现象的原因一般是由于ssh连接长期没有操作导致的（这也是误导我的主要原因）&lt;/p&gt;
+&lt;h2 id=&quot;原因及解决方案&quot;&gt;&lt;a href=&quot;#原因及解决方案&quot; class=&quot;headerlink&quot; title=&quot;原因及解决方案&quot;&gt;&lt;/a&gt;原因及解决方案&lt;/h2&gt;&lt;h3 id=&quot;账号被限制只允许一个人登陆（暂时没遇到）&quot;&gt;&lt;a href=&quot;#账号被限制只允许一个人登陆（暂时没遇到）&quot; class=&quot;headerlink&quot; title=&quot;账号被限制只允许一个人登陆（暂时没遇到）&quot;&gt;&lt;/a&gt;账号被限制只允许一个人登陆（暂时没遇到）&lt;/h3&gt;&lt;h3 id=&quot;无法保持长期连接&quot;&gt;&lt;a href=&quot;#无法保持长期连接&quot; class=&quot;headerlink&quot; title=&quot;无法保持长期连接&quot;&gt;&lt;/a&gt;无法保持长期连接&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vim /etc/ssh/sshd_config&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;结尾添加两行&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ClientAliveInterval 60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ClientAliveCountMax 3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 重启服务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl restart sshd&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;防火墙原因&quot;&gt;&lt;a href=&quot;#防火墙原因&quot; class=&quot;headerlink&quot; title=&quot;防火墙原因&quot;&gt;&lt;/a&gt;防火墙原因&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 关闭防火墙&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl stop sshd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 或者打开22端口&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;hosts-deny文件被篡改&quot;&gt;&lt;a href=&quot;#hosts-deny文件被篡改&quot; class=&quot;headerlink&quot; title=&quot;hosts.deny文件被篡改&quot;&gt;&lt;/a&gt;hosts.deny文件被篡改&lt;/h3&gt;&lt;p&gt;查看&lt;code&gt;/etc/hosts.deny&lt;/code&gt;文件，看是否被禁用&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# 禁止所有ip访问linux 的ssh功能&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sshd:all:deny&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;/etc/hosts.allow&lt;/code&gt;（允许）和&lt;code&gt;/etc/hosts.deny&lt;/code&gt;（禁止）这两个文件是tcpd服务器的配置文件，tcpd服务器可以控制外部IP对本机服务的访问。&lt;br&gt;系统会先检查&lt;code&gt;/etc/hosts.deny&lt;/code&gt;规则，再检查&lt;code&gt;/etc/hosts.allow&lt;/code&gt;规则，如果有冲突 按&lt;code&gt;/etc/hosts.allow&lt;/code&gt;规则处理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;客户端连接数过多&quot;&gt;&lt;a href=&quot;#客户端连接数过多&quot; class=&quot;headerlink&quot; title=&quot;客户端连接数过多&quot;&gt;&lt;/a&gt;客户端连接数过多&lt;/h3&gt;&lt;p&gt;将&lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt;中 MaxStartUps 10 改为MaxStartups 10/100，重启sshd&lt;/p&gt;
+&lt;h3 id=&quot;针对VMware-nat模式&quot;&gt;&lt;a href=&quot;#针对VMware-nat模式&quot; class=&quot;headerlink&quot; title=&quot;针对VMware nat模式&quot;&gt;&lt;/a&gt;针对VMware nat模式&lt;/h3&gt;&lt;p&gt;描述：连接方式使用NAT；虚拟能在ping通主机，主机无法ping通虚拟机。&lt;br&gt;原因：虚拟机自动获取的IP与vmnet8设置的IP不在同一网段。&lt;br&gt;解决：设置vmnet8自动获取ip即可。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;使用XShell 登陆linux总是回复：&lt;code&gt;Connection closed by foreign host.&lt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+    
+    
+      <category term="ssh" scheme="http://yoursite.com/tags/ssh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>bat切换当前目录</title>
+    <link href="http://yoursite.com/2016/06/20/bat/"/>
+    <id>http://yoursite.com/2016/06/20/bat/</id>
+    <published>2016-06-20T13:35:20.000Z</published>
+    <updated>2016-06-20T13:39:31.219Z</updated>
+    
+    <content type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@echo off&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; cd %~dp0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call git pull&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; xcopy D:\google\hosts\hosts C:\Windows\System32\drivers\etc\ /Y /R&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;每次更新host，使用管理员运行显示git失败，原因是使用管理员运行时，目录切换到system32下了。&lt;br&gt;&lt;code&gt;cd %~dp0&lt;/code&gt;表示切换回当前目录&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
+    
+    </summary>
+    
+      <category term="record" scheme="http://yoursite.com/categories/record/"/>
+    
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python发送邮件（续）—— configparser</title>
+    <link href="http://yoursite.com/2016/06/03/configparser/"/>
+    <id>http://yoursite.com/2016/06/03/configparser/</id>
+    <published>2016-06-03T12:45:12.000Z</published>
+    <updated>2016-06-03T13:05:11.599Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;昨天代码一些基本配置全部在代码中，灵活性较差，考虑到通过配置文件的方式来实现。结构比较简单，不想用xml或json，类似配置数据库连接的&lt;code&gt;property&lt;/code&gt;文件就可以了，&lt;code&gt;configparser&lt;/code&gt;比较满足要求。&lt;br&gt;python &lt;code&gt;configparser&lt;/code&gt;能够读取&lt;code&gt;*.conf&lt;/code&gt;与&lt;code&gt;*.ini&lt;/code&gt;的配置文件&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;以下内容parser摘录自：&lt;a href=&quot;https://wiki.python.org/moin/ConfigParserExamples&quot; title=&quot;configparserExamples&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;configparserExamples 示例&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;configparser-使用&quot;&gt;&lt;a href=&quot;#configparser-使用&quot; class=&quot;headerlink&quot; title=&quot;configparser 使用&quot;&gt;&lt;/a&gt;configparser 使用&lt;/h2&gt;&lt;h3 id=&quot;读配置文件&quot;&gt;&lt;a href=&quot;#读配置文件&quot; class=&quot;headerlink&quot; title=&quot;读配置文件&quot;&gt;&lt;/a&gt;读配置文件&lt;/h3&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[SectionOne]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Status: Single&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Name: Derek&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Value: Yes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Age: 30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Single: True&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[SectionTwo]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;FavoriteColor = Green, Red, Blue&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[SectionThree]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;FamilyName: Johnson&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[Others]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Route: 66&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import ConfigParser&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config = ConfigParser.ConfigParser()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config.read(&#39;config file path&#39;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# read node&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config.get(&#39;SectionOne&#39;,&#39;Status)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# read node as list&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config.get(&#39;SectionTwo&#39;,&#39;FavoriteColor&#39;).replace(&#39; &#39;,&#39;&#39;).split(&#39;,&#39;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;写配置文件&quot;&gt;&lt;a href=&quot;#写配置文件&quot; class=&quot;headerlink&quot; title=&quot;写配置文件&quot;&gt;&lt;/a&gt;写配置文件&lt;/h3&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# lets create that config file for next time...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cfgfile = open(&lt;span class=&quot;string&quot;&gt;&quot;c:\\next.ini&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;w&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# add the settings to the structure of the file, and lets write it out...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Config.add_section(&lt;span class=&quot;string&quot;&gt;&#39;Person&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Config.set(&lt;span class=&quot;string&quot;&gt;&#39;Person&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;HasEyes&#39;&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Config.set(&lt;span class=&quot;string&quot;&gt;&#39;Person&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;Age&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Config.write(cfgfile)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cfgfile.close()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;读取含有宏的配置文件&quot;&gt;&lt;a href=&quot;#读取含有宏的配置文件&quot; class=&quot;headerlink&quot; title=&quot;读取含有宏的配置文件&quot;&gt;&lt;/a&gt;读取含有宏的配置文件&lt;/h3&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[SectionOne]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Param1: Hello&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Param2: World&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[SectionTwo]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Param1: $&amp;#123;SectionOne:Param1&amp;#125; $&amp;#123;SectionOne:Param2&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[SectionThree]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Alpha: One&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Bravo: Two&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Charlie: $&amp;#123;Alpha&amp;#125; Mississippi&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; configparser&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings = configparser.ConfigParser()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings._interpolation = configparser.ExtendedInterpolation()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings.read(&lt;span class=&quot;string&quot;&gt;&#39;settings.ini&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;settings.ini&#39;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings.sections()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;SectionOne&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;SectionTwo&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;SectionThree&#39;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings.get(&lt;span class=&quot;string&quot;&gt;&#39;SectionTwo&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Param1&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;Hello World&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;settings.get(&lt;span class=&quot;string&quot;&gt;&#39;SectionThree&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Charlie&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;One Mississippi&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;发送邮件代码&quot;&gt;&lt;a href=&quot;#发送邮件代码&quot; class=&quot;headerlink&quot; title=&quot;发送邮件代码&quot;&gt;&lt;/a&gt;发送邮件代码&lt;/h2&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[mail]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;address: abc@qq.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;password: XXXXXXXXXX&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;smtp: smtp.qq.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;port: 465&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;subject: XXX 工作日志&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;reAddr: abc@qq.com, bcd@qq.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ccAddr: abc@qq.com, bcd@qq.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;contextPath: a.txt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;attachPath: b.txt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;发送带附件邮件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; email.mime.text &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; MIMEText&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; email.mime.multipart &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; MIMEMultipart&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; smtplib&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; datetime &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; date&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; configparser&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 读取配置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config = configparser.ConfigParser()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;config.read(&lt;span class=&quot;string&quot;&gt;&#39;mail.ini&#39;&lt;/span&gt;, encoding=&lt;span class=&quot;string&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;address = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;address&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 可以考虑加密&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;password = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;password&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;smtp = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;smtp&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;port = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;port&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;subject = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;subject&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 收件人&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;receiver = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;reAddr&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 抄送人&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;carbonCopy = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;ccAddr&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 正文&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;context = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;contextPath&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 附件(暂时考虑的一个)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;attachment = config.get(&lt;span class=&quot;string&quot;&gt;&#39;mail&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;attachPath&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 创建一个带附件的实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg = MIMEMultipart()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 加邮件头&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;from&#39;&lt;/span&gt;] = address&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;to&#39;&lt;/span&gt;] = receiver&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;subject&#39;&lt;/span&gt;] = date.today().strftime(&lt;span class=&quot;string&quot;&gt;&quot;%Y-%m-%d&quot;&lt;/span&gt;) + subject&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;cc&#39;&lt;/span&gt;] = carbonCopy&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg.attach(MIMEText(open(context, &lt;span class=&quot;string&quot;&gt;&#39;rb&#39;&lt;/span&gt;).read(), &lt;span class=&quot;string&quot;&gt;&#39;plain&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 构造附件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;with&lt;/span&gt; open(attachment, &lt;span class=&quot;string&quot;&gt;&#39;rb&#39;&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; myfile:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    att = MIMEText(myfile.read(), &lt;span class=&quot;string&quot;&gt;&#39;base64&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    att[&lt;span class=&quot;string&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;application/octet-stream&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;# 附件名&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    filename = attachment.split(&lt;span class=&quot;string&quot;&gt;&#39;\\&#39;&lt;/span&gt;)[&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    att[&lt;span class=&quot;string&quot;&gt;&quot;Content-Disposition&quot;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;attachment; filename=&#39;&lt;/span&gt; + filename&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    msg.attach(att)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 发送邮件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server = smtplib.SMTP_SSL(smtp, int(port))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.login(address, password)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;# 所有收件人（包括抄送）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    receiverList = (receiver + &lt;span class=&quot;string&quot;&gt;&#39;,&#39;&lt;/span&gt; + carbonCopy).replace(&lt;span class=&quot;string&quot;&gt;&#39; &#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;).split(&lt;span class=&quot;string&quot;&gt;&#39;,&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.sendmail(msg[&lt;span class=&quot;string&quot;&gt;&#39;from&#39;&lt;/span&gt;], receiverList, msg.as_string())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.quit()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(&lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;success&#39;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;except&lt;/span&gt; Exception &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; e:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(e)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;注意事项&quot;&gt;&lt;a href=&quot;#注意事项&quot; class=&quot;headerlink&quot; title=&quot;注意事项&quot;&gt;&lt;/a&gt;注意事项&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;若密码中包含特殊字符，需要转义&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;昨天代码一些基本配置全部在代码中，灵活性较差，考虑到通过配置文件的方式来实现。结构比较简单，不想用xml或json，类似配置数据库连接的&lt;code&gt;property&lt;/code&gt;文件就可以了，&lt;code&gt;configparser&lt;/code&gt;比较满足要求。&lt;br&gt;python &lt;code&gt;configparser&lt;/code&gt;能够读取&lt;code&gt;*.conf&lt;/code&gt;与&lt;code&gt;*.ini&lt;/code&gt;的配置文件&lt;br&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="mail" scheme="http://yoursite.com/tags/mail/"/>
+    
+      <category term="config" scheme="http://yoursite.com/tags/config/"/>
+    
+      <category term="ini" scheme="http://yoursite.com/tags/ini/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python 发送邮件</title>
+    <link href="http://yoursite.com/2016/06/02/post/"/>
+    <id>http://yoursite.com/2016/06/02/post/</id>
+    <published>2016-06-02T12:46:58.000Z</published>
+    <updated>2016-06-02T13:53:22.934Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h2&gt;&lt;p&gt;每天发送工作日报，需要send一堆人，cc一堆人（公司规定，呵呵），还要添加附件。考虑到python能够方便的发送邮箱，就打算写个脚本。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h2&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#!/usr/bin/env python3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;发送带附件邮件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; email.mime.text &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; MIMEText&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; email.mime.multipart &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; MIMEMultipart&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; smtplib&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; datetime &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; date&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 创建一个带附件的实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg = MIMEMultipart()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 接收列表&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;receiverList = [&lt;span class=&quot;string&quot;&gt;&#39;abc@yeah.net&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;abc@qq.com&#39;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 抄送列表&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ccList = [&lt;span class=&quot;string&quot;&gt;&#39;abc@yeah.net&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;abc@qq.com&#39;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 邮件头&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;from&#39;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;song_cai@yeah.net&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;to&#39;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;, &#39;&lt;/span&gt;.join(receiverList)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;subject&#39;&lt;/span&gt;] = date.today().strftime(&lt;span class=&quot;string&quot;&gt;&quot;%Y-%m-%d&quot;&lt;/span&gt;) + &lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;XX工作日报&#39;&#39;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg[&lt;span class=&quot;string&quot;&gt;&#39;cc&#39;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;, &#39;&lt;/span&gt;.join(ccList)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 正文&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg.attach(MIMEText(open(&lt;span class=&quot;string&quot;&gt;&#39;d:\\mailContext.txt&#39;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                         &lt;span class=&quot;string&quot;&gt;&#39;rb&#39;&lt;/span&gt;).read(), &lt;span class=&quot;string&quot;&gt;&#39;plain&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 附件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;att = MIMEText(open(&lt;span class=&quot;string&quot;&gt;&#39;d:\\mailContext.txt&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;rb&#39;&lt;/span&gt;).read(), &lt;span class=&quot;string&quot;&gt;&#39;base64&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;att[&lt;span class=&quot;string&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;application/octet-stream&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;att[&lt;span class=&quot;string&quot;&gt;&quot;Content-Disposition&quot;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;attachment; filename=&quot;mailContext.txt&quot;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;msg.attach(att)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 发送邮件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server = smtplib.SMTP_SSL(&lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;smtp.qq.com&#39;&#39;&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;465&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.login(&lt;span class=&quot;string&quot;&gt;&#39;song_cai@yeah.net&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;xxxxx&#39;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.sendmail(msg[&lt;span class=&quot;string&quot;&gt;&#39;from&#39;&lt;/span&gt;], receiverList + ccList, msg.as_string())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.quit()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(&lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;success&#39;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;except&lt;/span&gt; Exception &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; e:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    input(e)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;注意事项&quot;&gt;&lt;a href=&quot;#注意事项&quot; class=&quot;headerlink&quot; title=&quot;注意事项&quot;&gt;&lt;/a&gt;注意事项&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;现在大部分邮箱使用SSL方式，所以对应地必须使用&lt;code&gt;SMTP_SSL&lt;/code&gt;,直接指定地址和端口，使用&lt;code&gt;connect&lt;/code&gt;的方式指定存在问题&lt;/li&gt;
+&lt;li&gt;正文要写在附件之前，否则会出现两个附件（即正文部分也成为附件了）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt; 懒惰使人进步 &lt;/strong&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h2&gt;&lt;p&gt;每天发送工作日报，需要send一堆人，cc一堆人（公司规定，呵呵），还要添加附件。考虑到python能够方便的发送邮箱，就打算写个脚本。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="email" scheme="http://yoursite.com/tags/email/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2016/05/29/hello-world/"/>
+    <id>http://yoursite.com/2016/05/29/hello-world/</id>
+    <published>2016-05-29T01:22:10.009Z</published>
+    <updated>2016-05-29T01:22:10.010Z</updated>
+    
+    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>记录</title>
+    <link href="http://yoursite.com/2016/05/20/%E8%AE%B0%E5%BD%95/"/>
+    <id>http://yoursite.com/2016/05/20/记录/</id>
+    <published>2016-05-19T16:08:04.000Z</published>
+    <updated>2016-05-29T01:22:10.010Z</updated>
+    
+    <content type="html">&lt;p&gt;搭建的一晚上的成果, 随便发个帖子试试。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装nodejs hexo&lt;/li&gt;
+&lt;li&gt;安装next 主题&lt;/li&gt;
+&lt;li&gt;添加第三方插件&lt;/li&gt;
+&lt;li&gt;设置个人信息&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;搭建的一晚上的成果, 随便发个帖子试试。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装nodejs hexo&lt;/li&gt;
+&lt;li&gt;安装next 主题&lt;/li&gt;
+&lt;li&gt;添加第三方插件&lt;/li&gt;
+&lt;li&gt;设置个人信息&lt;/li&gt;
+&lt;/ol&gt;
+
+    
+    </summary>
+    
+      <category term="杂记" scheme="http://yoursite.com/categories/%E6%9D%82%E8%AE%B0/"/>
+    
+    
+      <category term="record" scheme="http://yoursite.com/tags/record/"/>
+    
+  </entry>
+  
+</feed>

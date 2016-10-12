@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+    
+    <entry>
+      <title><![CDATA[CentOS 安装Lua 5.3]]></title>
+      <url>http://yoursite.com/2016/10/12/centos-lua/</url>
+      <content type="html"><![CDATA[<p>按照官网教程，执行以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -R -O http://www.lua.org/ftp/lua-5.3.3.tar.gz</span><br><span class="line">tar zxf lua-5.3.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> lua-5.3.3</span><br><span class="line">make linux <span class="built_in">test</span></span><br></pre></td></tr></table></figure></p>
+<p>但其实lua并未安装，许多博文都是建立软链接，但其实<code>makefile</code>文件中已经写好了，只需install就可以了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make linux install</span><br></pre></td></tr></table></figure></p>
+<p>升级lua版本之后，会导致<code>luarock</code>无法使用，需要重新编译安装。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://luarocks.org/releases/luarocks-2.4.1.tar.gz</span><br><span class="line">tar zxpf luarocks-2.4.1.tar.gz</span><br><span class="line"><span class="built_in">cd</span> luarocks-2.4.1</span><br><span class="line">./configure; sudo make bootstrap</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[atom config 设置]]></title>
+      <url>http://yoursite.com/2016/10/12/atom-config/</url>
+      <content type="html"><![CDATA[<p>在文件<em>~/.atom/.apmrc</em>中添加以下内容，若该文件不存在，则创建<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">strict-ssl</span>=<span class="literal">false</span></span><br><span class="line"><span class="attr">https-proxy</span>=http://<span class="number">192.168</span>.<span class="number">10.1</span>:<span class="number">8080</span></span><br><span class="line"><span class="attr">http-proxy</span>=http://<span class="number">192.168</span>.<span class="number">10.1</span>:<span class="number">8080</span></span><br></pre></td></tr></table></figure></p>
+<p><em>http与proxy之间使用的是连字符，而不是下划线</em></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[PostgreSQL ODBC]]></title>
+      <url>http://yoursite.com/2016/10/12/PostgreSQL-ODBC/</url>
+      <content type="html"><![CDATA[<!-- MarkdownTOC -->
+<ul>
+<li>安装unixODBC</li>
+<li>安装PostgreSQL ODBC驱动</li>
+<li>检查驱动配置</li>
+<li>添加数据源</li>
+<li>修改PostgrsSQL认证方式</li>
+<li>验证</li>
+<li>ODBC 连接数据库</li>
+</ul>
+<!-- /MarkdownTOC -->
+<a id="more"></a>
+<h2 id="安装unixODBC"><a href="#安装unixODBC" class="headerlink" title="安装unixODBC"></a>安装unixODBC</h2><p>直接下载官网的源码编译安装就可以了，比较简单</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://www.unixodbc.org/unixODBC-2.3.4.tar.gz</span><br><span class="line">tar xvf unixODBC-2.3.4.tar.gz</span><br><span class="line"><span class="built_in">cd</span> unixODBC-2.3.4</span><br><span class="line">./configure --sysconfdir=/etc</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>或者直接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install unixODBC</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装PostgreSQL-ODBC驱动"><a href="#安装PostgreSQL-ODBC驱动" class="headerlink" title="安装PostgreSQL ODBC驱动"></a>安装PostgreSQL ODBC驱动</h2><p>按照之前添加源的方式安装PostgreSQL，现在可以直接安装ODBC驱动.<br><br>添加源方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install http://yum.postgresql.org/9.5/redhat/rhel-7-x86_64/pgdg-redhat95-9.5-2.noarch.rpm</span><br></pre></td></tr></table></figure>
+<!--more-->
+<p>安装驱动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install postgresql95-odbc postgresql95-odbc-debuginfo -y</span><br></pre></td></tr></table></figure>
+<h2 id="检查驱动配置"><a href="#检查驱动配置" class="headerlink" title="检查驱动配置"></a>检查驱动配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">odbcinst -q <span class="_">-d</span></span><br></pre></td></tr></table></figure>
+<p>若没有发现<code>PostgreSQL</code>相关的驱动项,通过<code>odbcinst -j</code>查看odbc配置信息，再查看对应<em>Drivers</em>项对应文件内容. 文件内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ODBC Driver for PostgresSQL]</span><br><span class="line">Description = ODBC Driver for PostgreSQL</span><br><span class="line">Driver = /usr/pgsql-9.5/lib/psqlodbc.so</span><br><span class="line">Setup = /usr/lib64/libodbcpsqlS.so</span><br><span class="line">FileUsage = 1</span><br></pre></td></tr></table></figure>
+<p>若<code>odbcinst.ini</code>文件为空，可手动更改</p>
+<h2 id="添加数据源"><a href="#添加数据源" class="headerlink" title="添加数据源"></a>添加数据源</h2><p>根据<code>odbcinst -j</code>查询的配置，修改<code>SYSTEM DATA SOURCES</code>对应的数据配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[mydb]</span><br><span class="line">Description         = PostgreSQL connection to SallyDB</span><br><span class="line">Driver              = ODBC Driver for PostgresSQL</span><br><span class="line">Database            = caisong</span><br><span class="line">Servername          = 127.0.0.1</span><br><span class="line">UserName            = caisong</span><br><span class="line">Password            = 123456</span><br><span class="line">Port                = 5432</span><br><span class="line">Protocol            = 9.5</span><br><span class="line">ReadOnly            = No</span><br><span class="line">RowVersioning       = No</span><br><span class="line">ShowSystemTables    = No</span><br><span class="line">ConnSettings        =</span><br></pre></td></tr></table></figure>
+<p><strong>Driver 项的值务必与驱动配置文件下的值一致</strong></p>
+<h2 id="修改PostgrsSQL认证方式"><a href="#修改PostgrsSQL认证方式" class="headerlink" title="修改PostgrsSQL认证方式"></a>修改PostgrsSQL认证方式</h2><p>PostgreSQL默认本地认证方式为<code>peer</code>，远程连接认证方式为<code>ident</code> 具体差别，请参照<a href="https://www.postgresql.org/docs/9.6/static/auth-methods.html" title="auth-methods" target="_blank" rel="external">auth-methods</a> 修改host-based authentication认证文件，其路径配置在DB中，可通过SQL查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>, setting <span class="keyword">from</span> pg_settings <span class="keyword">where</span> <span class="keyword">category</span>=<span class="string">'File Locations'</span>;</span><br></pre></td></tr></table></figure>
+<p>默认配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">name        |                 setting</span><br><span class="line">-------------------+-----------------------------------------</span><br><span class="line">config_file       | /var/lib/pgsql/9.5/data/postgresql.conf</span><br><span class="line">data_directory    | /var/lib/pgsql/9.5/data</span><br><span class="line">external_pid_file |</span><br><span class="line">hba_file          | /var/lib/pgsql/9.5/data/pg_hba.conf</span><br><span class="line">ident_file        | /var/lib/pgsql/9.5/data/pg_ident.conf</span><br><span class="line">(5 rows)</span><br></pre></td></tr></table></figure>
+<p>修改<code># IPv4 local connections</code> 下一行中的<del>ident</del> 为 <em>md5</em>就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># IPv4 local connections:</span><br><span class="line">host    all             all             127.0.0.1/32            md5</span><br></pre></td></tr></table></figure>
+<p>修改完成之后需要重新加载配置文件 可以使用<code>pg_ctl reload</code>命令，默认该命令不在<code>PATH</code>下，其路径为<code>/usr/pgsql-9.5/bin/</code>,或者直接重启服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart postgresql-9.5</span><br></pre></td></tr></table></figure>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isql mydb</span><br></pre></td></tr></table></figure>
+<p>如果出现错误，添加<code>-v</code>重新执行命令，此时能显示具体错误了。</p>
+<h2 id="ODBC-连接数据库"><a href="#ODBC-连接数据库" class="headerlink" title="ODBC 连接数据库"></a>ODBC 连接数据库</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line"> * testing unixODBC</span><br><span class="line"> * the code from unixODBC website</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;odbc/sql.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;odbc/sqlext.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;odbc/sqltypes.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">SQLHENV V_OD_Env;                   <span class="comment">// Handle ODBC environment</span></span><br><span class="line"><span class="keyword">long</span> V_OD_erg;                      <span class="comment">// result of functions</span></span><br><span class="line">SQLHDBC V_OD_hdbc;                  <span class="comment">// Handle connection</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> V_OD_stat[<span class="number">10</span>];                 <span class="comment">// Status SQL</span></span><br><span class="line">SQLINTEGER V_OD_err,V_OD_rowanz,V_OD_id;</span><br><span class="line">SQLSMALLINT V_OD_mlen,V_OD_colanz;</span><br><span class="line"><span class="keyword">char</span> V_OD_msg[<span class="number">200</span>],V_OD_buffer[<span class="number">200</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span><br><span class="line"></span>&#123;</span><br><span class="line">        SQLHSTMT V_OD_hstmt;</span><br><span class="line">        <span class="comment">// 1. allocate Environment handle and register version</span></span><br><span class="line">        V_OD_erg=SQLAllocHandle(SQL_HANDLE_ENV,SQL_NULL_HANDLE,&amp;V_OD_Env);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Error AllocHandle\n"</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        V_OD_erg=SQLSetEnvAttr(V_OD_Env, SQL_ATTR_ODBC_VERSION, (<span class="keyword">void</span>*)SQL_OV_ODBC3, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Error SetEnv\n"</span>);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 2. allocate connection handle, set timeout</span></span><br><span class="line">        V_OD_erg = SQLAllocHandle(SQL_HANDLE_DBC, V_OD_Env, &amp;V_OD_hdbc);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Error AllocHDB %d\n"</span>,V_OD_erg);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        SQLSetConnectAttr(V_OD_hdbc, SQL_LOGIN_TIMEOUT, (SQLPOINTER *)<span class="number">5</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="comment">// 3. Connect to the datasource "mydb"</span></span><br><span class="line">        V_OD_erg = SQLDriverConnect(V_OD_hdbc,</span><br><span class="line">                                    <span class="literal">NULL</span>,</span><br><span class="line">                                    <span class="string">"DRIVER=&#123;ODBC Driver for PostgresSQL&#125;;Server=127.0.0.1;Port=5432;Database=caisong;Uid=caisong;Pwd=123456;"</span>,</span><br><span class="line">                                    SQL_NTS,</span><br><span class="line">                                    V_OD_buffer,</span><br><span class="line">                                    <span class="number">200</span>,</span><br><span class="line">                                    &amp;V_OD_mlen,</span><br><span class="line">                                    SQL_DRIVER_NOPROMPT);</span><br><span class="line">        <span class="comment">//a. direct connect into datasource</span></span><br><span class="line">        <span class="comment">/*V_OD_erg = SQLConnect(V_OD_hdbc, (SQLCHAR*) "mydb", SQL_NTS,</span><br><span class="line">                                         (SQLCHAR*) "caisong", SQL_NTS,</span><br><span class="line">                                        (SQLCHAR*) "123456", SQL_NTS);</span><br><span class="line">         */</span></span><br><span class="line">        <span class="comment">//b. manual connect into target db</span></span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Error SQLConnect %d\n"</span>,V_OD_erg);</span><br><span class="line">                SQLGetDiagRec(SQL_HANDLE_DBC, V_OD_hdbc,<span class="number">1</span>,</span><br><span class="line">                              V_OD_stat, &amp;V_OD_err,V_OD_msg,<span class="number">100</span>,&amp;V_OD_mlen);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%s (%d)\n"</span>,V_OD_msg,V_OD_err);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Connected !\n"</span>);</span><br><span class="line">        V_OD_erg=SQLAllocHandle(SQL_HANDLE_STMT, V_OD_hdbc, &amp;V_OD_hstmt);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Fehler im AllocStatement %d\n"</span>,V_OD_erg);</span><br><span class="line">                SQLGetDiagRec(SQL_HANDLE_DBC, V_OD_hdbc,<span class="number">1</span>, V_OD_stat,&amp;V_OD_err,V_OD_msg,<span class="number">100</span>,&amp;V_OD_mlen);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%s (%d)\n"</span>,V_OD_msg,V_OD_err);</span><br><span class="line">                SQLDisconnect(V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        SQLBindCol(V_OD_hstmt,<span class="number">1</span>,SQL_C_CHAR, &amp;V_OD_buffer,<span class="number">150</span>,&amp;V_OD_err);</span><br><span class="line">        SQLBindCol(V_OD_hstmt,<span class="number">2</span>,SQL_C_ULONG,&amp;V_OD_id,<span class="number">150</span>,&amp;V_OD_err);</span><br><span class="line"></span><br><span class="line">        V_OD_erg=SQLExecDirect(V_OD_hstmt,<span class="string">"SELECT name, setting FROM pg_settings where category='File Locations'"</span>,SQL_NTS);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Error in Select %d\n"</span>,V_OD_erg);</span><br><span class="line">                SQLGetDiagRec(SQL_HANDLE_DBC, V_OD_hdbc,<span class="number">1</span>, V_OD_stat,&amp;V_OD_err,V_OD_msg,<span class="number">100</span>,&amp;V_OD_mlen);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%s (%d)\n"</span>,V_OD_msg,V_OD_err);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);</span><br><span class="line">                SQLDisconnect(V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        V_OD_erg=SQLNumResultCols(V_OD_hstmt,&amp;V_OD_colanz);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);</span><br><span class="line">                SQLDisconnect(V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Number of Columns %d\n"</span>,V_OD_colanz);</span><br><span class="line">        V_OD_erg=SQLRowCount(V_OD_hstmt,&amp;V_OD_rowanz);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Number ofRowCount %d\n"</span>,V_OD_erg);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);</span><br><span class="line">                SQLDisconnect(V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Number of Rows %d\n"</span>,V_OD_rowanz);</span><br><span class="line">        V_OD_erg=SQLFetch(V_OD_hstmt);</span><br><span class="line">        <span class="keyword">while</span>(V_OD_erg != SQL_NO_DATA)</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Result: %d %s\n"</span>,V_OD_id,V_OD_buffer);</span><br><span class="line">                V_OD_erg=SQLFetch(V_OD_hstmt);</span><br><span class="line">        &#125;;</span><br><span class="line">        SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);</span><br><span class="line">        SQLDisconnect(V_OD_hdbc);</span><br><span class="line">        SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);</span><br><span class="line">        SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">        <span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>全文完</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[PostgreSQL 安装]]></title>
+      <url>http://yoursite.com/2016/10/12/Install/</url>
+      <content type="html"><![CDATA[<!-- MarkdownTOC -->
+<ul>
+<li>安装</li>
+<li>添加用户和数据库</li>
+<li>登陆数据库</li>
+<li>常用控制台命令</li>
+<li>基本SQL操作</li>
+<li>备份与恢复</li>
+</ul>
+<!-- /MarkdownTOC -->
+<a id="more"></a>
+<p>本文内容基于CentOS7及PostgreSQL 9.5.4</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>以下内容主要参考<a href="https://www.postgresql.org/download/linux/redhat/" title="postgresql安装" target="_blank" rel="external">Linux downloads (Red Hat family)</a></p>
+<ul>
+<li><p>Included in distribution<br>目前CentOS7支持的是9.2版本，SCL源支持9.5与9.4</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install postgresql-server posggresql-contrib -y</span><br><span class="line"><span class="comment"># 安装完成之后初始化</span></span><br><span class="line">postgresql-setup initdb</span><br><span class="line">systemctl <span class="built_in">enable</span> postgresql.service systemctl start postgresql.service</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>PostgreSQL Yum Repository</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install http://yum.postgresql.org/9.5/redhat/rhel-7-x86_64/pgdg-redhat95-9.5-2.noarch.rpm</span><br><span class="line">yum install postgresql95-server postgresql95-contrib -y</span><br><span class="line">systemctl <span class="built_in">enable</span> postgresql-9.5.service</span><br><span class="line">systemctl start postgresql-9.5.service</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他可以通过下载rpm或编译源码的方式安装  </p>
+</li>
+</ul>
+<h2 id="添加用户和数据库"><a href="#添加用户和数据库" class="headerlink" title="添加用户和数据库"></a>添加用户和数据库</h2><p>以下内容主要参考<a href="http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html" title="PostgreSQL新手入门" target="_blank" rel="external">PostgreSQL新手入门</a><br>安装PostgreSQL时，默认创建了用户名为postgres的系统用户和对应的DB管理员用户，可以直接登陆数据库。下面介绍如何添加用户自定义用户</p>
+<h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>该方式比较繁琐。  </p>
+<ol>
+<li><p>切换到postgres用户  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su - postgres</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登陆DB</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>3.<br>登陆数据库之后，系统提示符变为”postgres=#”。第一次登陆，需要设置下postgres管理员用户密码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\password postgres</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>创建新DB用户<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user &#123;username&#125; with password <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>{username}需要指定为Linux系统用户名，可通过<code>createuser</code>方式创建（未指定为系统用户，在登陆时会失败，可能是用户role的原因）</li>
+<li>末尾 <em>;</em> 不能缺少  </li>
+<li>创建完成之后，可通过<code>\du</code>命令列出所有用户，校验是否创建成功</li>
+</ul>
+</blockquote>
+<ol>
+<li>创建数据库test,并指定其所有者为dbuser<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database <span class="built_in">test</span> owner dbuser;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>创建完成之后，可通过<code>\l</code>命令查看所有数据库</p>
+</blockquote>
+<ol>
+<li>将test数据库的所有权限赋予dbuser<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on database <span class="built_in">test</span> to dbuser</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><ol>
+<li><p>创建数据库用户dbuser，并指定其角色为超级用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u posggres createuser --superuser dbuser</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登陆数据库控制台，设置用户密码后退出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -u postgres psql</span><br><span class="line">\password dbuser &#123;password&#125;</span><br><span class="line">\q</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建数据库，并指定其Owner为dbuser</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u postgres createdb -O dbuser <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="登陆数据库"><a href="#登陆数据库" class="headerlink" title="登陆数据库"></a>登陆数据库</h2><p>与大多数数据库类似，指定用户名、密码及数据库地址，登陆数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U &#123;user_name&#125; <span class="_">-d</span> &#123;db_name&#125; -h &#123;server_addr&#125; -p &#123;port_num&#125;</span><br></pre></td></tr></table></figure></p>
+<p>若PostgreSQL用户中存在当前系统用户时，可以省略-U参数</p>
+<h2 id="常用控制台命令"><a href="#常用控制台命令" class="headerlink" title="常用控制台命令"></a>常用控制台命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\h                  查看帮助</span><br><span class="line">\password           设置密码</span><br><span class="line">\l                  列出所有数据库</span><br><span class="line">\c [database_name]  切换数据库</span><br><span class="line">\d                  列出当前数据库的所有表格</span><br><span class="line">\d [table_name]     查看表结构</span><br><span class="line">\du                 列出所有用户</span><br><span class="line">\e                  打开文本编辑器</span><br><span class="line">\conninfo           列出当前数据库和连接的信息</span><br><span class="line">\q                  退出</span><br></pre></td></tr></table></figure>
+<h2 id="基本SQL操作"><a href="#基本SQL操作" class="headerlink" title="基本SQL操作"></a>基本SQL操作</h2><p>与一般SQL语言一致</p>
+<h2 id="备份与恢复"><a href="#备份与恢复" class="headerlink" title="备份与恢复"></a>备份与恢复</h2><ul>
+<li>pg_dump 备份数据库到文本文件或其他指定格式文件，其参数与psql基本一致</li>
+<li>pg_dumpall 备份数据库到可执行sql文件</li>
+<li>pg_restore 恢复<code>pg_dump</code>生成的文件到数据库</li>
+<li>psql &lt; sql文件 执行sql文件</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Shell命令行快捷键]]></title>
+      <url>http://yoursite.com/2016/07/28/shell/</url>
+      <content type="html"><![CDATA[<ul>
+<li>C-a : 光标回到命令行首（a:ahead)</li>
+<li>C-e : 光标回到命令行尾（e:end)</li>
+<li>C-b : 光标后退一个字符（b:backward)</li>
+<li>C-f : 光标回到命令行首（f:forward)</li>
+<li>C-p : 上一个使用的历史命令 (p: previous)</li>
+<li>C-n : 下一个使用的历史命令 (n: next)</li>
+<li>C-r : 快速检索历史命令 (r: retrieve)</li>
+<li>C-h : 删除光标前一个字符</li>
+<li>C-d : 删除光标后一个字符</li>
+<li>C-w : 删除光标前一个word</li>
+<li>C-k : 删除光标后的所有字符</li>
+<li>C-u : 删除命令行字符</li>
+<li>C-y : 粘贴 C-u, C-K, C-W删除的文本</li>
+<li>C-t : 与前一字符交换</li>
+<li>C-i : Tab</li>
+<li>C-m : Enter</li>
+<li>C-o : Enter</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[MSSQL遇到问条记录]]></title>
+      <url>http://yoursite.com/2016/07/24/MSSQL/</url>
+      <content type="html"><![CDATA[<!-- MarkdownTOC -->
+<ul>
+<li>登陆连接失败</li>
+<li>启动sa登陆</li>
+<li>服务器改为IP地址登陆</li>
+<li>高版本数据库恢复到低版本数据库</li>
+<li>自增长列插入指定值</li>
+<li>select into from 与 insert into select 用法与区别</li>
+<li>总结</li>
+</ul>
+<!-- /MarkdownTOC -->
+<a id="more"></a>
+<p>记录使用MSSQL使用过程中遇到的问题。新手，大多数搜索解决，全部实际操作过，如果不能解决您的问题，请见谅。<br>ps. 自己电脑没装MSSQL，因此没有截图。</p>
+<h2 id="登陆连接失败"><a href="#登陆连接失败" class="headerlink" title="登陆连接失败"></a>登陆连接失败</h2><p>错误描述：未找到或无法访问服务器.请验证实例名称是否正确并且SQL SERVER已配置允许远程链接.(provide:命名管道提供程序,error:40 -无法打开到SQL Server的连接)(Microsoft SQL Server,错误:2)<br>解决办法：</p>
+<ol>
+<li>开始菜单，SQL Server 20XX目录下找到 <code>SQL Server Configuration Manager</code></li>
+<li>SQL Server 【Version】 服务，启动<blockquote>
+<ul>
+<li>可能存在多个服务，请启动对应你连接名的那个服务</li>
+<li>如果启动失败，请选择属性——登陆——本地系统账户，再次重新启动</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h2 id="启动sa登陆"><a href="#启动sa登陆" class="headerlink" title="启动sa登陆"></a>启动sa登陆</h2><p>问题描述：一般本地使用的windows账户，特别第一次安装时没注意，就没用设置sa密码，也就无法sa登陆<br>解决办法：</p>
+<ol>
+<li>windows登陆</li>
+<li>在连接上右击，属性——安全性——SQL Server 和windows身份验证模式。保存，返回</li>
+<li>展开连接，安全性——登录名——sa，设置密码。切换到状态，登陆选择<code>启用</code></li>
+</ol>
+<h2 id="服务器改为IP地址登陆"><a href="#服务器改为IP地址登陆" class="headerlink" title="服务器改为IP地址登陆"></a>服务器改为IP地址登陆</h2><p>问题描述：一般安装完成之后，采用的是windows主机名+服务名的连接方式，而非IP地址，其他电脑无法访问<br>解决办法：</p>
+<ol>
+<li>启动sa登陆</li>
+<li>开始菜单，SQL Server 20XX目录下找到 <code>SQL Server Configuration Manager</code></li>
+<li>SQL Server 【Version】网络配置，启用<code>Namedpipes</code>和<code>TCP/IP</code></li>
+<li><code>TCP/IP</code>属性，IP地址，配置##IP1##地址（IP2本地），##IPALL##TCP端口</li>
+<li>重启SQL Server 服务，连接</li>
+</ol>
+<h2 id="高版本数据库恢复到低版本数据库"><a href="#高版本数据库恢复到低版本数据库" class="headerlink" title="高版本数据库恢复到低版本数据库"></a>高版本数据库恢复到低版本数据库</h2><p>问题描述： 高版本server生成的备份文件无法在低版本上恢复<br>解决办法：</p>
+<h3 id="无法能够连接到高版本服务器"><a href="#无法能够连接到高版本服务器" class="headerlink" title="无法能够连接到高版本服务器"></a>无法能够连接到高版本服务器</h3><p>我没有找到其他办法，只能升级低版本服务器</p>
+<h3 id="能够连接到高版本服务器"><a href="#能够连接到高版本服务器" class="headerlink" title="能够连接到高版本服务器"></a>能够连接到高版本服务器</h3><p>整体思路：</p>
+<ol>
+<li>在高版本服务器上，导出低版本服务器兼容的数据库创建sql语句</li>
+<li>低版本服务器执行，生成表</li>
+<li>利用SQL server数据导入工具，从高版本服务器导入数据。<br>当然，如果数据量比较小，可以在导出SQL语句的时候，直接连数据一起导出，再执行。<br>具体操作：</li>
+<li><p>导出SQL</p>
+<blockquote>
+<ol>
+<li>待备份数据库右击——任务——生成脚本</li>
+<li><code>设置脚本选项</code>——<code>为服务器版本编写脚本</code>，选择目标数据库版本</li>
+<li>如果要同时导出数据，<code>要编写脚本的数据的类型</code>选择<code>架构和数据</code></li>
+</ol>
+</blockquote>
+</li>
+<li><p>执行SQL</p>
+<blockquote>
+<p>要先创建目标数据库，直接将SQL拖过去执行</p>
+</blockquote>
+</li>
+<li><p>导出导出数据</p>
+<blockquote>
+<p>数据库右击——导入数据，按提示下一步，<code>编辑映射</code>时选择<code>启用标识插入</code></p>
+</blockquote>
+</li>
+</ol>
+<p>补充：高版本导入低版本数据，可以直接导入。但是，<strong>表格的一些字段约束会丢失</strong>。</p>
+<h2 id="自增长列插入指定值"><a href="#自增长列插入指定值" class="headerlink" title="自增长列插入指定值"></a>自增长列插入指定值</h2><p>问题描述：想要显示插入自动编号<code>IDENTITY</code>值，导致错误<code>结果会导致错误：当 IDENTITY_INSERT 设置为 OFF 时，不能向表 XXXX中的标识列插入显式值。</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> products (<span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">IDENTITY</span> PRIMARY <span class="keyword">KEY</span>, product <span class="built_in">varchar</span>(<span class="number">20</span>))</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> products (<span class="keyword">id</span>, product) <span class="keyword">VALUES</span>(<span class="number">4</span>, <span class="string">'hello kitty'</span>) #返回错误</span><br></pre></td></tr></table></figure>
+<p>解决办法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> IDENTITY_INSERT products <span class="keyword">ON</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> products (<span class="keyword">id</span>, product) <span class="keyword">VALUES</span>(<span class="number">5</span>, <span class="string">'hello kitty'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="select-into-from-与-insert-into-select-用法与区别"><a href="#select-into-from-与-insert-into-select-用法与区别" class="headerlink" title="select into from 与 insert into select 用法与区别"></a>select into from 与 insert into select 用法与区别</h2><p>select into from 和 insert into select都是用来复制表，两者的主要区别为： select into from 要求目标表不存在，因为在插入时会自动创建。insert into select from 要求目标表存在。</p>
+<h3 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h3><ul>
+<li>Insert into Table2(field1,field2,…) select value1,value2,… from Table1</li>
+<li>SELECT vale1, value2 into Table2 from Table1</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>具体实例请查阅该文章<a href="http://www.studyofnet.com/news/182.html" title="select into from 与 insert into select 用法与区别" target="_blank" rel="external">select into from 与 insert into select 用法与区别</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>MSSQL 真心没有MySQL好用啊！！</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[vmware 记录]]></title>
+      <url>http://yoursite.com/2016/07/24/vmware/</url>
+      <content type="html"><![CDATA[<h2 id="此虚拟机正在使用中，取得该虚拟机的所有权失败"><a href="#此虚拟机正在使用中，取得该虚拟机的所有权失败" class="headerlink" title="此虚拟机正在使用中，取得该虚拟机的所有权失败"></a>此虚拟机正在使用中，取得该虚拟机的所有权失败</h2><p>问题描述：该问题一般是由于强制关闭vmware进程导致<br>解决方案：你所配置的虚拟机目录下存在*.lck文件，删除就可以了。</p>
+<h2 id="CentOS-启动没有IPV4-地址"><a href="#CentOS-启动没有IPV4-地址" class="headerlink" title="CentOS 启动没有IPV4 地址"></a>CentOS 启动没有IPV4 地址</h2><p>问题描述：centos7虚拟机，没有ipv4地址，无法ssh连接<br>解决办法：默认设置没有开机激活网卡，修改网络配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改ONBOOT=yes </span><br><span class="line">sudo systemctl restart network</span><br></pre></td></tr></table></figure></p>
+<h2 id="虚拟机提示Failed-to-start-LSB-Bring-up-down-networking"><a href="#虚拟机提示Failed-to-start-LSB-Bring-up-down-networking" class="headerlink" title="虚拟机提示Failed to start LSB: Bring up/down networking"></a>虚拟机提示Failed to start LSB: Bring up/down networking</h2><p>问题描述：网络无法连接，重启network提示该错误<code>Failed to start LSB: Bring up/down networking</code>。</p>
+<ul>
+<li><p>搜索到的解决办法一般是由于拷贝他人的虚拟机文件导致，需要更改网络配置文件中的HWADDR字段，改为你自己mac地址。(针对CentOS7)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip addr show #查看mac地址</span><br><span class="line">sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改HWADDR字段</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我遇到的问题是由于关闭了<code>VMware NAT Service</code> 服务导致，启动就可以了</p>
+</li>
+</ul>
+<p>谨此记录，日后再补充遇到的其他问题</p>
+<h2 id="ssh问题"><a href="#ssh问题" class="headerlink" title="ssh问题"></a>ssh问题</h2><p>详见鄙人关于ssh问题的blog</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[自平衡二搜索树——红黑树]]></title>
+      <url>http://yoursite.com/2016/07/04/%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
+      <content type="html"><![CDATA[<h2 id="主要属性"><a href="#主要属性" class="headerlink" title="主要属性"></a>主要属性</h2><ol>
+<li>所有节点要么红色，要么黑色</li>
+<li>叶子节点都是黑色</li>
+<li>叶子节点不包含数据</li>
+<li>所有非叶子节点都有两个子节点</li>
+<li>如果一个节点是红色，那么它的子节点都是黑色<blockquote>
+<p>一个红色节点不能是其他红色节点的子节点或者父节点</p>
+</blockquote>
+</li>
+<li>在一个节点到其叶子节点的路径中，如果总是包含相同数据的黑色节点，则该路径相比其他路径是最短的。<blockquote>
+<p>从树的任何节点到其叶子节点的路径都具有相同数目的黑色节点，树里的最长路径则是红黑交替节点路径，所以最短路径必然是具有相同数量的黑色节点——只包含黑色节点的路径。因此，从根节点到叶子节点的最长路径都不会超过最短路径的两倍</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ssh问题-Connection closed by foreign host]]></title>
+      <url>http://yoursite.com/2016/06/30/ssh%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>使用XShell 登陆linux总是回复：<code>Connection closed by foreign host.</code> 或者<br><code>Disconnected from remote host</code>，<br>造成该现象的原因一般是由于ssh连接长期没有操作导致的（这也是误导我的主要原因）</p>
+<h2 id="原因及解决方案"><a href="#原因及解决方案" class="headerlink" title="原因及解决方案"></a>原因及解决方案</h2><h3 id="账号被限制只允许一个人登陆（暂时没遇到）"><a href="#账号被限制只允许一个人登陆（暂时没遇到）" class="headerlink" title="账号被限制只允许一个人登陆（暂时没遇到）"></a>账号被限制只允许一个人登陆（暂时没遇到）</h3><h3 id="无法保持长期连接"><a href="#无法保持长期连接" class="headerlink" title="无法保持长期连接"></a>无法保持长期连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<p>结尾添加两行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClientAliveInterval 60</span><br><span class="line">ClientAliveCountMax 3</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure>
+<h3 id="防火墙原因"><a href="#防火墙原因" class="headerlink" title="防火墙原因"></a>防火墙原因</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭防火墙</span></span><br><span class="line">sudo systemctl stop sshd</span><br><span class="line"><span class="comment"># 或者打开22端口</span></span><br><span class="line">sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h3 id="hosts-deny文件被篡改"><a href="#hosts-deny文件被篡改" class="headerlink" title="hosts.deny文件被篡改"></a>hosts.deny文件被篡改</h3><p>查看<code>/etc/hosts.deny</code>文件，看是否被禁用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 禁止所有ip访问linux 的ssh功能</span><br><span class="line">sshd:all:deny</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>/etc/hosts.allow</code>（允许）和<code>/etc/hosts.deny</code>（禁止）这两个文件是tcpd服务器的配置文件，tcpd服务器可以控制外部IP对本机服务的访问。<br>系统会先检查<code>/etc/hosts.deny</code>规则，再检查<code>/etc/hosts.allow</code>规则，如果有冲突 按<code>/etc/hosts.allow</code>规则处理</p>
+</blockquote>
+<h3 id="客户端连接数过多"><a href="#客户端连接数过多" class="headerlink" title="客户端连接数过多"></a>客户端连接数过多</h3><p>将<code>/etc/ssh/sshd_config</code>中 MaxStartUps 10 改为MaxStartups 10/100，重启sshd</p>
+<h3 id="针对VMware-nat模式"><a href="#针对VMware-nat模式" class="headerlink" title="针对VMware nat模式"></a>针对VMware nat模式</h3><p>描述：连接方式使用NAT；虚拟能在ping通主机，主机无法ping通虚拟机。<br>原因：虚拟机自动获取的IP与vmnet8设置的IP不在同一网段。<br>解决：设置vmnet8自动获取ip即可。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[bat切换当前目录]]></title>
+      <url>http://yoursite.com/2016/06/20/bat/</url>
+      <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"> cd %~dp0</span><br><span class="line"> call git pull</span><br><span class="line"> xcopy D:\google\hosts\hosts C:\Windows\System32\drivers\etc\ /Y /R</span><br></pre></td></tr></table></figure>
+<p>每次更新host，使用管理员运行显示git失败，原因是使用管理员运行时，目录切换到system32下了。<br><code>cd %~dp0</code>表示切换回当前目录</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[python发送邮件（续）—— configparser]]></title>
+      <url>http://yoursite.com/2016/06/03/configparser/</url>
+      <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>昨天代码一些基本配置全部在代码中，灵活性较差，考虑到通过配置文件的方式来实现。结构比较简单，不想用xml或json，类似配置数据库连接的<code>property</code>文件就可以了，<code>configparser</code>比较满足要求。<br>python <code>configparser</code>能够读取<code>*.conf</code>与<code>*.ini</code>的配置文件<br><a id="more"></a><br>以下内容parser摘录自：<a href="https://wiki.python.org/moin/ConfigParserExamples" title="configparserExamples" target="_blank" rel="external">configparserExamples 示例</a></p>
+<h2 id="configparser-使用"><a href="#configparser-使用" class="headerlink" title="configparser 使用"></a>configparser 使用</h2><h3 id="读配置文件"><a href="#读配置文件" class="headerlink" title="读配置文件"></a>读配置文件</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[SectionOne]</span><br><span class="line">Status: Single</span><br><span class="line">Name: Derek</span><br><span class="line">Value: Yes</span><br><span class="line">Age: 30</span><br><span class="line">Single: True</span><br><span class="line"></span><br><span class="line">[SectionTwo]</span><br><span class="line">FavoriteColor = Green, Red, Blue</span><br><span class="line">[SectionThree]</span><br><span class="line">FamilyName: Johnson</span><br><span class="line"></span><br><span class="line">[Others]</span><br><span class="line">Route: 66</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import ConfigParser</span><br><span class="line">config = ConfigParser.ConfigParser()</span><br><span class="line">config.read('config file path')</span><br><span class="line"># read node</span><br><span class="line">config.get('SectionOne','Status)</span><br><span class="line"># read node as list</span><br><span class="line">config.get('SectionTwo','FavoriteColor').replace(' ','').split(',')</span><br></pre></td></tr></table></figure>
+<h3 id="写配置文件"><a href="#写配置文件" class="headerlink" title="写配置文件"></a>写配置文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lets create that config file for next time...</span></span><br><span class="line">cfgfile = open(<span class="string">"c:\\next.ini"</span>,<span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add the settings to the structure of the file, and lets write it out...</span></span><br><span class="line">Config.add_section(<span class="string">'Person'</span>)</span><br><span class="line">Config.set(<span class="string">'Person'</span>,<span class="string">'HasEyes'</span>,<span class="keyword">True</span>)</span><br><span class="line">Config.set(<span class="string">'Person'</span>,<span class="string">'Age'</span>, <span class="number">50</span>)</span><br><span class="line">Config.write(cfgfile)</span><br><span class="line">cfgfile.close()</span><br></pre></td></tr></table></figure>
+<h3 id="读取含有宏的配置文件"><a href="#读取含有宏的配置文件" class="headerlink" title="读取含有宏的配置文件"></a>读取含有宏的配置文件</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[SectionOne]</span><br><span class="line">Param1: Hello</span><br><span class="line">Param2: World</span><br><span class="line"></span><br><span class="line">[SectionTwo]</span><br><span class="line">Param1: $&#123;SectionOne:Param1&#125; $&#123;SectionOne:Param2&#125;</span><br><span class="line"></span><br><span class="line">[SectionThree]</span><br><span class="line">Alpha: One</span><br><span class="line">Bravo: Two</span><br><span class="line">Charlie: $&#123;Alpha&#125; Mississippi</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> configparser</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>settings = configparser.ConfigParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>settings._interpolation = configparser.ExtendedInterpolation()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>settings.read(<span class="string">'settings.ini'</span>)</span><br><span class="line">[<span class="string">'settings.ini'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>settings.sections()</span><br><span class="line">[<span class="string">'SectionOne'</span>, <span class="string">'SectionTwo'</span>, <span class="string">'SectionThree'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>settings.get(<span class="string">'SectionTwo'</span>, <span class="string">'Param1'</span>)</span><br><span class="line"><span class="string">'Hello World'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>settings.get(<span class="string">'SectionThree'</span>, <span class="string">'Charlie'</span>)</span><br><span class="line"><span class="string">'One Mississippi'</span></span><br></pre></td></tr></table></figure>
+<h2 id="发送邮件代码"><a href="#发送邮件代码" class="headerlink" title="发送邮件代码"></a>发送邮件代码</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[mail]</span><br><span class="line">address: abc@qq.com</span><br><span class="line">password: XXXXXXXXXX</span><br><span class="line">smtp: smtp.qq.com</span><br><span class="line">port: 465</span><br><span class="line">subject: XXX 工作日志</span><br><span class="line">reAddr: abc@qq.com, bcd@qq.com</span><br><span class="line">ccAddr: abc@qq.com, bcd@qq.com</span><br><span class="line">contextPath: a.txt</span><br><span class="line">attachPath: b.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">发送带附件邮件</span><br><span class="line">'''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date</span><br><span class="line"><span class="keyword">import</span> configparser</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取配置</span></span><br><span class="line">config = configparser.ConfigParser()</span><br><span class="line">config.read(<span class="string">'mail.ini'</span>, encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">address = config.get(<span class="string">'mail'</span>, <span class="string">'address'</span>)</span><br><span class="line"><span class="comment"># 可以考虑加密</span></span><br><span class="line">password = config.get(<span class="string">'mail'</span>, <span class="string">'password'</span>)</span><br><span class="line">smtp = config.get(<span class="string">'mail'</span>, <span class="string">'smtp'</span>)</span><br><span class="line">port = config.get(<span class="string">'mail'</span>, <span class="string">'port'</span>)</span><br><span class="line">subject = config.get(<span class="string">'mail'</span>, <span class="string">'subject'</span>)</span><br><span class="line"><span class="comment"># 收件人</span></span><br><span class="line">receiver = config.get(<span class="string">'mail'</span>, <span class="string">'reAddr'</span>)</span><br><span class="line"><span class="comment"># 抄送人</span></span><br><span class="line">carbonCopy = config.get(<span class="string">'mail'</span>, <span class="string">'ccAddr'</span>)</span><br><span class="line"><span class="comment"># 正文</span></span><br><span class="line">context = config.get(<span class="string">'mail'</span>, <span class="string">'contextPath'</span>)</span><br><span class="line"><span class="comment"># 附件(暂时考虑的一个)</span></span><br><span class="line">attachment = config.get(<span class="string">'mail'</span>, <span class="string">'attachPath'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个带附件的实例</span></span><br><span class="line">msg = MIMEMultipart()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加邮件头</span></span><br><span class="line">msg[<span class="string">'from'</span>] = address</span><br><span class="line">msg[<span class="string">'to'</span>] = receiver</span><br><span class="line">msg[<span class="string">'subject'</span>] = date.today().strftime(<span class="string">"%Y-%m-%d"</span>) + subject</span><br><span class="line">msg[<span class="string">'cc'</span>] = carbonCopy</span><br><span class="line">msg.attach(MIMEText(open(context, <span class="string">'rb'</span>).read(), <span class="string">'plain'</span>, <span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造附件</span></span><br><span class="line"><span class="keyword">with</span> open(attachment, <span class="string">'rb'</span>) <span class="keyword">as</span> myfile:</span><br><span class="line">    att = MIMEText(myfile.read(), <span class="string">'base64'</span>, <span class="string">'utf-8'</span>)</span><br><span class="line">    att[<span class="string">"Content-Type"</span>] = <span class="string">'application/octet-stream'</span></span><br><span class="line">    <span class="comment"># 附件名</span></span><br><span class="line">    filename = attachment.split(<span class="string">'\\'</span>)[<span class="number">-1</span>]</span><br><span class="line">    att[<span class="string">"Content-Disposition"</span>] = <span class="string">'attachment; filename='</span> + filename</span><br><span class="line">    msg.attach(att)</span><br><span class="line"><span class="comment"># 发送邮件</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    server = smtplib.SMTP_SSL(smtp, int(port))</span><br><span class="line">    server.login(address, password)</span><br><span class="line">    <span class="comment"># 所有收件人（包括抄送）</span></span><br><span class="line">    receiverList = (receiver + <span class="string">','</span> + carbonCopy).replace(<span class="string">' '</span>, <span class="string">''</span>).split(<span class="string">','</span>)</span><br><span class="line">    server.sendmail(msg[<span class="string">'from'</span>], receiverList, msg.as_string())</span><br><span class="line">    server.quit()</span><br><span class="line">    print(<span class="string">'''success'''</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(e)</span><br></pre></td></tr></table></figure>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>若密码中包含特殊字符，需要转义</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[python 发送邮件]]></title>
+      <url>http://yoursite.com/2016/06/02/post/</url>
+      <content type="html"><![CDATA[<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>每天发送工作日报，需要send一堆人，cc一堆人（公司规定，呵呵），还要添加附件。考虑到python能够方便的发送邮箱，就打算写个脚本。<br><a id="more"></a></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">发送带附件邮件</span><br><span class="line">'''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个带附件的实例</span></span><br><span class="line">msg = MIMEMultipart()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接收列表</span></span><br><span class="line">receiverList = [<span class="string">'abc@yeah.net'</span>, <span class="string">'abc@qq.com'</span>]</span><br><span class="line"><span class="comment"># 抄送列表</span></span><br><span class="line">ccList = [<span class="string">'abc@yeah.net'</span>, <span class="string">'abc@qq.com'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 邮件头</span></span><br><span class="line">msg[<span class="string">'from'</span>] = <span class="string">'song_cai@yeah.net'</span></span><br><span class="line">msg[<span class="string">'to'</span>] = <span class="string">', '</span>.join(receiverList)</span><br><span class="line">msg[<span class="string">'subject'</span>] = date.today().strftime(<span class="string">"%Y-%m-%d"</span>) + <span class="string">'''XX工作日报'''</span></span><br><span class="line">msg[<span class="string">'cc'</span>] = <span class="string">', '</span>.join(ccList)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 正文</span></span><br><span class="line">msg.attach(MIMEText(open(<span class="string">'d:\\mailContext.txt'</span>,</span><br><span class="line">                         <span class="string">'rb'</span>).read(), <span class="string">'plain'</span>, <span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 附件</span></span><br><span class="line">att = MIMEText(open(<span class="string">'d:\\mailContext.txt'</span>, <span class="string">'rb'</span>).read(), <span class="string">'base64'</span>, <span class="string">'utf-8'</span>)</span><br><span class="line">att[<span class="string">"Content-Type"</span>] = <span class="string">'application/octet-stream'</span></span><br><span class="line">att[<span class="string">"Content-Disposition"</span>] = <span class="string">'attachment; filename="mailContext.txt"'</span></span><br><span class="line">msg.attach(att)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送邮件</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    server = smtplib.SMTP_SSL(<span class="string">'''smtp.qq.com'''</span>, <span class="number">465</span>)</span><br><span class="line">    server.login(<span class="string">'song_cai@yeah.net'</span>, <span class="string">'''xxxxx'''</span>)</span><br><span class="line">    server.sendmail(msg[<span class="string">'from'</span>], receiverList + ccList, msg.as_string())</span><br><span class="line">    server.quit()</span><br><span class="line">    print(<span class="string">'''success'''</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    input(e)</span><br></pre></td></tr></table></figure>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>现在大部分邮箱使用SSL方式，所以对应地必须使用<code>SMTP_SSL</code>,直接指定地址和端口，使用<code>connect</code>的方式指定存在问题</li>
+<li>正文要写在附件之前，否则会出现两个附件（即正文部分也成为附件了）</li>
+</ul>
+<p><strong> 懒惰使人进步 </strong></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>http://yoursite.com/2016/05/29/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[记录]]></title>
+      <url>http://yoursite.com/2016/05/20/%E8%AE%B0%E5%BD%95/</url>
+      <content type="html"><![CDATA[<p>搭建的一晚上的成果, 随便发个帖子试试。</p>
+<ol>
+<li>安装nodejs hexo</li>
+<li>安装next 主题</li>
+<li>添加第三方插件</li>
+<li>设置个人信息</li>
+</ol>
+]]></content>
+    </entry>
+    
+  
+  
+</search>

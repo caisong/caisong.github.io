@@ -27,3 +27,6 @@ sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改HWADDR字段
 * 我遇到的问题是由于关闭了`VMware NAT Service` 服务导致，启动就可以了
 
 谨此记录，日后再补充遇到的其他问题
+
+## ssh问题
+详见鄙人关于ssh问题的blog
