@@ -287,6 +287,136 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/30/ssh问题/" itemprop="url">
+                  ssh问题-Connection closed by foreign host
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-30T22:56:04+08:00" content="2016-06-30">
+              2016-06-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/30/ssh问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/30/ssh问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>使用XShell 登陆linux总是回复：<code>Connection closed by foreign host.</code> 或者<br><code>Disconnected from remote host</code>，<br>造成该现象的原因一般是由于ssh连接长期没有操作导致的（这也是误导我的主要原因）</p>
+<h2 id="原因及解决方案"><a href="#原因及解决方案" class="headerlink" title="原因及解决方案"></a>原因及解决方案</h2><h3 id="账号被限制只允许一个人登陆（暂时没遇到）"><a href="#账号被限制只允许一个人登陆（暂时没遇到）" class="headerlink" title="账号被限制只允许一个人登陆（暂时没遇到）"></a>账号被限制只允许一个人登陆（暂时没遇到）</h3><h3 id="无法保持长期连接"><a href="#无法保持长期连接" class="headerlink" title="无法保持长期连接"></a>无法保持长期连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<p>结尾添加两行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClientAliveInterval 60</span><br><span class="line">ClientAliveCountMax 3</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure>
+<h3 id="防火墙原因"><a href="#防火墙原因" class="headerlink" title="防火墙原因"></a>防火墙原因</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭防火墙</span></span><br><span class="line">sudo systemctl stop sshd</span><br><span class="line"><span class="comment"># 或者打开22端口</span></span><br><span class="line">sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h3 id="hosts-deny文件被篡改"><a href="#hosts-deny文件被篡改" class="headerlink" title="hosts.deny文件被篡改"></a>hosts.deny文件被篡改</h3><p>查看<code>/etc/hosts.deny</code>文件，看是否被禁用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 禁止所有ip访问linux 的ssh功能</span><br><span class="line">sshd:all:deny</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>/etc/hosts.allow</code>（允许）和<code>/etc/hosts.deny</code>（禁止）这两个文件是tcpd服务器的配置文件，tcpd服务器可以控制外部IP对本机服务的访问。<br>系统会先检查<code>/etc/hosts.deny</code>规则，再检查<code>/etc/hosts.allow</code>规则，如果有冲突 按<code>/etc/hosts.allow</code>规则处理</p>
+</blockquote>
+<h3 id="客户端连接数过多"><a href="#客户端连接数过多" class="headerlink" title="客户端连接数过多"></a>客户端连接数过多</h3><p>将<code>/etc/ssh/sshd_config</code>中 MaxStartUps 10 改为MaxStartups 10/100，重启sshd</p>
+<h3 id="针对VMware-nat模式"><a href="#针对VMware-nat模式" class="headerlink" title="针对VMware nat模式"></a>针对VMware nat模式</h3><p>描述：连接方式使用NAT；虚拟能在ping通主机，主机无法ping通虚拟机。<br>原因：虚拟机自动获取的IP与vmnet8设置的IP不在同一网段。<br>解决：设置vmnet8自动获取ip即可。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/20/bat/" itemprop="url">
                   bat切换当前目录
                 </a>
@@ -911,7 +1041,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -919,7 +1049,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -928,7 +1058,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

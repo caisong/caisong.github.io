@@ -287,6 +287,128 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/22/TTS/" itemprop="url">
+                  Windows 安装 Text-to-Speech
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-22T22:39:11+08:00" content="2016-12-22">
+              2016-12-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/tts/" itemprop="url" rel="index">
+                    <span itemprop="name">tts</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/22/TTS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/22/TTS/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>Win10、Win8摘录自官方文档，Win10 已验证。Win7未尝试！</strong><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/22/TTS/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/19/time-util/" itemprop="url">
                   时间相关函数
                 </a>
@@ -358,7 +480,7 @@
         
           
             <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#incldue <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> tm  <span class="comment">//calendar time type</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">int</span> tm_sec; <span class="comment">//[0,60](since C99)</span></span><br><span class="line">  <span class="keyword">int</span> tm_min; <span class="comment">//[0,59]</span></span><br><span class="line">  <span class="keyword">int</span> tm_hour; <span class="comment">//[0,23]</span></span><br><span class="line">  <span class="keyword">int</span> tm_mday; <span class="comment">//[1,31]</span></span><br><span class="line">  <span class="keyword">int</span> tm_mon; <span class="comment">//[0,11]</span></span><br><span class="line">  <span class="keyword">int</span> tm_year; <span class="comment">//year since 1900</span></span><br><span class="line">  <span class="keyword">int</span> tm_wday; <span class="comment">//days since Sunday:[0~6]</span></span><br><span class="line">  <span class="keyword">int</span> tm_wday; <span class="comment">//day since Jan 1:[0,365]</span></span><br><span class="line">  <span class="keyword">int</span> tm_isdst;<span class="comment">//夏令时时间，&gt;0:有效	=0：无效	&lt;0: 不可用</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">time_t</span>; <span class="comment">//calendar time since epoch type</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">clock_t</span>; <span class="comment">//processor time since era type</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> timespce&#123;  <span class="comment">//time in seconds and nanoseconds</span></span><br><span class="line">  <span class="keyword">time_t</span> tv_sec;</span><br><span class="line">  <span class="keyword">long</span> tv_nsec;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">time_t</span> time(<span class="keyword">time_t</span> *calptr); <span class="comment">//returns the current calendar time of the system as  ime since epoch</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">difftime</span><span class="params">(<span class="keyword">time_t</span> time_end, <span class="keyword">time_t</span> time_beg)</span></span>; <span class="comment">//computes the difference between times</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line">* format conversions</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">asctime</span><span class="params">( <span class="keyword">const</span> <span class="keyword">struct</span> tm *time_ptr)</span></span>; <span class="comment">//converts a tm object to a textual representation</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">ctime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">time_t</span> *time)</span></span>; <span class="comment">//converts a time_t object to a textual representation; as if by calling asctime(localtime(time));</span></span><br><span class="line"><span class="function"><span class="keyword">struct</span> tm *<span class="title">gmtime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">time_t</span> *time)</span></span>; <span class="comment">//convert time since epoch calendar time expressedd as UTC</span></span><br><span class="line"><span class="function"><span class="keyword">struct</span> tm *<span class="title">localtime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">time_t</span> *time)</span></span>; <span class="comment">//converts time since epoch calendar time expressed as local time </span></span><br><span class="line"><span class="keyword">time_t</span> mktime(<span class="keyword">struct</span> tm *time); <span class="comment">//converts calendar time to time since epoch</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">size_t</span> strftime(<span class="keyword">char</span> *str, <span class="keyword">size_t</span> count, <span class="keyword">const</span> <span class="keyword">char</span> *format, <span class="keyword">const</span> <span class="keyword">struct</span> tm *time); <span class="comment">//converts a tm object to custom textual representation</span></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strptime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s, <span class="keyword">const</span> <span class="keyword">char</span> *format, <span class="keyword">struct</span> tm *tm)</span></span>; <span class="comment">//converse of strftime</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/time.h&gt;</span></span></span><br><span class="line"><span class="comment">/*</span><br><span class="line">clockid_t :</span><br><span class="line">CLOCK_REALTIME: 实时系统时间</span><br><span class="line">CLOCK_MONOTONIC: 不带负跳数的实时系统时间</span><br><span class="line">CLOCK_PROCESS_CPUTIME_ID: 调用进程CPU时间 </span><br><span class="line">CLOCK_THREAD_CPUTIME_ID: 调用线程CPU时间</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">clock_gettime</span><span class="params">(<span class="keyword">clockid_t</span> clock_id, <span class="keyword">struct</span> timespec *tsp)</span></span>; <span class="comment">//获取指定时钟的时间</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">clock_getres</span><span class="params">(<span class="keyword">clockid_t</span> clock_id, <span class="keyword">struct</span> timespec *tsp)</span></span>; <span class="comment">//设置指定时钟精度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">clock_settime</span><span class="params">(<span class="keyword">clockid_t</span> clodk_id, <span class="keyword">const</span> <span class="keyword">struct</span> timespec *tsp)</span></span>;<span class="comment">//设置时钟时间</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gettimeofday</span><span class="params">(<span class="keyword">struct</span> timeval *<span class="keyword">restrict</span> tp, <span class="keyword">void</span> *<span class="keyword">restrict</span> tzp)</span></span>;<span class="comment">//获取当前时间，与其他相同作用函数相比，精度较高</span></span><br></pre></td></tr></table></figure>
-<p><img src="./time_util.jpg" alt="time_util"></p>
+<p><img src="/images/time_util.jpg" alt="time_util"></p>
 
           
         
@@ -1427,136 +1549,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/30/ssh问题/" itemprop="url">
-                  ssh问题-Connection closed by foreign host
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-30T22:56:04+08:00" content="2016-06-30">
-              2016-06-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/30/ssh问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/30/ssh问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>使用XShell 登陆linux总是回复：<code>Connection closed by foreign host.</code> 或者<br><code>Disconnected from remote host</code>，<br>造成该现象的原因一般是由于ssh连接长期没有操作导致的（这也是误导我的主要原因）</p>
-<h2 id="原因及解决方案"><a href="#原因及解决方案" class="headerlink" title="原因及解决方案"></a>原因及解决方案</h2><h3 id="账号被限制只允许一个人登陆（暂时没遇到）"><a href="#账号被限制只允许一个人登陆（暂时没遇到）" class="headerlink" title="账号被限制只允许一个人登陆（暂时没遇到）"></a>账号被限制只允许一个人登陆（暂时没遇到）</h3><h3 id="无法保持长期连接"><a href="#无法保持长期连接" class="headerlink" title="无法保持长期连接"></a>无法保持长期连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-<p>结尾添加两行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClientAliveInterval 60</span><br><span class="line">ClientAliveCountMax 3</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure>
-<h3 id="防火墙原因"><a href="#防火墙原因" class="headerlink" title="防火墙原因"></a>防火墙原因</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭防火墙</span></span><br><span class="line">sudo systemctl stop sshd</span><br><span class="line"><span class="comment"># 或者打开22端口</span></span><br><span class="line">sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT</span><br></pre></td></tr></table></figure>
-<h3 id="hosts-deny文件被篡改"><a href="#hosts-deny文件被篡改" class="headerlink" title="hosts.deny文件被篡改"></a>hosts.deny文件被篡改</h3><p>查看<code>/etc/hosts.deny</code>文件，看是否被禁用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 禁止所有ip访问linux 的ssh功能</span><br><span class="line">sshd:all:deny</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p><code>/etc/hosts.allow</code>（允许）和<code>/etc/hosts.deny</code>（禁止）这两个文件是tcpd服务器的配置文件，tcpd服务器可以控制外部IP对本机服务的访问。<br>系统会先检查<code>/etc/hosts.deny</code>规则，再检查<code>/etc/hosts.allow</code>规则，如果有冲突 按<code>/etc/hosts.allow</code>规则处理</p>
-</blockquote>
-<h3 id="客户端连接数过多"><a href="#客户端连接数过多" class="headerlink" title="客户端连接数过多"></a>客户端连接数过多</h3><p>将<code>/etc/ssh/sshd_config</code>中 MaxStartUps 10 改为MaxStartups 10/100，重启sshd</p>
-<h3 id="针对VMware-nat模式"><a href="#针对VMware-nat模式" class="headerlink" title="针对VMware nat模式"></a>针对VMware nat模式</h3><p>描述：连接方式使用NAT；虚拟能在ping通主机，主机无法ping通虚拟机。<br>原因：虚拟机自动获取的IP与vmnet8设置的IP不在同一网段。<br>解决：设置vmnet8自动获取ip即可。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1602,7 +1594,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1610,7 +1602,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1619,7 +1611,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

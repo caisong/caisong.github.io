@@ -60,4 +60,4 @@ int clock_settime(clockid_t clodk_id, const struct timespec *tsp);//设置时钟
 int gettimeofday(struct timeval *restrict tp, void *restrict tzp);//获取当前时间，与其他相同作用函数相比，精度较高
 ```
 
-![time_util](./time_util.jpg)
+![time_util](/images/time_util.jpg)
