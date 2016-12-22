@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/05/20/%E8%AE%B0%E5%BD%95/</loc>
+    
+    <lastmod>2016-12-22T15:01:45.561Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/07/24/MSSQL/</loc>
+    
+    <lastmod>2016-12-22T15:00:58.182Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/12/19/time-util/</loc>
     
     <lastmod>2016-12-22T14:56:57.869Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>http://yoursite.com/2016/10/12/PostgreSQL-ODBC/</loc>
     
     <lastmod>2016-10-12T13:41:56.672Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/07/24/MSSQL/</loc>
-    
-    <lastmod>2016-10-12T13:41:41.280Z</lastmod>
     
   </url>
   
@@ -122,13 +129,6 @@
   
   <url>
     <loc>http://yoursite.com/about/index.html</loc>
-    
-    <lastmod>2016-05-29T01:22:10.010Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/05/20/%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2016-05-29T01:22:10.010Z</lastmod>
     

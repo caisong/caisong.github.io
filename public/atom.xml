@@ -368,7 +368,7 @@
     <link href="http://yoursite.com/2016/07/24/MSSQL/"/>
     <id>http://yoursite.com/2016/07/24/MSSQL/</id>
     <published>2016-07-24T14:10:46.000Z</published>
-    <updated>2016-10-12T13:41:41.280Z</updated>
+    <updated>2016-12-22T15:00:58.182Z</updated>
     
     <content type="html">&lt;!-- MarkdownTOC --&gt;
 &lt;ul&gt;
@@ -464,7 +464,7 @@
     
     </summary>
     
-      <category term="DB" scheme="http://yoursite.com/categories/DB/"/>
+      <category term="DataBase" scheme="http://yoursite.com/categories/DataBase/"/>
     
     
       <category term="MSSQL, SQL Server" scheme="http://yoursite.com/tags/MSSQL-SQL-Server/"/>
@@ -702,7 +702,7 @@
     <link href="http://yoursite.com/2016/05/20/%E8%AE%B0%E5%BD%95/"/>
     <id>http://yoursite.com/2016/05/20/记录/</id>
     <published>2016-05-19T16:08:04.000Z</published>
-    <updated>2016-05-29T01:22:10.010Z</updated>
+    <updated>2016-12-22T15:01:45.561Z</updated>
     
     <content type="html">&lt;p&gt;搭建的一晚上的成果, 随便发个帖子试试。&lt;/p&gt;
 &lt;ol&gt;
@@ -726,7 +726,7 @@
     
     </summary>
     
-      <category term="杂记" scheme="http://yoursite.com/categories/%E6%9D%82%E8%AE%B0/"/>
+      <category term="record" scheme="http://yoursite.com/categories/record/"/>
     
     
       <category term="record" scheme="http://yoursite.com/tags/record/"/>
