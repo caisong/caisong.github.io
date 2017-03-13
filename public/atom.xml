@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-22T14:42:20.966Z</updated>
+  <updated>2017-03-13T14:36:39.892Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>set_ip_addr_on_boot</title>
+    <link href="http://yoursite.com/2017/03/13/set-ip-addr-on-boot/"/>
+    <id>http://yoursite.com/2017/03/13/set-ip-addr-on-boot/</id>
+    <published>2017-03-13T14:29:19.000Z</published>
+    <updated>2017-03-13T14:36:39.892Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;update-rc-d&quot;&gt;&lt;a href=&quot;#update-rc-d&quot; class=&quot;headerlink&quot; title=&quot;update-rc.d&quot;&gt;&lt;/a&gt;update-rc.d&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;the script (setipaddr.sh)&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#! /bin/sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;PATH=/usr/&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;/sbin:/usr/&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin:&lt;span class=&quot;variable&quot;&gt;$PATH&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ifconfig eth0 192.168.10.1/24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;update-rc.d setting&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;chmod +x setipaddr.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mv setipaddr.sh /etc/init.d&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;update-rc.d setipaddr.sh defaults&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;run level&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# If defaults is used then update-rc.d will make links to start the service in runlevels 2345 and to stop the service in runlevels 016&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;runlevel &lt;span class=&quot;comment&quot;&gt;# get current level&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;systemctl&quot;&gt;&lt;a href=&quot;#systemctl&quot; class=&quot;headerlink&quot; title=&quot;systemctl&quot;&gt;&lt;/a&gt;systemctl&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;service file (/etc/systemd/system/setipaddr.service)  &lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[Unit]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Description=&lt;span class=&quot;built_in&quot;&gt;set&lt;/span&gt; ip on boot&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;After=network.target&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[Service]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Type=oneshot&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ExecStart=/opt/bin/setipaddr.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[Install]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;WantedBy=multi-user.target&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;systemctl setting&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;systemctl &lt;span class=&quot;built_in&quot;&gt;enable&lt;/span&gt; setipaddr.service&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;update-rc-d&quot;&gt;&lt;a href=&quot;#update-rc-d&quot; class=&quot;headerlink&quot; title=&quot;update-rc.d&quot;&gt;&lt;/a&gt;update-rc.d&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;the script (setipaddr.sh)
+    
+    </summary>
+    
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+    
+    
+      <category term="shell, update-rc.d, systemctl" scheme="http://yoursite.com/tags/shell-update-rc-d-systemctl/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows 安装 Text-to-Speech</title>

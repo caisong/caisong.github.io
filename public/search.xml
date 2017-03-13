@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title><![CDATA[set_ip_addr_on_boot]]></title>
+      <url>http://yoursite.com/2017/03/13/set-ip-addr-on-boot/</url>
+      <content type="html"><![CDATA[<h2 id="update-rc-d"><a href="#update-rc-d" class="headerlink" title="update-rc.d"></a>update-rc.d</h2><ul>
+<li><p>the script (setipaddr.sh)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/sbin:/usr/<span class="built_in">local</span>/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin:<span class="variable">$PATH</span></span><br><span class="line">ifconfig eth0 192.168.10.1/24</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>update-rc.d setting</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod +x setipaddr.sh</span><br><span class="line">mv setipaddr.sh /etc/init.d</span><br><span class="line">update-rc.d setipaddr.sh defaults</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>run level</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># If defaults is used then update-rc.d will make links to start the service in runlevels 2345 and to stop the service in runlevels 016</span></span><br><span class="line">runlevel <span class="comment"># get current level</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h2><ul>
+<li><p>service file (/etc/systemd/system/setipaddr.service)  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=<span class="built_in">set</span> ip on boot</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=oneshot</span><br><span class="line">ExecStart=/opt/bin/setipaddr.sh</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>systemctl setting</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> setipaddr.service</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Windows 安装 Text-to-Speech]]></title>
       <url>http://yoursite.com/2016/12/22/TTS/</url>
       <content type="html"><![CDATA[<p><strong>Win10、Win8摘录自官方文档，Win10 已验证。Win7未尝试！</strong><br><a id="more"></a></p>
