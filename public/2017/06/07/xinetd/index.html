@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="xinetd," />
 
 
 
@@ -86,15 +86,25 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Caisong's Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="介绍  
+
+
+xinetd - the extended Internet services daemonxinetd  performs  the  same  function as inetd: it starts programs thatprovide Internet services.  Instead of having such servers  started  atsyst">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xinetd 配置">
+<meta property="og:url" content="http://yoursite.com/2017/06/07/xinetd/index.html">
 <meta property="og:site_name" content="Caisong's Blog">
-<meta property="og:description">
+<meta property="og:description" content="介绍  
+
+
+xinetd - the extended Internet services daemonxinetd  performs  the  same  function as inetd: it starts programs thatprovide Internet services.  Instead of having such servers  started  atsyst">
+<meta property="og:updated_time" content="2017-06-07T14:04:02.946Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Caisong's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="xinetd 配置">
+<meta name="twitter:description" content="介绍  
+
+
+xinetd - the extended Internet services daemonxinetd  performs  the  same  function as inetd: it starts programs thatprovide Internet services.  Instead of having such servers  started  atsyst">
 
 
 
@@ -112,7 +122,7 @@
   };
 </script>
 
-  <title> Caisong's Blog </title>
+  <title> xinetd 配置 | Caisong's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -142,9 +152,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -264,9 +272,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -286,10 +294,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/06/07/xinetd/" itemprop="url">
-                  xinetd 配置
-                </a>
+                xinetd 配置
               
             
           </h1>
@@ -336,9 +341,7 @@
       
 
       
-        
-          
-            <ol>
+        <ol>
 <li>介绍  </li>
 </ol>
 <blockquote>
@@ -362,1197 +365,77 @@
 </li>
 </ol>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/13/set-ip-addr-on-boot/" itemprop="url">
-                  set_ip_addr_on_boot
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-13T22:29:19+08:00" content="2017-03-13">
-              2017-03-13
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/13/set-ip-addr-on-boot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/13/set-ip-addr-on-boot/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/xinetd/" rel="tag">#xinetd</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="update-rc-d"><a href="#update-rc-d" class="headerlink" title="update-rc.d"></a>update-rc.d</h2><ul>
-<li><p>the script (setipaddr.sh)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/sbin:/usr/<span class="built_in">local</span>/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin:<span class="variable">$PATH</span></span><br><span class="line">ifconfig eth0 192.168.10.1/24</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>update-rc.d setting</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod +x setipaddr.sh</span><br><span class="line">mv setipaddr.sh /etc/init.d</span><br><span class="line">update-rc.d setipaddr.sh defaults</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>run level</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># If defaults is used then update-rc.d will make links to start the service in runlevels 2345 and to stop the service in runlevels 016</span></span><br><span class="line">runlevel <span class="comment"># get current level</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h2><ul>
-<li><p>service file (/etc/systemd/system/setipaddr.service)  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=<span class="built_in">set</span> ip on boot</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=oneshot</span><br><span class="line">ExecStart=/opt/bin/setipaddr.sh</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>systemctl setting</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> setipaddr.service</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/13/set-ip-addr-on-boot/" rel="next" title="set_ip_addr_on_boot">
+                <i class="fa fa-chevron-left"></i> set_ip_addr_on_boot
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/12/22/TTS/" itemprop="url">
-                  Windows 安装 Text-to-Speech
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-22T22:39:11+08:00" content="2016-12-22">
-              2016-12-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tts/" itemprop="url" rel="index">
-                    <span itemprop="name">tts</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/22/TTS/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/22/TTS/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>Win10、Win8摘录自官方文档，Win10 已验证。Win7未尝试！</strong><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/22/TTS/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/19/time-util/" itemprop="url">
-                  时间相关函数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-19T22:44:11+08:00" content="2016-12-19">
-              2016-12-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/program/" itemprop="url" rel="index">
-                    <span itemprop="name">program</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/19/time-util/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/19/time-util/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#incldue <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> tm  <span class="comment">//calendar time type</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">int</span> tm_sec; <span class="comment">//[0,60](since C99)</span></span><br><span class="line">  <span class="keyword">int</span> tm_min; <span class="comment">//[0,59]</span></span><br><span class="line">  <span class="keyword">int</span> tm_hour; <span class="comment">//[0,23]</span></span><br><span class="line">  <span class="keyword">int</span> tm_mday; <span class="comment">//[1,31]</span></span><br><span class="line">  <span class="keyword">int</span> tm_mon; <span class="comment">//[0,11]</span></span><br><span class="line">  <span class="keyword">int</span> tm_year; <span class="comment">//year since 1900</span></span><br><span class="line">  <span class="keyword">int</span> tm_wday; <span class="comment">//days since Sunday:[0~6]</span></span><br><span class="line">  <span class="keyword">int</span> tm_wday; <span class="comment">//day since Jan 1:[0,365]</span></span><br><span class="line">  <span class="keyword">int</span> tm_isdst;<span class="comment">//夏令时时间，&gt;0:有效	=0：无效	&lt;0: 不可用</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">time_t</span>; <span class="comment">//calendar time since epoch type</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">clock_t</span>; <span class="comment">//processor time since era type</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> timespce&#123;  <span class="comment">//time in seconds and nanoseconds</span></span><br><span class="line">  <span class="keyword">time_t</span> tv_sec;</span><br><span class="line">  <span class="keyword">long</span> tv_nsec;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">time_t</span> time(<span class="keyword">time_t</span> *calptr); <span class="comment">//returns the current calendar time of the system as  ime since epoch</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">difftime</span><span class="params">(<span class="keyword">time_t</span> time_end, <span class="keyword">time_t</span> time_beg)</span></span>; <span class="comment">//computes the difference between times</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line">* format conversions</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">asctime</span><span class="params">( <span class="keyword">const</span> <span class="keyword">struct</span> tm *time_ptr)</span></span>; <span class="comment">//converts a tm object to a textual representation</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">ctime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">time_t</span> *time)</span></span>; <span class="comment">//converts a time_t object to a textual representation; as if by calling asctime(localtime(time));</span></span><br><span class="line"><span class="function"><span class="keyword">struct</span> tm *<span class="title">gmtime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">time_t</span> *time)</span></span>; <span class="comment">//convert time since epoch calendar time expressedd as UTC</span></span><br><span class="line"><span class="function"><span class="keyword">struct</span> tm *<span class="title">localtime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">time_t</span> *time)</span></span>; <span class="comment">//converts time since epoch calendar time expressed as local time </span></span><br><span class="line"><span class="keyword">time_t</span> mktime(<span class="keyword">struct</span> tm *time); <span class="comment">//converts calendar time to time since epoch</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">size_t</span> strftime(<span class="keyword">char</span> *str, <span class="keyword">size_t</span> count, <span class="keyword">const</span> <span class="keyword">char</span> *format, <span class="keyword">const</span> <span class="keyword">struct</span> tm *time); <span class="comment">//converts a tm object to custom textual representation</span></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strptime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s, <span class="keyword">const</span> <span class="keyword">char</span> *format, <span class="keyword">struct</span> tm *tm)</span></span>; <span class="comment">//converse of strftime</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/time.h&gt;</span></span></span><br><span class="line"><span class="comment">/*</span><br><span class="line">clockid_t :</span><br><span class="line">CLOCK_REALTIME: 实时系统时间</span><br><span class="line">CLOCK_MONOTONIC: 不带负跳数的实时系统时间</span><br><span class="line">CLOCK_PROCESS_CPUTIME_ID: 调用进程CPU时间 </span><br><span class="line">CLOCK_THREAD_CPUTIME_ID: 调用线程CPU时间</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">clock_gettime</span><span class="params">(<span class="keyword">clockid_t</span> clock_id, <span class="keyword">struct</span> timespec *tsp)</span></span>; <span class="comment">//获取指定时钟的时间</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">clock_getres</span><span class="params">(<span class="keyword">clockid_t</span> clock_id, <span class="keyword">struct</span> timespec *tsp)</span></span>; <span class="comment">//设置指定时钟精度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">clock_settime</span><span class="params">(<span class="keyword">clockid_t</span> clodk_id, <span class="keyword">const</span> <span class="keyword">struct</span> timespec *tsp)</span></span>;<span class="comment">//设置时钟时间</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gettimeofday</span><span class="params">(<span class="keyword">struct</span> timeval *<span class="keyword">restrict</span> tp, <span class="keyword">void</span> *<span class="keyword">restrict</span> tzp)</span></span>;<span class="comment">//获取当前时间，与其他相同作用函数相比，精度较高</span></span><br></pre></td></tr></table></figure>
-<p><img src="/images/time_util.jpg" alt="time_util"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/12/centos-lua/" itemprop="url">
-                  CentOS 安装Lua 5.3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-12T21:47:19+08:00" content="2016-10-12">
-              2016-10-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/lua/" itemprop="url" rel="index">
-                    <span itemprop="name">lua</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/12/centos-lua/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/12/centos-lua/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>按照官网教程，执行以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -R -O http://www.lua.org/ftp/lua-5.3.3.tar.gz</span><br><span class="line">tar zxf lua-5.3.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> lua-5.3.3</span><br><span class="line">make linux <span class="built_in">test</span></span><br></pre></td></tr></table></figure></p>
-<p>但其实lua并未安装，许多博文都是建立软链接，但其实<code>makefile</code>文件中已经写好了，只需install就可以了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make linux install</span><br></pre></td></tr></table></figure></p>
-<p>升级lua版本之后，会导致<code>luarock</code>无法使用，需要重新编译安装。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://luarocks.org/releases/luarocks-2.4.1.tar.gz</span><br><span class="line">tar zxpf luarocks-2.4.1.tar.gz</span><br><span class="line"><span class="built_in">cd</span> luarocks-2.4.1</span><br><span class="line">./configure; sudo make bootstrap</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/12/atom-config/" itemprop="url">
-                  atom config 设置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-12T21:46:56+08:00" content="2016-10-12">
-              2016-10-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/eidtor/" itemprop="url" rel="index">
-                    <span itemprop="name">eidtor</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/12/atom-config/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/12/atom-config/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在文件<em>~/.atom/.apmrc</em>中添加以下内容，若该文件不存在，则创建<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">strict-ssl</span>=<span class="literal">false</span></span><br><span class="line"><span class="attr">https-proxy</span>=http://<span class="number">192.168</span>.<span class="number">10.1</span>:<span class="number">8080</span></span><br><span class="line"><span class="attr">http-proxy</span>=http://<span class="number">192.168</span>.<span class="number">10.1</span>:<span class="number">8080</span></span><br></pre></td></tr></table></figure></p>
-<p><em>http与proxy之间使用的是连字符，而不是下划线</em></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/12/PostgreSQL-ODBC/" itemprop="url">
-                  PostgreSQL ODBC
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-12T21:32:48+08:00" content="2016-10-12">
-              2016-10-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/DataBase/" itemprop="url" rel="index">
-                    <span itemprop="name">DataBase</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/12/PostgreSQL-ODBC/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/12/PostgreSQL-ODBC/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <!-- MarkdownTOC -->
-<ul>
-<li>安装unixODBC</li>
-<li>安装PostgreSQL ODBC驱动</li>
-<li>检查驱动配置</li>
-<li>添加数据源</li>
-<li>修改PostgrsSQL认证方式</li>
-<li>验证</li>
-<li>ODBC 连接数据库</li>
-</ul>
-<!-- /MarkdownTOC -->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/12/PostgreSQL-ODBC/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/12/Install/" itemprop="url">
-                  PostgreSQL 安装
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-12T21:13:50+08:00" content="2016-10-12">
-              2016-10-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/DataBase/" itemprop="url" rel="index">
-                    <span itemprop="name">DataBase</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/12/Install/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/12/Install/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <!-- MarkdownTOC -->
-<ul>
-<li>安装</li>
-<li>添加用户和数据库</li>
-<li>登陆数据库</li>
-<li>常用控制台命令</li>
-<li>基本SQL操作</li>
-<li>备份与恢复</li>
-</ul>
-<!-- /MarkdownTOC -->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/12/Install/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <div class="ds-share flat" data-thread-key="2017/06/07/xinetd/"
+     data-title="xinetd 配置"
+     data-content=""
+     data-url="http://yoursite.com/2017/06/07/xinetd/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
 
-  
-  
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/28/shell/" itemprop="url">
-                  Shell命令行快捷键
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-28T22:06:41+08:00" content="2016-07-28">
-              2016-07-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/28/shell/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/28/shell/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>C-a : 光标回到命令行首（a:ahead)</li>
-<li>C-e : 光标回到命令行尾（e:end)</li>
-<li>C-b : 光标后退一个字符（b:backward)</li>
-<li>C-f : 光标回到命令行首（f:forward)</li>
-<li>C-p : 上一个使用的历史命令 (p: previous)</li>
-<li>C-n : 下一个使用的历史命令 (n: next)</li>
-<li>C-r : 快速检索历史命令 (r: retrieve)</li>
-<li>C-h : 删除光标前一个字符</li>
-<li>C-d : 删除光标后一个字符</li>
-<li>C-w : 删除光标前一个word</li>
-<li>C-k : 删除光标后的所有字符</li>
-<li>C-u : 删除命令行字符</li>
-<li>C-y : 粘贴 C-u, C-K, C-W删除的文本</li>
-<li>C-t : 与前一字符交换</li>
-<li>C-i : Tab</li>
-<li>C-m : Enter</li>
-<li>C-o : Enter</li>
-</ul>
-
-          
-        
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/24/MSSQL/" itemprop="url">
-                  MSSQL遇到问条记录
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-24T22:10:46+08:00" content="2016-07-24">
-              2016-07-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/DataBase/" itemprop="url" rel="index">
-                    <span itemprop="name">DataBase</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/24/MSSQL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/MSSQL/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <!-- MarkdownTOC -->
-<ul>
-<li>登陆连接失败</li>
-<li>启动sa登陆</li>
-<li>服务器改为IP地址登陆</li>
-<li>高版本数据库恢复到低版本数据库</li>
-<li>自增长列插入指定值</li>
-<li>select into from 与 insert into select 用法与区别</li>
-<li>总结</li>
-</ul>
-<!-- /MarkdownTOC -->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/24/MSSQL/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
@@ -1560,6 +443,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/06/07/xinetd/"
+           data-title="xinetd 配置" data-url="http://yoursite.com/2017/06/07/xinetd/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -1579,8 +470,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -1637,6 +537,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1740,6 +651,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

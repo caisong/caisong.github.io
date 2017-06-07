@@ -287,6 +287,137 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/24/vmware/" itemprop="url">
+                  vmware 记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-24T21:50:08+08:00" content="2016-07-24">
+              2016-07-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/record/" itemprop="url" rel="index">
+                    <span itemprop="name">record</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/24/vmware/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/vmware/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="此虚拟机正在使用中，取得该虚拟机的所有权失败"><a href="#此虚拟机正在使用中，取得该虚拟机的所有权失败" class="headerlink" title="此虚拟机正在使用中，取得该虚拟机的所有权失败"></a>此虚拟机正在使用中，取得该虚拟机的所有权失败</h2><p>问题描述：该问题一般是由于强制关闭vmware进程导致<br>解决方案：你所配置的虚拟机目录下存在*.lck文件，删除就可以了。</p>
+<h2 id="CentOS-启动没有IPV4-地址"><a href="#CentOS-启动没有IPV4-地址" class="headerlink" title="CentOS 启动没有IPV4 地址"></a>CentOS 启动没有IPV4 地址</h2><p>问题描述：centos7虚拟机，没有ipv4地址，无法ssh连接<br>解决办法：默认设置没有开机激活网卡，修改网络配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改ONBOOT=yes </span><br><span class="line">sudo systemctl restart network</span><br></pre></td></tr></table></figure></p>
+<h2 id="虚拟机提示Failed-to-start-LSB-Bring-up-down-networking"><a href="#虚拟机提示Failed-to-start-LSB-Bring-up-down-networking" class="headerlink" title="虚拟机提示Failed to start LSB: Bring up/down networking"></a>虚拟机提示Failed to start LSB: Bring up/down networking</h2><p>问题描述：网络无法连接，重启network提示该错误<code>Failed to start LSB: Bring up/down networking</code>。</p>
+<ul>
+<li><p>搜索到的解决办法一般是由于拷贝他人的虚拟机文件导致，需要更改网络配置文件中的HWADDR字段，改为你自己mac地址。(针对CentOS7)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip addr show #查看mac地址</span><br><span class="line">sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改HWADDR字段</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我遇到的问题是由于关闭了<code>VMware NAT Service</code> 服务导致，启动就可以了</p>
+</li>
+</ul>
+<p>谨此记录，日后再补充遇到的其他问题</p>
+<h2 id="ssh问题"><a href="#ssh问题" class="headerlink" title="ssh问题"></a>ssh问题</h2><p>详见鄙人关于ssh问题的blog</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/04/红黑树/" itemprop="url">
                   自平衡二搜索树——红黑树
                 </a>
@@ -1174,7 +1305,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1191,7 +1322,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
