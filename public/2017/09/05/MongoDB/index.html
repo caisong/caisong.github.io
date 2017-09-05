@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="atom," />
+  <meta name="keywords" content="mssql, mongodb," />
 
 
 
@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="在文件~/.atom/.apmrc中添加以下内容，若该文件不存在，则创建123strict-ssl=falsehttps-proxy=http://192.168.10.1:8080http-proxy=http://192.168.10.1:8080
-http与proxy之间使用的是连字符，而不是下划线">
+<meta name="description" content="写得比较基础
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#!/usr/bin/env python# -*- coding:utf-8 -*-import pymssqlimport pymongosql = &apos;&apos;&apos;SELECT [">
 <meta property="og:type" content="article">
-<meta property="og:title" content="atom config 设置">
-<meta property="og:url" content="http://yoursite.com/2016/10/12/atom-config/index.html">
+<meta property="og:title" content="transfer mssql data to mongodb'">
+<meta property="og:url" content="http://yoursite.com/2017/09/05/MongoDB/index.html">
 <meta property="og:site_name" content="Caisong's Blog">
-<meta property="og:description" content="在文件~/.atom/.apmrc中添加以下内容，若该文件不存在，则创建123strict-ssl=falsehttps-proxy=http://192.168.10.1:8080http-proxy=http://192.168.10.1:8080
-http与proxy之间使用的是连字符，而不是下划线">
-<meta property="og:updated_time" content="2016-10-12T13:54:43.949Z">
+<meta property="og:description" content="写得比较基础
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#!/usr/bin/env python# -*- coding:utf-8 -*-import pymssqlimport pymongosql = &apos;&apos;&apos;SELECT [">
+<meta property="og:updated_time" content="2017-09-05T12:05:32.220Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="atom config 设置">
-<meta name="twitter:description" content="在文件~/.atom/.apmrc中添加以下内容，若该文件不存在，则创建123strict-ssl=falsehttps-proxy=http://192.168.10.1:8080http-proxy=http://192.168.10.1:8080
-http与proxy之间使用的是连字符，而不是下划线">
+<meta name="twitter:title" content="transfer mssql data to mongodb'">
+<meta name="twitter:description" content="写得比较基础
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#!/usr/bin/env python# -*- coding:utf-8 -*-import pymssqlimport pymongosql = &apos;&apos;&apos;SELECT [">
 
 
 
@@ -116,7 +116,7 @@ http与proxy之间使用的是连字符，而不是下划线">
   };
 </script>
 
-  <title> atom config 设置 | Caisong's Blog </title>
+  <title> transfer mssql data to mongodb' | Caisong's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -288,7 +288,7 @@ http与proxy之间使用的是连字符，而不是下划线">
             
             
               
-                atom config 设置
+                transfer mssql data to mongodb'
               
             
           </h1>
@@ -300,8 +300,8 @@ http与proxy之间使用的是连字符，而不是下划线">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-12T21:46:56+08:00" content="2016-10-12">
-              2016-10-12
+            <time itemprop="dateCreated" datetime="2017-09-05T19:56:02+08:00" content="2017-09-05">
+              2017-09-05
             </time>
           </span>
 
@@ -314,8 +314,8 @@ http与proxy之间使用的是连字符，而不是下划线">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/eidtor/" itemprop="url" rel="index">
-                    <span itemprop="name">eidtor</span>
+                  <a href="/categories/database/" itemprop="url" rel="index">
+                    <span itemprop="name">database</span>
                   </a>
                 </span>
 
@@ -330,8 +330,8 @@ http与proxy之间使用的是连字符，而不是下划线">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/12/atom-config/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/12/atom-config/" itemprop="commentsCount"></span>
+                <a href="/2017/09/05/MongoDB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/05/MongoDB/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -354,8 +354,8 @@ http与proxy之间使用的是连字符，而不是下划线">
       
 
       
-        <p>在文件<em>~/.atom/.apmrc</em>中添加以下内容，若该文件不存在，则创建<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">strict-ssl</span>=<span class="literal">false</span></span><br><span class="line"><span class="attr">https-proxy</span>=http://<span class="number">192.168</span>.<span class="number">10.1</span>:<span class="number">8080</span></span><br><span class="line"><span class="attr">http-proxy</span>=http://<span class="number">192.168</span>.<span class="number">10.1</span>:<span class="number">8080</span></span><br></pre></td></tr></table></figure></p>
-<p><em>http与proxy之间使用的是连字符，而不是下划线</em></p>
+        <p>写得比较基础</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pymssql</span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"></span><br><span class="line">sql = <span class="string">'''SELECT [Name]</span><br><span class="line">      ,[CardNo]</span><br><span class="line">      ,[Descriot]</span><br><span class="line">      ,[CtfTp]</span><br><span class="line">      ,[CtfId]</span><br><span class="line">      ,[Gender]</span><br><span class="line">      ,[Birthday]</span><br><span class="line">      ,[Address]</span><br><span class="line">      ,[Zip]</span><br><span class="line">      ,[Dirty]</span><br><span class="line">      ,[District1]</span><br><span class="line">      ,[District2]</span><br><span class="line">      ,[District3]</span><br><span class="line">      ,[District4]</span><br><span class="line">      ,[District5]</span><br><span class="line">      ,[District6]</span><br><span class="line">      ,[FirstNm]</span><br><span class="line">      ,[LastNm]</span><br><span class="line">      ,[Duty]</span><br><span class="line">      ,[Mobile]</span><br><span class="line">      ,[Tel]</span><br><span class="line">      ,[Fax]</span><br><span class="line">      ,[EMail]</span><br><span class="line">      ,[Nation]</span><br><span class="line">      ,[Taste]</span><br><span class="line">      ,[Education]</span><br><span class="line">      ,[Company]</span><br><span class="line">      ,[CTel]</span><br><span class="line">      ,[CAddress]</span><br><span class="line">      ,[CZip]</span><br><span class="line">      ,[Family]</span><br><span class="line">      ,[Version]</span><br><span class="line">  FROM cdsgus'''</span></span><br><span class="line"></span><br><span class="line">ms_conn = pymssql.connect(host=<span class="string">"127.0.0.1"</span>, user=<span class="string">"sa"</span>,</span><br><span class="line">                          password=<span class="string">"root"</span>, database=<span class="string">"database"</span>, charset=<span class="string">"utf8"</span>)</span><br><span class="line">ms_cur = ms_conn.cursor(as_dict=<span class="keyword">True</span>)</span><br><span class="line">ms_cur.execute(sql)</span><br><span class="line"></span><br><span class="line">row = ms_cur.fetchone()</span><br><span class="line"></span><br><span class="line">mongo_conn = pymongo.MongoClient(<span class="string">'127.0.0.1'</span>, <span class="number">27017</span>)</span><br><span class="line">mongo_db = mongo_conn[<span class="string">'test'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> row:</span><br><span class="line">    mongo_db.kf_data.insert_one(row)</span><br><span class="line">    row = ms_cur.fetchone()</span><br><span class="line"></span><br><span class="line">ms_conn.commit()</span><br><span class="line">ms_conn.close()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -377,7 +377,7 @@ http与proxy之间使用的是连字符，而不是下划线">
       
         <div class="post-tags">
           
-            <a href="/tags/atom/" rel="tag">#atom</a>
+            <a href="/tags/mssql-mongodb/" rel="tag">#mssql, mongodb</a>
           
         </div>
       
@@ -386,17 +386,13 @@ http与proxy之间使用的是连字符，而不是下划线">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/12/PostgreSQL-ODBC/" rel="next" title="PostgreSQL ODBC">
-                <i class="fa fa-chevron-left"></i> PostgreSQL ODBC
+              <a href="/2017/06/07/xinetd/" rel="next" title="xinetd 配置">
+                <i class="fa fa-chevron-left"></i> xinetd 配置
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/12/centos-lua/" rel="prev" title="CentOS 安装Lua 5.3">
-                CentOS 安装Lua 5.3 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -411,10 +407,10 @@ http与proxy之间使用的是连字符，而不是下划线">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/10/12/atom-config/"
-     data-title="atom config 设置"
+        <div class="ds-share flat" data-thread-key="2017/09/05/MongoDB/"
+     data-title="transfer mssql data to mongodb'"
      data-content=""
-     data-url="http://yoursite.com/2016/10/12/atom-config/">
+     data-url="http://yoursite.com/2017/09/05/MongoDB/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -441,8 +437,8 @@ http与proxy之间使用的是连字符，而不是下划线">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/12/atom-config/"
-           data-title="atom config 设置" data-url="http://yoursite.com/2016/10/12/atom-config/">
+      <div class="ds-thread" data-thread-key="2017/09/05/MongoDB/"
+           data-title="transfer mssql data to mongodb'" data-url="http://yoursite.com/2017/09/05/MongoDB/">
       </div>
     
   </div>

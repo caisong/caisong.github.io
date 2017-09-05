@@ -287,6 +287,127 @@
             
               
                 
+                <a class="post-title-link" href="/2017/09/05/MongoDB/" itemprop="url">
+                  transfer mssql data to mongodb'
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-05T19:56:02+08:00" content="2017-09-05">
+              2017-09-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/database/" itemprop="url" rel="index">
+                    <span itemprop="name">database</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/09/05/MongoDB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/05/MongoDB/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>写得比较基础</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pymssql</span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"></span><br><span class="line">sql = <span class="string">'''SELECT [Name]</span><br><span class="line">      ,[CardNo]</span><br><span class="line">      ,[Descriot]</span><br><span class="line">      ,[CtfTp]</span><br><span class="line">      ,[CtfId]</span><br><span class="line">      ,[Gender]</span><br><span class="line">      ,[Birthday]</span><br><span class="line">      ,[Address]</span><br><span class="line">      ,[Zip]</span><br><span class="line">      ,[Dirty]</span><br><span class="line">      ,[District1]</span><br><span class="line">      ,[District2]</span><br><span class="line">      ,[District3]</span><br><span class="line">      ,[District4]</span><br><span class="line">      ,[District5]</span><br><span class="line">      ,[District6]</span><br><span class="line">      ,[FirstNm]</span><br><span class="line">      ,[LastNm]</span><br><span class="line">      ,[Duty]</span><br><span class="line">      ,[Mobile]</span><br><span class="line">      ,[Tel]</span><br><span class="line">      ,[Fax]</span><br><span class="line">      ,[EMail]</span><br><span class="line">      ,[Nation]</span><br><span class="line">      ,[Taste]</span><br><span class="line">      ,[Education]</span><br><span class="line">      ,[Company]</span><br><span class="line">      ,[CTel]</span><br><span class="line">      ,[CAddress]</span><br><span class="line">      ,[CZip]</span><br><span class="line">      ,[Family]</span><br><span class="line">      ,[Version]</span><br><span class="line">  FROM cdsgus'''</span></span><br><span class="line"></span><br><span class="line">ms_conn = pymssql.connect(host=<span class="string">"127.0.0.1"</span>, user=<span class="string">"sa"</span>,</span><br><span class="line">                          password=<span class="string">"root"</span>, database=<span class="string">"database"</span>, charset=<span class="string">"utf8"</span>)</span><br><span class="line">ms_cur = ms_conn.cursor(as_dict=<span class="keyword">True</span>)</span><br><span class="line">ms_cur.execute(sql)</span><br><span class="line"></span><br><span class="line">row = ms_cur.fetchone()</span><br><span class="line"></span><br><span class="line">mongo_conn = pymongo.MongoClient(<span class="string">'127.0.0.1'</span>, <span class="number">27017</span>)</span><br><span class="line">mongo_db = mongo_conn[<span class="string">'test'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> row:</span><br><span class="line">    mongo_db.kf_data.insert_one(row)</span><br><span class="line">    row = ms_cur.fetchone()</span><br><span class="line"></span><br><span class="line">ms_conn.commit()</span><br><span class="line">ms_conn.close()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/06/07/xinetd/" itemprop="url">
                   xinetd 配置
                 </a>
@@ -1414,138 +1535,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/24/MSSQL/" itemprop="url">
-                  MSSQL遇到问条记录
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-24T22:10:46+08:00" content="2016-07-24">
-              2016-07-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/DataBase/" itemprop="url" rel="index">
-                    <span itemprop="name">DataBase</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/24/MSSQL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/MSSQL/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <!-- MarkdownTOC -->
-<ul>
-<li>登陆连接失败</li>
-<li>启动sa登陆</li>
-<li>服务器改为IP地址登陆</li>
-<li>高版本数据库恢复到低版本数据库</li>
-<li>自增长列插入指定值</li>
-<li>select into from 与 insert into select 用法与区别</li>
-<li>总结</li>
-</ul>
-<!-- /MarkdownTOC -->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/24/MSSQL/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1591,7 +1580,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1599,7 +1588,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1608,7 +1597,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
