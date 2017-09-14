@@ -9,9 +9,10 @@ category: embedded
 
 ## Three ports to different flavours of little-endian ARM hardware  
 **The following content reproudced from Debian Wiki** [ArmPorts](https://wiki.debian.org/ArmPorts "Debian wiki")  
-* The ARM EABI (armel) port targets a range of older 32-bit ARM devices, particularly those used in NAS hardware and a variety of *plug computers.
-* The newer ARM hard-float (armhf) port supports newer, more powerful 32-bit devices using version 7 of the ARM architecture specification.
-* The 64-bit ARM (arm64) port supports the latest 64-bit ARM-powered devices.
+* ArmPort - the first port, using the "old" (now obsolete) ABI (OABI). First released with 2.2 (Potato), last released with 5.0 (lenny). GNU Triplet: arm-linux-gnu
+* ArmEabiPort - newer port using the "new" ABI (EABI), supported on Arm v4t and higher. First released with 5.0 (lenny). GNU Triplet: arm-linux-gnueabi
+* ArmHardFloatPort - the latest 32-bit port, using the hard-float version of the "new" ABI (EABI), targeting Arm v7 and up. First released with 7 (wheezy). GNU Triplet: arm-linux-gnueabihf
+* Arm64Port - the latest port, for the 64-bit Armv8 architecture. First released with 8 (jessie). GNU Triplet: aarch64-linux-gnu
 
 ## Prebuilt toolchains
 * Debian cross-tools packages
@@ -24,6 +25,7 @@ You will need to add the target architecture to your list of installable archite
  dpkg --add-architecture armhf
  apt-get update
  apt-get install gcc-arm-linux-gnueabihf
+ # arm64 gcc-r-aarch-linux-gnu
 ```
 
 ## Toolchain building systems
