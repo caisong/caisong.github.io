@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-14T15:42:16.033Z</updated>
+  <updated>2017-09-22T14:42:22.137Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,49 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>docker permission</title>
+    <link href="http://yoursite.com/2017/09/22/docker-permission/"/>
+    <id>http://yoursite.com/2017/09/22/docker-permission/</id>
+    <published>2017-09-22T14:34:59.000Z</published>
+    <updated>2017-09-22T14:42:22.137Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;docker-权限控制&quot;&gt;&lt;a href=&quot;#docker-权限控制&quot; class=&quot;headerlink&quot; title=&quot;docker 权限控制&quot;&gt;&lt;/a&gt;docker 权限控制&lt;/h1&gt;&lt;p&gt;docker在映射文件时，默认会使用与映射目录相同uid:gid，经常会导致一些权限问题。&lt;br&gt;常见有以下解决方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;改变权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;创建容器后，进入后&lt;code&gt;chown&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;通过&lt;code&gt;docker run&lt;/code&gt;的&lt;code&gt;-u&lt;/code&gt;选项&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker run -v `pwd`/shared:/shared -u `stat -c &amp;quot;%u:%g&amp;quot; /shared` ubuntu bash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这样做的话就等于放弃了root权限，除非再新建root组用户&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用Data-only container&lt;br&gt;&lt;a href=&quot;http://container42.com/2014/11/18/data-only-container-madness/ “data-only”&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Data-only container madness&lt;/a&gt;&lt;br&gt;主要手段如下:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;创建数据容器，改变目录用户权限。&lt;/li&gt;
+&lt;li&gt;其他容器使用&lt;code&gt;--volumes-from&lt;/code&gt;挂载创建的数据容器&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker run -v /userdata --name data busybox true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run --volumes-from data debian:jessie bash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;docker-权限控制&quot;&gt;&lt;a href=&quot;#docker-权限控制&quot; class=&quot;headerlink&quot; title=&quot;docker 权限控制&quot;&gt;&lt;/a&gt;docker 权限控制&lt;/h1&gt;&lt;p&gt;docker在映射文件时，默认会使用与映射目录相同uid:gid，经
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="http://yoursite.com/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
     <title>arm ports differences</title>
     <link href="http://yoursite.com/2017/09/13/arm-ports-differences/"/>
     <id>http://yoursite.com/2017/09/13/arm-ports-differences/</id>
     <published>2017-09-13T14:25:00.000Z</published>
-    <updated>2017-09-14T15:42:16.033Z</updated>
+    <updated>2017-09-14T15:54:11.573Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Three-ports-to-different-flavours-of-little-endian-ARM-hardware&quot;&gt;&lt;a href=&quot;#Three-ports-to-different-flavours-of-little-endian-ARM-hardware&quot; class=&quot;headerlink&quot; title=&quot;Three ports to different flavours of little-endian ARM hardware&quot;&gt;&lt;/a&gt;Three ports to different flavours of little-endian ARM hardware&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;The following content reproudced from Debian Wiki&lt;/strong&gt; &lt;a href=&quot;https://wiki.debian.org/ArmPorts&quot; title=&quot;Debian wiki&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ArmPorts&lt;/a&gt;  &lt;/p&gt;
 &lt;ul&gt;
@@ -844,42 +882,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>记录</title>
-    <link href="http://yoursite.com/2016/05/20/%E8%AE%B0%E5%BD%95/"/>
-    <id>http://yoursite.com/2016/05/20/记录/</id>
-    <published>2016-05-19T16:08:04.000Z</published>
-    <updated>2016-12-22T15:01:45.561Z</updated>
-    
-    <content type="html">&lt;p&gt;搭建的一晚上的成果, 随便发个帖子试试。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;安装nodejs hexo&lt;/li&gt;
-&lt;li&gt;安装next 主题&lt;/li&gt;
-&lt;li&gt;添加第三方插件&lt;/li&gt;
-&lt;li&gt;设置个人信息&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;搭建的一晚上的成果, 随便发个帖子试试。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;安装nodejs hexo&lt;/li&gt;
-&lt;li&gt;安装next 主题&lt;/li&gt;
-&lt;li&gt;添加第三方插件&lt;/li&gt;
-&lt;li&gt;设置个人信息&lt;/li&gt;
-&lt;/ol&gt;
-
-    
-    </summary>
-    
-      <category term="record" scheme="http://yoursite.com/categories/record/"/>
-    
-    
-      <category term="record" scheme="http://yoursite.com/tags/record/"/>
     
   </entry>
   

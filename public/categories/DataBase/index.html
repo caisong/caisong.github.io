@@ -89,7 +89,7 @@
 <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Caisong's Blog">
-<meta property="og:url" content="http://yoursite.com/categories/DataBase/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/database/index.html">
 <meta property="og:site_name" content="Caisong's Blog">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -112,7 +112,7 @@
   };
 </script>
 
-  <title> 分类: DataBase | Caisong's Blog </title>
+  <title> 分类: database | Caisong's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -266,7 +266,7 @@
   <section id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        DataBase
+        database
         <small>分类</small>
       </h2>
     </div>
@@ -279,37 +279,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/10/12/PostgreSQL-ODBC/" itemprop="url">
+            <a class="post-title-link" href="/2017/09/05/MongoDB/" itemprop="url">
               
-                <span itemprop="name">PostgreSQL ODBC</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-12T21:32:48+08:00"
-              content="2016-10-12" >
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/12/Install/" itemprop="url">
-              
-                <span itemprop="name">PostgreSQL 安装</span>
+                <span itemprop="name">transfer mssql data to mongodb'</span>
               
             </a>
         
@@ -317,37 +289,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-12T21:13:50+08:00"
-              content="2016-10-12" >
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/24/MSSQL/" itemprop="url">
-              
-                <span itemprop="name">MSSQL遇到问条记录</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-24T22:10:46+08:00"
-              content="2016-07-24" >
-          07-24
+              datetime="2017-09-05T19:56:02+08:00"
+              content="2017-09-05" >
+          09-05
         </time>
       </div>
 
@@ -398,7 +342,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -415,7 +359,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -694,6 +638,58 @@
     });}
 
     // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
+ // handle and trigger popup window;
     $('.popup-trigger').mousedown(function(e) {
       e.stopPropagation();
       if (isfetched == false) {
