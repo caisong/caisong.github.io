@@ -47,7 +47,7 @@ application:
 
 2. 读取方式
 |目标|路径|
-|--|--|
+|:--|:--|
 |version ①|version|
 |x ②|application.window.pos.x|
 |title ③|application.books.[1].tittle|
@@ -56,7 +56,7 @@ application:
 
 # 语法说明
 |类型|说明|规则|正则表达|
-|:-|:-|:-|:--|
+|:--|:--|:--|:--|
 |boolean|布尔类型|true/false,不区分大小写|([Tt][Rr][Uu][Ee])&#124;([Ff][Aa][Ll][Ss][Ee])|
 |string|字符串|支持常见转义字符；支持换行；支持\x开头的ASCII转码|\"([^\"\\]&#124;\\.)*\"|
 |integer|整数型||[-+]?[0-9]+|
