@@ -287,6 +287,250 @@
             
               
                 
+                <a class="post-title-link" href="/2017/09/05/MongoDB/" itemprop="url">
+                  transfer mssql data to mongodb'
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-05T19:56:02+08:00" content="2017-09-05">
+              2017-09-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/database/" itemprop="url" rel="index">
+                    <span itemprop="name">database</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/09/05/MongoDB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/05/MongoDB/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>写得比较基础</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pymssql</span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"></span><br><span class="line">sql = <span class="string">'''SELECT [Name]</span><br><span class="line">      ,[CardNo]</span><br><span class="line">      ,[Descriot]</span><br><span class="line">      ,[CtfTp]</span><br><span class="line">      ,[CtfId]</span><br><span class="line">      ,[Gender]</span><br><span class="line">      ,[Birthday]</span><br><span class="line">      ,[Address]</span><br><span class="line">      ,[Zip]</span><br><span class="line">      ,[Dirty]</span><br><span class="line">      ,[District1]</span><br><span class="line">      ,[District2]</span><br><span class="line">      ,[District3]</span><br><span class="line">      ,[District4]</span><br><span class="line">      ,[District5]</span><br><span class="line">      ,[District6]</span><br><span class="line">      ,[FirstNm]</span><br><span class="line">      ,[LastNm]</span><br><span class="line">      ,[Duty]</span><br><span class="line">      ,[Mobile]</span><br><span class="line">      ,[Tel]</span><br><span class="line">      ,[Fax]</span><br><span class="line">      ,[EMail]</span><br><span class="line">      ,[Nation]</span><br><span class="line">      ,[Taste]</span><br><span class="line">      ,[Education]</span><br><span class="line">      ,[Company]</span><br><span class="line">      ,[CTel]</span><br><span class="line">      ,[CAddress]</span><br><span class="line">      ,[CZip]</span><br><span class="line">      ,[Family]</span><br><span class="line">      ,[Version]</span><br><span class="line">  FROM cdsgus'''</span></span><br><span class="line"></span><br><span class="line">ms_conn = pymssql.connect(host=<span class="string">"127.0.0.1"</span>, user=<span class="string">"sa"</span>,</span><br><span class="line">                          password=<span class="string">"root"</span>, database=<span class="string">"database"</span>, charset=<span class="string">"utf8"</span>)</span><br><span class="line">ms_cur = ms_conn.cursor(as_dict=<span class="keyword">True</span>)</span><br><span class="line">ms_cur.execute(sql)</span><br><span class="line"></span><br><span class="line">row = ms_cur.fetchone()</span><br><span class="line"></span><br><span class="line">mongo_conn = pymongo.MongoClient(<span class="string">'127.0.0.1'</span>, <span class="number">27017</span>)</span><br><span class="line">mongo_db = mongo_conn[<span class="string">'test'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> row:</span><br><span class="line">    mongo_db.kf_data.insert_one(row)</span><br><span class="line">    row = ms_cur.fetchone()</span><br><span class="line"></span><br><span class="line">ms_conn.commit()</span><br><span class="line">ms_conn.close()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/07/xinetd/" itemprop="url">
+                  xinetd 配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-07T21:39:31+08:00" content="2017-06-07">
+              2017-06-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/07/xinetd/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/07/xinetd/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>介绍  </li>
+</ol>
+<blockquote>
+<p>xinetd - the extended Internet services daemon<br>xinetd  performs  the  same  function as inetd: it starts programs that<br>provide Internet services.  Instead of having such servers  started  at<br>system  initialization  time, and be dormant until a connection request<br>arrives, xinetd is the only daemon process started and  it  listens  on<br>all  service  ports  for the services listed in its configuration file.<br>When a request comes in, xinetd starts the appropriate server.  Because<br>of  the  way it operates, xinetd (as well as inetd) is also referred to<br>as a super-server.</p>
+<p>The services listed in xinetd’s configuration  file  can  be  separated<br>into two groups.  Services in the first group are called multi-threaded<br>and they require the forking of a new server process for each new  con-<br>nection  request.   The  new  server then handles that connection.  For<br>such services, xinetd keeps listening for new requests so that  it  can<br>spawn  new  servers.  On the other hand, the second group includes ser-<br>vices for which the service daemon is responsible for handling all  new<br>connection  requests.   Such  services  are  called single-threaded and<br>xinetd will stop handling new requests for them until the server  dies.<br>Services in this group are usually datagram-based.</p>
+<p>So far, the only reason for the existence of a super-server was to con-<br>serve system resources by avoiding to fork a  lot  of  processes  which<br>might  be  dormant  for  most of their lifetime.  While fulfilling this<br>function, xinetd takes advantage of the idea of a super-server to  pro-<br>vide  features such as access control and logging.  Furthermore, xinetd<br>is not limited to services listed in /etc/services.  Therefore, anybody</p>
+</blockquote>
+<p>以下内容转载自 <a href="http://www.linuxfromscratch.org/blfs/view/6.3/server/xinetd.html" title="xinetd" target="_blank" rel="external">linuxfromscratch</a>  </p>
+<ol>
+<li>xinetd.conf文件    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/xinetd.conf &lt;&lt; &quot;EOF&quot;</span><br><span class="line"># Begin /etc/xinetd</span><br><span class="line"># Configuration file for xinetd</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">&#123;</span><br><span class="line">      instances       = 60</span><br><span class="line">      log_type        = SYSLOG daemon</span><br><span class="line">      log_on_success  = HOST PID USERID</span><br><span class="line">      log_on_failure  = HOST USERID</span><br><span class="line">      cps             = 25 30</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># All service files are stored in the /etc/xinetd.d directory</span><br><span class="line">#</span><br><span class="line">includedir /etc/xinetd.d</span><br><span class="line"># End /etc/xinetd</span><br><span class="line">EOF</span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">0. 常见服务项配置    </span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">install -v -d -m755 /etc/xinetd.d &amp;&amp;</span><br><span class="line">cat &gt; /etc/xinetd.d/login &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/login</span><br><span class="line"></span><br><span class="line">service login</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   protocol       = tcp</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.rlogind</span><br><span class="line">   log_type       = SYSLOG local4 info</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/login</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/shell &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/shell</span><br><span class="line"></span><br><span class="line">service shell</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line">   instances      = UNLIMITED</span><br><span class="line">   flags          = IDONLY</span><br><span class="line">   log_on_success += USERID</span><br><span class="line">   server         = /usr/sbin/in.rshd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/shell</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/exec &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/exec</span><br><span class="line"></span><br><span class="line">service exec</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.rexecd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/exec</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/comsat &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/comsat</span><br><span class="line"></span><br><span class="line">service comsat</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   wait           = yes</span><br><span class="line">   user           = nobody</span><br><span class="line">   group          = tty</span><br><span class="line">   server         = /usr/sbin/in.comsat</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/comsat</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/talk &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/talk</span><br><span class="line"></span><br><span class="line">service talk</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   wait           = yes</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.talkd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/talk</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/ntalk &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/ntalk</span><br><span class="line"></span><br><span class="line">service ntalk</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   wait           = yes</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.ntalkd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/ntalk</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/telnet &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/telnet</span><br><span class="line"></span><br><span class="line">service telnet</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.telnetd</span><br><span class="line">   bind           = 127.0.0.1</span><br><span class="line">   log_on_failure += USERID</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">service telnet</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line">#  server         = /usr/sbin/in.telnetd</span><br><span class="line">   bind           = 192.231.139.175</span><br><span class="line">   redirect       = 128.138.202.20 23</span><br><span class="line">   log_on_failure += USERID</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/telnet</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/ftp &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/ftp</span><br><span class="line"></span><br><span class="line">service ftp</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.ftpd</span><br><span class="line">   server_args    = -l</span><br><span class="line">   instances      = 4</span><br><span class="line">   log_on_success += DURATION USERID</span><br><span class="line">   log_on_failure += USERID</span><br><span class="line">   access_times   = 2:00-8:59 12:00-23:59</span><br><span class="line">   nice           = 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/ftp</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/tftp &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/tftp</span><br><span class="line"></span><br><span class="line">service tftp</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   wait           = yes</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.tftpd</span><br><span class="line">   server_args    = -s /tftpboot</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/tftp</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/finger &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/finger</span><br><span class="line"></span><br><span class="line">service finger</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = nobody</span><br><span class="line">   server         = /usr/sbin/in.fingerd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/finger</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/systat &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/systat</span><br><span class="line"></span><br><span class="line">service systat</span><br><span class="line">&#123;</span><br><span class="line">   disable           = yes</span><br><span class="line">   socket_type       = stream</span><br><span class="line">   wait              = no</span><br><span class="line">   user              = nobody</span><br><span class="line">   server            = /usr/bin/ps</span><br><span class="line">   server_args       = -auwwx</span><br><span class="line">   only_from         = 128.138.209.0</span><br><span class="line">   log_on_success    = HOST</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/systat</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/netstat &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/netstat</span><br><span class="line"></span><br><span class="line">service netstat</span><br><span class="line">&#123;</span><br><span class="line">   disable           = yes</span><br><span class="line">   socket_type       = stream</span><br><span class="line">   wait              = no</span><br><span class="line">   user              = nobody</span><br><span class="line">   server            = /usr/ucb/netstat</span><br><span class="line">   server_args       = -f inet</span><br><span class="line">   only_from         = 128.138.209.0</span><br><span class="line">   log_on_success    = HOST</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/netstat</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/echo &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/echo</span><br><span class="line"></span><br><span class="line">service echo</span><br><span class="line">&#123;</span><br><span class="line">   disable     = yes</span><br><span class="line">   type        = INTERNAL</span><br><span class="line">   id          = echo-stream</span><br><span class="line">   socket_type = stream</span><br><span class="line">   protocol    = tcp</span><br><span class="line">   user        = root</span><br><span class="line">   wait        = no</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">service echo</span><br><span class="line">&#123;</span><br><span class="line">   disable     = yes</span><br><span class="line">   type        = INTERNAL</span><br><span class="line">   id          = echo-dgram</span><br><span class="line">   socket_type = dgram</span><br><span class="line">   protocol    = udp</span><br><span class="line">   user        = root</span><br><span class="line">   wait        = yes</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/echo</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/chargen &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/chargen</span><br><span class="line"></span><br><span class="line">service chargen</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = chargen-stream</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   protocol       = tcp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = no</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">service chargen</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = chargen-dgram</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   protocol       = udp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = yes</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/chargen</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/daytime &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/daytime</span><br><span class="line"></span><br><span class="line">service daytime</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = daytime-stream</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   protocol       = tcp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = no</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">service daytime</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = daytime-dgram</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   protocol       = udp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = yes</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/daytime</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/time &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/time</span><br><span class="line"></span><br><span class="line">service time</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = time-stream</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   protocol       = tcp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = no</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">service time</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = time-dgram</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   protocol       = udp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = yes</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/time</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/rstatd &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/rstatd</span><br><span class="line"></span><br><span class="line">service rstatd</span><br><span class="line">&#123;</span><br><span class="line">   disable     = yes</span><br><span class="line">   type        = RPC</span><br><span class="line">   flags       = INTERCEPT</span><br><span class="line">   rpc_version = 2-4</span><br><span class="line">   socket_type = dgram</span><br><span class="line">   protocol    = udp</span><br><span class="line">   server      = /usr/sbin/rpc.rstatd</span><br><span class="line">   wait        = yes</span><br><span class="line">   user        = root</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/rstatd</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/rquotad &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/rquotad</span><br><span class="line"></span><br><span class="line">service rquotad</span><br><span class="line">&#123;</span><br><span class="line">   disable     = yes</span><br><span class="line">   type        = RPC</span><br><span class="line">   rpc_version = 1</span><br><span class="line">   socket_type = dgram</span><br><span class="line">   protocol    = udp</span><br><span class="line">   wait        = yes</span><br><span class="line">   user        = root</span><br><span class="line">   server      = /usr/sbin/rpc.rstatd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/rquotad</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/rusersd &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/rusersd</span><br><span class="line"></span><br><span class="line">service rusersd</span><br><span class="line">&#123;</span><br><span class="line">   disable     = yes</span><br><span class="line">   type        = RPC</span><br><span class="line">   rpc_version = 1-2</span><br><span class="line">   socket_type = dgram</span><br><span class="line">   protocol    = udp</span><br><span class="line">   wait        = yes</span><br><span class="line">   user        = root</span><br><span class="line">   server      = /usr/sbin/rpc.rusersd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/rusersd</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/sprayd &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/sprayd</span><br><span class="line"></span><br><span class="line">service sprayd</span><br><span class="line">&#123;</span><br><span class="line">   disable      = yes</span><br><span class="line">   type         = RPC</span><br><span class="line">   rpc_version  = 1</span><br><span class="line">   socket_type  = dgram</span><br><span class="line">   protocol     = udp</span><br><span class="line">   wait         = yes</span><br><span class="line">   user         = root</span><br><span class="line">   server       = /usr/sbin/rpc.sprayd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/sprayd</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/walld &lt;&lt; &quot;EOF&quot; &amp;&amp;</span><br><span class="line"># Begin /etc/xinetd.d/walld</span><br><span class="line"></span><br><span class="line">service walld</span><br><span class="line">&#123;</span><br><span class="line">   disable      = yes</span><br><span class="line">   type         = RPC</span><br><span class="line">   rpc_version  = 1</span><br><span class="line">   socket_type  = dgram</span><br><span class="line">   protocol     = udp</span><br><span class="line">   wait         = yes</span><br><span class="line">   user         = nobody</span><br><span class="line">   group        = tty</span><br><span class="line">   server       = /usr/sbin/rpc.rwalld</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/walld</span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/irc &lt;&lt; &quot;EOF&quot;</span><br><span class="line"># Begin /etc/xinetd.d/irc</span><br><span class="line"></span><br><span class="line">service irc</span><br><span class="line">&#123;</span><br><span class="line">   disable      = yes</span><br><span class="line">   socket_type  = stream</span><br><span class="line">   wait         = no</span><br><span class="line">   user         = root</span><br><span class="line">   flags        = SENSOR</span><br><span class="line">   type         = INTERNAL</span><br><span class="line">   bind         = 192.168.1.30</span><br><span class="line">   deny_time    = 60</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># End /etc/xinetd.d/irc</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>使用方式<br>若要激活服务，将配置文件中的<code>disable = yes</code>替换为<code>disable  = no</code><br>重新启动<code>xinetd.service</code></p>
+</li>
+<li><p>权限问题</p>
+<ol>
+<li><code>echo rsh &gt;&gt;/etc/securetty</code></li>
+<li>注释/etc/pam.d/目录下服务授权配置（待展开）</li>
+</ol>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/13/set-ip-addr-on-boot/" itemprop="url">
                   set_ip_addr_on_boot
                 </a>
@@ -1291,269 +1535,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/24/MSSQL/" itemprop="url">
-                  MSSQL遇到问条记录
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-24T22:10:46+08:00" content="2016-07-24">
-              2016-07-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/DataBase/" itemprop="url" rel="index">
-                    <span itemprop="name">DataBase</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/24/MSSQL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/MSSQL/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <!-- MarkdownTOC -->
-<ul>
-<li>登陆连接失败</li>
-<li>启动sa登陆</li>
-<li>服务器改为IP地址登陆</li>
-<li>高版本数据库恢复到低版本数据库</li>
-<li>自增长列插入指定值</li>
-<li>select into from 与 insert into select 用法与区别</li>
-<li>总结</li>
-</ul>
-<!-- /MarkdownTOC -->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/24/MSSQL/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/24/vmware/" itemprop="url">
-                  vmware 记录
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-24T21:50:08+08:00" content="2016-07-24">
-              2016-07-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/record/" itemprop="url" rel="index">
-                    <span itemprop="name">record</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/24/vmware/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/vmware/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="此虚拟机正在使用中，取得该虚拟机的所有权失败"><a href="#此虚拟机正在使用中，取得该虚拟机的所有权失败" class="headerlink" title="此虚拟机正在使用中，取得该虚拟机的所有权失败"></a>此虚拟机正在使用中，取得该虚拟机的所有权失败</h2><p>问题描述：该问题一般是由于强制关闭vmware进程导致<br>解决方案：你所配置的虚拟机目录下存在*.lck文件，删除就可以了。</p>
-<h2 id="CentOS-启动没有IPV4-地址"><a href="#CentOS-启动没有IPV4-地址" class="headerlink" title="CentOS 启动没有IPV4 地址"></a>CentOS 启动没有IPV4 地址</h2><p>问题描述：centos7虚拟机，没有ipv4地址，无法ssh连接<br>解决办法：默认设置没有开机激活网卡，修改网络配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改ONBOOT=yes </span><br><span class="line">sudo systemctl restart network</span><br></pre></td></tr></table></figure></p>
-<h2 id="虚拟机提示Failed-to-start-LSB-Bring-up-down-networking"><a href="#虚拟机提示Failed-to-start-LSB-Bring-up-down-networking" class="headerlink" title="虚拟机提示Failed to start LSB: Bring up/down networking"></a>虚拟机提示Failed to start LSB: Bring up/down networking</h2><p>问题描述：网络无法连接，重启network提示该错误<code>Failed to start LSB: Bring up/down networking</code>。</p>
-<ul>
-<li><p>搜索到的解决办法一般是由于拷贝他人的虚拟机文件导致，需要更改网络配置文件中的HWADDR字段，改为你自己mac地址。(针对CentOS7)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip addr show #查看mac地址</span><br><span class="line">sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改HWADDR字段</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>我遇到的问题是由于关闭了<code>VMware NAT Service</code> 服务导致，启动就可以了</p>
-</li>
-</ul>
-<p>谨此记录，日后再补充遇到的其他问题</p>
-<h2 id="ssh问题"><a href="#ssh问题" class="headerlink" title="ssh问题"></a>ssh问题</h2><p>详见鄙人关于ssh问题的blog</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1599,7 +1580,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1607,7 +1588,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1616,7 +1597,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

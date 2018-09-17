@@ -4,6 +4,62 @@
   
     
     <entry>
+      <title><![CDATA[rtp协议]]></title>
+      <url>http://yoursite.com/2018/09/17/rtp/</url>
+      <content type="html"><![CDATA[<ul>
+<li>部分内容转载自：<a href="https://blog.csdn.net/leixiaohua1020/article/details/50535230" title="leixiaohua" target="_blank" rel="external">雷霄骅CSDN博客</a></li>
+</ul>
+<h2 id="固定头部格式"><a href="#固定头部格式" class="headerlink" title="固定头部格式"></a>固定头部格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1               2               3              4</span><br><span class="line">0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|V=2|P|X|  CC   |M|     PT      |       sequence number         |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                           timestamp                           |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                synchronization source (SSRC)                  |   </span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                 contributing source (CSRC)                    | </span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+<ul>
+<li>V：RTP协议的版本号，占2位，当前协议版本号为2</li>
+<li>P：填充标志，占1位，如果P=1，则在该报文的尾部填充一个或多个额外的八位组，它们不是有效载荷的一部分。</li>
+<li>X：扩展标志，占1位，如果X=1，则在RTP报头后跟有一个扩展报头</li>
+<li>CC：CSRC计数器，占4位，指示CSRC 标识符的个数</li>
+<li>M: 标记，占1位，不同的有效载荷有不同的含义，对于视频，标记一帧的结束；对于音频，标记会话的开始。</li>
+<li>PT: 有效荷载类型，占7位，用于说明RTP报文中有效载荷的类型，如GSM音频、JPEG图像等,在流媒体中大部分是用来区分音频流和视频流的，这样便于客户端进行解析。</li>
+<li>序列号：占16位，用于标识发送者所发送的RTP报文的序列号，每发送一个报文，序列号增1。这个字段当下层的承载协议用UDP的时候，网络状况不好的时候可以用来检查丢包。<br>同时出现网络抖动的情况可以用来对数据进行重新排序，序列号的初始值是随机的，同时音频包和视频包的sequence是分别记数的。</li>
+<li>时戳(Timestamp)：占32位，必须使用90 kHz 时钟频率。时戳反映了该RTP报文的第一个八位组的采样时刻。接收者使用时戳来计算延迟和延迟抖动，并进行同步控制。</li>
+<li>同步信源(SSRC)标识符：占32位，用于标识同步信源。该标识符是随机选择的，参加同一视频会议的两个同步信源不能有相同的SSRC。</li>
+<li>特约信源(CSRC)标识符：每个CSRC标识符占32位，可以有0～15个。每个CSRC标识了包含在该RTP报文有效载荷中的所有特约信源。</li>
+</ul>
+<h2 id="固定头部解析"><a href="#固定头部解析" class="headerlink" title="固定头部解析"></a>固定头部解析</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> _rtp_fixed_header&#123;</span><br><span class="line">	<span class="comment">/* byte 0 */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> csrc_len:<span class="number">4</span>;       <span class="comment">/* expect 0 */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> extension:<span class="number">1</span>;      <span class="comment">/* expect 1 */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> padding:<span class="number">1</span>;        <span class="comment">/* expect 0 */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> version:<span class="number">2</span>;        <span class="comment">/* expect 2 */</span></span><br><span class="line">	<span class="comment">/* byte 1 */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> payload:<span class="number">7</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> marker:<span class="number">1</span>;        <span class="comment">/* expect 1 */</span></span><br><span class="line">	<span class="comment">/* bytes 2, 3 */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">short</span> seq_no;            </span><br><span class="line">	<span class="comment">/* bytes 4-7 */</span></span><br><span class="line">	<span class="keyword">unsigned</span>  <span class="keyword">int</span> timestamp;        </span><br><span class="line">	<span class="comment">/* bytes 8-11 */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> ssrc;            <span class="comment">/* stream number is used here. */</span></span><br><span class="line">&#125; RTP_FIXED_HEADER;</span><br></pre></td></tr></table></figure>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul>
+<li>声明后加长度，表明占用的bit, 在协议解析中常用</li>
+<li>如果出现前面字段比后面字段长的情况，需要注意字节对齐的情况。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> _some_protocol&#123;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">short</span> field_A;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> len;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">short</span> flag_B;</span><br><span class="line">&#125;SOME_PROTOCOL ;</span><br></pre></td></tr></table></figure>
+<p>此时<code>sizeof SOME_PROTOOCL</code>的长度是6，没法直接将字节流转为对应的结构体，需要指定对齐长度</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(1)</span></span><br><span class="line"><span class="comment">/**/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack()</span></span><br></pre></td></tr></table></figure>
+<h2 id="扩展头部"><a href="#扩展头部" class="headerlink" title="扩展头部"></a>扩展头部</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1               2               3              4</span><br><span class="line">0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|     Defined by profile        |             length            |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                    header extension                           |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+<p>当RTP头部中固定头部的 X 为1时， 包括一个扩展头部.紧接着CSRC（如果存在）.</p>
+<ul>
+<li>前16bit 用以识别标识符或参数，由上层协议定义</li>
+<li>length 指示 header extension 的长度，<strong>单位32bit</strong></li>
+</ul>
+<h2 id="wireshark识别"><a href="#wireshark识别" class="headerlink" title="wireshark识别"></a>wireshark识别</h2><ul>
+<li><p>解码<br>菜单栏依次选择分析、解码为，弹出菜单右下角添加，装着RTP，应用。</p>
+</li>
+<li><p>流分析<br>菜单栏依次选择：电话、RTP、流分析。</p>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[vptr]]></title>
+      <url>http://yoursite.com/2018/07/24/vptr/</url>
+      <content type="html"><![CDATA[<p>之前无意中看见别人代码，在<code>struct</code> 中初始函数中，直接<code>memset</code>,如<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> Content&#123;</span><br><span class="line">    <span class="keyword">char</span> indexx[<span class="number">64</span>];</span><br><span class="line">    <span class="comment">//....</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(<span class="keyword">this</span>, <span class="number">0</span>, <span class="keyword">sizeof</span>(Content));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>最近代码遇到成员变量较多，想采用类似方法，但程序总是崩溃，发生在基类析构函数。</p>
+<p>打印发现<strong>虚指针空</strong>，因为基类析构函数一般时虚函数（原因请参见effectiv C++），子类中存在<code>vptr</code>。</p>
+<p>摘用侯捷《度探索C++对象模型》中的实例</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> A &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~A();</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data1, m_data2;</span><br><span class="line">&#125;; </span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> B : A &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span></span>;;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~B();</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data3;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> C : B &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data1, m_data4;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/vtpr.jpg" alt="vprt.jpg" title="内存对象模型"></p>
+<p>使用本文开头的方法<code>memset</code>初始化成员时，也同时将<code>vptr</code>置为空，导致析构时空指针异常崩溃。</p>
+<p>可以在<code>memset</code>时偏移一个指针的长度。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[c++ operator]]></title>
       <url>http://yoursite.com/2018/07/23/c-operator/</url>
       <content type="html"><![CDATA[<p><a href="https://zh.cppreference.com/w/cpp/language/operator_precedence" title="c++ operator" target="_blank" rel="external">运算符优先级</a></p>
@@ -33,14 +89,12 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>type()   type{}</td>
 <td>函数风格转型</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>a()</td>
 <td>函数调用</td>
@@ -49,14 +103,12 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>a[]</td>
 <td>下标</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>.   -&gt;</td>
 <td>成员访问</td>
@@ -71,14 +123,12 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>+a   -a</td>
 <td>一元加与减</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>!   ~</td>
 <td>逻辑非和逐位非</td>
@@ -87,14 +137,12 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>(type)</td>
 <td>C 风格转型</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>*a</td>
 <td>间接（解引用）</td>
@@ -103,14 +151,12 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>&amp;a</td>
 <td>取址</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>sizeof</td>
 <td>取大小</td>
@@ -119,14 +165,12 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>new   new[]</td>
 <td>动态内存分配</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>delete   delete[]</td>
 <td>动态内存分配</td>
@@ -176,7 +220,6 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>&gt;   &gt;=</td>
 <td>分别为 &gt; 与 ≥ 的关系运算符</td>
 <td></td>
@@ -220,8 +263,8 @@
 </tr>
 <tr>
 <td>15</td>
-<td></td>
-<td></td>
+<td>\</td>
+<td>\</td>
 <td></td>
 <td>逻辑或</td>
 <td></td>
@@ -235,14 +278,12 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>throw</td>
 <td>throw 运算符</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>=</td>
 <td>直接赋值（ C++ 类默认提供）</td>
@@ -251,14 +292,12 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>+=   -=</td>
 <td>以和及差复合赋值</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>*=   /=   %=</td>
 <td>以积、商及余数复合赋值</td>
@@ -267,14 +306,12 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>&lt;&lt;=   &gt;&gt;=</td>
 <td>以逐位左移及右移复合赋值</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>&amp;=   ^=   \</td>
 <td>=</td>

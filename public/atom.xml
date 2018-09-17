@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-07-23T14:38:14.920Z</updated>
+  <updated>2018-09-17T14:38:23.019Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,98 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>rtp协议</title>
+    <link href="http://yoursite.com/2018/09/17/rtp/"/>
+    <id>http://yoursite.com/2018/09/17/rtp/</id>
+    <published>2018-09-17T13:51:27.000Z</published>
+    <updated>2018-09-17T14:38:23.019Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;部分内容转载自：&lt;a href=&quot;https://blog.csdn.net/leixiaohua1020/article/details/50535230&quot; title=&quot;leixiaohua&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;雷霄骅CSDN博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;固定头部格式&quot;&gt;&lt;a href=&quot;#固定头部格式&quot; class=&quot;headerlink&quot; title=&quot;固定头部格式&quot;&gt;&lt;/a&gt;固定头部格式&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1               2               3              4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;|V=2|P|X|  CC   |M|     PT      |       sequence number         |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;|                           timestamp                           |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;|                synchronization source (SSRC)                  |   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;|                 contributing source (CSRC)                    | &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;V：RTP协议的版本号，占2位，当前协议版本号为2&lt;/li&gt;
+&lt;li&gt;P：填充标志，占1位，如果P=1，则在该报文的尾部填充一个或多个额外的八位组，它们不是有效载荷的一部分。&lt;/li&gt;
+&lt;li&gt;X：扩展标志，占1位，如果X=1，则在RTP报头后跟有一个扩展报头&lt;/li&gt;
+&lt;li&gt;CC：CSRC计数器，占4位，指示CSRC 标识符的个数&lt;/li&gt;
+&lt;li&gt;M: 标记，占1位，不同的有效载荷有不同的含义，对于视频，标记一帧的结束；对于音频，标记会话的开始。&lt;/li&gt;
+&lt;li&gt;PT: 有效荷载类型，占7位，用于说明RTP报文中有效载荷的类型，如GSM音频、JPEG图像等,在流媒体中大部分是用来区分音频流和视频流的，这样便于客户端进行解析。&lt;/li&gt;
+&lt;li&gt;序列号：占16位，用于标识发送者所发送的RTP报文的序列号，每发送一个报文，序列号增1。这个字段当下层的承载协议用UDP的时候，网络状况不好的时候可以用来检查丢包。&lt;br&gt;同时出现网络抖动的情况可以用来对数据进行重新排序，序列号的初始值是随机的，同时音频包和视频包的sequence是分别记数的。&lt;/li&gt;
+&lt;li&gt;时戳(Timestamp)：占32位，必须使用90 kHz 时钟频率。时戳反映了该RTP报文的第一个八位组的采样时刻。接收者使用时戳来计算延迟和延迟抖动，并进行同步控制。&lt;/li&gt;
+&lt;li&gt;同步信源(SSRC)标识符：占32位，用于标识同步信源。该标识符是随机选择的，参加同一视频会议的两个同步信源不能有相同的SSRC。&lt;/li&gt;
+&lt;li&gt;特约信源(CSRC)标识符：每个CSRC标识符占32位，可以有0～15个。每个CSRC标识了包含在该RTP报文有效载荷中的所有特约信源。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;固定头部解析&quot;&gt;&lt;a href=&quot;#固定头部解析&quot; class=&quot;headerlink&quot; title=&quot;固定头部解析&quot;&gt;&lt;/a&gt;固定头部解析&lt;/h2&gt;&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; _rtp_fixed_header&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;/* byte 0 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; csrc_len:&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;;       &lt;span class=&quot;comment&quot;&gt;/* expect 0 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; extension:&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;      &lt;span class=&quot;comment&quot;&gt;/* expect 1 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; padding:&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;        &lt;span class=&quot;comment&quot;&gt;/* expect 0 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; version:&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;        &lt;span class=&quot;comment&quot;&gt;/* expect 2 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;/* byte 1 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; payload:&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; marker:&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;        &lt;span class=&quot;comment&quot;&gt;/* expect 1 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;/* bytes 2, 3 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;short&lt;/span&gt; seq_no;            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;/* bytes 4-7 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt;  &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; timestamp;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;/* bytes 8-11 */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; ssrc;            &lt;span class=&quot;comment&quot;&gt;/* stream number is used here. */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125; RTP_FIXED_HEADER;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;补充&quot;&gt;&lt;a href=&quot;#补充&quot; class=&quot;headerlink&quot; title=&quot;补充&quot;&gt;&lt;/a&gt;补充&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;声明后加长度，表明占用的bit, 在协议解析中常用&lt;/li&gt;
+&lt;li&gt;如果出现前面字段比后面字段长的情况，需要注意字节对齐的情况。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; _some_protocol&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;short&lt;/span&gt; field_A;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; len;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;short&lt;/span&gt; flag_B;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;SOME_PROTOCOL ;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;此时&lt;code&gt;sizeof SOME_PROTOOCL&lt;/code&gt;的长度是6，没法直接将字节流转为对应的结构体，需要指定对齐长度&lt;/p&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;pragma&lt;/span&gt; pack(1)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;pragma&lt;/span&gt; pack()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;扩展头部&quot;&gt;&lt;a href=&quot;#扩展头部&quot; class=&quot;headerlink&quot; title=&quot;扩展头部&quot;&gt;&lt;/a&gt;扩展头部&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1               2               3              4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;|     Defined by profile        |             length            |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;|                    header extension                           |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;当RTP头部中固定头部的 X 为1时， 包括一个扩展头部.紧接着CSRC（如果存在）.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;前16bit 用以识别标识符或参数，由上层协议定义&lt;/li&gt;
+&lt;li&gt;length 指示 header extension 的长度，&lt;strong&gt;单位32bit&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;wireshark识别&quot;&gt;&lt;a href=&quot;#wireshark识别&quot; class=&quot;headerlink&quot; title=&quot;wireshark识别&quot;&gt;&lt;/a&gt;wireshark识别&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;解码&lt;br&gt;菜单栏依次选择分析、解码为，弹出菜单右下角添加，装着RTP，应用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;流分析&lt;br&gt;菜单栏依次选择：电话、RTP、流分析。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;部分内容转载自：&lt;a href=&quot;https://blog.csdn.net/leixiaohua1020/article/details/50535230&quot; title=&quot;leixiaohua&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;雷
+    
+    </summary>
+    
+    
+      <category term="rtp,c++" scheme="http://yoursite.com/tags/rtp-c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vptr</title>
+    <link href="http://yoursite.com/2018/07/24/vptr/"/>
+    <id>http://yoursite.com/2018/07/24/vptr/</id>
+    <published>2018-07-24T14:57:44.000Z</published>
+    <updated>2018-07-24T15:17:19.780Z</updated>
+    
+    <content type="html">&lt;p&gt;之前无意中看见别人代码，在&lt;code&gt;struct&lt;/code&gt; 中初始函数中，直接&lt;code&gt;memset&lt;/code&gt;,如&lt;br&gt;&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; Content&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; indexx[&lt;span class=&quot;number&quot;&gt;64&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//....&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;memset&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;sizeof&lt;/span&gt;(Content));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;最近代码遇到成员变量较多，想采用类似方法，但程序总是崩溃，发生在基类析构函数。&lt;/p&gt;
+&lt;p&gt;打印发现&lt;strong&gt;虚指针空&lt;/strong&gt;，因为基类析构函数一般时虚函数（原因请参见effectiv C++），子类中存在&lt;code&gt;vptr&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;摘用侯捷《度探索C++对象模型》中的实例&lt;/p&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; A &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;vfunc1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;vfunc2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;func1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;func2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;virtual&lt;/span&gt; ~A();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; m_data1, m_data2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; B : A &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;vfunc1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;func2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;virtual&lt;/span&gt; ~B();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; m_data3;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; C : B &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;vfunc1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; m_data1, m_data4;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&quot;/images/vtpr.jpg&quot; alt=&quot;vprt.jpg&quot; title=&quot;内存对象模型&quot;&gt;&lt;/p&gt;
+&lt;p&gt;使用本文开头的方法&lt;code&gt;memset&lt;/code&gt;初始化成员时，也同时将&lt;code&gt;vptr&lt;/code&gt;置为空，导致析构时空指针异常崩溃。&lt;/p&gt;
+&lt;p&gt;可以在&lt;code&gt;memset&lt;/code&gt;时偏移一个指针的长度。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前无意中看见别人代码，在&lt;code&gt;struct&lt;/code&gt; 中初始函数中，直接&lt;code&gt;memset&lt;/code&gt;,如&lt;br&gt;&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+    
+    </summary>
+    
+      <category term="c++" scheme="http://yoursite.com/categories/c/"/>
+    
+    
+      <category term="c++, vptr" scheme="http://yoursite.com/tags/c-vptr/"/>
+    
+  </entry>
+  
+  <entry>
     <title>c++ operator</title>
     <link href="http://yoursite.com/2018/07/23/c-operator/"/>
     <id>http://yoursite.com/2018/07/23/c-operator/</id>
     <published>2018-07-23T13:08:26.000Z</published>
-    <updated>2018-07-23T14:38:14.920Z</updated>
+    <updated>2018-07-23T14:43:11.510Z</updated>
     
     <content type="html">&lt;p&gt;&lt;a href=&quot;https://zh.cppreference.com/w/cpp/language/operator_precedence&quot; title=&quot;c++ operator&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;运算符优先级&lt;/a&gt;&lt;/p&gt;
 &lt;table&gt;
@@ -49,14 +136,12 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;type()   type{}&lt;/td&gt;
 &lt;td&gt;函数风格转型&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;a()&lt;/td&gt;
 &lt;td&gt;函数调用&lt;/td&gt;
@@ -65,14 +150,12 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;a[]&lt;/td&gt;
 &lt;td&gt;下标&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;.   -&amp;gt;&lt;/td&gt;
 &lt;td&gt;成员访问&lt;/td&gt;
@@ -87,14 +170,12 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;+a   -a&lt;/td&gt;
 &lt;td&gt;一元加与减&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;!   ~&lt;/td&gt;
 &lt;td&gt;逻辑非和逐位非&lt;/td&gt;
@@ -103,14 +184,12 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;(type)&lt;/td&gt;
 &lt;td&gt;C 风格转型&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;*a&lt;/td&gt;
 &lt;td&gt;间接（解引用）&lt;/td&gt;
@@ -119,14 +198,12 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&amp;amp;a&lt;/td&gt;
 &lt;td&gt;取址&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;sizeof&lt;/td&gt;
 &lt;td&gt;取大小&lt;/td&gt;
@@ -135,14 +212,12 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;new   new[]&lt;/td&gt;
 &lt;td&gt;动态内存分配&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;delete   delete[]&lt;/td&gt;
 &lt;td&gt;动态内存分配&lt;/td&gt;
@@ -192,7 +267,6 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&amp;gt;   &amp;gt;=&lt;/td&gt;
 &lt;td&gt;分别为 &amp;gt; 与 ≥ 的关系运算符&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
@@ -236,8 +310,8 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;15&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;\&lt;/td&gt;
+&lt;td&gt;\&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;逻辑或&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
@@ -251,14 +325,12 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;throw&lt;/td&gt;
 &lt;td&gt;throw 运算符&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;=&lt;/td&gt;
 &lt;td&gt;直接赋值（ C++ 类默认提供）&lt;/td&gt;
@@ -267,14 +339,12 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;+=   -=&lt;/td&gt;
 &lt;td&gt;以和及差复合赋值&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;*=   /=   %=&lt;/td&gt;
 &lt;td&gt;以积、商及余数复合赋值&lt;/td&gt;
@@ -283,14 +353,12 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&amp;lt;&amp;lt;=   &amp;gt;&amp;gt;=&lt;/td&gt;
 &lt;td&gt;以逐位左移及右移复合赋值&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&amp;amp;=   ^=   \&lt;/td&gt;
 &lt;td&gt;=&lt;/td&gt;
@@ -1133,148 +1201,6 @@
       <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
     
       <category term="shortcut" scheme="http://yoursite.com/tags/shortcut/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MSSQL遇到问条记录</title>
-    <link href="http://yoursite.com/2016/07/24/MSSQL/"/>
-    <id>http://yoursite.com/2016/07/24/MSSQL/</id>
-    <published>2016-07-24T14:10:46.000Z</published>
-    <updated>2016-12-22T15:00:58.183Z</updated>
-    
-    <content type="html">&lt;!-- MarkdownTOC --&gt;
-&lt;ul&gt;
-&lt;li&gt;登陆连接失败&lt;/li&gt;
-&lt;li&gt;启动sa登陆&lt;/li&gt;
-&lt;li&gt;服务器改为IP地址登陆&lt;/li&gt;
-&lt;li&gt;高版本数据库恢复到低版本数据库&lt;/li&gt;
-&lt;li&gt;自增长列插入指定值&lt;/li&gt;
-&lt;li&gt;select into from 与 insert into select 用法与区别&lt;/li&gt;
-&lt;li&gt;总结&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- /MarkdownTOC --&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;记录使用MSSQL使用过程中遇到的问题。新手，大多数搜索解决，全部实际操作过，如果不能解决您的问题，请见谅。&lt;br&gt;ps. 自己电脑没装MSSQL，因此没有截图。&lt;/p&gt;
-&lt;h2 id=&quot;登陆连接失败&quot;&gt;&lt;a href=&quot;#登陆连接失败&quot; class=&quot;headerlink&quot; title=&quot;登陆连接失败&quot;&gt;&lt;/a&gt;登陆连接失败&lt;/h2&gt;&lt;p&gt;错误描述：未找到或无法访问服务器.请验证实例名称是否正确并且SQL SERVER已配置允许远程链接.(provide:命名管道提供程序,error:40 -无法打开到SQL Server的连接)(Microsoft SQL Server,错误:2)&lt;br&gt;解决办法：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;开始菜单，SQL Server 20XX目录下找到 &lt;code&gt;SQL Server Configuration Manager&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;SQL Server 【Version】 服务，启动&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;可能存在多个服务，请启动对应你连接名的那个服务&lt;/li&gt;
-&lt;li&gt;如果启动失败，请选择属性——登陆——本地系统账户，再次重新启动&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;启动sa登陆&quot;&gt;&lt;a href=&quot;#启动sa登陆&quot; class=&quot;headerlink&quot; title=&quot;启动sa登陆&quot;&gt;&lt;/a&gt;启动sa登陆&lt;/h2&gt;&lt;p&gt;问题描述：一般本地使用的windows账户，特别第一次安装时没注意，就没用设置sa密码，也就无法sa登陆&lt;br&gt;解决办法：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;windows登陆&lt;/li&gt;
-&lt;li&gt;在连接上右击，属性——安全性——SQL Server 和windows身份验证模式。保存，返回&lt;/li&gt;
-&lt;li&gt;展开连接，安全性——登录名——sa，设置密码。切换到状态，登陆选择&lt;code&gt;启用&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;服务器改为IP地址登陆&quot;&gt;&lt;a href=&quot;#服务器改为IP地址登陆&quot; class=&quot;headerlink&quot; title=&quot;服务器改为IP地址登陆&quot;&gt;&lt;/a&gt;服务器改为IP地址登陆&lt;/h2&gt;&lt;p&gt;问题描述：一般安装完成之后，采用的是windows主机名+服务名的连接方式，而非IP地址，其他电脑无法访问&lt;br&gt;解决办法：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;启动sa登陆&lt;/li&gt;
-&lt;li&gt;开始菜单，SQL Server 20XX目录下找到 &lt;code&gt;SQL Server Configuration Manager&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;SQL Server 【Version】网络配置，启用&lt;code&gt;Namedpipes&lt;/code&gt;和&lt;code&gt;TCP/IP&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;TCP/IP&lt;/code&gt;属性，IP地址，配置##IP1##地址（IP2本地），##IPALL##TCP端口&lt;/li&gt;
-&lt;li&gt;重启SQL Server 服务，连接&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;高版本数据库恢复到低版本数据库&quot;&gt;&lt;a href=&quot;#高版本数据库恢复到低版本数据库&quot; class=&quot;headerlink&quot; title=&quot;高版本数据库恢复到低版本数据库&quot;&gt;&lt;/a&gt;高版本数据库恢复到低版本数据库&lt;/h2&gt;&lt;p&gt;问题描述： 高版本server生成的备份文件无法在低版本上恢复&lt;br&gt;解决办法：&lt;/p&gt;
-&lt;h3 id=&quot;无法能够连接到高版本服务器&quot;&gt;&lt;a href=&quot;#无法能够连接到高版本服务器&quot; class=&quot;headerlink&quot; title=&quot;无法能够连接到高版本服务器&quot;&gt;&lt;/a&gt;无法能够连接到高版本服务器&lt;/h3&gt;&lt;p&gt;我没有找到其他办法，只能升级低版本服务器&lt;/p&gt;
-&lt;h3 id=&quot;能够连接到高版本服务器&quot;&gt;&lt;a href=&quot;#能够连接到高版本服务器&quot; class=&quot;headerlink&quot; title=&quot;能够连接到高版本服务器&quot;&gt;&lt;/a&gt;能够连接到高版本服务器&lt;/h3&gt;&lt;p&gt;整体思路：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;在高版本服务器上，导出低版本服务器兼容的数据库创建sql语句&lt;/li&gt;
-&lt;li&gt;低版本服务器执行，生成表&lt;/li&gt;
-&lt;li&gt;利用SQL server数据导入工具，从高版本服务器导入数据。&lt;br&gt;当然，如果数据量比较小，可以在导出SQL语句的时候，直接连数据一起导出，再执行。&lt;br&gt;具体操作：&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;导出SQL&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;待备份数据库右击——任务——生成脚本&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;设置脚本选项&lt;/code&gt;——&lt;code&gt;为服务器版本编写脚本&lt;/code&gt;，选择目标数据库版本&lt;/li&gt;
-&lt;li&gt;如果要同时导出数据，&lt;code&gt;要编写脚本的数据的类型&lt;/code&gt;选择&lt;code&gt;架构和数据&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;执行SQL&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;要先创建目标数据库，直接将SQL拖过去执行&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;导出导出数据&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;数据库右击——导入数据，按提示下一步，&lt;code&gt;编辑映射&lt;/code&gt;时选择&lt;code&gt;启用标识插入&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;补充：高版本导入低版本数据，可以直接导入。但是，&lt;strong&gt;表格的一些字段约束会丢失&lt;/strong&gt;。&lt;/p&gt;
-&lt;h2 id=&quot;自增长列插入指定值&quot;&gt;&lt;a href=&quot;#自增长列插入指定值&quot; class=&quot;headerlink&quot; title=&quot;自增长列插入指定值&quot;&gt;&lt;/a&gt;自增长列插入指定值&lt;/h2&gt;&lt;p&gt;问题描述：想要显示插入自动编号&lt;code&gt;IDENTITY&lt;/code&gt;值，导致错误&lt;code&gt;结果会导致错误：当 IDENTITY_INSERT 设置为 OFF 时，不能向表 XXXX中的标识列插入显式值。&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;TABLE&lt;/span&gt; products (&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;IDENTITY&lt;/span&gt; PRIMARY &lt;span class=&quot;keyword&quot;&gt;KEY&lt;/span&gt;, product &lt;span class=&quot;built_in&quot;&gt;varchar&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;INTO&lt;/span&gt; products (&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;, product) &lt;span class=&quot;keyword&quot;&gt;VALUES&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;hello kitty&#39;&lt;/span&gt;) #返回错误&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;解决办法：&lt;br&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SET&lt;/span&gt; IDENTITY_INSERT products &lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;INTO&lt;/span&gt; products (&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;, product) &lt;span class=&quot;keyword&quot;&gt;VALUES&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;hello kitty&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h2 id=&quot;select-into-from-与-insert-into-select-用法与区别&quot;&gt;&lt;a href=&quot;#select-into-from-与-insert-into-select-用法与区别&quot; class=&quot;headerlink&quot; title=&quot;select into from 与 insert into select 用法与区别&quot;&gt;&lt;/a&gt;select into from 与 insert into select 用法与区别&lt;/h2&gt;&lt;p&gt;select into from 和 insert into select都是用来复制表，两者的主要区别为： select into from 要求目标表不存在，因为在插入时会自动创建。insert into select from 要求目标表存在。&lt;/p&gt;
-&lt;h3 id=&quot;SQL语法&quot;&gt;&lt;a href=&quot;#SQL语法&quot; class=&quot;headerlink&quot; title=&quot;SQL语法&quot;&gt;&lt;/a&gt;SQL语法&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Insert into Table2(field1,field2,…) select value1,value2,… from Table1&lt;/li&gt;
-&lt;li&gt;SELECT vale1, value2 into Table2 from Table1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;实例&quot;&gt;&lt;a href=&quot;#实例&quot; class=&quot;headerlink&quot; title=&quot;实例&quot;&gt;&lt;/a&gt;实例&lt;/h3&gt;&lt;p&gt;具体实例请查阅该文章&lt;a href=&quot;http://www.studyofnet.com/news/182.html&quot; title=&quot;select into from 与 insert into select 用法与区别&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;select into from 与 insert into select 用法与区别&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;MSSQL 真心没有MySQL好用啊！！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;!-- MarkdownTOC --&gt;
-&lt;ul&gt;
-&lt;li&gt;登陆连接失败&lt;/li&gt;
-&lt;li&gt;启动sa登陆&lt;/li&gt;
-&lt;li&gt;服务器改为IP地址登陆&lt;/li&gt;
-&lt;li&gt;高版本数据库恢复到低版本数据库&lt;/li&gt;
-&lt;li&gt;自增长列插入指定值&lt;/li&gt;
-&lt;li&gt;select into from 与 insert into select 用法与区别&lt;/li&gt;
-&lt;li&gt;总结&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- /MarkdownTOC --&gt;
-    
-    </summary>
-    
-      <category term="DataBase" scheme="http://yoursite.com/categories/DataBase/"/>
-    
-    
-      <category term="MSSQL, SQL Server" scheme="http://yoursite.com/tags/MSSQL-SQL-Server/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vmware 记录</title>
-    <link href="http://yoursite.com/2016/07/24/vmware/"/>
-    <id>http://yoursite.com/2016/07/24/vmware/</id>
-    <published>2016-07-24T13:50:08.000Z</published>
-    <updated>2016-08-22T12:21:41.516Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;a href=&quot;#此虚拟机正在使用中，取得该虚拟机的所有权失败&quot; class=&quot;headerlink&quot; title=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;/a&gt;此虚拟机正在使用中，取得该虚拟机的所有权失败&lt;/h2&gt;&lt;p&gt;问题描述：该问题一般是由于强制关闭vmware进程导致&lt;br&gt;解决方案：你所配置的虚拟机目录下存在*.lck文件，删除就可以了。&lt;/p&gt;
-&lt;h2 id=&quot;CentOS-启动没有IPV4-地址&quot;&gt;&lt;a href=&quot;#CentOS-启动没有IPV4-地址&quot; class=&quot;headerlink&quot; title=&quot;CentOS 启动没有IPV4 地址&quot;&gt;&lt;/a&gt;CentOS 启动没有IPV4 地址&lt;/h2&gt;&lt;p&gt;问题描述：centos7虚拟机，没有ipv4地址，无法ssh连接&lt;br&gt;解决办法：默认设置没有开机激活网卡，修改网络配置文件&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改ONBOOT=yes &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl restart network&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h2 id=&quot;虚拟机提示Failed-to-start-LSB-Bring-up-down-networking&quot;&gt;&lt;a href=&quot;#虚拟机提示Failed-to-start-LSB-Bring-up-down-networking&quot; class=&quot;headerlink&quot; title=&quot;虚拟机提示Failed to start LSB: Bring up/down networking&quot;&gt;&lt;/a&gt;虚拟机提示Failed to start LSB: Bring up/down networking&lt;/h2&gt;&lt;p&gt;问题描述：网络无法连接，重启network提示该错误&lt;code&gt;Failed to start LSB: Bring up/down networking&lt;/code&gt;。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;搜索到的解决办法一般是由于拷贝他人的虚拟机文件导致，需要更改网络配置文件中的HWADDR字段，改为你自己mac地址。(针对CentOS7)&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ip addr show #查看mac地址&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo vim /etc/sysconfig/network-scripts/ifcfg-enoXXX #修改HWADDR字段&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;我遇到的问题是由于关闭了&lt;code&gt;VMware NAT Service&lt;/code&gt; 服务导致，启动就可以了&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;谨此记录，日后再补充遇到的其他问题&lt;/p&gt;
-&lt;h2 id=&quot;ssh问题&quot;&gt;&lt;a href=&quot;#ssh问题&quot; class=&quot;headerlink&quot; title=&quot;ssh问题&quot;&gt;&lt;/a&gt;ssh问题&lt;/h2&gt;&lt;p&gt;详见鄙人关于ssh问题的blog&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;a href=&quot;#此虚拟机正在使用中，取得该虚拟机的所有权失败&quot; class=&quot;headerlink&quot; title=&quot;此虚拟机正在使用中，取得该虚拟机的所有权失败&quot;&gt;&lt;/a&gt;此虚拟机正在使用中，取得该虚拟机的所有权
-    
-    </summary>
-    
-      <category term="record" scheme="http://yoursite.com/categories/record/"/>
-    
-    
-      <category term="vmware" scheme="http://yoursite.com/tags/vmware/"/>
     
   </entry>
   
