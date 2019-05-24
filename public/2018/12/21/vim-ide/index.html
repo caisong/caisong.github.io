@@ -1,0 +1,898 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vim," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Caisong's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="工作需要，使用自定义的开发语言, Linux环境。
+
+notepad++ vs vim
+vim自带，缺少语法高亮、自动补全。
+notepad++方便，适合vim不熟悉的人，但上传到linux可能存在编码问题其实只要设置好，都可以，哪款编辑器方便就行。以下内容只涉及语法高亮和自动补全,snippets后期补上
+
+
+
+语法高亮notepad++
+vim如果自定义语言完全不同于现有任何格式（如xml j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义语言IDE构建">
+<meta property="og:url" content="http://yoursite.com/2018/12/21/vim-ide/index.html">
+<meta property="og:site_name" content="Caisong's Blog">
+<meta property="og:description" content="工作需要，使用自定义的开发语言, Linux环境。
+
+notepad++ vs vim
+vim自带，缺少语法高亮、自动补全。
+notepad++方便，适合vim不熟悉的人，但上传到linux可能存在编码问题其实只要设置好，都可以，哪款编辑器方便就行。以下内容只涉及语法高亮和自动补全,snippets后期补上
+
+
+
+语法高亮notepad++
+vim如果自定义语言完全不同于现有任何格式（如xml j">
+<meta property="og:image" content="http://yoursite.com/images/notepad_highlight.png">
+<meta property="og:updated_time" content="2018-12-21T14:35:48.685Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义语言IDE构建">
+<meta name="twitter:description" content="工作需要，使用自定义的开发语言, Linux环境。
+
+notepad++ vs vim
+vim自带，缺少语法高亮、自动补全。
+notepad++方便，适合vim不熟悉的人，但上传到linux可能存在编码问题其实只要设置好，都可以，哪款编辑器方便就行。以下内容只涉及语法高亮和自动补全,snippets后期补上
+
+
+
+语法高亮notepad++
+vim如果自定义语言完全不同于现有任何格式（如xml j">
+<meta name="twitter:image" content="http://yoursite.com/images/notepad_highlight.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 自定义语言IDE构建 | Caisong's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-78015070-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Caisong's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                自定义语言IDE构建
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-12-21T21:31:48+08:00" content="2018-12-21">
+              2018-12-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/12/21/vim-ide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/12/21/vim-ide/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>工作需要，使用自定义的开发语言, Linux环境。</p>
+<ul>
+<li>notepad++ vs vim<ul>
+<li>vim自带，缺少语法高亮、自动补全。</li>
+<li>notepad++方便，适合vim不熟悉的人，但上传到linux可能存在编码问题<br>其实只要设置好，都可以，哪款编辑器方便就行。<br>以下内容只涉及<strong>语法高亮</strong>和<strong>自动补全</strong>,<strong>snippets</strong>后期补上</li>
+</ul>
+</li>
+</ul>
+<h2 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h2><h3 id="notepad"><a href="#notepad" class="headerlink" title="notepad++"></a>notepad++</h3><p><img src="/images/notepad_highlight.png" alt="notepad_highlight.png" title="语法高亮"></p>
+<h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h3><p>如果自定义语言完全不同于现有任何格式（如xml json yaml ini等），那比较麻烦，可能需要自己写。我们讨论格式类似的情况：</p>
+<ol>
+<li><p>语法文件<br><code>/usr/share/vim/{vim版本}/syntax</code>目录下存在以支持的语法文件，如果你所使用的文件格式与其中某种雷同的话，可以复制一份，自己添加你的关键词。<br>如 <code>cat /usr/share/vim/vim80/syntax/conf.vim</code>    </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&quot; Vim syntax file</span><br><span class="line">&quot; Language:     generic configure file</span><br><span class="line">&quot; Maintainer:   Bram Moolenaar &lt;Bram@vim.org&gt;</span><br><span class="line">&quot; Last Change:  2005 Jun 20</span><br><span class="line"></span><br><span class="line">&quot; Quit when a (custom) syntax file was already loaded</span><br><span class="line">if exists(&quot;b:current_syntax&quot;)</span><br><span class="line">finish</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">syn keyword     confTodo        contained TODO FIXME XXX</span><br><span class="line">&quot; Avoid matching &quot;text#text&quot;, used in /etc/disktab and /etc/gettytab</span><br><span class="line">syn match       confComment     &quot;^#.*&quot; contains=confTodo</span><br><span class="line">syn match       confComment     &quot;\s#.*&quot;ms=s+1 contains=confTodo</span><br><span class="line">syn region      confString      start=+&quot;+ skip=+\\\\\|\\&quot;+ end=+&quot;+ oneline</span><br><span class="line">syn region      confString      start=+&apos;+ skip=+\\\\\|\\&apos;+ end=+&apos;+ oneline</span><br><span class="line"></span><br><span class="line">&quot; Define the default highlighting.</span><br><span class="line">&quot; Only used when an item doesn&apos;t have highlighting yet</span><br><span class="line">hi def link confComment Comment</span><br><span class="line">hi def link confTodo    Todo</span><br><span class="line">hi def link confString  String</span><br><span class="line"></span><br><span class="line">let b:current_syntax = &quot;conf&quot;</span><br><span class="line"></span><br><span class="line">&quot; vim: ts=8 sw=2</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><code>syn match</code> 匹配关键词  </li>
+<li><code>hi def link</code> 高亮  </li>
+</ul>
+<ol>
+<li>高亮设置<br>用户<code>vimrc</code>文件中添加如下设置 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;开启语法高亮</span><br><span class="line">syntax on </span><br><span class="line">&quot; Your Languare</span><br><span class="line">&quot; file_ext 替换为你的文件后缀</span><br><span class="line">&quot; file_type 替换为你刚设置的语法类型</span><br><span class="line">au BufNewFile,BufRead *.&#123;file_ext&#125;  setf &#123;filetype&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h2><h3 id="notepad-1"><a href="#notepad-1" class="headerlink" title="notepad++"></a>notepad++</h3><p>该<code>{notepad++安装目录}\plugins\APIs</code>目录下保存的自动补全的关键字，使用<code>xml</code>格式。</p>
+<p>基本格式：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">AutoComplete</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">Environment</span> <span class="attr">ignoreCase</span>=<span class="string">"no"</span> <span class="attr">startFunc</span>=<span class="string">"("</span> <span class="attr">stopFunc</span>=<span class="string">")"</span> <span class="attr">paramSeparator</span>=<span class="string">","</span> <span class="attr">additionalWordChar</span> = <span class="string">"."</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">KeyWord</span> <span class="attr">name</span>=<span class="string">"ArithmeticError"</span> <span class="attr">func</span>=<span class="string">"yes"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">Overload</span> <span class="attr">retVal</span>=<span class="string">""</span> <span class="attr">descr</span>=<span class="string">"Base class for arithmetic errors."</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">Overload</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">KeyWord</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">AutoComplete</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- keyword 关键字 func 如果未yes，那么Overload中描述的是函数返回值和说明，目前好像由于tinyxml的原因，不支持中文 --&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>创建你自定义语言对应的xml文件（本人未尝试使用不同命名，有兴趣的可以试试），将高亮的关键字按上面格式加入文件中。</p>
+<p><strong>开启notepad++ 自动补全功能</strong></p>
+<h3 id="vim-1"><a href="#vim-1" class="headerlink" title="vim"></a>vim</h3><ul>
+<li>omni<br><code>.vimrc</code>文件中加入 <code>setlocal omnifunc=syntaxcomplete#Complete</code></li>
+</ul>
+<p><em>此方法我未成功，在此仅记录</em></p>
+<ul>
+<li>user defined<br>该方法源自<a href="https://vi.stackexchange.com/questions/4584/how-to-create-my-own-autocomplete-function" target="_blank" rel="external">vi stackexchange</a></li>
+</ul>
+<ol>
+<li>建立自己的关键字文件 keyword.txt</li>
+<li>在用户.vim 目录下创建补全文件<code>after/ftplugin/language.vim</code>,内容如下   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setlocal complete+=k</span><br><span class="line">setlocal dictionary+=/path/to/keyword.txt</span><br><span class="line">setlocal iskeyword+=-</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>插入模式<code>&lt;C-n&gt;</code>或<code>&lt;C-p&gt;</code>补全</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vim/" rel="tag">#vim</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/15/url/" rel="next" title="django URL 匹配及参数传递">
+                <i class="fa fa-chevron-left"></i> django URL 匹配及参数传递
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/28/字符串/" rel="prev" title="Bash shell 字符串">
+                Bash shell 字符串 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2018/12/21/vim-ide/"
+     data-title="自定义语言IDE构建"
+     data-content=""
+     data-url="http://yoursite.com/2018/12/21/vim-ide/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/12/21/vim-ide/"
+           data-title="自定义语言IDE构建" data-url="http://yoursite.com/2018/12/21/vim-ide/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="CaiSong" />
+          <p class="site-author-name" itemprop="name">CaiSong</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法高亮"><span class="nav-number">1.</span> <span class="nav-text">语法高亮</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notepad"><span class="nav-number">1.1.</span> <span class="nav-text">notepad++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim"><span class="nav-number">1.2.</span> <span class="nav-text">vim</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动补全"><span class="nav-number">2.</span> <span class="nav-text">自动补全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notepad-1"><span class="nav-number">2.1.</span> <span class="nav-text">notepad++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-1"><span class="nav-number">2.2.</span> <span class="nav-text">vim</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CaiSong</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"caisong"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
