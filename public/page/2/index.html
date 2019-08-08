@@ -287,6 +287,133 @@
             
               
                 
+                <a class="post-title-link" href="/2018/04/01/apache/" itemprop="url">
+                  deploy django website to apache2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-01T20:55:39+08:00" content="2018-04-01">
+              2018-04-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/04/01/apache/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/01/apache/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近学习使用django，尝试部署至apaache2。</p>
+<ol>
+<li><p>required env</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apache2 libapache2-mod-wsgi-py3</span><br><span class="line">sudo pip install django</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拷贝目录至<code>/var/www</code>(apache2的默认网站目录)，之前未拷贝，在其他目录尝试了几次都未成功。</p>
+</li>
+<li><p>添加配置website</p>
+<ol>
+<li><p>配置网站配置</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apache2/sites-avaliable/ &amp;&amp; cp 000-default.conf yoursite.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置详情</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">VirtualHost</span> *<span class="attr">:80</span>&gt;</span></span><br><span class="line">	ServerName 127.0.0.1</span><br><span class="line">	ServerAdmin webmaster@localhost</span><br><span class="line">	# 网站根目录, 请根据自身目录配置，下同</span><br><span class="line">	DocumentRoot /var/www/web</span><br><span class="line">	</span><br><span class="line">	#静态文件目录</span><br><span class="line">	Alias /static/ /var/www/web/static/</span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">Directory</span> /<span class="attr">var</span>/<span class="attr">www</span>/<span class="attr">web</span>/<span class="attr">static</span>/&gt;</span></span><br><span class="line">		Require all granted</span><br><span class="line">	<span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	WSGIScriptAlias / /var/www/web/web/wsgi.py</span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">Directory</span> /<span class="attr">var</span>/<span class="attr">www</span>/<span class="attr">web</span>/<span class="attr">web</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">Files</span> <span class="attr">wsgi.py</span>&gt;</span></span><br><span class="line">		Require all granted</span><br><span class="line">	<span class="tag">&lt;/<span class="name">Files</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">VirtualHost</span>&gt;</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">3. 查看django wigi.py文件</span><br><span class="line">  默认生成的文件没有问题，不需要修改即可运行。</span><br><span class="line">  ```python</span><br><span class="line">  import os</span><br><span class="line">     from os.path import join, dirname,abspath</span><br><span class="line">     </span><br><span class="line">     from django.core.wsgi import get_wsgi_application</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     PROJECT_DIR = dirname(dirname(abspath(__file__)))</span><br><span class="line">     import sys</span><br><span class="line">     sys.path.insert(0, PROJECT_DIR)</span><br><span class="line">     </span><br><span class="line">     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web.settings")</span><br><span class="line">     </span><br><span class="line">     application = get_wsgi_application()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置django环境<br>进入你的网站根目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#static files</span></span><br><span class="line"><span class="comment">#前提在你的setting.py文件中设置好STATIC_ROOT目录</span></span><br><span class="line">python manage.py collectstatic</span><br><span class="line"></span><br><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改目录权限为<code>www-data</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown www-data:www-data webroot</span><br><span class="line"><span class="comment"># 如果存在数据库，请同时修改相应权限</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使网站生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo a2ensite yoursite.conf</span><br><span class="line">service apache2 reload</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/12/25/libconfig/" itemprop="url">
                   libconfig 入门
                 </a>
@@ -1482,127 +1609,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/19/time-util/" itemprop="url">
-                  时间相关函数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-19T22:44:11+08:00" content="2016-12-19">
-              2016-12-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/program/" itemprop="url" rel="index">
-                    <span itemprop="name">program</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/19/time-util/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/19/time-util/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#incldue <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> tm  <span class="comment">//calendar time type</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">int</span> tm_sec; <span class="comment">//[0,60](since C99)</span></span><br><span class="line">  <span class="keyword">int</span> tm_min; <span class="comment">//[0,59]</span></span><br><span class="line">  <span class="keyword">int</span> tm_hour; <span class="comment">//[0,23]</span></span><br><span class="line">  <span class="keyword">int</span> tm_mday; <span class="comment">//[1,31]</span></span><br><span class="line">  <span class="keyword">int</span> tm_mon; <span class="comment">//[0,11]</span></span><br><span class="line">  <span class="keyword">int</span> tm_year; <span class="comment">//year since 1900</span></span><br><span class="line">  <span class="keyword">int</span> tm_wday; <span class="comment">//days since Sunday:[0~6]</span></span><br><span class="line">  <span class="keyword">int</span> tm_wday; <span class="comment">//day since Jan 1:[0,365]</span></span><br><span class="line">  <span class="keyword">int</span> tm_isdst;<span class="comment">//夏令时时间，&gt;0:有效	=0：无效	&lt;0: 不可用</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">time_t</span>; <span class="comment">//calendar time since epoch type</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">clock_t</span>; <span class="comment">//processor time since era type</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> timespce&#123;  <span class="comment">//time in seconds and nanoseconds</span></span><br><span class="line">  <span class="keyword">time_t</span> tv_sec;</span><br><span class="line">  <span class="keyword">long</span> tv_nsec;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">time_t</span> time(<span class="keyword">time_t</span> *calptr); <span class="comment">//returns the current calendar time of the system as  ime since epoch</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">difftime</span><span class="params">(<span class="keyword">time_t</span> time_end, <span class="keyword">time_t</span> time_beg)</span></span>; <span class="comment">//computes the difference between times</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line">* format conversions</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">asctime</span><span class="params">( <span class="keyword">const</span> <span class="keyword">struct</span> tm *time_ptr)</span></span>; <span class="comment">//converts a tm object to a textual representation</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">ctime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">time_t</span> *time)</span></span>; <span class="comment">//converts a time_t object to a textual representation; as if by calling asctime(localtime(time));</span></span><br><span class="line"><span class="function"><span class="keyword">struct</span> tm *<span class="title">gmtime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">time_t</span> *time)</span></span>; <span class="comment">//convert time since epoch calendar time expressedd as UTC</span></span><br><span class="line"><span class="function"><span class="keyword">struct</span> tm *<span class="title">localtime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">time_t</span> *time)</span></span>; <span class="comment">//converts time since epoch calendar time expressed as local time </span></span><br><span class="line"><span class="keyword">time_t</span> mktime(<span class="keyword">struct</span> tm *time); <span class="comment">//converts calendar time to time since epoch</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">size_t</span> strftime(<span class="keyword">char</span> *str, <span class="keyword">size_t</span> count, <span class="keyword">const</span> <span class="keyword">char</span> *format, <span class="keyword">const</span> <span class="keyword">struct</span> tm *time); <span class="comment">//converts a tm object to custom textual representation</span></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strptime</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s, <span class="keyword">const</span> <span class="keyword">char</span> *format, <span class="keyword">struct</span> tm *tm)</span></span>; <span class="comment">//converse of strftime</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/time.h&gt;</span></span></span><br><span class="line"><span class="comment">/*</span><br><span class="line">clockid_t :</span><br><span class="line">CLOCK_REALTIME: 实时系统时间</span><br><span class="line">CLOCK_MONOTONIC: 不带负跳数的实时系统时间</span><br><span class="line">CLOCK_PROCESS_CPUTIME_ID: 调用进程CPU时间 </span><br><span class="line">CLOCK_THREAD_CPUTIME_ID: 调用线程CPU时间</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">clock_gettime</span><span class="params">(<span class="keyword">clockid_t</span> clock_id, <span class="keyword">struct</span> timespec *tsp)</span></span>; <span class="comment">//获取指定时钟的时间</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">clock_getres</span><span class="params">(<span class="keyword">clockid_t</span> clock_id, <span class="keyword">struct</span> timespec *tsp)</span></span>; <span class="comment">//设置指定时钟精度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">clock_settime</span><span class="params">(<span class="keyword">clockid_t</span> clodk_id, <span class="keyword">const</span> <span class="keyword">struct</span> timespec *tsp)</span></span>;<span class="comment">//设置时钟时间</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gettimeofday</span><span class="params">(<span class="keyword">struct</span> timeval *<span class="keyword">restrict</span> tp, <span class="keyword">void</span> *<span class="keyword">restrict</span> tzp)</span></span>;<span class="comment">//获取当前时间，与其他相同作用函数相比，精度较高</span></span><br></pre></td></tr></table></figure>
-<p><img src="/images/time_util.jpg" alt="time_util"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1648,7 +1654,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">35</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1665,7 +1671,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
