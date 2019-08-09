@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>D:/caisong.github.io/output</id>
+    <id>https://caisong.github.io.</id>
     <title>Gridea</title>
-    <updated>2019-06-03T12:30:28.626Z</updated>
+    <updated>2019-08-09T13:28:40.014Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="D:/caisong.github.io/output"/>
-    <link rel="self" href="D:/caisong.github.io/output/atom.xml"/>
+    <link rel="alternate" href="https://caisong.github.io."/>
+    <link rel="self" href="https://caisong.github.io./atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>D:/caisong.github.io/output/images/avatar.png</logo>
-    <icon>D:/caisong.github.io/output/favicon.ico</icon>
+    <logo>https://caisong.github.io./images/avatar.png</logo>
+    <icon>https://caisong.github.io./favicon.ico</icon>
     <rights>All rights reserved 2019, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>D:/caisong.github.io/output/post/hello-gridea/index.html</id>
-        <link href="D:/caisong.github.io/output/post/hello-gridea/index.html">
+        <id>https://caisong.github.io./post/hello-gridea</id>
+        <link href="https://caisong.github.io./post/hello-gridea">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
