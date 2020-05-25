@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="最近使用了openssl的AES解密函数，遇到些问题。
+代码示例以下代码结构摘录自man page
+1234567891011121314151617181920212223242526272829303132333435363738394041424344int do_crypt(FILE *in" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>openssl evp | Caisong&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近使用了openssl的AES解密函数，遇到些问题。 代码示例以下代码结构摘录自man page 1234567891011121314151617181920212223242526272829303132333435363738394041424344int do_crypt(FILE *in, FILE *out, int do_encrypt)&amp;#123;    &#x2F;* Allow eno">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openssl evp">
+<meta property="og:url" content="http://yoursite.com/2018/09/27/openssl-evp/index.html">
+<meta property="og:site_name" content="Caisong&#39;s Blog">
+<meta property="og:description" content="最近使用了openssl的AES解密函数，遇到些问题。 代码示例以下代码结构摘录自man page 1234567891011121314151617181920212223242526272829303132333435363738394041424344int do_crypt(FILE *in, FILE *out, int do_encrypt)&amp;#123;    &#x2F;* Allow eno">
+<meta property="article:published_time" content="2018-09-27T13:54:43.000Z">
+<meta property="article:modified_time" content="2018-09-27T15:02:28.863Z">
+<meta property="article:author" content="CaiSong">
+<meta property="article:tag" content="openssl, evp, aes">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Caisong&#39;s Blog" rel="home">Caisong&#39;s Blog</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-openssl-evp" class="post-openssl-evp post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      openssl evp
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/27/openssl-evp/" data-id="ckamp969e001ks8vecoqth79b" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>最近使用了openssl的AES解密函数，遇到些问题。</p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>以下代码结构摘录自<a href="https://linux.die.net/man/3/evp_decryptfinal" target="_blank" rel="noopener">man page</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">do_crypt</span><span class="params">(FILE *in, FILE *out, <span class="keyword">int</span> do_encrypt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* Allow enough space in output buffer for additional block */</span></span><br><span class="line">    inbuf[<span class="number">1024</span>], outbuf[<span class="number">1024</span> + EVP_MAX_BLOCK_LENGTH];</span><br><span class="line">    <span class="keyword">int</span> inlen, outlen;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* Bogus key and IV: we'd normally set these from</span></span><br><span class="line"><span class="comment">    * another source.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> key[] = <span class="string">"0123456789"</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> iv[] = <span class="string">"12345678"</span>;</span><br><span class="line">    <span class="comment">/* Don't set key or IV because we will modify the parameters */</span></span><br><span class="line">    EVP_CIPHER_CTX_init(&amp;ctx);</span><br><span class="line">    EVP_CipherInit_ex(&amp;ctx, EVP_rc2(), <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>, do_encrypt);</span><br><span class="line">    EVP_CIPHER_CTX_set_key_length(&amp;ctx, <span class="number">10</span>);</span><br><span class="line">    <span class="comment">/* We finished modifying parameters so now we can set key and IV */</span></span><br><span class="line">    EVP_CipherInit_ex(&amp;ctx, <span class="literal">NULL</span>, <span class="literal">NULL</span>, key, iv, do_encrypt);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)</span><br><span class="line">    &#123;</span><br><span class="line">        inlen = fread(inbuf, <span class="number">1</span>, <span class="number">1024</span>, in);</span><br><span class="line">        <span class="keyword">if</span>(inlen &lt;= <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span>(!EVP_CipherUpdate(&amp;ctx, outbuf, &amp;outlen, inbuf, inlen))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* Error */</span></span><br><span class="line">            EVP_CIPHER_CTX_cleanup(&amp;ctx);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        fwrite(outbuf, <span class="number">1</span>, outlen, out);</span><br><span class="line">    &#125;</span><br><span class="line">       </span><br><span class="line">    <span class="keyword">if</span>(!EVP_CipherFinal_ex(&amp;ctx, outbuf, &amp;outlen))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* Error */</span></span><br><span class="line">        EVP_CIPHER_CTX_cleanup(&amp;ctx);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    fwrite(outbuf, <span class="number">1</span>, outlen, out);</span><br><span class="line"></span><br><span class="line">    EVP_CIPHER_CTX_cleanup(&amp;ctx);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h2><p>参考<a href="https://blog.csdn.net/weixiao2015/article/details/79487775" target="_blank" rel="noopener">Openssl Evp接口以及EVP_DecryptFinal使用细节</a></p>
+<ol>
+<li><p><code>aes_128_ecb</code> <code>aes_256_ecb</code>中 128 和 256 指 key的长度，128对应16字节、256对应32字节</p>
+</li>
+<li><p>分块加密，即不断调用Update。加密以16字节为一块，进行加密。如果末尾不足16字节，需要填充。</p>
+</li>
+<li><p><code>EVP_CIPHER_CTX_set_padding</code> 指定填充模式</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EVP_PADDING_PKCS7       1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EVP_PADDING_ISO7816_4   2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EVP_PADDING_ANSI923     3</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EVP_PADDING_ISO10126    4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EVP_PADDING_ZERO        5</span></span><br></pre></td></tr></table></figure></li>
+<li><p>加密时</p>
+<ol>
+<li><p>如果padding开启, 最后update会留下16字节待处理，Final函数处理剩余字节</p>
+<ul>
+<li>明文不是16的整数倍，会填充至16字节</li>
+<li>明文是16的整数倍，保留最后16字节</li>
+</ul>
+</li>
+<li><p>如果padding没有开启padding</p>
+<ul>
+<li>明文是16的整数倍，update字节处理完，final不处理</li>
+<li>不是16的整数倍，final函数返回错误</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><code>EVP_DecryptFinal</code> <strong>Bad Decrypt</strong>问题</p>
+<ol>
+<li>没有设置padding，密文长度不是16的整数倍</li>
+<li>加解密设置的padding不对应</li>
+</ol>
+</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>AES有几种扩展算法，其中ecb和cbc需要填充，即加密后长度可能会不一样，cfb和ofb不需要填充，密文长度与明文长度一样 </li>
+<li>针对<strong>Bad Decrypt</strong>问题，本人实际解密过程中，对16整数倍字节的数据未调用final函数，长度直接返回密文长度。</li>
+</ol>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/09/27/openssl-evp/">
+    <time datetime="2018-09-27T13:54:43.000Z" class="entry-date">
+        2018-09-27
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openssl-evp-aes/" rel="tag">openssl, evp, aes</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/10/15/url/" rel="prev"><span class="meta-nav">←</span> django URL 匹配及参数传递</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/09/17/rtp/" rel="next">rtp协议 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/data-structure/">data structure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/eidtor/">eidtor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/embedded/">embedded</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/">program</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/record/">record</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tts/">tts</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/26/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/22/elk/">elk国内源</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/08/docker-1/">docker 记录2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/%E5%8F%96%E6%B6%88%E8%87%AA%E5%8A%A8%E8%84%9A%E6%9C%AC%E4%BB%A3%E7%90%86/">取消自动脚本代理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/28/%E5%AD%97%E7%AC%A6%E4%B8%B2/">Bash shell 字符串</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSSQL-SQL-Server/" rel="tag">MSSQL, SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/POstgreSQL/" rel="tag">POstgreSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/accumulation/" rel="tag">accumulation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arm/" rel="tag">arm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-vptr/" rel="tag">c++, vptr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmder/" rel="tag">cmder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/" rel="tag">config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-apach2/" rel="tag">django, apach2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elk/" rel="tag">elk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/email/" rel="tag">email</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ini/" rel="tag">ini</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libconfig/" rel="tag">libconfig</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mail/" rel="tag">mail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mssql-mongodb/" rel="tag">mssql, mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/odbc/" rel="tag">odbc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl-evp-aes/" rel="tag">openssl, evp, aes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pac-reg/" rel="tag">pac, reg</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postgresql/" rel="tag">postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/record/" rel="tag">record</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rtp-c/" rel="tag">rtp,c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell-update-rc-d-systemctl/" rel="tag">shell, update-rc.d, systemctl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shortcut/" rel="tag">shortcut</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time/" rel="tag">time</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tts-windows/" rel="tag">tts, windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmware/" rel="tag">vmware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xinetd/" rel="tag">xinetd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" rel="tag">红黑树</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/MSSQL-SQL-Server/" style="font-size: 10px;">MSSQL, SQL Server</a> <a href="/tags/POstgreSQL/" style="font-size: 10px;">POstgreSQL</a> <a href="/tags/accumulation/" style="font-size: 15px;">accumulation</a> <a href="/tags/arm/" style="font-size: 10px;">arm</a> <a href="/tags/atom/" style="font-size: 10px;">atom</a> <a href="/tags/c-vptr/" style="font-size: 10px;">c++, vptr</a> <a href="/tags/cmder/" style="font-size: 10px;">cmder</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/django-apach2/" style="font-size: 10px;">django, apach2</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/email/" style="font-size: 10px;">email</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/ini/" style="font-size: 10px;">ini</a> <a href="/tags/libconfig/" style="font-size: 10px;">libconfig</a> <a href="/tags/mail/" style="font-size: 10px;">mail</a> <a href="/tags/mssql-mongodb/" style="font-size: 10px;">mssql, mongodb</a> <a href="/tags/odbc/" style="font-size: 10px;">odbc</a> <a href="/tags/openssl-evp-aes/" style="font-size: 10px;">openssl, evp, aes</a> <a href="/tags/pac-reg/" style="font-size: 10px;">pac, reg</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/record/" style="font-size: 15px;">record</a> <a href="/tags/rtp-c/" style="font-size: 10px;">rtp,c++</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/shell-update-rc-d-systemctl/" style="font-size: 10px;">shell, update-rc.d, systemctl</a> <a href="/tags/shortcut/" style="font-size: 10px;">shortcut</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/tts-windows/" style="font-size: 10px;">tts, windows</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vmware/" style="font-size: 10px;">vmware</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/xinetd/" style="font-size: 10px;">xinetd</a> <a href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" style="font-size: 10px;">红黑树</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2020 CaiSong
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

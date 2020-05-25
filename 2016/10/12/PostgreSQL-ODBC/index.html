@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="安装unixODBC
+安装PostgreSQL ODBC驱动
+检查驱动配置
+添加数据源
+修改PostgrsSQL认证方式
+验证
+ODBC 连接数据库" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>PostgreSQL ODBC | Caisong&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装unixODBC 安装PostgreSQL ODBC驱动 检查驱动配置 添加数据源 修改PostgrsSQL认证方式 验证 ODBC 连接数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL ODBC">
+<meta property="og:url" content="http://yoursite.com/2016/10/12/PostgreSQL-ODBC/index.html">
+<meta property="og:site_name" content="Caisong&#39;s Blog">
+<meta property="og:description" content="安装unixODBC 安装PostgreSQL ODBC驱动 检查驱动配置 添加数据源 修改PostgrsSQL认证方式 验证 ODBC 连接数据库">
+<meta property="article:published_time" content="2016-10-12T13:32:48.000Z">
+<meta property="article:modified_time" content="2016-10-12T13:41:56.673Z">
+<meta property="article:author" content="CaiSong">
+<meta property="article:tag" content="postgresql">
+<meta property="article:tag" content="odbc">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Caisong&#39;s Blog" rel="home">Caisong&#39;s Blog</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-PostgreSQL-ODBC" class="post-PostgreSQL-ODBC post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      PostgreSQL ODBC
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2016/10/12/PostgreSQL-ODBC/" data-id="ckamp968n0009s8ve96v70osq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <!-- MarkdownTOC -->
+
+<ul>
+<li>安装unixODBC</li>
+<li>安装PostgreSQL ODBC驱动</li>
+<li>检查驱动配置</li>
+<li>添加数据源</li>
+<li>修改PostgrsSQL认证方式</li>
+<li>验证</li>
+<li>ODBC 连接数据库</li>
+</ul>
+<!-- /MarkdownTOC -->
+<a id="more"></a>
+
+<h2 id="安装unixODBC"><a href="#安装unixODBC" class="headerlink" title="安装unixODBC"></a>安装unixODBC</h2><p>直接下载官网的源码编译安装就可以了，比较简单</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://www.unixodbc.org/unixODBC-2.3.4.tar.gz</span><br><span class="line">tar xvf unixODBC-2.3.4.tar.gz</span><br><span class="line"><span class="built_in">cd</span> unixODBC-2.3.4</span><br><span class="line">./configure --sysconfdir=/etc</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>或者直接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install unixODBC</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装PostgreSQL-ODBC驱动"><a href="#安装PostgreSQL-ODBC驱动" class="headerlink" title="安装PostgreSQL ODBC驱动"></a>安装PostgreSQL ODBC驱动</h2><p>按照之前添加源的方式安装PostgreSQL，现在可以直接安装ODBC驱动.<br><br>添加源方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install http://yum.postgresql.org/9.5/redhat/rhel-7-x86_64/pgdg-redhat95-9.5-2.noarch.rpm</span><br></pre></td></tr></table></figure>
+<!--more-->
+<p>安装驱动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install postgresql95-odbc postgresql95-odbc-debuginfo -y</span><br></pre></td></tr></table></figure>
+
+<h2 id="检查驱动配置"><a href="#检查驱动配置" class="headerlink" title="检查驱动配置"></a>检查驱动配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">odbcinst -q -d</span><br></pre></td></tr></table></figure>
+
+<p>若没有发现<code>PostgreSQL</code>相关的驱动项,通过<code>odbcinst -j</code>查看odbc配置信息，再查看对应_Drivers_项对应文件内容. 文件内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ODBC Driver for PostgresSQL]</span><br><span class="line">Description &#x3D; ODBC Driver for PostgreSQL</span><br><span class="line">Driver &#x3D; &#x2F;usr&#x2F;pgsql-9.5&#x2F;lib&#x2F;psqlodbc.so</span><br><span class="line">Setup &#x3D; &#x2F;usr&#x2F;lib64&#x2F;libodbcpsqlS.so</span><br><span class="line">FileUsage &#x3D; 1</span><br></pre></td></tr></table></figure>
+
+<p>若<code>odbcinst.ini</code>文件为空，可手动更改</p>
+<h2 id="添加数据源"><a href="#添加数据源" class="headerlink" title="添加数据源"></a>添加数据源</h2><p>根据<code>odbcinst -j</code>查询的配置，修改<code>SYSTEM DATA SOURCES</code>对应的数据配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[mydb]</span><br><span class="line">Description         &#x3D; PostgreSQL connection to SallyDB</span><br><span class="line">Driver              &#x3D; ODBC Driver for PostgresSQL</span><br><span class="line">Database            &#x3D; caisong</span><br><span class="line">Servername          &#x3D; 127.0.0.1</span><br><span class="line">UserName            &#x3D; caisong</span><br><span class="line">Password            &#x3D; 123456</span><br><span class="line">Port                &#x3D; 5432</span><br><span class="line">Protocol            &#x3D; 9.5</span><br><span class="line">ReadOnly            &#x3D; No</span><br><span class="line">RowVersioning       &#x3D; No</span><br><span class="line">ShowSystemTables    &#x3D; No</span><br><span class="line">ConnSettings        &#x3D;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Driver 项的值务必与驱动配置文件下的值一致</strong></p>
+<h2 id="修改PostgrsSQL认证方式"><a href="#修改PostgrsSQL认证方式" class="headerlink" title="修改PostgrsSQL认证方式"></a>修改PostgrsSQL认证方式</h2><p>PostgreSQL默认本地认证方式为<code>peer</code>，远程连接认证方式为<code>ident</code> 具体差别，请参照<a href="https://www.postgresql.org/docs/9.6/static/auth-methods.html" target="_blank" rel="noopener" title="auth-methods">auth-methods</a> 修改host-based authentication认证文件，其路径配置在DB中，可通过SQL查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>, setting <span class="keyword">from</span> pg_settings <span class="keyword">where</span> <span class="keyword">category</span>=<span class="string">'File Locations'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>默认配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">name        |                 setting</span><br><span class="line">-------------------+-----------------------------------------</span><br><span class="line">config_file       | &#x2F;var&#x2F;lib&#x2F;pgsql&#x2F;9.5&#x2F;data&#x2F;postgresql.conf</span><br><span class="line">data_directory    | &#x2F;var&#x2F;lib&#x2F;pgsql&#x2F;9.5&#x2F;data</span><br><span class="line">external_pid_file |</span><br><span class="line">hba_file          | &#x2F;var&#x2F;lib&#x2F;pgsql&#x2F;9.5&#x2F;data&#x2F;pg_hba.conf</span><br><span class="line">ident_file        | &#x2F;var&#x2F;lib&#x2F;pgsql&#x2F;9.5&#x2F;data&#x2F;pg_ident.conf</span><br><span class="line">(5 rows)</span><br></pre></td></tr></table></figure>
+
+<p>修改<code># IPv4 local connections</code> 下一行中的<del>ident</del> 为 _md5_就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># IPv4 local connections:</span><br><span class="line">host    all             all             127.0.0.1&#x2F;32            md5</span><br></pre></td></tr></table></figure>
+
+<p>修改完成之后需要重新加载配置文件 可以使用<code>pg_ctl reload</code>命令，默认该命令不在<code>PATH</code>下，其路径为<code>/usr/pgsql-9.5/bin/</code>,或者直接重启服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart postgresql-9.5</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isql mydb</span><br></pre></td></tr></table></figure>
+
+<p>如果出现错误，添加<code>-v</code>重新执行命令，此时能显示具体错误了。</p>
+<h2 id="ODBC-连接数据库"><a href="#ODBC-连接数据库" class="headerlink" title="ODBC 连接数据库"></a>ODBC 连接数据库</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * testing unixODBC</span></span><br><span class="line"><span class="comment"> * the code from unixODBC website</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;odbc/sql.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;odbc/sqlext.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;odbc/sqltypes.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">SQLHENV V_OD_Env;                   <span class="comment">// Handle ODBC environment</span></span><br><span class="line"><span class="keyword">long</span> V_OD_erg;                      <span class="comment">// result of functions</span></span><br><span class="line">SQLHDBC V_OD_hdbc;                  <span class="comment">// Handle connection</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> V_OD_stat[<span class="number">10</span>];                 <span class="comment">// Status SQL</span></span><br><span class="line">SQLINTEGER V_OD_err,V_OD_rowanz,V_OD_id;</span><br><span class="line">SQLSMALLINT V_OD_mlen,V_OD_colanz;</span><br><span class="line"><span class="keyword">char</span> V_OD_msg[<span class="number">200</span>],V_OD_buffer[<span class="number">200</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        SQLHSTMT V_OD_hstmt;</span><br><span class="line">        <span class="comment">// 1. allocate Environment handle and register version</span></span><br><span class="line">        V_OD_erg=SQLAllocHandle(SQL_HANDLE_ENV,SQL_NULL_HANDLE,&amp;V_OD_Env);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Error AllocHandle\n"</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        V_OD_erg=SQLSetEnvAttr(V_OD_Env, SQL_ATTR_ODBC_VERSION, (<span class="keyword">void</span>*)SQL_OV_ODBC3, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Error SetEnv\n"</span>);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 2. allocate connection handle, set timeout</span></span><br><span class="line">        V_OD_erg = SQLAllocHandle(SQL_HANDLE_DBC, V_OD_Env, &amp;V_OD_hdbc);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Error AllocHDB %d\n"</span>,V_OD_erg);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        SQLSetConnectAttr(V_OD_hdbc, SQL_LOGIN_TIMEOUT, (SQLPOINTER *)<span class="number">5</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="comment">// 3. Connect to the datasource "mydb"</span></span><br><span class="line">        V_OD_erg = SQLDriverConnect(V_OD_hdbc,</span><br><span class="line">                                    <span class="literal">NULL</span>,</span><br><span class="line">                                    <span class="string">"DRIVER=&#123;ODBC Driver for PostgresSQL&#125;;Server=127.0.0.1;Port=5432;Database=caisong;Uid=caisong;Pwd=123456;"</span>,</span><br><span class="line">                                    SQL_NTS,</span><br><span class="line">                                    V_OD_buffer,</span><br><span class="line">                                    <span class="number">200</span>,</span><br><span class="line">                                    &amp;V_OD_mlen,</span><br><span class="line">                                    SQL_DRIVER_NOPROMPT);</span><br><span class="line">        <span class="comment">//a. direct connect into datasource</span></span><br><span class="line">        <span class="comment">/*V_OD_erg = SQLConnect(V_OD_hdbc, (SQLCHAR*) "mydb", SQL_NTS,</span></span><br><span class="line"><span class="comment">                                         (SQLCHAR*) "caisong", SQL_NTS,</span></span><br><span class="line"><span class="comment">                                        (SQLCHAR*) "123456", SQL_NTS);</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">//b. manual connect into target db</span></span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Error SQLConnect %d\n"</span>,V_OD_erg);</span><br><span class="line">                SQLGetDiagRec(SQL_HANDLE_DBC, V_OD_hdbc,<span class="number">1</span>,</span><br><span class="line">                              V_OD_stat, &amp;V_OD_err,V_OD_msg,<span class="number">100</span>,&amp;V_OD_mlen);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%s (%d)\n"</span>,V_OD_msg,V_OD_err);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Connected !\n"</span>);</span><br><span class="line">        V_OD_erg=SQLAllocHandle(SQL_HANDLE_STMT, V_OD_hdbc, &amp;V_OD_hstmt);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Fehler im AllocStatement %d\n"</span>,V_OD_erg);</span><br><span class="line">                SQLGetDiagRec(SQL_HANDLE_DBC, V_OD_hdbc,<span class="number">1</span>, V_OD_stat,&amp;V_OD_err,V_OD_msg,<span class="number">100</span>,&amp;V_OD_mlen);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%s (%d)\n"</span>,V_OD_msg,V_OD_err);</span><br><span class="line">                SQLDisconnect(V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        SQLBindCol(V_OD_hstmt,<span class="number">1</span>,SQL_C_CHAR, &amp;V_OD_buffer,<span class="number">150</span>,&amp;V_OD_err);</span><br><span class="line">        SQLBindCol(V_OD_hstmt,<span class="number">2</span>,SQL_C_ULONG,&amp;V_OD_id,<span class="number">150</span>,&amp;V_OD_err);</span><br><span class="line"></span><br><span class="line">        V_OD_erg=SQLExecDirect(V_OD_hstmt,<span class="string">"SELECT name, setting FROM pg_settings where category='File Locations'"</span>,SQL_NTS);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Error in Select %d\n"</span>,V_OD_erg);</span><br><span class="line">                SQLGetDiagRec(SQL_HANDLE_DBC, V_OD_hdbc,<span class="number">1</span>, V_OD_stat,&amp;V_OD_err,V_OD_msg,<span class="number">100</span>,&amp;V_OD_mlen);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%s (%d)\n"</span>,V_OD_msg,V_OD_err);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);</span><br><span class="line">                SQLDisconnect(V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        V_OD_erg=SQLNumResultCols(V_OD_hstmt,&amp;V_OD_colanz);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);</span><br><span class="line">                SQLDisconnect(V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Number of Columns %d\n"</span>,V_OD_colanz);</span><br><span class="line">        V_OD_erg=SQLRowCount(V_OD_hstmt,&amp;V_OD_rowanz);</span><br><span class="line">        <span class="keyword">if</span> ((V_OD_erg != SQL_SUCCESS) &amp;&amp; (V_OD_erg != SQL_SUCCESS_WITH_INFO))</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Number ofRowCount %d\n"</span>,V_OD_erg);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);</span><br><span class="line">                SQLDisconnect(V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);</span><br><span class="line">                SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Number of Rows %d\n"</span>,V_OD_rowanz);</span><br><span class="line">        V_OD_erg=SQLFetch(V_OD_hstmt);</span><br><span class="line">        <span class="keyword">while</span>(V_OD_erg != SQL_NO_DATA)</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"Result: %d %s\n"</span>,V_OD_id,V_OD_buffer);</span><br><span class="line">                V_OD_erg=SQLFetch(V_OD_hstmt);</span><br><span class="line">        &#125;;</span><br><span class="line">        SQLFreeHandle(SQL_HANDLE_STMT,V_OD_hstmt);</span><br><span class="line">        SQLDisconnect(V_OD_hdbc);</span><br><span class="line">        SQLFreeHandle(SQL_HANDLE_DBC,V_OD_hdbc);</span><br><span class="line">        SQLFreeHandle(SQL_HANDLE_ENV, V_OD_Env);</span><br><span class="line">        <span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>全文完</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2016/10/12/PostgreSQL-ODBC/">
+    <time datetime="2016-10-12T13:32:48.000Z" class="entry-date">
+        2016-10-12
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/DataBase/">DataBase</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/odbc/" rel="tag">odbc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postgresql/" rel="tag">postgresql</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2016/10/12/atom-config/" rel="prev"><span class="meta-nav">←</span> atom config 设置</a></span>
+    
+    
+        <span class="nav-next"><a href="/2016/10/12/Install/" rel="next">PostgreSQL 安装 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/data-structure/">data structure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/eidtor/">eidtor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/embedded/">embedded</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/">program</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/record/">record</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tts/">tts</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/26/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/22/elk/">elk国内源</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/08/docker-1/">docker 记录2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/%E5%8F%96%E6%B6%88%E8%87%AA%E5%8A%A8%E8%84%9A%E6%9C%AC%E4%BB%A3%E7%90%86/">取消自动脚本代理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/28/%E5%AD%97%E7%AC%A6%E4%B8%B2/">Bash shell 字符串</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSSQL-SQL-Server/" rel="tag">MSSQL, SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/POstgreSQL/" rel="tag">POstgreSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/accumulation/" rel="tag">accumulation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arm/" rel="tag">arm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-vptr/" rel="tag">c++, vptr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmder/" rel="tag">cmder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/" rel="tag">config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-apach2/" rel="tag">django, apach2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elk/" rel="tag">elk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/email/" rel="tag">email</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ini/" rel="tag">ini</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libconfig/" rel="tag">libconfig</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mail/" rel="tag">mail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mssql-mongodb/" rel="tag">mssql, mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/odbc/" rel="tag">odbc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl-evp-aes/" rel="tag">openssl, evp, aes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pac-reg/" rel="tag">pac, reg</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postgresql/" rel="tag">postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/record/" rel="tag">record</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rtp-c/" rel="tag">rtp,c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell-update-rc-d-systemctl/" rel="tag">shell, update-rc.d, systemctl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shortcut/" rel="tag">shortcut</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time/" rel="tag">time</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tts-windows/" rel="tag">tts, windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmware/" rel="tag">vmware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xinetd/" rel="tag">xinetd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" rel="tag">红黑树</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/MSSQL-SQL-Server/" style="font-size: 10px;">MSSQL, SQL Server</a> <a href="/tags/POstgreSQL/" style="font-size: 10px;">POstgreSQL</a> <a href="/tags/accumulation/" style="font-size: 15px;">accumulation</a> <a href="/tags/arm/" style="font-size: 10px;">arm</a> <a href="/tags/atom/" style="font-size: 10px;">atom</a> <a href="/tags/c-vptr/" style="font-size: 10px;">c++, vptr</a> <a href="/tags/cmder/" style="font-size: 10px;">cmder</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/django-apach2/" style="font-size: 10px;">django, apach2</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/email/" style="font-size: 10px;">email</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/ini/" style="font-size: 10px;">ini</a> <a href="/tags/libconfig/" style="font-size: 10px;">libconfig</a> <a href="/tags/mail/" style="font-size: 10px;">mail</a> <a href="/tags/mssql-mongodb/" style="font-size: 10px;">mssql, mongodb</a> <a href="/tags/odbc/" style="font-size: 10px;">odbc</a> <a href="/tags/openssl-evp-aes/" style="font-size: 10px;">openssl, evp, aes</a> <a href="/tags/pac-reg/" style="font-size: 10px;">pac, reg</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/record/" style="font-size: 15px;">record</a> <a href="/tags/rtp-c/" style="font-size: 10px;">rtp,c++</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/shell-update-rc-d-systemctl/" style="font-size: 10px;">shell, update-rc.d, systemctl</a> <a href="/tags/shortcut/" style="font-size: 10px;">shortcut</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/tts-windows/" style="font-size: 10px;">tts, windows</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vmware/" style="font-size: 10px;">vmware</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/xinetd/" style="font-size: 10px;">xinetd</a> <a href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" style="font-size: 10px;">红黑树</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2020 CaiSong
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

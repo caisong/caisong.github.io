@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="以下内容翻译自libconfig manual版本1.4.9，最新版本请参阅libconfig
+应用示例
+配置文件
+1234567891011121314151617181920212223242526272829303132# Example application configuration f" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>libconfig 入门 | Caisong&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="以下内容翻译自libconfig manual版本1.4.9，最新版本请参阅libconfig 应用示例 配置文件 1234567891011121314151617181920212223242526272829303132# Example application configuration fileversion &#x3D; &quot;1.0&quot;; &#x2F;&#x2F;①ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="libconfig 入门">
+<meta property="og:url" content="http://yoursite.com/2017/12/25/libconfig/index.html">
+<meta property="og:site_name" content="Caisong&#39;s Blog">
+<meta property="og:description" content="以下内容翻译自libconfig manual版本1.4.9，最新版本请参阅libconfig 应用示例 配置文件 1234567891011121314151617181920212223242526272829303132# Example application configuration fileversion &#x3D; &quot;1.0&quot;; &#x2F;&#x2F;①ap">
+<meta property="article:published_time" content="2017-12-25T14:59:18.000Z">
+<meta property="article:modified_time" content="2017-12-25T16:11:05.190Z">
+<meta property="article:author" content="CaiSong">
+<meta property="article:tag" content="libconfig">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Caisong&#39;s Blog" rel="home">Caisong&#39;s Blog</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-libconfig" class="post-libconfig post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      libconfig 入门
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/12/25/libconfig/" data-id="ckamp969b001es8ve6vvv4lod" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>以下内容翻译自<a href="http://www.hyperrealm.com/libconfig/libconfig_manual.html" target="_blank" rel="noopener" title="libconfig manual">libconfig manual</a><br>版本1.4.9，最新版本请参阅<a href="https://hyperrealm.github.io/libconfig/" target="_blank" rel="noopener" title="libconfig">libconfig</a></p>
+<h1 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h1><ol>
+<li><p>配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># Example application configuration file</span><br><span class="line"></span><br><span class="line">version &#x3D; &quot;1.0&quot;; &#x2F;&#x2F;①</span><br><span class="line"></span><br><span class="line">application:</span><br><span class="line">&#123;</span><br><span class="line">  window:</span><br><span class="line">  &#123;</span><br><span class="line">    title &#x3D; &quot;My Application&quot;;</span><br><span class="line">    size &#x3D; &#123; w &#x3D; 640; h &#x3D; 480; &#125;;</span><br><span class="line">    pos &#x3D; &#123; x &#x3D; 350; y &#x3D; 250; &#125;; &#x2F;&#x2F;②</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  list &#x3D; ( ( &quot;abc&quot;, 123, true ), 1.234, ( &#x2F;* an empty list *&#x2F;) );</span><br><span class="line"></span><br><span class="line">  books &#x3D; ( &#123; title  &#x3D; &quot;Treasure Island&quot;;</span><br><span class="line">              author &#x3D; &quot;Robert Louis Stevenson&quot;;</span><br><span class="line">              price  &#x3D; 29.95;</span><br><span class="line">              qty    &#x3D; 5; &#125;,</span><br><span class="line">            &#123; title  &#x3D; &quot;Snow Crash&quot;; &#x2F;&#x2F;③</span><br><span class="line">              author &#x3D; &quot;Neal Stephenson&quot;;</span><br><span class="line">              price  &#x3D; 9.99;</span><br><span class="line">              qty    &#x3D; 8; &#125; );</span><br><span class="line"></span><br><span class="line">  misc:</span><br><span class="line">  &#123;</span><br><span class="line">    pi &#x3D; 3.141592654;</span><br><span class="line">    bigint &#x3D; 9223372036854775807L;</span><br><span class="line">    columns &#x3D; [ &quot;Last Name&quot;, &quot;First Name&quot;, &quot;MI&quot; ];</span><br><span class="line">    bitmask &#x3D; 0x1FC3;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读取方式</p>
+<table>
+<thead>
+<tr>
+<th align="left">目标</th>
+<th align="left">路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">version ①</td>
+<td align="left">version</td>
+</tr>
+<tr>
+<td align="left">x ②</td>
+<td align="left">application.window.pos.x</td>
+</tr>
+<tr>
+<td align="left">title ③</td>
+<td align="left">application.books.[1].tittle</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>路径按照元素名层层遍历，用’.’连接。类似数组和链表的情况，使用下标（从0开始）。<strong>此处与C/C++不同，请注意 title ③的路径</strong></p>
+<h1 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h1><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">说明</th>
+<th align="left">规则</th>
+<th align="left">正则表达</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">boolean</td>
+<td align="left">布尔类型</td>
+<td align="left">true/false,不区分大小写</td>
+<td align="left">([Tt][Rr][Uu][Ee])&#124;([Ff][Aa][Ll][Ss][Ee])</td>
+</tr>
+<tr>
+<td align="left">string</td>
+<td align="left">字符串</td>
+<td align="left">支持常见转义字符；支持换行；支持\x开头的ASCII转码</td>
+<td align="left">&quot;([^&quot;\]&#124;\.)*&quot;</td>
+</tr>
+<tr>
+<td align="left">integer</td>
+<td align="left">整数型</td>
+<td align="left"></td>
+<td align="left">[-+]?[0-9]+</td>
+</tr>
+<tr>
+<td align="left">integer64</td>
+<td align="left">长整数</td>
+<td align="left"></td>
+<td align="left">[-+]?[0-9]+L(L)?</td>
+</tr>
+<tr>
+<td align="left">hex</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0[Xx][0-9A-Fa-f]+</td>
+</tr>
+<tr>
+<td align="left">hex64</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0[Xx][0-9A-Fa-f]+L(L)?</td>
+</tr>
+<tr>
+<td align="left">float</td>
+<td align="left">浮点数</td>
+<td align="left">支持科学计数法</td>
+<td align="left">([-+]?([0-9]<em>)?.[0-9]</em>([eE][-+]?[0-9]+)?)&#124;(<a href="[0-9]+">-+</a>(.[0-9]*)?[eE][-+]?[0-9]+)</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">配置文件元素命名规则</td>
+<td align="left">以*或者字母开头，可包含字母、数字、*和下滑线</td>
+<td align="left">[A-Za-z*][-A-Za-z0-9_*]*</td>
+</tr>
+</tbody></table>
+<p>tips: <code>&amp;#124;</code>表示<code>|</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># 配置文件BNF表示</span><br><span class="line"></span><br><span class="line">configuration &#x3D; setting-list | empty</span><br><span class="line"></span><br><span class="line">setting-list &#x3D; setting | setting-list setting</span><br><span class="line"></span><br><span class="line"># 配置文件中键值对叫setting</span><br><span class="line"># 使用&#96;name&#x3D;value&#96;或&#96;name:value;&#96;的形式，</span><br><span class="line"># 不关心空格，&#39;;&#39;可省略</span><br><span class="line">setting &#x3D; name (&quot;:&quot; | &quot;&#x3D;&quot;) value (&quot;;&quot; | &quot;,&quot; | empty)</span><br><span class="line"></span><br><span class="line">value &#x3D; scalar-value | array | list | group</span><br><span class="line"></span><br><span class="line">value-list &#x3D; value | value-list &quot;,&quot; value</span><br><span class="line"></span><br><span class="line">scalar-value &#x3D; boolean | integer | integer64 | hex | hex64 | float</span><br><span class="line">               | string</span><br><span class="line"></span><br><span class="line">scalar-value-list &#x3D; scalar-value | scalar-value-list &quot;,&quot; scalar-value</span><br><span class="line"></span><br><span class="line"># 数组，*个scalar-value组成，成员scalar-valu必须具有相同类型</span><br><span class="line">array &#x3D; &quot;[&quot; (scalar-value-list | empty) &quot;]&quot;</span><br><span class="line"></span><br><span class="line"># 链表，与数组类似，值类型无限定</span><br><span class="line">list &#x3D; &quot;(&quot; (value-list | empty) &quot;)&quot;</span><br><span class="line"></span><br><span class="line"># 分组，可包含任意个setting,但setting的name必须唯一</span><br><span class="line">group &#x3D; &quot;&#123;&quot; (setting-list | empty) &quot;&#125;&quot;</span><br><span class="line"></span><br><span class="line">empty &#x3D;</span><br></pre></td></tr></table></figure>
+
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p>请参阅官方链接<a href="https://hyperrealm.github.io/libconfig/libconfig_manual.html#The-C-API" target="_blank" rel="noopener" title="C API">C</a>、<a href="https://hyperrealm.github.io/libconfig/libconfig_manual.html#The-C_002b_002b-API" target="_blank" rel="noopener" title="C++ API">C++</a>Y</p>
+<h1 id="官方示例"><a href="#官方示例" class="headerlink" title="官方示例"></a>官方示例</h1><ul>
+<li><p>配置文件 example.cfg</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; An example configuration file that stores information about a store.</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Basic store information:</span><br><span class="line">name &#x3D; &quot;Books, Movies &amp; More&quot;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Store inventory:</span><br><span class="line">inventory &#x3D;</span><br><span class="line">&#123;</span><br><span class="line">  books &#x3D; ( &#123; title  &#x3D; &quot;Treasure Island&quot;;</span><br><span class="line">              author &#x3D; &quot;Robert Louis Stevenson&quot;;</span><br><span class="line">              price  &#x3D; 29.99;</span><br><span class="line">              qty    &#x3D; 5; &#125;,</span><br><span class="line">            &#123; title  &#x3D; &quot;Snow Crash&quot;;</span><br><span class="line">              author &#x3D; &quot;Neal Stephenson&quot;;</span><br><span class="line">              price  &#x3D; 9.99;</span><br><span class="line">              qty    &#x3D; 8; &#125;</span><br><span class="line">          );</span><br><span class="line"></span><br><span class="line">  movies &#x3D; ( &#123; title &#x3D; &quot;Brazil&quot;;</span><br><span class="line">               media &#x3D; &quot;DVD&quot;;</span><br><span class="line">               price &#x3D; 19.99;</span><br><span class="line">               qty &#x3D; 11; &#125;,</span><br><span class="line">             &#123; title &#x3D; &quot;The City of Lost Children&quot;;</span><br><span class="line">               media &#x3D; &quot;DVD&quot;;</span><br><span class="line">               price &#x3D; 18.99;</span><br><span class="line">               qty &#x3D; 5; &#125;,</span><br><span class="line">             &#123; title &#x3D; &quot;Memento&quot;;</span><br><span class="line">               media &#x3D; &quot;Blu-Ray&quot;;</span><br><span class="line">               price &#x3D; 24.99;</span><br><span class="line">               qty &#x3D; 20;</span><br><span class="line">             &#125;,</span><br><span class="line">             &#123; title &#x3D; &quot;Howard the Duck&quot;; &#125;</span><br><span class="line">           );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Store hours:</span><br><span class="line">hours &#x3D;</span><br><span class="line">&#123;</span><br><span class="line">  mon &#x3D; &#123; open &#x3D;  9; close &#x3D; 18; &#125;;</span><br><span class="line">  tue &#x3D; &#123; open &#x3D;  9; close &#x3D; 18; &#125;;</span><br><span class="line">  wed &#x3D; &#123; open &#x3D;  9; close &#x3D; 18; &#125;;</span><br><span class="line">  thu &#x3D; &#123; open &#x3D;  9; close &#x3D; 18; &#125;;</span><br><span class="line">  fri &#x3D; &#123; open &#x3D;  9; close &#x3D; 20; &#125;;</span><br><span class="line">  sat &#x3D; &#123; open &#x3D;  9; close &#x3D; 20; &#125;;</span><br><span class="line">  sun &#x3D; &#123; open &#x3D; 11; close &#x3D; 16; &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代码 example1.cpp </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* ----------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">   libconfig - A library for processing structured configuration files</span></span><br><span class="line"><span class="comment">   Copyright (C) 2005-2010  Mark A Lindner</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   This file is part of libconfig.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   This library is free software; you can redistribute it and/or</span></span><br><span class="line"><span class="comment">   modify it under the terms of the GNU Lesser General Public License</span></span><br><span class="line"><span class="comment">   as published by the Free Software Foundation; either version 2.1 of</span></span><br><span class="line"><span class="comment">   the License, or (at your option) any later version.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   This library is distributed in the hope that it will be useful, but</span></span><br><span class="line"><span class="comment">   WITHOUT ANY WARRANTY; without even the implied warranty of</span></span><br><span class="line"><span class="comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span></span><br><span class="line"><span class="comment">   Lesser General Public License for more details.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   You should have received a copy of the GNU Library General Public</span></span><br><span class="line"><span class="comment">   License along with this library; if not, see</span></span><br><span class="line"><span class="comment">   &lt;http://www.gnu.org/licenses/&gt;.</span></span><br><span class="line"><span class="comment">   ----------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libconfig.h++&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> libconfig;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This example reads the configuration file 'example.cfg' and displays</span></span><br><span class="line"><span class="comment">// some of its contents.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  Config cfg;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Read the file. If there is an error, report it and exit.</span></span><br><span class="line">  <span class="keyword">try</span></span><br><span class="line">  &#123;</span><br><span class="line">    cfg.readFile(<span class="string">"example.cfg"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(<span class="keyword">const</span> FileIOException &amp;fioex)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">"I/O error while reading file."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span>(EXIT_FAILURE);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(<span class="keyword">const</span> ParseException &amp;pex)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">"Parse error at "</span> &lt;&lt; pex.getFile() &lt;&lt; <span class="string">":"</span> &lt;&lt; pex.getLine()</span><br><span class="line">              &lt;&lt; <span class="string">" - "</span> &lt;&lt; pex.getError() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span>(EXIT_FAILURE);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Get the store name.</span></span><br><span class="line">  <span class="keyword">try</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">string</span> name = cfg.lookup(<span class="string">"name"</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Store name: "</span> &lt;&lt; name &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(<span class="keyword">const</span> SettingNotFoundException &amp;nfex)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">cerr</span> &lt;&lt; <span class="string">"No 'name' setting in configuration file."</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> Setting&amp; root = cfg.getRoot();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Output a list of all books in the inventory.</span></span><br><span class="line">  <span class="keyword">try</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> Setting &amp;books = root[<span class="string">"inventory"</span>][<span class="string">"books"</span>];</span><br><span class="line">    <span class="keyword">int</span> count = books.getLength();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; <span class="string">"TITLE"</span> &lt;&lt; <span class="string">"  "</span></span><br><span class="line">         &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; <span class="string">"AUTHOR"</span> &lt;&lt; <span class="string">"   "</span></span><br><span class="line">         &lt;&lt; setw(<span class="number">6</span>) &lt;&lt; left &lt;&lt; <span class="string">"PRICE"</span> &lt;&lt; <span class="string">"  "</span></span><br><span class="line">         &lt;&lt; <span class="string">"QTY"</span></span><br><span class="line">         &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">const</span> Setting &amp;book = books[i];</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Only output the record if all of the expected fields are present.</span></span><br><span class="line">      <span class="built_in">string</span> title, author;</span><br><span class="line">      <span class="keyword">double</span> price;</span><br><span class="line">      <span class="keyword">int</span> qty;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(!(book.lookupValue(<span class="string">"title"</span>, title)</span><br><span class="line">           &amp;&amp; book.lookupValue(<span class="string">"author"</span>, author)</span><br><span class="line">           &amp;&amp; book.lookupValue(<span class="string">"price"</span>, price)</span><br><span class="line">           &amp;&amp; book.lookupValue(<span class="string">"qty"</span>, qty)))</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; title &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; author &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; <span class="string">'$'</span> &lt;&lt; setw(<span class="number">6</span>) &lt;&lt; right &lt;&lt; price &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; qty</span><br><span class="line">           &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(<span class="keyword">const</span> SettingNotFoundException &amp;nfex)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// Ignore.</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Output a list of all books in the inventory.</span></span><br><span class="line">  <span class="keyword">try</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> Setting &amp;movies = root[<span class="string">"inventory"</span>][<span class="string">"movies"</span>];</span><br><span class="line">    <span class="keyword">int</span> count = movies.getLength();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; <span class="string">"TITLE"</span> &lt;&lt; <span class="string">"  "</span></span><br><span class="line">         &lt;&lt; setw(<span class="number">10</span>) &lt;&lt; left &lt;&lt; <span class="string">"MEDIA"</span> &lt;&lt; <span class="string">"   "</span></span><br><span class="line">         &lt;&lt; setw(<span class="number">6</span>) &lt;&lt; left &lt;&lt; <span class="string">"PRICE"</span> &lt;&lt; <span class="string">"  "</span></span><br><span class="line">         &lt;&lt; <span class="string">"QTY"</span></span><br><span class="line">         &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">const</span> Setting &amp;movie = movies[i];</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Only output the record if all of the expected fields are present.</span></span><br><span class="line">      <span class="built_in">string</span> title, media;</span><br><span class="line">      <span class="keyword">double</span> price;</span><br><span class="line">      <span class="keyword">int</span> qty;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(!(movie.lookupValue(<span class="string">"title"</span>, title)</span><br><span class="line">           &amp;&amp; movie.lookupValue(<span class="string">"media"</span>, media)</span><br><span class="line">           &amp;&amp; movie.lookupValue(<span class="string">"price"</span>, price)</span><br><span class="line">           &amp;&amp; movie.lookupValue(<span class="string">"qty"</span>, qty)))</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; title &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; setw(<span class="number">10</span>) &lt;&lt; left &lt;&lt; media &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; <span class="string">'$'</span> &lt;&lt; setw(<span class="number">6</span>) &lt;&lt; right &lt;&lt; price &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; qty</span><br><span class="line">           &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(<span class="keyword">const</span> SettingNotFoundException &amp;nfex)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// Ignore.</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span>(EXIT_SUCCESS);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// eof</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">lib c++(c库libconfig-dev)</span></span><br><span class="line">apt-get install libconfig++-dev</span><br><span class="line"></span><br><span class="line">g++ example1.cpp -o example -lconfig++</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/12/25/libconfig/">
+    <time datetime="2017-12-25T14:59:18.000Z" class="entry-date">
+        2017-12-25
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/tools/">tools</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/libconfig/" rel="tag">libconfig</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/04/01/apache/" rel="prev"><span class="meta-nav">←</span> deploy django website to apache2</a></span>
+    
+    
+        <span class="nav-next"><a href="/2017/12/17/docker-gdb/" rel="next">gdb problem inside docker container <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/data-structure/">data structure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/eidtor/">eidtor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/embedded/">embedded</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/">program</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/record/">record</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tts/">tts</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/26/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/22/elk/">elk国内源</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/08/docker-1/">docker 记录2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/%E5%8F%96%E6%B6%88%E8%87%AA%E5%8A%A8%E8%84%9A%E6%9C%AC%E4%BB%A3%E7%90%86/">取消自动脚本代理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/28/%E5%AD%97%E7%AC%A6%E4%B8%B2/">Bash shell 字符串</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSSQL-SQL-Server/" rel="tag">MSSQL, SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/POstgreSQL/" rel="tag">POstgreSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/accumulation/" rel="tag">accumulation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arm/" rel="tag">arm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-vptr/" rel="tag">c++, vptr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmder/" rel="tag">cmder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/" rel="tag">config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-apach2/" rel="tag">django, apach2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elk/" rel="tag">elk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/email/" rel="tag">email</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ini/" rel="tag">ini</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libconfig/" rel="tag">libconfig</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mail/" rel="tag">mail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mssql-mongodb/" rel="tag">mssql, mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/odbc/" rel="tag">odbc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl-evp-aes/" rel="tag">openssl, evp, aes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pac-reg/" rel="tag">pac, reg</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postgresql/" rel="tag">postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/record/" rel="tag">record</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rtp-c/" rel="tag">rtp,c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell-update-rc-d-systemctl/" rel="tag">shell, update-rc.d, systemctl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shortcut/" rel="tag">shortcut</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time/" rel="tag">time</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tts-windows/" rel="tag">tts, windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmware/" rel="tag">vmware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xinetd/" rel="tag">xinetd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" rel="tag">红黑树</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/MSSQL-SQL-Server/" style="font-size: 10px;">MSSQL, SQL Server</a> <a href="/tags/POstgreSQL/" style="font-size: 10px;">POstgreSQL</a> <a href="/tags/accumulation/" style="font-size: 15px;">accumulation</a> <a href="/tags/arm/" style="font-size: 10px;">arm</a> <a href="/tags/atom/" style="font-size: 10px;">atom</a> <a href="/tags/c-vptr/" style="font-size: 10px;">c++, vptr</a> <a href="/tags/cmder/" style="font-size: 10px;">cmder</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/django-apach2/" style="font-size: 10px;">django, apach2</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/email/" style="font-size: 10px;">email</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/ini/" style="font-size: 10px;">ini</a> <a href="/tags/libconfig/" style="font-size: 10px;">libconfig</a> <a href="/tags/mail/" style="font-size: 10px;">mail</a> <a href="/tags/mssql-mongodb/" style="font-size: 10px;">mssql, mongodb</a> <a href="/tags/odbc/" style="font-size: 10px;">odbc</a> <a href="/tags/openssl-evp-aes/" style="font-size: 10px;">openssl, evp, aes</a> <a href="/tags/pac-reg/" style="font-size: 10px;">pac, reg</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/record/" style="font-size: 15px;">record</a> <a href="/tags/rtp-c/" style="font-size: 10px;">rtp,c++</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/shell-update-rc-d-systemctl/" style="font-size: 10px;">shell, update-rc.d, systemctl</a> <a href="/tags/shortcut/" style="font-size: 10px;">shortcut</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/tts-windows/" style="font-size: 10px;">tts, windows</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vmware/" style="font-size: 10px;">vmware</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/xinetd/" style="font-size: 10px;">xinetd</a> <a href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" style="font-size: 10px;">红黑树</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2020 CaiSong
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

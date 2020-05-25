@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+
+  
+  
+  
+  
+  
+  
+  <title>Caisong&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Caisong&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Caisong&#39;s Blog">
+<meta property="article:author" content="CaiSong">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Caisong&#39;s Blog" rel="home">Caisong&#39;s Blog</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main">
+  
+    <article id="post-c-operator" class="post-c-operator post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/07/23/c-operator/">c++ operator</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/23/c-operator/" data-id="ckamp968y000ps8ve9udzdgv5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p><a href="https://zh.cppreference.com/w/cpp/language/operator_precedence" target="_blank" rel="noopener" title="c++ operator">运算符优先级</a></p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>描述</th>
+<th>结合性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>::</td>
+<td>作用域解析</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>2</td>
+<td>a++    a–</td>
+<td>后缀自增与自减</td>
+<td></td>
+</tr>
+<tr>
+<td>type()   type{}</td>
+<td>函数风格转型</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>a()</td>
+<td>函数调用</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>a[]</td>
+<td>下标</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>.   -&gt;</td>
+<td>成员访问</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>++a   –a</td>
+<td>前缀自增与自减</td>
+<td>从右到左</td>
+</tr>
+<tr>
+<td>+a   -a</td>
+<td>一元加与减</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>!   ~</td>
+<td>逻辑非和逐位非</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(type)</td>
+<td>C 风格转型</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*a</td>
+<td>间接（解引用）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&amp;a</td>
+<td>取址</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sizeof</td>
+<td>取大小</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>new   new[]</td>
+<td>动态内存分配</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>delete   delete[]</td>
+<td>动态内存分配</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>.*   -&gt;*</td>
+<td>指向成员指针</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>5</td>
+<td>a*b   a/b   a%b</td>
+<td>乘法、除法与余数</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>a+b   a-b</td>
+<td>加法与减法</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>&lt;&lt;   &gt;&gt;</td>
+<td>逐位左移与右移</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>&lt;=&gt;</td>
+<td>三路比较运算符(C++20 起)</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>&lt;   &lt;=</td>
+<td>分别为 &lt; 与 ≤ 的关系运算符</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt;   &gt;=</td>
+<td>分别为 &gt; 与 ≥ 的关系运算符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>==   !=</td>
+<td>分别为 = 与 ≠ 的关系运算符</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>a&amp;b</td>
+<td>逐位与</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>^</td>
+<td>逐位异或（排除或）</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>|</td>
+<td>逐位或（包含或）</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>&amp;&amp;</td>
+<td>逻辑与</td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>||</td>
+<td>逻辑或</td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>a?b:c</td>
+<td>三元条件</td>
+<td>从右到左</td>
+</tr>
+<tr>
+<td>throw</td>
+<td>throw 运算符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>=</td>
+<td>直接赋值（ C++ 类默认提供）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>+=   -=</td>
+<td>以和及差复合赋值</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*=   /=   %=</td>
+<td>以积、商及余数复合赋值</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;&lt;=   &gt;&gt;=</td>
+<td>以逐位左移及右移复合赋值</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&amp;=   ^=   |=</td>
+<td>以逐位与、异或及或复合赋值</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>,</td>
+<td>逗号</td>
+<td>从左到右</td>
+</tr>
+</tbody></table>
+<p><code>.*</code> 和 <code>-&gt;*</code> 也是运算符，指向成员指针。在使用成员函数指针时使用。</p>
+<blockquote>
+<p>单目运算符 &gt; 双目运算符 &gt; 三目运算符</p>
+</blockquote>
+<blockquote>
+<p>算术运算符 &gt; 关系运算符 &gt; 位运算符 &gt; 逻辑运算符</p>
+</blockquote>
+<blockquote>
+<p>算术运算符移位优先级最低</p>
+</blockquote>
+<blockquote>
+<p>位运算符 &amp; &gt; ^ &gt; |</p>
+</blockquote>
+<blockquote>
+<p>复合赋值（-= +=等）与三目运算符同级别</p>
+</blockquote>
+<blockquote>
+<p>逗号运算符优先级最低</p>
+</blockquote>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/07/23/c-operator/">
+    <time datetime="2018-07-23T13:08:26.000Z" class="entry-date">
+        2018-07-23
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/accumulation/" rel="tag">accumulation</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-little-accumulation" class="post-little-accumulation post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/07/17/little-accumulation/">little accumulation</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/17/little-accumulation/" data-id="ckamp969c001gs8ve813x4k3h" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>好久没写博客了，决定重新抓起来。不一定要写多么深奥的内容，记录下收获就可以。</p>
+<h2 id="rename-批量重命名文件"><a href="#rename-批量重命名文件" class="headerlink" title="rename 批量重命名文件"></a>rename 批量重命名文件</h2><p>rename 批量更改文件名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename txt jpg *.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="timeout-指定命令运行时间"><a href="#timeout-指定命令运行时间" class="headerlink" title="timeout 指定命令运行时间"></a>timeout 指定命令运行时间</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timeout -s KILL 60s ping 127.0.0.1</span><br><span class="line"><span class="comment"># DURATION 默认单位s</span></span><br><span class="line"><span class="comment"># 指令可以通过 kill -l 查看</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="编程技巧"><a href="#编程技巧" class="headerlink" title="编程技巧"></a>编程技巧</h2><pre><code>结构体中使用`char [0]`
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MyData</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> nLen;</span><br><span class="line">    <span class="keyword">char</span> data[<span class="number">0</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+在结构中，data是一个数组名，但该数组没有元素，该数组的真实地址紧随结构体MyData之后，而这个地址就是结构体后面数据的。*如果给这个结构体分配的内容大于这个结构体实际大小，后面多余的部分就是这个data的内容。*</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/07/17/little-accumulation/">
+    <time datetime="2018-07-17T14:22:52.000Z" class="entry-date">
+        2018-07-17
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/accumulation/" rel="tag">accumulation</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-apache" class="post-apache post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/04/01/apache/">deploy django website to apache2</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/04/01/apache/" data-id="ckamp968q000es8ve7sry0h4w" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>最近学习使用django，尝试部署至apaache2。</p>
+<ol>
+<li><p>required env</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apache2 libapache2-mod-wsgi-py3</span><br><span class="line">sudo pip install django</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拷贝目录至<code>/var/www</code>(apache2的默认网站目录)，之前未拷贝，在其他目录尝试了几次都未成功。</p>
+</li>
+<li><p>添加配置website</p>
+<ol>
+<li><p>配置网站配置</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apache2/sites-avaliable/ &amp;&amp; cp 000-default.conf yoursite.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置详情</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">VirtualHost</span> *<span class="attr">:80</span>&gt;</span></span><br><span class="line">	ServerName 127.0.0.1</span><br><span class="line">	ServerAdmin webmaster@localhost</span><br><span class="line">	# 网站根目录, 请根据自身目录配置，下同</span><br><span class="line">	DocumentRoot /var/www/web</span><br><span class="line">	</span><br><span class="line">	#静态文件目录</span><br><span class="line">	Alias /static/ /var/www/web/static/</span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">Directory</span> /<span class="attr">var</span>/<span class="attr">www</span>/<span class="attr">web</span>/<span class="attr">static</span>/&gt;</span></span><br><span class="line">		Require all granted</span><br><span class="line">	<span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	WSGIScriptAlias / /var/www/web/web/wsgi.py</span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">Directory</span> /<span class="attr">var</span>/<span class="attr">www</span>/<span class="attr">web</span>/<span class="attr">web</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">Files</span> <span class="attr">wsgi.py</span>&gt;</span></span><br><span class="line">		Require all granted</span><br><span class="line">	<span class="tag">&lt;/<span class="name">Files</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">VirtualHost</span>&gt;</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">3. 查看django wigi.py文件</span><br><span class="line">  默认生成的文件没有问题，不需要修改即可运行。</span><br><span class="line">  ```python</span><br><span class="line">  import os</span><br><span class="line">     from os.path import join, dirname,abspath</span><br><span class="line">     </span><br><span class="line">     from django.core.wsgi import get_wsgi_application</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     PROJECT_DIR = dirname(dirname(abspath(__file__)))</span><br><span class="line">     import sys</span><br><span class="line">     sys.path.insert(0, PROJECT_DIR)</span><br><span class="line">     </span><br><span class="line">     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web.settings")</span><br><span class="line">     </span><br><span class="line">     application = get_wsgi_application()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置django环境<br>进入你的网站根目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#static files</span></span><br><span class="line"><span class="comment">#前提在你的setting.py文件中设置好STATIC_ROOT目录</span></span><br><span class="line">python manage.py collectstatic</span><br><span class="line"></span><br><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改目录权限为<code>www-data</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown www-data:www-data webroot</span><br><span class="line"><span class="comment"># 如果存在数据库，请同时修改相应权限</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使网站生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo a2ensite yoursite.conf</span><br><span class="line">service apache2 reload</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/04/01/apache/">
+    <time datetime="2018-04-01T12:55:39.000Z" class="entry-date">
+        2018-04-01
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django-apach2/" rel="tag">django, apach2</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-libconfig" class="post-libconfig post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/12/25/libconfig/">libconfig 入门</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/12/25/libconfig/" data-id="ckamp969b001es8ve6vvv4lod" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>以下内容翻译自<a href="http://www.hyperrealm.com/libconfig/libconfig_manual.html" target="_blank" rel="noopener" title="libconfig manual">libconfig manual</a><br>版本1.4.9，最新版本请参阅<a href="https://hyperrealm.github.io/libconfig/" target="_blank" rel="noopener" title="libconfig">libconfig</a></p>
+<h1 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h1><ol>
+<li><p>配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># Example application configuration file</span><br><span class="line"></span><br><span class="line">version &#x3D; &quot;1.0&quot;; &#x2F;&#x2F;①</span><br><span class="line"></span><br><span class="line">application:</span><br><span class="line">&#123;</span><br><span class="line">  window:</span><br><span class="line">  &#123;</span><br><span class="line">    title &#x3D; &quot;My Application&quot;;</span><br><span class="line">    size &#x3D; &#123; w &#x3D; 640; h &#x3D; 480; &#125;;</span><br><span class="line">    pos &#x3D; &#123; x &#x3D; 350; y &#x3D; 250; &#125;; &#x2F;&#x2F;②</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  list &#x3D; ( ( &quot;abc&quot;, 123, true ), 1.234, ( &#x2F;* an empty list *&#x2F;) );</span><br><span class="line"></span><br><span class="line">  books &#x3D; ( &#123; title  &#x3D; &quot;Treasure Island&quot;;</span><br><span class="line">              author &#x3D; &quot;Robert Louis Stevenson&quot;;</span><br><span class="line">              price  &#x3D; 29.95;</span><br><span class="line">              qty    &#x3D; 5; &#125;,</span><br><span class="line">            &#123; title  &#x3D; &quot;Snow Crash&quot;; &#x2F;&#x2F;③</span><br><span class="line">              author &#x3D; &quot;Neal Stephenson&quot;;</span><br><span class="line">              price  &#x3D; 9.99;</span><br><span class="line">              qty    &#x3D; 8; &#125; );</span><br><span class="line"></span><br><span class="line">  misc:</span><br><span class="line">  &#123;</span><br><span class="line">    pi &#x3D; 3.141592654;</span><br><span class="line">    bigint &#x3D; 9223372036854775807L;</span><br><span class="line">    columns &#x3D; [ &quot;Last Name&quot;, &quot;First Name&quot;, &quot;MI&quot; ];</span><br><span class="line">    bitmask &#x3D; 0x1FC3;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读取方式</p>
+<table>
+<thead>
+<tr>
+<th align="left">目标</th>
+<th align="left">路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">version ①</td>
+<td align="left">version</td>
+</tr>
+<tr>
+<td align="left">x ②</td>
+<td align="left">application.window.pos.x</td>
+</tr>
+<tr>
+<td align="left">title ③</td>
+<td align="left">application.books.[1].tittle</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>路径按照元素名层层遍历，用’.’连接。类似数组和链表的情况，使用下标（从0开始）。<strong>此处与C/C++不同，请注意 title ③的路径</strong></p>
+<h1 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h1><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">说明</th>
+<th align="left">规则</th>
+<th align="left">正则表达</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">boolean</td>
+<td align="left">布尔类型</td>
+<td align="left">true/false,不区分大小写</td>
+<td align="left">([Tt][Rr][Uu][Ee])&#124;([Ff][Aa][Ll][Ss][Ee])</td>
+</tr>
+<tr>
+<td align="left">string</td>
+<td align="left">字符串</td>
+<td align="left">支持常见转义字符；支持换行；支持\x开头的ASCII转码</td>
+<td align="left">&quot;([^&quot;\]&#124;\.)*&quot;</td>
+</tr>
+<tr>
+<td align="left">integer</td>
+<td align="left">整数型</td>
+<td align="left"></td>
+<td align="left">[-+]?[0-9]+</td>
+</tr>
+<tr>
+<td align="left">integer64</td>
+<td align="left">长整数</td>
+<td align="left"></td>
+<td align="left">[-+]?[0-9]+L(L)?</td>
+</tr>
+<tr>
+<td align="left">hex</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0[Xx][0-9A-Fa-f]+</td>
+</tr>
+<tr>
+<td align="left">hex64</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0[Xx][0-9A-Fa-f]+L(L)?</td>
+</tr>
+<tr>
+<td align="left">float</td>
+<td align="left">浮点数</td>
+<td align="left">支持科学计数法</td>
+<td align="left">([-+]?([0-9]<em>)?.[0-9]</em>([eE][-+]?[0-9]+)?)&#124;(<a href="[0-9]+">-+</a>(.[0-9]*)?[eE][-+]?[0-9]+)</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">配置文件元素命名规则</td>
+<td align="left">以*或者字母开头，可包含字母、数字、*和下滑线</td>
+<td align="left">[A-Za-z*][-A-Za-z0-9_*]*</td>
+</tr>
+</tbody></table>
+<p>tips: <code>&amp;#124;</code>表示<code>|</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># 配置文件BNF表示</span><br><span class="line"></span><br><span class="line">configuration &#x3D; setting-list | empty</span><br><span class="line"></span><br><span class="line">setting-list &#x3D; setting | setting-list setting</span><br><span class="line"></span><br><span class="line"># 配置文件中键值对叫setting</span><br><span class="line"># 使用&#96;name&#x3D;value&#96;或&#96;name:value;&#96;的形式，</span><br><span class="line"># 不关心空格，&#39;;&#39;可省略</span><br><span class="line">setting &#x3D; name (&quot;:&quot; | &quot;&#x3D;&quot;) value (&quot;;&quot; | &quot;,&quot; | empty)</span><br><span class="line"></span><br><span class="line">value &#x3D; scalar-value | array | list | group</span><br><span class="line"></span><br><span class="line">value-list &#x3D; value | value-list &quot;,&quot; value</span><br><span class="line"></span><br><span class="line">scalar-value &#x3D; boolean | integer | integer64 | hex | hex64 | float</span><br><span class="line">               | string</span><br><span class="line"></span><br><span class="line">scalar-value-list &#x3D; scalar-value | scalar-value-list &quot;,&quot; scalar-value</span><br><span class="line"></span><br><span class="line"># 数组，*个scalar-value组成，成员scalar-valu必须具有相同类型</span><br><span class="line">array &#x3D; &quot;[&quot; (scalar-value-list | empty) &quot;]&quot;</span><br><span class="line"></span><br><span class="line"># 链表，与数组类似，值类型无限定</span><br><span class="line">list &#x3D; &quot;(&quot; (value-list | empty) &quot;)&quot;</span><br><span class="line"></span><br><span class="line"># 分组，可包含任意个setting,但setting的name必须唯一</span><br><span class="line">group &#x3D; &quot;&#123;&quot; (setting-list | empty) &quot;&#125;&quot;</span><br><span class="line"></span><br><span class="line">empty &#x3D;</span><br></pre></td></tr></table></figure>
+
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p>请参阅官方链接<a href="https://hyperrealm.github.io/libconfig/libconfig_manual.html#The-C-API" target="_blank" rel="noopener" title="C API">C</a>、<a href="https://hyperrealm.github.io/libconfig/libconfig_manual.html#The-C_002b_002b-API" target="_blank" rel="noopener" title="C++ API">C++</a>Y</p>
+<h1 id="官方示例"><a href="#官方示例" class="headerlink" title="官方示例"></a>官方示例</h1><ul>
+<li><p>配置文件 example.cfg</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; An example configuration file that stores information about a store.</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Basic store information:</span><br><span class="line">name &#x3D; &quot;Books, Movies &amp; More&quot;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Store inventory:</span><br><span class="line">inventory &#x3D;</span><br><span class="line">&#123;</span><br><span class="line">  books &#x3D; ( &#123; title  &#x3D; &quot;Treasure Island&quot;;</span><br><span class="line">              author &#x3D; &quot;Robert Louis Stevenson&quot;;</span><br><span class="line">              price  &#x3D; 29.99;</span><br><span class="line">              qty    &#x3D; 5; &#125;,</span><br><span class="line">            &#123; title  &#x3D; &quot;Snow Crash&quot;;</span><br><span class="line">              author &#x3D; &quot;Neal Stephenson&quot;;</span><br><span class="line">              price  &#x3D; 9.99;</span><br><span class="line">              qty    &#x3D; 8; &#125;</span><br><span class="line">          );</span><br><span class="line"></span><br><span class="line">  movies &#x3D; ( &#123; title &#x3D; &quot;Brazil&quot;;</span><br><span class="line">               media &#x3D; &quot;DVD&quot;;</span><br><span class="line">               price &#x3D; 19.99;</span><br><span class="line">               qty &#x3D; 11; &#125;,</span><br><span class="line">             &#123; title &#x3D; &quot;The City of Lost Children&quot;;</span><br><span class="line">               media &#x3D; &quot;DVD&quot;;</span><br><span class="line">               price &#x3D; 18.99;</span><br><span class="line">               qty &#x3D; 5; &#125;,</span><br><span class="line">             &#123; title &#x3D; &quot;Memento&quot;;</span><br><span class="line">               media &#x3D; &quot;Blu-Ray&quot;;</span><br><span class="line">               price &#x3D; 24.99;</span><br><span class="line">               qty &#x3D; 20;</span><br><span class="line">             &#125;,</span><br><span class="line">             &#123; title &#x3D; &quot;Howard the Duck&quot;; &#125;</span><br><span class="line">           );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Store hours:</span><br><span class="line">hours &#x3D;</span><br><span class="line">&#123;</span><br><span class="line">  mon &#x3D; &#123; open &#x3D;  9; close &#x3D; 18; &#125;;</span><br><span class="line">  tue &#x3D; &#123; open &#x3D;  9; close &#x3D; 18; &#125;;</span><br><span class="line">  wed &#x3D; &#123; open &#x3D;  9; close &#x3D; 18; &#125;;</span><br><span class="line">  thu &#x3D; &#123; open &#x3D;  9; close &#x3D; 18; &#125;;</span><br><span class="line">  fri &#x3D; &#123; open &#x3D;  9; close &#x3D; 20; &#125;;</span><br><span class="line">  sat &#x3D; &#123; open &#x3D;  9; close &#x3D; 20; &#125;;</span><br><span class="line">  sun &#x3D; &#123; open &#x3D; 11; close &#x3D; 16; &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代码 example1.cpp </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* ----------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">   libconfig - A library for processing structured configuration files</span></span><br><span class="line"><span class="comment">   Copyright (C) 2005-2010  Mark A Lindner</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   This file is part of libconfig.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   This library is free software; you can redistribute it and/or</span></span><br><span class="line"><span class="comment">   modify it under the terms of the GNU Lesser General Public License</span></span><br><span class="line"><span class="comment">   as published by the Free Software Foundation; either version 2.1 of</span></span><br><span class="line"><span class="comment">   the License, or (at your option) any later version.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   This library is distributed in the hope that it will be useful, but</span></span><br><span class="line"><span class="comment">   WITHOUT ANY WARRANTY; without even the implied warranty of</span></span><br><span class="line"><span class="comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span></span><br><span class="line"><span class="comment">   Lesser General Public License for more details.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   You should have received a copy of the GNU Library General Public</span></span><br><span class="line"><span class="comment">   License along with this library; if not, see</span></span><br><span class="line"><span class="comment">   &lt;http://www.gnu.org/licenses/&gt;.</span></span><br><span class="line"><span class="comment">   ----------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libconfig.h++&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> libconfig;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This example reads the configuration file 'example.cfg' and displays</span></span><br><span class="line"><span class="comment">// some of its contents.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  Config cfg;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Read the file. If there is an error, report it and exit.</span></span><br><span class="line">  <span class="keyword">try</span></span><br><span class="line">  &#123;</span><br><span class="line">    cfg.readFile(<span class="string">"example.cfg"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(<span class="keyword">const</span> FileIOException &amp;fioex)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">"I/O error while reading file."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span>(EXIT_FAILURE);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(<span class="keyword">const</span> ParseException &amp;pex)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">"Parse error at "</span> &lt;&lt; pex.getFile() &lt;&lt; <span class="string">":"</span> &lt;&lt; pex.getLine()</span><br><span class="line">              &lt;&lt; <span class="string">" - "</span> &lt;&lt; pex.getError() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span>(EXIT_FAILURE);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Get the store name.</span></span><br><span class="line">  <span class="keyword">try</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">string</span> name = cfg.lookup(<span class="string">"name"</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Store name: "</span> &lt;&lt; name &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(<span class="keyword">const</span> SettingNotFoundException &amp;nfex)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">cerr</span> &lt;&lt; <span class="string">"No 'name' setting in configuration file."</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> Setting&amp; root = cfg.getRoot();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Output a list of all books in the inventory.</span></span><br><span class="line">  <span class="keyword">try</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> Setting &amp;books = root[<span class="string">"inventory"</span>][<span class="string">"books"</span>];</span><br><span class="line">    <span class="keyword">int</span> count = books.getLength();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; <span class="string">"TITLE"</span> &lt;&lt; <span class="string">"  "</span></span><br><span class="line">         &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; <span class="string">"AUTHOR"</span> &lt;&lt; <span class="string">"   "</span></span><br><span class="line">         &lt;&lt; setw(<span class="number">6</span>) &lt;&lt; left &lt;&lt; <span class="string">"PRICE"</span> &lt;&lt; <span class="string">"  "</span></span><br><span class="line">         &lt;&lt; <span class="string">"QTY"</span></span><br><span class="line">         &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">const</span> Setting &amp;book = books[i];</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Only output the record if all of the expected fields are present.</span></span><br><span class="line">      <span class="built_in">string</span> title, author;</span><br><span class="line">      <span class="keyword">double</span> price;</span><br><span class="line">      <span class="keyword">int</span> qty;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(!(book.lookupValue(<span class="string">"title"</span>, title)</span><br><span class="line">           &amp;&amp; book.lookupValue(<span class="string">"author"</span>, author)</span><br><span class="line">           &amp;&amp; book.lookupValue(<span class="string">"price"</span>, price)</span><br><span class="line">           &amp;&amp; book.lookupValue(<span class="string">"qty"</span>, qty)))</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; title &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; author &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; <span class="string">'$'</span> &lt;&lt; setw(<span class="number">6</span>) &lt;&lt; right &lt;&lt; price &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; qty</span><br><span class="line">           &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(<span class="keyword">const</span> SettingNotFoundException &amp;nfex)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// Ignore.</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Output a list of all books in the inventory.</span></span><br><span class="line">  <span class="keyword">try</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> Setting &amp;movies = root[<span class="string">"inventory"</span>][<span class="string">"movies"</span>];</span><br><span class="line">    <span class="keyword">int</span> count = movies.getLength();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; <span class="string">"TITLE"</span> &lt;&lt; <span class="string">"  "</span></span><br><span class="line">         &lt;&lt; setw(<span class="number">10</span>) &lt;&lt; left &lt;&lt; <span class="string">"MEDIA"</span> &lt;&lt; <span class="string">"   "</span></span><br><span class="line">         &lt;&lt; setw(<span class="number">6</span>) &lt;&lt; left &lt;&lt; <span class="string">"PRICE"</span> &lt;&lt; <span class="string">"  "</span></span><br><span class="line">         &lt;&lt; <span class="string">"QTY"</span></span><br><span class="line">         &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">const</span> Setting &amp;movie = movies[i];</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Only output the record if all of the expected fields are present.</span></span><br><span class="line">      <span class="built_in">string</span> title, media;</span><br><span class="line">      <span class="keyword">double</span> price;</span><br><span class="line">      <span class="keyword">int</span> qty;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(!(movie.lookupValue(<span class="string">"title"</span>, title)</span><br><span class="line">           &amp;&amp; movie.lookupValue(<span class="string">"media"</span>, media)</span><br><span class="line">           &amp;&amp; movie.lookupValue(<span class="string">"price"</span>, price)</span><br><span class="line">           &amp;&amp; movie.lookupValue(<span class="string">"qty"</span>, qty)))</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; setw(<span class="number">30</span>) &lt;&lt; left &lt;&lt; title &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; setw(<span class="number">10</span>) &lt;&lt; left &lt;&lt; media &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; <span class="string">'$'</span> &lt;&lt; setw(<span class="number">6</span>) &lt;&lt; right &lt;&lt; price &lt;&lt; <span class="string">"  "</span></span><br><span class="line">           &lt;&lt; qty</span><br><span class="line">           &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(<span class="keyword">const</span> SettingNotFoundException &amp;nfex)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// Ignore.</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span>(EXIT_SUCCESS);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// eof</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">lib c++(c库libconfig-dev)</span></span><br><span class="line">apt-get install libconfig++-dev</span><br><span class="line"></span><br><span class="line">g++ example1.cpp -o example -lconfig++</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/12/25/libconfig/">
+    <time datetime="2017-12-25T14:59:18.000Z" class="entry-date">
+        2017-12-25
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/tools/">tools</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/libconfig/" rel="tag">libconfig</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-docker-gdb" class="post-docker-gdb post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/12/17/docker-gdb/">gdb problem inside docker container</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/12/17/docker-gdb/" data-id="ckamp9693000zs8vecjst9f30" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <blockquote>
+<p>warning: Error disabling address space randomization: Operation not permitted</p>
+</blockquote>
+<ul>
+<li><p>solutions:<a href="https://stackoverflow.com/questions/35860527/warning-error-disabling-address-space-randomization-operation-not-permitted" target="_blank" rel="noopener">stackoverflow</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --<span class="built_in">cap</span>-add=SYS_PTRACE --security-opt seccomp=unconfined</span><br></pre></td></tr></table></figure>
+
+<p>** There is no such options for <code>docker exec</code> command, so I recreate a container. Maybe there are others ways, please let me know. Thanks **</p>
+</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/12/17/docker-gdb/">
+    <time datetime="2017-12-17T12:53:59.000Z" class="entry-date">
+        2017-12-17
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gdb/" rel="tag">gdb</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-docker" class="post-docker post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/10/28/docker/">docker install on windows</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/28/docker/" data-id="ckamp96960016s8ve7vozdt43" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <ol>
+<li>安装<br>阿里云下载<a href="https://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/" target="_blank" rel="noopener">docker toolbox</a></li>
+<li>常见问题</li>
+</ol>
+<ul>
+<li><p><code>error: Details: code E_FAIL (0x80004005), component MachineWrap, interface I</code><br>virtual box 版本较低导致，升级后问题解决<br>P.S. 另一由于CPU不支持虚拟化的导致的问题没遇到</p>
+</li>
+<li><p>设置国内镜像仓库</p>
+<ol>
+<li><p>创建之前指定</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">docker-machine create --engine-registry-mirror=http://hub-mirror.c.163.com -d virtualbox default</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建之后，进入machine修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker-machine ssh &lt;machine-name&gt;</span><br><span class="line">sudo -i</span><br><span class="line">sed -i '/^EXTRA_ARGS.*/ s/$/ ----registry-mirror=http://hub-mirror.c.163.com' /var/lib/boot2docker/profile</span><br><span class="line">/etc/init.d/docker restart</span><br></pre></td></tr></table></figure>
+<p>P.S. 默认docker用户，用<code>sudo -i</code>切换root用户</p>
+</li>
+</ol>
+<ul>
+<li>镜像路径<br>默认镜像路径在用户目录下，在C盘  <ol>
+<li>安装前<br>设置环境变量<code>MACHINE_STORAGE_PATH</code>指向你需要设置的目录</li>
+<li>安装后<br>P.S. <ul>
+<li>创建快捷方式的方法失败</li>
+<li>指定docker daemon graph的方法失败</li>
+<li>未尝试使用<code>ln</code>链接目录</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/10/28/docker/">
+    <time datetime="2017-10-28T08:31:52.000Z" class="entry-date">
+        2017-10-28
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-docker-permission" class="post-docker-permission post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/09/22/docker-permission/">docker permission</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/09/22/docker-permission/" data-id="ckamp96950012s8ve0z715fj3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="docker-权限控制"><a href="#docker-权限控制" class="headerlink" title="docker 权限控制"></a>docker 权限控制</h1><p>docker在映射文件时，默认会使用与映射目录相同uid:gid，经常会导致一些权限问题。<br>常见有以下解决方案：</p>
+<ul>
+<li>改变权限</li>
+</ul>
+<ol>
+<li>创建容器后，进入后<code>chown</code></li>
+<li>通过<code>docker run</code>的<code>-u</code>选项<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v `pwd`/shared:/shared -u `stat -c "%u:%g" /shared` ubuntu bash</span><br></pre></td></tr></table></figure>
+这样做的话就等于放弃了root权限，除非再新建root组用户</li>
+</ol>
+<ul>
+<li>使用Data-only container<br>[Data-only container madness](<a href="http://container42.com/2014/11/18/data-only-container-madness/" target="_blank" rel="noopener">http://container42.com/2014/11/18/data-only-container-madness/</a> “data-only”)<br>主要手段如下:</li>
+</ul>
+<ol>
+<li>创建数据容器，改变目录用户权限。</li>
+<li>其他容器使用<code>--volumes-from</code>挂载创建的数据容器<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /userdata --name data busybox true</span><br><span class="line">docker run --volumes-from data debian:jessie bash</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/09/22/docker-permission/">
+    <time datetime="2017-09-22T14:34:59.000Z" class="entry-date">
+        2017-09-22
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-arm-ports-differences" class="post-arm-ports-differences post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/09/13/arm-ports-differences/">arm ports differences</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/09/13/arm-ports-differences/" data-id="ckamp968s000fs8vee938hida" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="Three-ports-to-different-flavours-of-little-endian-ARM-hardware"><a href="#Three-ports-to-different-flavours-of-little-endian-ARM-hardware" class="headerlink" title="Three ports to different flavours of little-endian ARM hardware"></a>Three ports to different flavours of little-endian ARM hardware</h2><p><strong>The following content reproudced from Debian Wiki</strong> <a href="https://wiki.debian.org/ArmPorts" target="_blank" rel="noopener" title="Debian wiki">ArmPorts</a>  </p>
+<ul>
+<li>ArmPort - the first port, using the “old” (now obsolete) ABI (OABI). First released with 2.2 (Potato), last released with 5.0 (lenny). GNU Triplet: arm-linux-gnu</li>
+<li>ArmEabiPort - newer port using the “new” ABI (EABI), supported on Arm v4t and higher. First released with 5.0 (lenny). GNU Triplet: arm-linux-gnueabi</li>
+<li>ArmHardFloatPort - the latest 32-bit port, using the hard-float version of the “new” ABI (EABI), targeting Arm v7 and up. First released with 7 (wheezy). GNU Triplet: arm-linux-gnueabihf</li>
+<li>Arm64Port - the latest port, for the 64-bit Armv8 architecture. First released with 8 (jessie). GNU Triplet: aarch64-linux-gnu</li>
+</ul>
+<h2 id="Prebuilt-toolchains"><a href="#Prebuilt-toolchains" class="headerlink" title="Prebuilt toolchains"></a>Prebuilt toolchains</h2><ul>
+<li>Debian cross-tools packages</li>
+<li><em>The following content reproudced from elinux*</em> <a href="http://www.elinux.org/Toolchains" target="_blank" rel="noopener" title="toolchains">toolchains</a><br>For Debian users, the toolchains problem is fairly reliably solved.<br>For a debian-based box just install pre-built cross toolchains from Debian experimental.<br>Targets include nearly all debian-supported architectures As of this writing supported compiler is gcc 4.9. You can get older unsupported compilers from emdebian.<br>You will need to add the target architecture to your list of installable architectures. eg. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dpkg --add-architecture armhf</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install gcc-arm-linux-gnueabihf</span><br><span class="line"><span class="meta">#</span><span class="bash"> arm64 gcc-r-aarch-linux-gnu</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Toolchain-building-systems"><a href="#Toolchain-building-systems" class="headerlink" title="Toolchain building systems"></a>Toolchain building systems</h2><ul>
+<li>Bitbake<br>Bitbake is the tool used by <a href="http://wiki.openembedded.net/index.php/Main_Page" target="_blank" rel="noopener" title="OpenEmbedded">OpenEmbedded</a>. The best way to get started is probably by just building an existing distribution that uses openembedded.</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/09/13/arm-ports-differences/">
+    <time datetime="2017-09-13T14:25:00.000Z" class="entry-date">
+        2017-09-13
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/embedded/">embedded</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arm/" rel="tag">arm</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="&#39;mssql-MongoDB" class="&#39;mssql-MongoDB post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/09/05/MongoDB/">transfer mssql data to mongodb&#39;</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/09/05/MongoDB/" data-id="ckamp96890001s8veaw886jpa" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>写得比较基础</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pymssql</span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"></span><br><span class="line">sql = <span class="string">'''SELECT [Name]</span></span><br><span class="line"><span class="string">      ,[CardNo]</span></span><br><span class="line"><span class="string">      ,[Descriot]</span></span><br><span class="line"><span class="string">      ,[CtfTp]</span></span><br><span class="line"><span class="string">      ,[CtfId]</span></span><br><span class="line"><span class="string">      ,[Gender]</span></span><br><span class="line"><span class="string">      ,[Birthday]</span></span><br><span class="line"><span class="string">      ,[Address]</span></span><br><span class="line"><span class="string">      ,[Zip]</span></span><br><span class="line"><span class="string">      ,[Dirty]</span></span><br><span class="line"><span class="string">      ,[District1]</span></span><br><span class="line"><span class="string">      ,[District2]</span></span><br><span class="line"><span class="string">      ,[District3]</span></span><br><span class="line"><span class="string">      ,[District4]</span></span><br><span class="line"><span class="string">      ,[District5]</span></span><br><span class="line"><span class="string">      ,[District6]</span></span><br><span class="line"><span class="string">      ,[FirstNm]</span></span><br><span class="line"><span class="string">      ,[LastNm]</span></span><br><span class="line"><span class="string">      ,[Duty]</span></span><br><span class="line"><span class="string">      ,[Mobile]</span></span><br><span class="line"><span class="string">      ,[Tel]</span></span><br><span class="line"><span class="string">      ,[Fax]</span></span><br><span class="line"><span class="string">      ,[EMail]</span></span><br><span class="line"><span class="string">      ,[Nation]</span></span><br><span class="line"><span class="string">      ,[Taste]</span></span><br><span class="line"><span class="string">      ,[Education]</span></span><br><span class="line"><span class="string">      ,[Company]</span></span><br><span class="line"><span class="string">      ,[CTel]</span></span><br><span class="line"><span class="string">      ,[CAddress]</span></span><br><span class="line"><span class="string">      ,[CZip]</span></span><br><span class="line"><span class="string">      ,[Family]</span></span><br><span class="line"><span class="string">      ,[Version]</span></span><br><span class="line"><span class="string">  FROM cdsgus'''</span></span><br><span class="line"></span><br><span class="line">ms_conn = pymssql.connect(host=<span class="string">"127.0.0.1"</span>, user=<span class="string">"sa"</span>,</span><br><span class="line">                          password=<span class="string">"root"</span>, database=<span class="string">"database"</span>, charset=<span class="string">"utf8"</span>)</span><br><span class="line">ms_cur = ms_conn.cursor(as_dict=<span class="literal">True</span>)</span><br><span class="line">ms_cur.execute(sql)</span><br><span class="line"></span><br><span class="line">row = ms_cur.fetchone()</span><br><span class="line"></span><br><span class="line">mongo_conn = pymongo.MongoClient(<span class="string">'127.0.0.1'</span>, <span class="number">27017</span>)</span><br><span class="line">mongo_db = mongo_conn[<span class="string">'test'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> row:</span><br><span class="line">    mongo_db.kf_data.insert_one(row)</span><br><span class="line">    row = ms_cur.fetchone()</span><br><span class="line"></span><br><span class="line">ms_conn.commit()</span><br><span class="line">ms_conn.close()</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/09/05/MongoDB/">
+    <time datetime="2017-09-05T11:56:02.000Z" class="entry-date">
+        2017-09-05
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/database/">database</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mssql-mongodb/" rel="tag">mssql, mongodb</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-xinetd" class="post-xinetd post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/06/07/xinetd/">xinetd 配置</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/06/07/xinetd/" data-id="ckamp969z002es8ve86xedrpy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <ol start="0">
+<li>介绍  </li>
+</ol>
+<blockquote>
+<p>xinetd - the extended Internet services daemon<br>xinetd  performs  the  same  function as inetd: it starts programs that<br>provide Internet services.  Instead of having such servers  started  at<br>system  initialization  time, and be dormant until a connection request<br>arrives, xinetd is the only daemon process started and  it  listens  on<br>all  service  ports  for the services listed in its configuration file.<br>When a request comes in, xinetd starts the appropriate server.  Because<br>of  the  way it operates, xinetd (as well as inetd) is also referred to<br>as a super-server.</p>
+<p>The services listed in xinetd’s configuration  file  can  be  separated<br>into two groups.  Services in the first group are called multi-threaded<br>and they require the forking of a new server process for each new  con-<br>nection  request.   The  new  server then handles that connection.  For<br>such services, xinetd keeps listening for new requests so that  it  can<br>spawn  new  servers.  On the other hand, the second group includes ser-<br>vices for which the service daemon is responsible for handling all  new<br>connection  requests.   Such  services  are  called single-threaded and<br>xinetd will stop handling new requests for them until the server  dies.<br>Services in this group are usually datagram-based.</p>
+<p>So far, the only reason for the existence of a super-server was to con-<br>serve system resources by avoiding to fork a  lot  of  processes  which<br>might  be  dormant  for  most of their lifetime.  While fulfilling this<br>function, xinetd takes advantage of the idea of a super-server to  pro-<br>vide  features such as access control and logging.  Furthermore, xinetd<br>is not limited to services listed in /etc/services.  Therefore, anybody</p>
+</blockquote>
+<p>以下内容转载自 <a href="http://www.linuxfromscratch.org/blfs/view/6.3/server/xinetd.html" target="_blank" rel="noopener" title="xinetd">linuxfromscratch</a>  </p>
+<ol start="0">
+<li>xinetd.conf文件    </li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/xinetd.conf &lt;&lt; "EOF"</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Configuration file <span class="keyword">for</span> xinetd</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">&#123;</span><br><span class="line">      instances       = 60</span><br><span class="line">      log_type        = SYSLOG daemon</span><br><span class="line">      log_on_success  = HOST PID USERID</span><br><span class="line">      log_on_failure  = HOST USERID</span><br><span class="line">      cps             = 25 30</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> All service files are stored <span class="keyword">in</span> the /etc/xinetd.d directory</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line">includedir /etc/xinetd.d</span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd</span></span><br><span class="line">EOF</span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">0. 常见服务项配置    </span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">install -v -d -m755 /etc/xinetd.d &amp;&amp;</span><br><span class="line">cat &gt; /etc/xinetd.d/login &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/login</span></span><br><span class="line"></span><br><span class="line">service login</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   protocol       = tcp</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.rlogind</span><br><span class="line">   log_type       = SYSLOG local4 info</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/login</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/shell &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/shell</span></span><br><span class="line"></span><br><span class="line">service shell</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line">   instances      = UNLIMITED</span><br><span class="line">   flags          = IDONLY</span><br><span class="line">   log_on_success += USERID</span><br><span class="line">   server         = /usr/sbin/in.rshd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/shell</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/exec &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/<span class="built_in">exec</span></span></span><br><span class="line"></span><br><span class="line">service exec</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.rexecd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/<span class="built_in">exec</span></span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/comsat &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/comsat</span></span><br><span class="line"></span><br><span class="line">service comsat</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   wait           = yes</span><br><span class="line">   user           = nobody</span><br><span class="line">   group          = tty</span><br><span class="line">   server         = /usr/sbin/in.comsat</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/comsat</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/talk &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/talk</span></span><br><span class="line"></span><br><span class="line">service talk</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   wait           = yes</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.talkd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/talk</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/ntalk &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/ntalk</span></span><br><span class="line"></span><br><span class="line">service ntalk</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   wait           = yes</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.ntalkd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/ntalk</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/telnet &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/telnet</span></span><br><span class="line"></span><br><span class="line">service telnet</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.telnetd</span><br><span class="line">   bind           = 127.0.0.1</span><br><span class="line">   log_on_failure += USERID</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">service telnet</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line"><span class="meta">#</span><span class="bash">  server         = /usr/sbin/in.telnetd</span></span><br><span class="line">   bind           = 192.231.139.175</span><br><span class="line">   redirect       = 128.138.202.20 23</span><br><span class="line">   log_on_failure += USERID</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/telnet</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/ftp &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/ftp</span></span><br><span class="line"></span><br><span class="line">service ftp</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.ftpd</span><br><span class="line">   server_args    = -l</span><br><span class="line">   instances      = 4</span><br><span class="line">   log_on_success += DURATION USERID</span><br><span class="line">   log_on_failure += USERID</span><br><span class="line">   access_times   = 2:00-8:59 12:00-23:59</span><br><span class="line">   nice           = 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/ftp</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/tftp &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/tftp</span></span><br><span class="line"></span><br><span class="line">service tftp</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   wait           = yes</span><br><span class="line">   user           = root</span><br><span class="line">   server         = /usr/sbin/in.tftpd</span><br><span class="line">   server_args    = -s /tftpboot</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/tftp</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/finger &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/finger</span></span><br><span class="line"></span><br><span class="line">service finger</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   wait           = no</span><br><span class="line">   user           = nobody</span><br><span class="line">   server         = /usr/sbin/in.fingerd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/finger</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/systat &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/systat</span></span><br><span class="line"></span><br><span class="line">service systat</span><br><span class="line">&#123;</span><br><span class="line">   disable           = yes</span><br><span class="line">   socket_type       = stream</span><br><span class="line">   wait              = no</span><br><span class="line">   user              = nobody</span><br><span class="line">   server            = /usr/bin/ps</span><br><span class="line">   server_args       = -auwwx</span><br><span class="line">   only_from         = 128.138.209.0</span><br><span class="line">   log_on_success    = HOST</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/systat</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/netstat &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/netstat</span></span><br><span class="line"></span><br><span class="line">service netstat</span><br><span class="line">&#123;</span><br><span class="line">   disable           = yes</span><br><span class="line">   socket_type       = stream</span><br><span class="line">   wait              = no</span><br><span class="line">   user              = nobody</span><br><span class="line">   server            = /usr/ucb/netstat</span><br><span class="line">   server_args       = -f inet</span><br><span class="line">   only_from         = 128.138.209.0</span><br><span class="line">   log_on_success    = HOST</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/netstat</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/echo &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/<span class="built_in">echo</span></span></span><br><span class="line"></span><br><span class="line">service echo</span><br><span class="line">&#123;</span><br><span class="line">   disable     = yes</span><br><span class="line">   type        = INTERNAL</span><br><span class="line">   id          = echo-stream</span><br><span class="line">   socket_type = stream</span><br><span class="line">   protocol    = tcp</span><br><span class="line">   user        = root</span><br><span class="line">   wait        = no</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">service echo</span><br><span class="line">&#123;</span><br><span class="line">   disable     = yes</span><br><span class="line">   type        = INTERNAL</span><br><span class="line">   id          = echo-dgram</span><br><span class="line">   socket_type = dgram</span><br><span class="line">   protocol    = udp</span><br><span class="line">   user        = root</span><br><span class="line">   wait        = yes</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/<span class="built_in">echo</span></span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/chargen &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/chargen</span></span><br><span class="line"></span><br><span class="line">service chargen</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = chargen-stream</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   protocol       = tcp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = no</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">service chargen</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = chargen-dgram</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   protocol       = udp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = yes</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/chargen</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/daytime &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/daytime</span></span><br><span class="line"></span><br><span class="line">service daytime</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = daytime-stream</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   protocol       = tcp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = no</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">service daytime</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = daytime-dgram</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   protocol       = udp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = yes</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/daytime</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/time &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/time</span></span><br><span class="line"></span><br><span class="line">service time</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = time-stream</span><br><span class="line">   socket_type    = stream</span><br><span class="line">   protocol       = tcp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = no</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">service time</span><br><span class="line">&#123;</span><br><span class="line">   disable        = yes</span><br><span class="line">   type           = INTERNAL</span><br><span class="line">   id             = time-dgram</span><br><span class="line">   socket_type    = dgram</span><br><span class="line">   protocol       = udp</span><br><span class="line">   user           = root</span><br><span class="line">   wait           = yes</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/time</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/rstatd &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/rstatd</span></span><br><span class="line"></span><br><span class="line">service rstatd</span><br><span class="line">&#123;</span><br><span class="line">   disable     = yes</span><br><span class="line">   type        = RPC</span><br><span class="line">   flags       = INTERCEPT</span><br><span class="line">   rpc_version = 2-4</span><br><span class="line">   socket_type = dgram</span><br><span class="line">   protocol    = udp</span><br><span class="line">   server      = /usr/sbin/rpc.rstatd</span><br><span class="line">   wait        = yes</span><br><span class="line">   user        = root</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/rstatd</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/rquotad &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/rquotad</span></span><br><span class="line"></span><br><span class="line">service rquotad</span><br><span class="line">&#123;</span><br><span class="line">   disable     = yes</span><br><span class="line">   type        = RPC</span><br><span class="line">   rpc_version = 1</span><br><span class="line">   socket_type = dgram</span><br><span class="line">   protocol    = udp</span><br><span class="line">   wait        = yes</span><br><span class="line">   user        = root</span><br><span class="line">   server      = /usr/sbin/rpc.rstatd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/rquotad</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/rusersd &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/rusersd</span></span><br><span class="line"></span><br><span class="line">service rusersd</span><br><span class="line">&#123;</span><br><span class="line">   disable     = yes</span><br><span class="line">   type        = RPC</span><br><span class="line">   rpc_version = 1-2</span><br><span class="line">   socket_type = dgram</span><br><span class="line">   protocol    = udp</span><br><span class="line">   wait        = yes</span><br><span class="line">   user        = root</span><br><span class="line">   server      = /usr/sbin/rpc.rusersd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/rusersd</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/sprayd &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/sprayd</span></span><br><span class="line"></span><br><span class="line">service sprayd</span><br><span class="line">&#123;</span><br><span class="line">   disable      = yes</span><br><span class="line">   type         = RPC</span><br><span class="line">   rpc_version  = 1</span><br><span class="line">   socket_type  = dgram</span><br><span class="line">   protocol     = udp</span><br><span class="line">   wait         = yes</span><br><span class="line">   user         = root</span><br><span class="line">   server       = /usr/sbin/rpc.sprayd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/sprayd</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/walld &lt;&lt; "EOF" &amp;&amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/walld</span></span><br><span class="line"></span><br><span class="line">service walld</span><br><span class="line">&#123;</span><br><span class="line">   disable      = yes</span><br><span class="line">   type         = RPC</span><br><span class="line">   rpc_version  = 1</span><br><span class="line">   socket_type  = dgram</span><br><span class="line">   protocol     = udp</span><br><span class="line">   wait         = yes</span><br><span class="line">   user         = nobody</span><br><span class="line">   group        = tty</span><br><span class="line">   server       = /usr/sbin/rpc.rwalld</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/walld</span></span><br><span class="line">EOF</span><br><span class="line">cat &gt; /etc/xinetd.d/irc &lt;&lt; "EOF"</span><br><span class="line"><span class="meta">#</span><span class="bash"> Begin /etc/xinetd.d/irc</span></span><br><span class="line"></span><br><span class="line">service irc</span><br><span class="line">&#123;</span><br><span class="line">   disable      = yes</span><br><span class="line">   socket_type  = stream</span><br><span class="line">   wait         = no</span><br><span class="line">   user         = root</span><br><span class="line">   flags        = SENSOR</span><br><span class="line">   type         = INTERNAL</span><br><span class="line">   bind         = 192.168.1.30</span><br><span class="line">   deny_time    = 60</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> End /etc/xinetd.d/irc</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>使用方式<br>若要激活服务，将配置文件中的<code>disable = yes</code>替换为<code>disable  = no</code><br>重新启动<code>xinetd.service</code></p>
+</li>
+<li><p>权限问题</p>
+<ol>
+<li><code>echo rsh &gt;&gt;/etc/securetty</code></li>
+<li>注释/etc/pam.d/目录下服务授权配置（待展开）</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/06/07/xinetd/">
+    <time datetime="2017-06-07T13:39:31.000Z" class="entry-date">
+        2017-06-07
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xinetd/" rel="tag">xinetd</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+  
+    <nav id="pagination">
+      <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      </nav>
+    </nav>
+  
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/data-structure/">data structure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/eidtor/">eidtor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/embedded/">embedded</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/">program</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/record/">record</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tts/">tts</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/26/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/22/elk/">elk国内源</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/08/docker-1/">docker 记录2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/%E5%8F%96%E6%B6%88%E8%87%AA%E5%8A%A8%E8%84%9A%E6%9C%AC%E4%BB%A3%E7%90%86/">取消自动脚本代理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/28/%E5%AD%97%E7%AC%A6%E4%B8%B2/">Bash shell 字符串</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSSQL-SQL-Server/" rel="tag">MSSQL, SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/POstgreSQL/" rel="tag">POstgreSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/accumulation/" rel="tag">accumulation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arm/" rel="tag">arm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-vptr/" rel="tag">c++, vptr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmder/" rel="tag">cmder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/" rel="tag">config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-apach2/" rel="tag">django, apach2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elk/" rel="tag">elk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/email/" rel="tag">email</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ini/" rel="tag">ini</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libconfig/" rel="tag">libconfig</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mail/" rel="tag">mail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mssql-mongodb/" rel="tag">mssql, mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/odbc/" rel="tag">odbc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl-evp-aes/" rel="tag">openssl, evp, aes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pac-reg/" rel="tag">pac, reg</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postgresql/" rel="tag">postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/record/" rel="tag">record</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rtp-c/" rel="tag">rtp,c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell-update-rc-d-systemctl/" rel="tag">shell, update-rc.d, systemctl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shortcut/" rel="tag">shortcut</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time/" rel="tag">time</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tts-windows/" rel="tag">tts, windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmware/" rel="tag">vmware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xinetd/" rel="tag">xinetd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" rel="tag">红黑树</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/MSSQL-SQL-Server/" style="font-size: 10px;">MSSQL, SQL Server</a> <a href="/tags/POstgreSQL/" style="font-size: 10px;">POstgreSQL</a> <a href="/tags/accumulation/" style="font-size: 15px;">accumulation</a> <a href="/tags/arm/" style="font-size: 10px;">arm</a> <a href="/tags/atom/" style="font-size: 10px;">atom</a> <a href="/tags/c-vptr/" style="font-size: 10px;">c++, vptr</a> <a href="/tags/cmder/" style="font-size: 10px;">cmder</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/django-apach2/" style="font-size: 10px;">django, apach2</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/email/" style="font-size: 10px;">email</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/ini/" style="font-size: 10px;">ini</a> <a href="/tags/libconfig/" style="font-size: 10px;">libconfig</a> <a href="/tags/mail/" style="font-size: 10px;">mail</a> <a href="/tags/mssql-mongodb/" style="font-size: 10px;">mssql, mongodb</a> <a href="/tags/odbc/" style="font-size: 10px;">odbc</a> <a href="/tags/openssl-evp-aes/" style="font-size: 10px;">openssl, evp, aes</a> <a href="/tags/pac-reg/" style="font-size: 10px;">pac, reg</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/record/" style="font-size: 15px;">record</a> <a href="/tags/rtp-c/" style="font-size: 10px;">rtp,c++</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/shell-update-rc-d-systemctl/" style="font-size: 10px;">shell, update-rc.d, systemctl</a> <a href="/tags/shortcut/" style="font-size: 10px;">shortcut</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/tts-windows/" style="font-size: 10px;">tts, windows</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vmware/" style="font-size: 10px;">vmware</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/xinetd/" style="font-size: 10px;">xinetd</a> <a href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" style="font-size: 10px;">红黑树</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2020 CaiSong
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

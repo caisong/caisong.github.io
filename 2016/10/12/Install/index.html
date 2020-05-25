@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="安装
+添加用户和数据库
+登陆数据库
+常用控制台命令
+基本SQL操作
+备份与恢复" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>PostgreSQL 安装 | Caisong&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装 添加用户和数据库 登陆数据库 常用控制台命令 基本SQL操作 备份与恢复">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL 安装">
+<meta property="og:url" content="http://yoursite.com/2016/10/12/Install/index.html">
+<meta property="og:site_name" content="Caisong&#39;s Blog">
+<meta property="og:description" content="安装 添加用户和数据库 登陆数据库 常用控制台命令 基本SQL操作 备份与恢复">
+<meta property="article:published_time" content="2016-10-12T13:13:50.000Z">
+<meta property="article:modified_time" content="2016-10-12T13:43:14.299Z">
+<meta property="article:author" content="CaiSong">
+<meta property="article:tag" content="POstgreSQL">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Caisong&#39;s Blog" rel="home">Caisong&#39;s Blog</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-Install" class="post-Install post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      PostgreSQL 安装
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2016/10/12/Install/" data-id="ckamp968e0003s8ve3pjc4sdt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <!-- MarkdownTOC -->
+
+<ul>
+<li>安装</li>
+<li>添加用户和数据库</li>
+<li>登陆数据库</li>
+<li>常用控制台命令</li>
+<li>基本SQL操作</li>
+<li>备份与恢复</li>
+</ul>
+<!-- /MarkdownTOC -->
+<a id="more"></a>
+<p>本文内容基于CentOS7及PostgreSQL 9.5.4</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>以下内容主要参考<a href="https://www.postgresql.org/download/linux/redhat/" target="_blank" rel="noopener" title="postgresql安装">Linux downloads (Red Hat family)</a></p>
+<ul>
+<li><p>Included in distribution<br>目前CentOS7支持的是9.2版本，SCL源支持9.5与9.4</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install postgresql-server posggresql-contrib -y</span><br><span class="line"><span class="comment"># 安装完成之后初始化</span></span><br><span class="line">postgresql-setup initdb</span><br><span class="line">systemctl <span class="built_in">enable</span> postgresql.service systemctl start postgresql.service</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>PostgreSQL Yum Repository</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install http://yum.postgresql.org/9.5/redhat/rhel-7-x86_64/pgdg-redhat95-9.5-2.noarch.rpm</span><br><span class="line">yum install postgresql95-server postgresql95-contrib -y</span><br><span class="line">systemctl <span class="built_in">enable</span> postgresql-9.5.service</span><br><span class="line">systemctl start postgresql-9.5.service</span><br></pre></td></tr></table></figure></li>
+<li><p>其他可以通过下载rpm或编译源码的方式安装  </p>
+</li>
+</ul>
+<h2 id="添加用户和数据库"><a href="#添加用户和数据库" class="headerlink" title="添加用户和数据库"></a>添加用户和数据库</h2><p>以下内容主要参考<a href="http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html" target="_blank" rel="noopener" title="PostgreSQL新手入门">PostgreSQL新手入门</a><br>安装PostgreSQL时，默认创建了用户名为postgres的系统用户和对应的DB管理员用户，可以直接登陆数据库。下面介绍如何添加用户自定义用户</p>
+<h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>该方式比较繁琐。  </p>
+<ol>
+<li><p>切换到postgres用户  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su - postgres</span><br></pre></td></tr></table></figure></li>
+<li><p>登陆DB</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql</span><br></pre></td></tr></table></figure></li>
+<li><p>登陆数据库之后，系统提示符变为”postgres=#”。第一次登陆，需要设置下postgres管理员用户密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\password postgres</span><br></pre></td></tr></table></figure></li>
+<li><p>创建新DB用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user &#123;username&#125; with password <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>{username}需要指定为Linux系统用户名，可通过<code>createuser</code>方式创建（未指定为系统用户，在登陆时会失败，可能是用户role的原因）</li>
+<li>末尾 <em>;</em> 不能缺少  </li>
+<li>创建完成之后，可通过<code>\du</code>命令列出所有用户，校验是否创建成功</li>
+</ul>
+</blockquote>
+</li>
+<li><p>创建数据库test,并指定其所有者为dbuser</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database <span class="built_in">test</span> owner dbuser;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建完成之后，可通过<code>\l</code>命令查看所有数据库</p>
+</blockquote>
+</li>
+<li><p>将test数据库的所有权限赋予dbuser</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on database <span class="built_in">test</span> to dbuser</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><ol>
+<li>创建数据库用户dbuser，并指定其角色为超级用户<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u posggres createuser --superuser dbuser</span><br></pre></td></tr></table></figure></li>
+<li>登陆数据库控制台，设置用户密码后退出<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -u postgres psql</span><br><span class="line">\password dbuser &#123;password&#125;</span><br><span class="line">\q</span><br></pre></td></tr></table></figure></li>
+<li>创建数据库，并指定其Owner为dbuser<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u postgres createdb -O dbuser <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="登陆数据库"><a href="#登陆数据库" class="headerlink" title="登陆数据库"></a>登陆数据库</h2><p>与大多数数据库类似，指定用户名、密码及数据库地址，登陆数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U &#123;user_name&#125; -d &#123;db_name&#125; -h &#123;server_addr&#125; -p &#123;port_num&#125;</span><br></pre></td></tr></table></figure>
+<p>若PostgreSQL用户中存在当前系统用户时，可以省略-U参数</p>
+<h2 id="常用控制台命令"><a href="#常用控制台命令" class="headerlink" title="常用控制台命令"></a>常用控制台命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\h                  查看帮助</span><br><span class="line">\password           设置密码</span><br><span class="line">\l                  列出所有数据库</span><br><span class="line">\c [database_name]  切换数据库</span><br><span class="line">\d                  列出当前数据库的所有表格</span><br><span class="line">\d [table_name]     查看表结构</span><br><span class="line">\du                 列出所有用户</span><br><span class="line">\e                  打开文本编辑器</span><br><span class="line">\conninfo           列出当前数据库和连接的信息</span><br><span class="line">\q                  退出</span><br></pre></td></tr></table></figure>
+
+<h2 id="基本SQL操作"><a href="#基本SQL操作" class="headerlink" title="基本SQL操作"></a>基本SQL操作</h2><p>与一般SQL语言一致</p>
+<h2 id="备份与恢复"><a href="#备份与恢复" class="headerlink" title="备份与恢复"></a>备份与恢复</h2><ul>
+<li>pg_dump 备份数据库到文本文件或其他指定格式文件，其参数与psql基本一致</li>
+<li>pg_dumpall 备份数据库到可执行sql文件</li>
+<li>pg_restore 恢复<code>pg_dump</code>生成的文件到数据库</li>
+<li>psql &lt; sql文件 执行sql文件</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2016/10/12/Install/">
+    <time datetime="2016-10-12T13:13:50.000Z" class="entry-date">
+        2016-10-12
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/DataBase/">DataBase</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/POstgreSQL/" rel="tag">POstgreSQL</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2016/10/12/PostgreSQL-ODBC/" rel="prev"><span class="meta-nav">←</span> PostgreSQL ODBC</a></span>
+    
+    
+        <span class="nav-next"><a href="/2016/07/28/shell/" rel="next">Shell命令行快捷键 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/data-structure/">data structure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/eidtor/">eidtor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/embedded/">embedded</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/">program</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/record/">record</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tts/">tts</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/26/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/22/elk/">elk国内源</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/08/docker-1/">docker 记录2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/%E5%8F%96%E6%B6%88%E8%87%AA%E5%8A%A8%E8%84%9A%E6%9C%AC%E4%BB%A3%E7%90%86/">取消自动脚本代理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/28/%E5%AD%97%E7%AC%A6%E4%B8%B2/">Bash shell 字符串</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSSQL-SQL-Server/" rel="tag">MSSQL, SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/POstgreSQL/" rel="tag">POstgreSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/accumulation/" rel="tag">accumulation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arm/" rel="tag">arm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-vptr/" rel="tag">c++, vptr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmder/" rel="tag">cmder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/" rel="tag">config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-apach2/" rel="tag">django, apach2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elk/" rel="tag">elk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/email/" rel="tag">email</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ini/" rel="tag">ini</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libconfig/" rel="tag">libconfig</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mail/" rel="tag">mail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mssql-mongodb/" rel="tag">mssql, mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/odbc/" rel="tag">odbc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl-evp-aes/" rel="tag">openssl, evp, aes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pac-reg/" rel="tag">pac, reg</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postgresql/" rel="tag">postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/record/" rel="tag">record</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rtp-c/" rel="tag">rtp,c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell-update-rc-d-systemctl/" rel="tag">shell, update-rc.d, systemctl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shortcut/" rel="tag">shortcut</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time/" rel="tag">time</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tts-windows/" rel="tag">tts, windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmware/" rel="tag">vmware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xinetd/" rel="tag">xinetd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" rel="tag">红黑树</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/MSSQL-SQL-Server/" style="font-size: 10px;">MSSQL, SQL Server</a> <a href="/tags/POstgreSQL/" style="font-size: 10px;">POstgreSQL</a> <a href="/tags/accumulation/" style="font-size: 15px;">accumulation</a> <a href="/tags/arm/" style="font-size: 10px;">arm</a> <a href="/tags/atom/" style="font-size: 10px;">atom</a> <a href="/tags/c-vptr/" style="font-size: 10px;">c++, vptr</a> <a href="/tags/cmder/" style="font-size: 10px;">cmder</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/django-apach2/" style="font-size: 10px;">django, apach2</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/email/" style="font-size: 10px;">email</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/ini/" style="font-size: 10px;">ini</a> <a href="/tags/libconfig/" style="font-size: 10px;">libconfig</a> <a href="/tags/mail/" style="font-size: 10px;">mail</a> <a href="/tags/mssql-mongodb/" style="font-size: 10px;">mssql, mongodb</a> <a href="/tags/odbc/" style="font-size: 10px;">odbc</a> <a href="/tags/openssl-evp-aes/" style="font-size: 10px;">openssl, evp, aes</a> <a href="/tags/pac-reg/" style="font-size: 10px;">pac, reg</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/record/" style="font-size: 15px;">record</a> <a href="/tags/rtp-c/" style="font-size: 10px;">rtp,c++</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/shell-update-rc-d-systemctl/" style="font-size: 10px;">shell, update-rc.d, systemctl</a> <a href="/tags/shortcut/" style="font-size: 10px;">shortcut</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/tts-windows/" style="font-size: 10px;">tts, windows</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vmware/" style="font-size: 10px;">vmware</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/xinetd/" style="font-size: 10px;">xinetd</a> <a href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" style="font-size: 10px;">红黑树</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2020 CaiSong
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
