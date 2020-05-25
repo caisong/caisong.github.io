@@ -63,297 +63,6 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
-    <article id="post-c-operator" class="post-c-operator post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/07/23/c-operator/">c++ operator</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/23/c-operator/" data-id="ckampn45q000nm4ve8y107t3b" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p><a href="https://zh.cppreference.com/w/cpp/language/operator_precedence" target="_blank" rel="noopener" title="c++ operator">运算符优先级</a></p>
-<table>
-<thead>
-<tr>
-<th>优先级</th>
-<th>运算符</th>
-<th>描述</th>
-<th>结合性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>::</td>
-<td>作用域解析</td>
-<td>从左到右</td>
-</tr>
-<tr>
-<td>2</td>
-<td>a++    a–</td>
-<td>后缀自增与自减</td>
-<td></td>
-</tr>
-<tr>
-<td>type()   type{}</td>
-<td>函数风格转型</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>a()</td>
-<td>函数调用</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>a[]</td>
-<td>下标</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>.   -&gt;</td>
-<td>成员访问</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td>++a   –a</td>
-<td>前缀自增与自减</td>
-<td>从右到左</td>
-</tr>
-<tr>
-<td>+a   -a</td>
-<td>一元加与减</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>!   ~</td>
-<td>逻辑非和逐位非</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>(type)</td>
-<td>C 风格转型</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>*a</td>
-<td>间接（解引用）</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>&amp;a</td>
-<td>取址</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>sizeof</td>
-<td>取大小</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>new   new[]</td>
-<td>动态内存分配</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>delete   delete[]</td>
-<td>动态内存分配</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>4</td>
-<td>.*   -&gt;*</td>
-<td>指向成员指针</td>
-<td>从左到右</td>
-</tr>
-<tr>
-<td>5</td>
-<td>a*b   a/b   a%b</td>
-<td>乘法、除法与余数</td>
-<td></td>
-</tr>
-<tr>
-<td>6</td>
-<td>a+b   a-b</td>
-<td>加法与减法</td>
-<td></td>
-</tr>
-<tr>
-<td>7</td>
-<td>&lt;&lt;   &gt;&gt;</td>
-<td>逐位左移与右移</td>
-<td></td>
-</tr>
-<tr>
-<td>8</td>
-<td>&lt;=&gt;</td>
-<td>三路比较运算符(C++20 起)</td>
-<td></td>
-</tr>
-<tr>
-<td>9</td>
-<td>&lt;   &lt;=</td>
-<td>分别为 &lt; 与 ≤ 的关系运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>&gt;   &gt;=</td>
-<td>分别为 &gt; 与 ≥ 的关系运算符</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>10</td>
-<td>==   !=</td>
-<td>分别为 = 与 ≠ 的关系运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>11</td>
-<td>a&amp;b</td>
-<td>逐位与</td>
-<td></td>
-</tr>
-<tr>
-<td>12</td>
-<td>^</td>
-<td>逐位异或（排除或）</td>
-<td></td>
-</tr>
-<tr>
-<td>13</td>
-<td>|</td>
-<td>逐位或（包含或）</td>
-<td></td>
-</tr>
-<tr>
-<td>14</td>
-<td>&amp;&amp;</td>
-<td>逻辑与</td>
-<td></td>
-</tr>
-<tr>
-<td>15</td>
-<td>||</td>
-<td>逻辑或</td>
-<td></td>
-</tr>
-<tr>
-<td>16</td>
-<td>a?b:c</td>
-<td>三元条件</td>
-<td>从右到左</td>
-</tr>
-<tr>
-<td>throw</td>
-<td>throw 运算符</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>=</td>
-<td>直接赋值（ C++ 类默认提供）</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>+=   -=</td>
-<td>以和及差复合赋值</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>*=   /=   %=</td>
-<td>以积、商及余数复合赋值</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>&lt;&lt;=   &gt;&gt;=</td>
-<td>以逐位左移及右移复合赋值</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>&amp;=   ^=   |=</td>
-<td>以逐位与、异或及或复合赋值</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>17</td>
-<td>,</td>
-<td>逗号</td>
-<td>从左到右</td>
-</tr>
-</tbody></table>
-<p><code>.*</code> 和 <code>-&gt;*</code> 也是运算符，指向成员指针。在使用成员函数指针时使用。</p>
-<blockquote>
-<p>单目运算符 &gt; 双目运算符 &gt; 三目运算符</p>
-</blockquote>
-<blockquote>
-<p>算术运算符 &gt; 关系运算符 &gt; 位运算符 &gt; 逻辑运算符</p>
-</blockquote>
-<blockquote>
-<p>算术运算符移位优先级最低</p>
-</blockquote>
-<blockquote>
-<p>位运算符 &amp; &gt; ^ &gt; |</p>
-</blockquote>
-<blockquote>
-<p>复合赋值（-= +=等）与三目运算符同级别</p>
-</blockquote>
-<blockquote>
-<p>逗号运算符优先级最低</p>
-</blockquote>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/07/23/c-operator/">
-    <time datetime="2018-07-23T13:08:26.000Z" class="entry-date">
-        2018-07-23
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/accumulation/" rel="tag">accumulation</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
     <article id="post-little-accumulation" class="post-little-accumulation post type-post status-publish format-standard hentry">
     <!---->
 
@@ -369,7 +78,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/17/little-accumulation/" data-id="ckampn463001em4ve4ro662ho" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/17/little-accumulation/" data-id="ckampr0ro001cz4vef4o99wl6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -424,7 +133,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/04/01/apache/" data-id="ckampn45k000cm4ve8hdsbry5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/04/01/apache/" data-id="ckampr0r6000bz4ve7x54dah6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -497,7 +206,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/12/25/libconfig/" data-id="ckampn4610017m4vehyhqa1yt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/12/25/libconfig/" data-id="ckampr0rn0017z4ve6380gqbu" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -651,7 +360,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/12/17/docker-gdb/" data-id="ckampn45x000ym4ve9nyc2zq9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/12/17/docker-gdb/" data-id="ckampr0rj000yz4ve6fiu4e1o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -711,7 +420,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/28/docker/" data-id="ckampn45z0012m4vef99w2ogd" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/28/docker/" data-id="ckampr0rl0012z4ve1gv803im" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -787,7 +496,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/09/22/docker-permission/" data-id="ckampn45y0010m4ve83gcc8uc" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/09/22/docker-permission/" data-id="ckampr0rk0010z4ve954p1y1g" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -850,7 +559,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/09/13/arm-ports-differences/" data-id="ckampn45j000bm4ve560496xc" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/09/13/arm-ports-differences/" data-id="ckampr0r7000cz4ve9ylm744i" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -916,7 +625,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/09/05/MongoDB/" data-id="ckampn45a0002m4vea2436c0u" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/09/05/MongoDB/" data-id="ckampr0r00005z4vedtwe42a4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -969,7 +678,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/06/07/xinetd/" data-id="ckampn46n002cm4ve1co01gxl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/06/07/xinetd/" data-id="ckampr0s8002az4ve8q183khj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -1023,6 +732,78 @@
 
 
   
+    <article id="post-set-ip-addr-on-boot" class="post-set-ip-addr-on-boot post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/03/13/set-ip-addr-on-boot/">set_ip_addr_on_boot</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/03/13/set-ip-addr-on-boot/" data-id="ckampr0rv001nz4ve1ck31hss" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="update-rc-d"><a href="#update-rc-d" class="headerlink" title="update-rc.d"></a>update-rc.d</h2><ul>
+<li><p>the script (setipaddr.sh)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/sbin:/usr/<span class="built_in">local</span>/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin:<span class="variable">$PATH</span></span><br><span class="line">ifconfig eth0 192.168.10.1/24</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>update-rc.d setting</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod +x setipaddr.sh</span><br><span class="line">mv setipaddr.sh /etc/init.d</span><br><span class="line">update-rc.d setipaddr.sh defaults</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>run level</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># If defaults is used then update-rc.d will make links to start the service in runlevels 2345 and to stop the service in runlevels 016</span></span><br><span class="line">runlevel <span class="comment"># get current level</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h2><ul>
+<li><p>service file (/etc/systemd/system/setipaddr.service)  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=<span class="built_in">set</span> ip on boot</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=oneshot</span><br><span class="line">ExecStart=/opt/bin/setipaddr.sh</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>systemctl setting</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> setipaddr.service</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/03/13/set-ip-addr-on-boot/">
+    <time datetime="2017-03-13T14:29:19.000Z" class="entry-date">
+        2017-03-13
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell-update-rc-d-systemctl/" rel="tag">shell, update-rc.d, systemctl</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -1059,10 +840,6 @@
       <ul>
         
           <li>
-            <a href="/2020/05/26/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
             <a href="/2020/05/22/elk/">elk国内源</a>
           </li>
         
@@ -1076,6 +853,10 @@
         
           <li>
             <a href="/2019/04/28/%E5%AD%97%E7%AC%A6%E4%B8%B2/">Bash shell 字符串</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/21/vim-ide/">自定义语言IDE构建</a>
           </li>
         
       </ul>
